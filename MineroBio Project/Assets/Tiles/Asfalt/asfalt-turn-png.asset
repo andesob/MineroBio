@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: asfalt-turn-png
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: fb79ecf1d837b4645b6739d157a253c9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b3f369b3ffd631d40b90e52d54b2880c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

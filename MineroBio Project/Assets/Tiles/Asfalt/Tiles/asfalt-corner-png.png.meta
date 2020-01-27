@@ -1,7 +1,11 @@
 fileFormatVersion: 2
-guid: fb79ecf1d837b4645b6739d157a253c9
+guid: ede93f827bddae946bb9ecbd40167235
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: asfalt-corner-png_0
+    21300002: asfalt-corner-png_1
+    21300004: asfalt-corner-png_2
+    21300006: asfalt-corner-png_3
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -50,7 +54,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -93,11 +97,97 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: asfalt-corner-png_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3007d171bbf52384196f380171eaa1d7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: asfalt-corner-png_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51f9413bfb774514aa4abd13da0dd575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: asfalt-corner-png_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e91a9da91f13b0e49bef33e2bde2eaaf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: asfalt-corner-png_3
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4626d5a791ab7747b99e2dedc996bc0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
-    physicsShape: []
+    physicsShape:
+    - - {x: -16, y: -16}
+      - {x: -16, y: 1}
+      - {x: -1, y: 1}
+      - {x: -1, y: 16}
+      - {x: 16, y: 16}
+      - {x: 16, y: -16}
     bones: []
-    spriteID: 95e3b5b8b4bb88d4a8ccec810c7ed65d
+    spriteID: 920838cff430ab844bd8498065b6cba0
     vertices: []
     indices: 
     edges: []
