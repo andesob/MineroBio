@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:MineroBio Project/Assets/Scenes/SampleScene.unity.meta
+guid: e8360e1acaa442f43a8160c6a1ec5796
+=======
 guid: 5552abf514d9150429839fcdfb7ce781
+>>>>>>> Eskil-Dev:MineroBioProject/Assets/Scenes/Game.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
