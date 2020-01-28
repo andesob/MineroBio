@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Powerplant
+  - PowerplantExit
   layers:
   - Default
   - TransparentFX

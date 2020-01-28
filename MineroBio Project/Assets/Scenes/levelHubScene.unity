@@ -515,6 +515,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114871391765436566, guid: b0884b26da9a481428e762577a55d97e,
+        type: 3}
+      propertyPath: dashTime
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 114871391765436566, guid: b0884b26da9a481428e762577a55d97e,
+        type: 3}
+      propertyPath: dashSpeed
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 2071013653552680506, guid: b0884b26da9a481428e762577a55d97e,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -612,7 +622,7 @@ GameObject:
   - component: {fileID: 705475741}
   m_Layer: 0
   m_Name: asfalt-side-png
-  m_TagString: Untagged
+  m_TagString: PowerplantExit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

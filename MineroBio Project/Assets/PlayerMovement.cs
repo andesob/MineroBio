@@ -7,6 +7,13 @@ public class PlayerMovement : MonoBehaviour
 {
 
     public float moveSpeed;
+    public float dashSpeed;
+    public float dashTime;
+    public float dashWaitTime;
+
+    private bool spacePressed;
+    private bool canDash = true;
+    private float time;
 
     public Rigidbody2D rb;
 
@@ -18,11 +25,21 @@ public class PlayerMovement : MonoBehaviour
     {
          movement.x = Input.GetAxisRaw("Horizontal");
          movement.y = Input.GetAxisRaw("Vertical");
+        if (Input.GetKeyDown(KeyCode.Space) && canDash)
+        {
+            canDash = false;
+            spacePressed = true;
+            time = Time.time;
+        }
+         HandleDash();
     }
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * moveSpeed);
+        if (!spacePressed)
+        {
+            rb.MovePosition(rb.position + movement * moveSpeed);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -34,6 +51,25 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("PowerplantExit"))
         {
             SceneManager.LoadScene("Default");
+        }
+    }
+
+    private void HandleDash()
+    {
+        if (spacePressed){
+
+            if (time + dashTime >= Time.time)
+            {
+                rb.MovePosition(rb.position + movement * dashSpeed);
+            }
+            else
+            {
+            spacePressed = false;
+            }
+        }
+        if(time + dashWaitTime <= Time.time && !canDash)
+        {
+            canDash = true;
         }
     }
 }
