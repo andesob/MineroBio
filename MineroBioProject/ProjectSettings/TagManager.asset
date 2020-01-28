@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Powerplant
+  - PowerplantExit
   layers:
   - Default
   - TransparentFX
@@ -13,13 +15,13 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - ColliderLayer
+  - GroundLayer
+  - BackgroundLayer
+  - ForegroundLayer
+  - BuildingLayer
+  - PlayerLayer
+  - AccLayer
   - 
   - 
   - 
@@ -38,6 +40,27 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackgroundLayer
+    uniqueID: 1777347423
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: ColliderLayer
+    uniqueID: 1480153691
+    locked: 0
+  - name: GroundLayer
+    uniqueID: 3106991381
+    locked: 0
+  - name: BuildingLayer
+    uniqueID: 24070443
+    locked: 0
+  - name: AccLayer
+    uniqueID: 3927553339
+    locked: 0
+  - name: PlayerLayer
+    uniqueID: 3621448459
+    locked: 0
+  - name: ForegroundLayer
+    uniqueID: 4081323273
     locked: 0
