@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:MineroBio Project/Assets/Scenes.meta
+guid: aa928ff5e7f21c448b56ddffd66b1647
+=======
 guid: bbd41ebe11861244895296abf324bc2a
+>>>>>>> Eskil-Dev:MineroBioProject/Assets/Scenes.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
