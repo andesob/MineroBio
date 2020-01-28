@@ -307,8 +307,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1187975915
-  m_SortingLayer: 0
+  m_SortingLayerID: -1889118803
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -541,12 +541,12 @@ PrefabInstance:
     - target: {fileID: 2071013653552680506, guid: b0884b26da9a481428e762577a55d97e,
         type: 3}
       propertyPath: m_SortingLayerID
-      value: -673518837
+      value: 1715886907
       objectReference: {fileID: 0}
     - target: {fileID: 2071013653552680506, guid: b0884b26da9a481428e762577a55d97e,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4341435218848173698, guid: b0884b26da9a481428e762577a55d97e,
         type: 3}
@@ -633,7 +633,7 @@ GameObject:
   - component: {fileID: 705475743}
   - component: {fileID: 705475742}
   - component: {fileID: 705475741}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: asfalt-side-png
   m_TagString: PowerplantExit
   m_Icon: {fileID: 0}
@@ -740,8 +740,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -324936915
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 16851f89b2d7d924ba8fda1d1dd46ee5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -983,8 +983,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1480153691
-  m_SortingLayer: 0
+  m_SortingLayerID: -324936915
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
