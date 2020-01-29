@@ -8,6 +8,7 @@ TagManager:
   - Powerplant
   - PowerplantExit
   - Collider
+  - Teleporter
   layers:
   - Default
   - TransparentFX

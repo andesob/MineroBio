@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashSpeed;
     public float dashTime;
     public float dashWaitTime;
+    public Animator anim;
 
     private bool spacePressed;
     private bool canDash = true;
@@ -31,7 +32,19 @@ public class PlayerMovement : MonoBehaviour
             spacePressed = true;
             time = Time.time;
         }
-         HandleDash();
+        if (Input.GetKey(KeyCode.D))
+        {
+            anim.Play("right_walk");
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            anim.Play("left_walk");
+        }
+        if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+        {
+            anim.Play("idle");
+        }
+        HandleDash();
     }
 
     private void FixedUpdate()
@@ -51,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("PowerplantExit"))
         {
             SceneManager.LoadScene("Default");
+            transform.position = new Vector3(0.53f, 22.5f);
         }
     }
 
