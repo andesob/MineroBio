@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashSpeed;
     public float dashTime;
     public float dashWaitTime;
+    public float damageWaitTime;
 
     private bool spacePressed;
     private bool canDash = true;
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
 
     Vector2 movement;
+
 
 
     // Update is called once per frame
@@ -32,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
             time = Time.time;
         }
          HandleDash();
+     
     }
 
     private void FixedUpdate()
@@ -54,6 +57,17 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public Vector3 GetPosition()
+    {
+        return GameObject.Find("MainCharacter").transform.position;
+    }
+
+    public void Damage(int damageAmount)
+    {
+
+        HeartsHealthVisual2.heartsHealthSystemStatic.Damage(damageAmount);
+    }
+
     private void HandleDash()
     {
         if (spacePressed){
@@ -72,4 +86,7 @@ public class PlayerMovement : MonoBehaviour
             canDash = true;
         }
     }
+
+
+    
 }
