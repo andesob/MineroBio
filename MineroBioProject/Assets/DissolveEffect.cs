@@ -6,6 +6,7 @@ public class DissolveEffect : MonoBehaviour
 {
     [SerializeField] private Material material;
     private float dissolveAmount;
+    private float dissolveSpeed;
     private bool isDissolving;
 
     // Update is called once per frame
@@ -13,22 +14,24 @@ public class DissolveEffect : MonoBehaviour
     {
         if (isDissolving)
         {
-            dissolveAmount = Mathf.Clamp01(dissolveAmount + Time.deltaTime);
+            dissolveAmount = Mathf.Clamp(dissolveAmount + dissolveSpeed*Time.deltaTime,0,1.2f);
             material.SetFloat("_DissolveAmount", dissolveAmount);
         } else
         {
-            dissolveAmount = Mathf.Clamp01(dissolveAmount - Time.deltaTime);
+            dissolveAmount = Mathf.Clamp(dissolveAmount - dissolveSpeed*Time.deltaTime, 0, 1.2f);
             material.SetFloat("_DissolveAmount", dissolveAmount);
         }
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            isDissolving = true;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            isDissolving = false;
-        }
     }
+    public void StartDissolve(float dissolveSpeed)
+        { 
+        isDissolving = true;
+        this.dissolveSpeed = dissolveSpeed;
+        }
+
+     public void StopDissolve(float dissolveSpeed)
+        {
+            isDissolving = false; 
+            this.dissolveSpeed = dissolveSpeed;
+        }
+    
 }
