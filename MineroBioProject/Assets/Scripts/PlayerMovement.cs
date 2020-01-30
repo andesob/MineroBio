@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public bool isInputEnabled = true;
 
     public float moveSpeed;
     public float dashSpeed;
@@ -17,12 +18,13 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody2D rb;
 
-    Vector2 movement;
+    public Vector2 movement;
 
 
     // Update is called once per frame
     void Update()
     {
+        if(isInputEnabled){
          movement.x = Input.GetAxisRaw("Horizontal");
          movement.y = Input.GetAxisRaw("Vertical");
         if (Input.GetKeyDown(KeyCode.Space) && canDash)
@@ -33,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
         }
          HandleDash();
     }
-
+}
     private void FixedUpdate()
     {
         if (!spacePressed)

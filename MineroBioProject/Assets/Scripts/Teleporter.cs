@@ -23,10 +23,17 @@ public class Teleporter : MonoBehaviour
    IEnumerator Teleport()
     {
         DissolveEffect dissolveEffect = Player.GetComponent<DissolveEffect>();
+        PlayerMovement playerMovement = Player.GetComponent<PlayerMovement>();
+
         dissolveEffect.StartDissolve(2f);
         yield return new WaitForSeconds(1f);
+
+        playerMovement.isInputEnabled = false;
         Player.transform.position = new Vector2(Portal.transform.position.x, Portal.transform.position.y);
         dissolveEffect.StopDissolve(2f);
+        yield return new WaitForSeconds(0.35f);
+        playerMovement.isInputEnabled = true;
+        
 
     }
  
