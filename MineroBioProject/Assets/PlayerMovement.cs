@@ -15,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
     private bool spacePressed;
     private bool canDash = true;
     private float time;
+    private string lastDirection = "down";
+    private bool isMoving;
+    private bool lastInput;
 
     public Rigidbody2D rb;
 
@@ -32,19 +35,55 @@ public class PlayerMovement : MonoBehaviour
             spacePressed = true;
             time = Time.time;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && !isMoving)
         {
             anim.Play("right_walk");
+            lastDirection = "D";
+            isMoving = true;
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && !isMoving)
         {
             anim.Play("left_walk");
+            lastDirection = "A";
+            isMoving = true;
         }
-        if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.S) && !isMoving)
         {
-            anim.Play("idle");
+            anim.Play("down_walk");
+            lastDirection = "S";
+            isMoving = true;
         }
+        if (Input.GetKey(KeyCode.W) && !isMoving)
+        {
+            anim.Play("up_walk");
+            lastDirection = "W";
+            isMoving = true;
+        }
+        if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
+        {
+            if (lastDirection.Equals("W"))
+            {
+                anim.Play("idle_up");
+            } 
+            else if (lastDirection.Equals("S"))
+            {
+                anim.Play("idle_down");
+            } 
+            else if (lastDirection.Equals("A"))
+            {
+                anim.Play("idle_left");
+            } 
+            else if (lastDirection.Equals("D"))
+            {
+                anim.Play("idle_right");
+            }
+        }
+
         HandleDash();
+
+        if (!Input.inputString.Equals(lastDirection)){
+            isMoving = false;
+        }
     }
 
     private void FixedUpdate()
