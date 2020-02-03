@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - PlayButton
+  - Powerplant
+  - PowerplantExit
+  - Collider
+  - Teleporter
+  - LevelSwitch
   layers:
   - Default
   - TransparentFX
@@ -13,13 +19,13 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - ColliderLayer
+  - LevelLayer
+  - PlayerLayer
+  - BuildingLayer
+  - DivLayer
+  - BackgroundLayer
+  - ForegroundLayer
   - 
   - 
   - 
@@ -40,4 +46,25 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BackgroundLayer
+    uniqueID: 1880555543
+    locked: 0
+  - name: LevelLayer
+    uniqueID: 2405848493
+    locked: 0
+  - name: ColliderLayer
+    uniqueID: 3970030381
+    locked: 0
+  - name: BuildingLayer
+    uniqueID: 2839772081
+    locked: 0
+  - name: DivLayer
+    uniqueID: 3118210003
+    locked: 0
+  - name: PlayerLayer
+    uniqueID: 1715886907
+    locked: 0
+  - name: ForegroundLayer
+    uniqueID: 2054700959
     locked: 0
