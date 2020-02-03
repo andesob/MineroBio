@@ -10,16 +10,24 @@ public class PlayerMovement : MonoBehaviour
     public float dashSpeed;
     public float dashTime;
     public float dashWaitTime;
-    public Animator anim;
 
     private bool spacePressed;
     private bool canDash = true;
     private float time;
     private string lastDirection = "down";
     private bool isMoving;
-    private bool lastInput;
+    private float playerY;
+    private float playerX;
+
+    private bool dPressed;
+    private bool aPressed;
+    private bool wPressed;
+    private bool sPressed;
+
 
     public Rigidbody2D rb;
+    public Animator anim;
+    public shooting shootingScript;
 
     Vector2 movement;
 
@@ -29,36 +37,71 @@ public class PlayerMovement : MonoBehaviour
     {
          movement.x = Input.GetAxisRaw("Horizontal");
          movement.y = Input.GetAxisRaw("Vertical");
+
+        getInput();
+        HandleKeyPress();
+        HandleDash();
+
+        if (!Input.inputString.Equals(lastDirection)){
+            isMoving = false;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (!spacePressed)
+        {
+            rb.MovePosition(rb.position + movement * moveSpeed);
+        }
+    }
+
+
+    //Gets the input from a user and sets a boolean to true or false accordingly.
+    private void getInput()
+    {
         if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
             canDash = false;
             spacePressed = true;
             time = Time.time;
         }
-        if (Input.GetKey(KeyCode.D) && !isMoving)
+
+        if (Input.GetKey(KeyCode.D))
         {
-            anim.Play("right_walk");
-            lastDirection = "D";
-            isMoving = true;
+            dPressed = true;
         }
-        if (Input.GetKey(KeyCode.A) && !isMoving)
+        else
         {
-            anim.Play("left_walk");
-            lastDirection = "A";
-            isMoving = true;
+            dPressed = false;
         }
-        if (Input.GetKey(KeyCode.S) && !isMoving)
+
+        if (Input.GetKey(KeyCode.A))
         {
-            anim.Play("down_walk");
-            lastDirection = "S";
-            isMoving = true;
+            aPressed = true;
         }
-        if (Input.GetKey(KeyCode.W) && !isMoving)
+        else
         {
-            anim.Play("up_walk");
-            lastDirection = "W";
-            isMoving = true;
+            aPressed = false;
         }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            sPressed = true;
+        }
+        else
+        {
+            sPressed = false;
+        }
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            wPressed = true;
+        }
+        else
+        {
+            wPressed = false;
+        }
+
         if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
         {
             if (lastDirection.Equals("W"))
@@ -78,19 +121,73 @@ public class PlayerMovement : MonoBehaviour
                 anim.Play("idle_right");
             }
         }
+    }
 
-        HandleDash();
+    private void HandleKeyPress()
+    {
+        if(wPressed && !isMoving)
+        {
+            anim.Play("up_walk");
+            lastDirection = "W";
+            isMoving = true;
+            Walk(lastDirection);
+        }
 
-        if (!Input.inputString.Equals(lastDirection)){
-            isMoving = false;
+        if (sPressed && !isMoving)
+        {
+
+            anim.Play("down_walk");
+            lastDirection = "S";
+            isMoving = true;
+            Walk(lastDirection);
+        }
+
+        if (aPressed && !isMoving)
+        {
+
+            anim.Play("left_walk");
+            lastDirection = "A";
+            isMoving = true;
+            Walk(lastDirection);
+        }
+
+        if (dPressed && !isMoving)
+        {
+
+            anim.Play("right_walk");
+            lastDirection = "D";
+            isMoving = true;
+            Walk(lastDirection);
         }
     }
 
-    private void FixedUpdate()
+    private void Walk(string direction)
     {
-        if (!spacePressed)
+        playerX = this.gameObject.transform.position.x;
+        playerY = this.gameObject.transform.position.y;
+
+        switch (direction)
         {
-            rb.MovePosition(rb.position + movement * moveSpeed);
+            case "W":
+                shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, 0f);
+                shootingScript.firePoint.transform.position = new Vector3(playerX + 0.2f, playerY, 0f);
+                break;
+
+            case "S":
+                shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, 180f);
+                shootingScript.firePoint.transform.position = new Vector3(playerX - 0.25f, playerY, 0f);
+                break;
+
+            case "A":
+                shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, 90f);
+                shootingScript.firePoint.transform.position = new Vector3(playerX - 0.1f, playerY - 0.2f, 0f);
+                break;
+
+            case "D":
+                shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, -90f);
+                shootingScript.firePoint.transform.position = new Vector3(playerX + 0.1f, playerY - 0.2f, 0f);
+                break;
+
         }
     }
 

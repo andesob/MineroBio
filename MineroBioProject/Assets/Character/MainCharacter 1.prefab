@@ -156,6 +156,7 @@ MonoBehaviour:
   dashTime: 0.07
   dashWaitTime: 1
   anim: {fileID: 1314443775466714291}
+  shootingScript: {fileID: 0}
   rb: {fileID: 1336501833709707217}
 --- !u!95 &1314443775466714291
 Animator:
