@@ -7,13 +7,14 @@ public class shooting : MonoBehaviour
     public Transform firePoint; //where the bullet is going to shoot from
     public GameObject bulletPrefab; //The bullet sprite
     public Transform gun;
+    public GameObject player;
 
     public float bulletForce = 10f;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && player.GetComponent<PlayerPickupScript>().hasGun())
         {
             Shoot();
         }
@@ -23,6 +24,6 @@ public class shooting : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse); 
+        rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
     }
 }
