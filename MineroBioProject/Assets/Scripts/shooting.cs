@@ -6,6 +6,7 @@ public class shooting : MonoBehaviour
 {
     public Transform firePoint; //where the bullet is going to shoot from
     public GameObject bulletPrefab; //The bullet sprite
+    public Transform gun;
 
     public float bulletForce = 10f;
 
