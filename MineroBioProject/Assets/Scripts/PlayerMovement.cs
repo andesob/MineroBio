@@ -11,14 +11,15 @@ public class PlayerMovement : MonoBehaviour
     public float dashTime;
     public float dashWaitTime;
 
-    private bool spacePressed;
-    private bool canDash = true;
+    private string lastDirection = "S";
+
     private float time;
-    private string lastDirection = "down";
-    private bool isMoving;
     private float playerY;
     private float playerX;
 
+    private bool shiftPressed;
+    private bool canDash = true;
+    private bool isMoving;
     private bool dPressed;
     private bool aPressed;
     private bool wPressed;
@@ -35,35 +36,18 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         movement.x = Input.GetAxisRaw("Horizontal");
-         movement.y = Input.GetAxisRaw("Vertical");
-
         getInput();
         HandleKeyPress();
         HandleDash();
-
-        if (!Input.inputString.Equals(lastDirection)){
-            isMoving = false;
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if (!spacePressed)
-        {
-            rb.MovePosition(rb.position + movement * moveSpeed);
-        }
     }
 
 
     //Gets the input from a user and sets a boolean to true or false accordingly.
     private void getInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canDash)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
-            canDash = false;
-            spacePressed = true;
-            time = Time.time;
+            shiftPressed = true;
         }
 
         if (Input.GetKey(KeyCode.D))
@@ -121,11 +105,33 @@ public class PlayerMovement : MonoBehaviour
                 anim.Play("idle_right");
             }
         }
+
+        if (!Input.inputString.Equals(lastDirection))
+        {
+            isMoving = false;
+        }
     }
+
 
     private void HandleKeyPress()
     {
-        if(wPressed && !isMoving)
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+
+        if (shiftPressed)
+        {
+            if (canDash)
+            {
+            canDash = false;
+            time = Time.time;
+            }
+        }
+        else
+        {
+            rb.MovePosition(rb.position + movement * moveSpeed);
+        }
+
+        if (wPressed && !isMoving)
         {
             anim.Play("up_walk");
             lastDirection = "W";
@@ -180,14 +186,15 @@ public class PlayerMovement : MonoBehaviour
 
             case "A":
                 shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, 90f);
-                shootingScript.firePoint.transform.position = new Vector3(playerX - 0.1f, playerY - 0.2f, 0f);
+                shootingScript.gun.rotation = Quaternion.Euler(0f, 180f, 0f);
+                shootingScript.firePoint.transform.position = new Vector3(playerX - 0.1f, playerY - 0.16f, 0f);
                 break;
 
             case "D":
                 shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, -90f);
-                shootingScript.firePoint.transform.position = new Vector3(playerX + 0.1f, playerY - 0.2f, 0f);
+                shootingScript.gun.rotation = Quaternion.Euler(0f, 0f, 0f);
+                shootingScript.firePoint.transform.position = new Vector3(playerX + 0.1f, playerY - 0.13f, 0f);
                 break;
-
         }
     }
 
@@ -206,7 +213,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleDash()
     {
-        if (spacePressed){
+        if (shiftPressed){
 
             if (time + dashTime >= Time.time)
             {
@@ -214,7 +221,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-            spacePressed = false;
+            shiftPressed = false;
             }
         }
         if(time + dashWaitTime <= Time.time && !canDash)
