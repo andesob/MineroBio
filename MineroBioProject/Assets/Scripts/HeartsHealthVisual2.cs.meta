@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: ab17677f243b07341b112a207b108144
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - heart0Sprite: {fileID: 21300000, guid: d9166f9843db80d4a91d34782586e57b, type: 3}
+  - heart1Sprite: {fileID: 21300000, guid: 9fffc025b17f9fd4e8923a9ed2040ae3, type: 3}
+  - heart2Sprite: {fileID: 21300000, guid: 0d55b75e51af02c4797c699a3d44a625, type: 3}
+  - heart3Sprite: {fileID: 21300000, guid: adaff10ad4717e14e902cc500b0183c8, type: 3}
+  - heart4Sprite: {fileID: 21300000, guid: 34fc748e80ca3954db0b606c087c1696, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

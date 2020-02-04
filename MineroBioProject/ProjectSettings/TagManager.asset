@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - PlayButton
+  - Powerplant
+  - Collider
+  - Teleporter
+  - LevelSwitch
+  - Powerplant
+  - Bullet
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - ColliderLayer
+  - LevelLayer
+  - PlayerLayer
+  - BuildingLayer
+  - DivLayer
+  - BackgroundLayer
+  - ForegroundLayer
+  - PostProccesing
+  - ForceField
+  - Bullet
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: BackgroundLayer
+    uniqueID: 1880555543
+    locked: 0
+  - name: LevelLayer
+    uniqueID: 2405848493
+    locked: 0
+  - name: ColliderLayer
+    uniqueID: 3970030381
+    locked: 0
+  - name: BuildingLayer
+    uniqueID: 2839772081
+    locked: 0
+  - name: DivLayer
+    uniqueID: 3118210003
+    locked: 0
+  - name: PlayerLayer
+    uniqueID: 1715886907
+    locked: 0
+  - name: ForegroundLayer
+    uniqueID: 2054700959
+    locked: 0
