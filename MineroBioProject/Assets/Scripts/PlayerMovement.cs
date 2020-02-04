@@ -88,21 +88,24 @@ public class PlayerMovement : MonoBehaviour
 
         if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
         {
-            if (lastDirection.Equals("W"))
+            switch (lastDirection)
             {
-                anim.Play("idle_up");
-            } 
-            else if (lastDirection.Equals("S"))
-            {
-                anim.Play("idle_down");
-            } 
-            else if (lastDirection.Equals("A"))
-            {
-                anim.Play("idle_left");
-            } 
-            else if (lastDirection.Equals("D"))
-            {
-                anim.Play("idle_right");
+                case "W":
+                    anim.Play("idle_up");
+                    break;
+
+                case "S":
+                    anim.Play("idle_down");
+                    break;
+
+                case "A":
+                    anim.Play("idle_left");
+                    break;
+
+                case "D":
+                    anim.Play("idle_right");
+                    break;
+
             }
         }
 
@@ -122,8 +125,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if (canDash)
             {
-            canDash = false;
-            time = Time.time;
+                canDash = false;
+                time = Time.time;
             }
         }
         else
@@ -198,33 +201,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Powerplant"))
-        {
-            SceneManager.LoadScene("levelHubScene");
-        }
-        if (collision.gameObject.CompareTag("PowerplantExit"))
-        {
-            SceneManager.LoadScene("Default");
-            transform.position = new Vector3(0.53f, 22.5f);
-        }
-    }
-
     private void HandleDash()
     {
-        if (shiftPressed){
-
+        if (shiftPressed)
+        {
             if (time + dashTime >= Time.time)
             {
                 rb.MovePosition(rb.position + movement * dashSpeed);
             }
             else
             {
-            shiftPressed = false;
+                shiftPressed = false;
             }
         }
-        if(time + dashWaitTime <= Time.time && !canDash)
+        if (time + dashWaitTime <= Time.time && !canDash)
         {
             canDash = true;
         }

@@ -4215,6 +4215,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6700512117039539813, guid: 52a06cd4df31c9a4ba42dd5f027d47b3,
+        type: 3}
+      propertyPath: level
+      value: HomeScene
+      objectReference: {fileID: 0}
     - target: {fileID: 6700512117039539814, guid: 52a06cd4df31c9a4ba42dd5f027d47b3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4273,7 +4278,7 @@ PrefabInstance:
     - target: {fileID: 6700512117039539818, guid: 52a06cd4df31c9a4ba42dd5f027d47b3,
         type: 3}
       propertyPath: m_Name
-      value: Door
+      value: ExitDoor
       objectReference: {fileID: 0}
     - target: {fileID: 6700512117039539818, guid: 52a06cd4df31c9a4ba42dd5f027d47b3,
         type: 3}
