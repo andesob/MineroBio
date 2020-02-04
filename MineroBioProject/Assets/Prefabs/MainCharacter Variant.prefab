@@ -59,6 +59,11 @@ PrefabInstance:
       propertyPath: dashWaitTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1453856172110463565, guid: b0884b26da9a481428e762577a55d97e,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2071013653552680506, guid: b0884b26da9a481428e762577a55d97e,
         type: 3}
       propertyPath: m_SortingOrder
@@ -82,7 +87,7 @@ PrefabInstance:
     - target: {fileID: 4341435218848173698, guid: b0884b26da9a481428e762577a55d97e,
         type: 3}
       propertyPath: m_Name
-      value: MainCharacter
+      value: MainCharacter Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4341435218848173698, guid: b0884b26da9a481428e762577a55d97e,
         type: 3}

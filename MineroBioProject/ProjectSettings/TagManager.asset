@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Powerplant
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - 
   - 
   - PostProccesing
-  - 
-  - 
+  - ForceField
+  - Bullet
   - 
   - 
   - 

@@ -50,10 +50,11 @@ public class PlayerMovement : MonoBehaviour
         {
             SceneManager.LoadScene("levelHubScene");
         }
-        if (collision.gameObject.CompareTag("PowerplantExit"))
+      /*  if (collision.gameObject.CompareTag("PowerplantExit"))
         {
             SceneManager.LoadScene("Default");
         }
+        */
     }
 
     private void HandleDash()
