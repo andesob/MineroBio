@@ -10,6 +10,8 @@ TagManager:
   - Collider
   - Teleporter
   - LevelSwitch
+  - Powerplant
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -26,6 +28,9 @@ TagManager:
   - DivLayer
   - BackgroundLayer
   - ForegroundLayer
+  - PostProccesing
+  - ForceField
+  - Bullet
   - 
   - 
   - 
