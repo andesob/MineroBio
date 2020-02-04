@@ -6,10 +6,11 @@ TagManager:
   tags:
   - PlayButton
   - Powerplant
-  - PowerplantExit
   - Collider
   - Teleporter
   - LevelSwitch
+  - Powerplant
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -26,9 +27,9 @@ TagManager:
   - DivLayer
   - BackgroundLayer
   - ForegroundLayer
-  - 
-  - 
-  - 
+  - PostProccesing
+  - ForceField
+  - Bullet
   - 
   - 
   - 

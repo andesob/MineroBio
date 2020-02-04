@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public float dashTime;
     public float dashWaitTime;
 
+    public bool isInputEnabled = true;
+
     private string lastDirection = "S";
 
     private float time;
@@ -32,6 +34,11 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 movement;
 
+
+    private void Start()
+    {
+        isInputEnabled = true;
+    }
 
     // Update is called once per frame
     void Update()
@@ -118,8 +125,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleKeyPress()
     {
+        if (isInputEnabled)
+        {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+        }
 
         if (shiftPressed)
         {
