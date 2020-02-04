@@ -5,12 +5,16 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayButton
-  - Powerplant
   - Collider
   - Teleporter
   - LevelSwitch
-  - Powerplant
   - Bullet
+  - Ground
+  - QuitButton
+  - SettingsButton
+  - PickUp
+  - Gun
+  - Powerplant
   layers:
   - Default
   - TransparentFX
