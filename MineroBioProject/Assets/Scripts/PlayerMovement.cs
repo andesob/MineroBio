@@ -229,4 +229,10 @@ public class PlayerMovement : MonoBehaviour
             canDash = true;
         }
     }
+
+
+    public void Damage(int damageAmount)
+    {
+        HeartsHealthVisual2.heartsHealthSystemStatic.Damage(damageAmount);
+    }
 }
