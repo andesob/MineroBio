@@ -7,7 +7,7 @@ public class Teleporter : MonoBehaviour
 
     public GameObject Player;
     public GameObject Portal;
-    public bool allowTeleport=true;
+    public bool allowTeleport = true;
 
     private void Awake()
     {
@@ -16,7 +16,7 @@ public class Teleporter : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         print("Collission detected");
-    if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             if (allowTeleport)
             {
@@ -26,7 +26,7 @@ public class Teleporter : MonoBehaviour
         }
     }
 
-   IEnumerator Teleport()
+    IEnumerator Teleport()
     {
         DissolveEffect dissolveEffect = Player.GetComponent<DissolveEffect>();
         PlayerMovement playerMovement = Player.GetComponent<PlayerMovement>();
@@ -36,15 +36,13 @@ public class Teleporter : MonoBehaviour
 
         playerMovement.isInputEnabled = false;
         Player.transform.position = new Vector2(Portal.transform.position.x, Portal.transform.position.y);
-       teleporter.allowTeleport = false;
+        teleporter.allowTeleport = false;
         dissolveEffect.StopDissolve(2f);
 
         yield return new WaitForSeconds(0.35f);
-       playerMovement.isInputEnabled = true;
+        playerMovement.isInputEnabled = true;
 
         yield return new WaitForSeconds(0.2f);
         teleporter.allowTeleport = true;
     }
- 
-
 }

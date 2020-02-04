@@ -6,7 +6,6 @@ TagManager:
   tags:
   - PlayButton
   - Powerplant
-  - PowerplantExit
   - Collider
   - Teleporter
   - LevelSwitch
@@ -31,9 +30,6 @@ TagManager:
   - PostProccesing
   - ForceField
   - Bullet
-  - 
-  - 
-  - 
   - 
   - 
   - 

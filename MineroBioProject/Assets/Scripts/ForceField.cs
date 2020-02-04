@@ -8,7 +8,8 @@ public class ForceField : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Player = GameObject.Find("MainCharacter");
+        //Player = GameObject.Find("MainCharacter");
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
