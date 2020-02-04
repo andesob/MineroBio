@@ -11,14 +11,15 @@ public class PlayerMovement : MonoBehaviour
     public float dashTime;
     public float dashWaitTime;
 
-    private bool spacePressed;
-    private bool canDash = true;
+    private string lastDirection = "S";
+
     private float time;
-    private string lastDirection = "down";
-    private bool isMoving;
     private float playerY;
     private float playerX;
 
+    private bool shiftPressed;
+    private bool canDash = true;
+    private bool isMoving;
     private bool dPressed;
     private bool aPressed;
     private bool wPressed;
@@ -35,35 +36,18 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         movement.x = Input.GetAxisRaw("Horizontal");
-         movement.y = Input.GetAxisRaw("Vertical");
-
         getInput();
         HandleKeyPress();
         HandleDash();
-
-        if (!Input.inputString.Equals(lastDirection)){
-            isMoving = false;
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if (!spacePressed)
-        {
-            rb.MovePosition(rb.position + movement * moveSpeed);
-        }
     }
 
 
     //Gets the input from a user and sets a boolean to true or false accordingly.
     private void getInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canDash)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
-            canDash = false;
-            spacePressed = true;
-            time = Time.time;
+            shiftPressed = true;
         }
 
         if (Input.GetKey(KeyCode.D))
@@ -104,28 +88,53 @@ public class PlayerMovement : MonoBehaviour
 
         if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
         {
-            if (lastDirection.Equals("W"))
+            switch (lastDirection)
             {
-                anim.Play("idle_up");
-            } 
-            else if (lastDirection.Equals("S"))
-            {
-                anim.Play("idle_down");
-            } 
-            else if (lastDirection.Equals("A"))
-            {
-                anim.Play("idle_left");
-            } 
-            else if (lastDirection.Equals("D"))
-            {
-                anim.Play("idle_right");
+                case "W":
+                    anim.Play("idle_up");
+                    break;
+
+                case "S":
+                    anim.Play("idle_down");
+                    break;
+
+                case "A":
+                    anim.Play("idle_left");
+                    break;
+
+                case "D":
+                    anim.Play("idle_right");
+                    break;
+
             }
+        }
+
+        if (!Input.inputString.Equals(lastDirection))
+        {
+            isMoving = false;
         }
     }
 
+
     private void HandleKeyPress()
     {
-        if(wPressed && !isMoving)
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+
+        if (shiftPressed)
+        {
+            if (canDash)
+            {
+                canDash = false;
+                time = Time.time;
+            }
+        }
+        else
+        {
+            rb.MovePosition(rb.position + movement * moveSpeed);
+        }
+
+        if (wPressed && !isMoving)
         {
             anim.Play("up_walk");
             lastDirection = "W";
@@ -180,44 +189,32 @@ public class PlayerMovement : MonoBehaviour
 
             case "A":
                 shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, 90f);
-                shootingScript.firePoint.transform.position = new Vector3(playerX - 0.1f, playerY - 0.2f, 0f);
+                shootingScript.gun.rotation = Quaternion.Euler(0f, 180f, 0f);
+                shootingScript.firePoint.transform.position = new Vector3(playerX - 0.1f, playerY - 0.16f, 0f);
                 break;
 
             case "D":
                 shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, -90f);
-                shootingScript.firePoint.transform.position = new Vector3(playerX + 0.1f, playerY - 0.2f, 0f);
+                shootingScript.gun.rotation = Quaternion.Euler(0f, 0f, 0f);
+                shootingScript.firePoint.transform.position = new Vector3(playerX + 0.1f, playerY - 0.13f, 0f);
                 break;
-
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Powerplant"))
-        {
-            SceneManager.LoadScene("levelHubScene");
-        }
-        if (collision.gameObject.CompareTag("PowerplantExit"))
-        {
-            SceneManager.LoadScene("Default");
-            transform.position = new Vector3(0.53f, 22.5f);
         }
     }
 
     private void HandleDash()
     {
-        if (spacePressed){
-
+        if (shiftPressed)
+        {
             if (time + dashTime >= Time.time)
             {
                 rb.MovePosition(rb.position + movement * dashSpeed);
             }
             else
             {
-            spacePressed = false;
+                shiftPressed = false;
             }
         }
-        if(time + dashWaitTime <= Time.time && !canDash)
+        if (time + dashWaitTime <= Time.time && !canDash)
         {
             canDash = true;
         }
