@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class DamageObject : MonoBehaviour
 {
+    public float damageTimeout = 1f;
+    private bool canTakeDamage = true;
+
     [SerializeField] private int damageAmount;
 
     private void Start()
@@ -12,10 +16,27 @@ public class DamageObject : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        PlayerMovement player = collider.GetComponent<PlayerMovement>();
-        if(player != null)
+
+        if (canTakeDamage)
         {
-            player.Damage(damageAmount);
+            }
+                StartCoroutine(damageTimer());
+
+
+                player.Damage(damageAmount);
+            {
+            if (player != null)
         }
+     
+    }
+
+    // A method that returns false until the time has run out. Then returns true.
+    private IEnumerator damageTimer()
+    {
+        canTakeDamage = false;
+        yield return new WaitForSeconds(damageTimeout);
+        canTakeDamage = true;
+
+
     }
 }
