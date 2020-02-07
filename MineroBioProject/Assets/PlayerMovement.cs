@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     public float dashSpeed;
     public float dashTime;
     public float dashWaitTime;
-    public float damageWaitTime;
 
     private bool spacePressed;
     private bool canDash = true;
@@ -24,17 +23,16 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-         movement.x = Input.GetAxisRaw("Horizontal");
-         movement.y = Input.GetAxisRaw("Vertical");
-        if (Input.GetKeyDown(KeyCode.Space) && canDash)
-        {
-            canDash = false;
-            spacePressed = true;
-            time = Time.time;
-        }
+    {       
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
+            if (Input.GetKeyDown(KeyCode.Space) && canDash)
+            {
+                canDash = false;
+                spacePressed = true;
+                time = Time.time;
+            }
          HandleDash();
-     
     }
 
     private void FixedUpdate()
@@ -57,17 +55,25 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public Vector3 GetPosition()
-    {
-        return GameObject.Find("MainCharacter").transform.position;
-    }
+
+
+    //A method to get the player position. May be used to have a knockback function. 
+    // Have not be tested to see if it works yet.
+
+    //public Vector3 GetPosition()
+    //{
+    //   return GameObject.Find("MainCharacter").transform.position;
+    //}
 
     public void Damage(int damageAmount)
     {
-
         HeartsHealthVisual2.heartsHealthSystemStatic.Damage(damageAmount);
     }
 
+    public void Heal(int healingAmount)
+    {
+        HeartsHealthVisual2.heartsHealthSystemStatic.Heal(healingAmount);
+    }
     private void HandleDash()
     {
         if (spacePressed){
@@ -86,7 +92,6 @@ public class PlayerMovement : MonoBehaviour
             canDash = true;
         }
     }
-
 
     
 }

@@ -15,7 +15,8 @@ public class HeartsHealthVisual2 : MonoBehaviour
     [SerializeField] private Sprite heart2Sprite;
     [SerializeField] private Sprite heart3Sprite;
     [SerializeField] private Sprite heart4Sprite;
-
+    [SerializeField] GameObject DeathUI;
+    [SerializeField] GameObject player;
 
     private List<HeartImage> heartImageList;
     private HeartsHealthSystem heartsHealthSystem;
@@ -70,20 +71,22 @@ public class HeartsHealthVisual2 : MonoBehaviour
 
     private void HeartsHealthSystem_OnHealed(object sender, System.EventArgs e)
     {
-        // Hearts health system was healed
-        //RefreshAllHearts();
-        isHealing = true;
+        // Hearts health system was healed. Refreshes the hearts UI. 
+        RefreshAllHearts();
+       // isHealing = true;
     }
 
     private void HeartsHealthSystem_OnDamaged(object sender, System.EventArgs e)
     {
-        // Hearts health system was damaged
+        // Hearts health system was damaged. Refreshes the hearts UI. 
         RefreshAllHearts();
     }
     private void die()
     {
-        //restart the game in the active scene.
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //Restart the game in the active scene.
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        DeathUI.gameObject.SetActive(true);
+        player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
     }
 
     private void RefreshAllHearts()
@@ -97,32 +100,10 @@ public class HeartsHealthVisual2 : MonoBehaviour
         }
     }
 
-    private void HealingAnimatedPeriodic()
-    {
-        if (isHealing)
-        {
-            bool fullyHealed = true;
-            List<HeartsHealthSystem.Heart> heartList = heartsHealthSystem.GetHeartList();
-            for (int i = 0; i < heartList.Count; i++)
-            {
-                HeartImage heartImage = heartImageList[i];
-                HeartsHealthSystem.Heart heart = heartList[i];
-                if (heartImage.GetFragmentAmount() != heart.GetFragmentAmount())
-                {
-                    fullyHealed = false;
-                    break;
-                }
-            }
-            if (fullyHealed)
-            {
-                isHealing = false;
-            }
-        }
-    }
 
     private HeartImage CreateHeartImage(Vector2 anchoredPosition)
     {
-        // Create Game Object
+        // Creates a game Object
         GameObject heartGameObject = new GameObject("Heart", typeof(Image), typeof(Animation));
 
         // Set as child of this transform
