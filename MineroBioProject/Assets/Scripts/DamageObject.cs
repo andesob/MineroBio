@@ -19,13 +19,13 @@ public class DamageObject : MonoBehaviour
 
         if (canTakeDamage)
         {
-            }
-                StartCoroutine(damageTimer());
-
-
-                player.Damage(damageAmount);
-            {
+            PlayerMovement player = collider.GetComponent<PlayerMovement>();
             if (player != null)
+            {
+                player.Damage(damageAmount);
+
+                StartCoroutine(damageTimer());
+            }
         }
      
     }
