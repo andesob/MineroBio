@@ -54,6 +54,10 @@ public class PlayerMovement : MonoBehaviour
     //Gets the input from a user and sets a boolean to true or false accordingly.
     private void getInput()
     {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            Damage(1);
+        }
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
             shiftPressed = true;
@@ -236,5 +240,10 @@ public class PlayerMovement : MonoBehaviour
     public void Damage(int damageAmount)
     {
         HeartsHealthVisual2.heartsHealthSystemStatic.Damage(damageAmount);
+    }
+
+    public void Heal(int healingAmount)
+    {
+        HeartsHealthVisual2.heartsHealthSystemStatic.Heal(healingAmount);
     }
 }

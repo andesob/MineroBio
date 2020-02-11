@@ -11,6 +11,13 @@ public class shooting : MonoBehaviour
 
     public float bulletForce = 10f;
 
+    private AudioSource audio;
+
+    private void Start()
+    {
+        audio = gun.GetComponent<AudioSource>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -25,5 +32,6 @@ public class shooting : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+        audio.Play();
     }
 }
