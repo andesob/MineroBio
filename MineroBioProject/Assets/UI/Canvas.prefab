@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6888862287833828493}
   - component: {fileID: 6888862287833828490}
   - component: {fileID: 6888862287833828491}
+  - component: {fileID: 4449852770635490390}
   m_Layer: 5
   m_Name: Retry
   m_TagString: Untagged
@@ -117,7 +118,30 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6888862287833828490}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4449852770635490390}
+        m_MethodName: RetryButton
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: HomeScene
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4449852770635490390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6888862287833828489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37e607a6596c9424baebc1ae381e8184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6888862287941391334
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,6 +231,7 @@ GameObject:
   - component: {fileID: 6888862288303865902}
   - component: {fileID: 6888862288303865903}
   - component: {fileID: 6888862288303865900}
+  - component: {fileID: 1020224929224421169}
   m_Layer: 5
   m_Name: Quit to mainMenu
   m_TagString: Untagged
@@ -312,7 +337,30 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6888862288303865903}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1020224929224421169}
+        m_MethodName: QuitButton
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MainMenu
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1020224929224421169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6888862288303865898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37e607a6596c9424baebc1ae381e8184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6888862288508880047
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,7 +515,7 @@ MonoBehaviour:
   heart3Sprite: {fileID: 21300000, guid: adaff10ad4717e14e902cc500b0183c8, type: 3}
   heart4Sprite: {fileID: 21300000, guid: 34fc748e80ca3954db0b606c087c1696, type: 3}
   DeathUI: {fileID: 6888862289459225362}
-  player: {fileID: 0}
+  player: {fileID: -6475388202380452498, guid: b4ab17eef6b01774ea50edece49c5492, type: 3}
 --- !u!1 &6888862288840470465
 GameObject:
   m_ObjectHideFlags: 0

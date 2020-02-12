@@ -86,7 +86,11 @@ public class HeartsHealthVisual2 : MonoBehaviour
         //Restart the game in the active scene.
         // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         DeathUI.gameObject.SetActive(true);
-        player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+        // player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+        Time.timeScale = 0;
+        
+        // have to disable user input in "Player Movement" script, since the main character can still rotate on input. MAybe create a function in player movement to do this? Ask Anders
+
     }
 
     private void RefreshAllHearts()
