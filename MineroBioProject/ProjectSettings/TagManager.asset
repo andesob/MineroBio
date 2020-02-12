@@ -15,6 +15,11 @@ TagManager:
   - PickUp
   - Gun
   - Powerplant
+  - Bullet
+  - QuitButton
+  - SettingsButton
+  - ForceField
+  - TeleportTrigger
   layers:
   - Default
   - TransparentFX
