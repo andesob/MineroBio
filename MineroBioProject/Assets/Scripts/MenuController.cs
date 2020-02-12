@@ -27,8 +27,7 @@ public class MenuController : MonoBehaviour
     // Update is called once per frame
 
     void Update()
-    {
-
+    {   
         StateMachine();
     }
 
@@ -36,7 +35,7 @@ public class MenuController : MonoBehaviour
     {
         public enum Scene
         {
-            Game
+            HomeScene
         }
 
         public static void Load(Scene scene)
@@ -49,8 +48,9 @@ public class MenuController : MonoBehaviour
     {
         anim.Play("Enter");
         yield return new WaitForSeconds(0.2f);
-        SceneChanger.Load(SceneChanger.Scene.Game);
+        SceneChanger.Load(SceneChanger.Scene.HomeScene);
     }
+
     private IEnumerator Wait2()
     {
         anim.Play("Enter");
@@ -64,16 +64,13 @@ public class MenuController : MonoBehaviour
         switch (state)
         {
             case 1:
-
-                if (Input.GetKeyDown(KeyCode.D))
+               
+                if (Input.GetKeyDown(KeyCode.Return))
                 {
                     if (this.gameObject.tag == "PlayButton")
                     {
-                        // anim.Play("Enter");
-
                         StartCoroutine("Wait");
                     }
-
                 }
                 if (Input.GetKeyDown(KeyCode.S))
                 {
@@ -101,17 +98,12 @@ public class MenuController : MonoBehaviour
                 }
                 break;
             case 2:
-                if (Input.GetKeyDown(KeyCode.D))
+                if (Input.GetKeyDown(KeyCode.Return))
                 {
                     if (this.gameObject.tag == "SettingsButton")
                     {
-                        // anim.Play("Enter");
-
                         StartCoroutine("Wait");
-
-                        //  SceneChanger.Load(SceneChanger.Scene.Game);
                     }
-
                 }
                 if (Input.GetKeyDown(KeyCode.S))
                 {
@@ -127,7 +119,6 @@ public class MenuController : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.W))
                 {
-
                     if (this.gameObject.tag == "SettingsButton")
                     {
                         anim.Play("Deselect");
@@ -140,11 +131,11 @@ public class MenuController : MonoBehaviour
                 }
                 break;
             case 3:
-                if (Input.GetKeyDown(KeyCode.D))
+                if (Input.GetKeyDown(KeyCode.Return))
                 {
                     if (this.gameObject.tag == "QuitButton")
                     {
-                        StartCoroutine("Wait2");
+                            StartCoroutine("Wait2");
                     }
                 }
                 if (Input.GetKeyDown(KeyCode.S))
