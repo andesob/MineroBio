@@ -7,6 +7,8 @@ public class Teleporter : MonoBehaviour
 
     public GameObject Player;
     public GameObject Portal;
+    public GameObject Destination;
+    public GameObject Gun;
     public bool allowTeleport = true;
 
     private void Awake()
@@ -20,6 +22,7 @@ public class Teleporter : MonoBehaviour
         {
             if (allowTeleport)
             {
+                
                 StartCoroutine(Teleport());
             }
 
@@ -28,21 +31,28 @@ public class Teleporter : MonoBehaviour
 
     IEnumerator Teleport()
     {
+        //Gets components needed
         DissolveEffect dissolveEffect = Player.GetComponent<DissolveEffect>();
         PlayerMovement playerMovement = Player.GetComponent<PlayerMovement>();
-        Teleporter teleporter = Portal.GetComponent<Teleporter>();
+        //test to get gun dissolve effect
+        DissolveEffect gunDissolveEffect = Gun.GetComponent<DissolveEffect>();
+        Teleporter teleport = Portal.GetComponent<Teleporter>();
         dissolveEffect.StartDissolve(2f);
+        //guntest
+        gunDissolveEffect.StartDissolve(2f);
         yield return new WaitForSeconds(1f);
 
         playerMovement.isInputEnabled = false;
-        Player.transform.position = new Vector2(Portal.transform.position.x, Portal.transform.position.y);
-        teleporter.allowTeleport = false;
+        Player.transform.position = new Vector2(Destination.transform.position.x, Destination.transform.position.y);
+        teleport.allowTeleport = false;
+        //guntest
         dissolveEffect.StopDissolve(2f);
+        gunDissolveEffect.StopDissolve(2f);
 
         yield return new WaitForSeconds(0.35f);
         playerMovement.isInputEnabled = true;
 
         yield return new WaitForSeconds(0.2f);
-        teleporter.allowTeleport = true;
+        teleport.allowTeleport = true;
     }
 }
