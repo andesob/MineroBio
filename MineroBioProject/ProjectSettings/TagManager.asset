@@ -11,6 +11,10 @@ TagManager:
   - LevelSwitch
   - Powerplant
   - Bullet
+  - QuitButton
+  - SettingsButton
+  - ForceField
+  - TeleportTrigger
   layers:
   - Default
   - TransparentFX
