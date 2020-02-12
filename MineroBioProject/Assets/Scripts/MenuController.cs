@@ -6,11 +6,11 @@ using System;
 
 public class MenuController : MonoBehaviour
 {
-   
+
     public Animator anim;
     private int state = 1;
     AnimationEvent evt;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,16 +25,11 @@ public class MenuController : MonoBehaviour
     }
 
     // Update is called once per frame
-    
+
     void Update()
     {
-        
+
         StateMachine();
-    }
-    
-    void FixedUpdate()
-    {
-        
     }
 
     public static class SceneChanger
@@ -50,7 +45,7 @@ public class MenuController : MonoBehaviour
         }
     }
 
-   private IEnumerator Wait()
+    private IEnumerator Wait()
     {
         anim.Play("Enter");
         yield return new WaitForSeconds(0.2f);
@@ -66,22 +61,19 @@ public class MenuController : MonoBehaviour
 
     private void StateMachine()
     {
-        switch(state)
+        switch (state)
         {
             case 1:
-               
+
                 if (Input.GetKeyDown(KeyCode.D))
                 {
-                    if(this.gameObject.tag == "PlayButton")
+                    if (this.gameObject.tag == "PlayButton")
                     {
                         // anim.Play("Enter");
 
                         StartCoroutine("Wait");
-                       
-
-
                     }
-                   
+
                 }
                 if (Input.GetKeyDown(KeyCode.S))
                 {
@@ -106,8 +98,6 @@ public class MenuController : MonoBehaviour
                         anim.Play("Deselect");
                     }
                     state = 3;
-
-
                 }
                 break;
             case 2:
@@ -120,8 +110,6 @@ public class MenuController : MonoBehaviour
                         StartCoroutine("Wait");
 
                         //  SceneChanger.Load(SceneChanger.Scene.Game);
-
-
                     }
 
                 }
@@ -156,22 +144,8 @@ public class MenuController : MonoBehaviour
                 {
                     if (this.gameObject.tag == "QuitButton")
                     {
-                        
-                        
-                          
-
-                            StartCoroutine("Wait2");
-                        
-
-                          
-
-
-           
-
+                        StartCoroutine("Wait2");
                     }
-
-
-
                 }
                 if (Input.GetKeyDown(KeyCode.S))
                 {
@@ -201,7 +175,7 @@ public class MenuController : MonoBehaviour
             default:
                 //code
                 break;
-          
+
         }
     }
 }

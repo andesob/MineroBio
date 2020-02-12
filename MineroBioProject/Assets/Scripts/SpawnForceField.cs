@@ -24,11 +24,8 @@ public class SpawnForceField : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.J))
         {
-           
             ForceField = Instantiate(ForceField);
-
-
-        } 
+        }
     }
   
 }

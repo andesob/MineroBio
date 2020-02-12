@@ -5,22 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     public float moveSpeed;
     public float dashSpeed;
     public float dashTime;
     public float dashWaitTime;
 
-    public bool isInputEnabled = true;
+    public bool isInputEnabled;
 
-    private string lastDirection = "S";
+    private string lastDirection;
 
     private float time;
     private float playerY;
     private float playerX;
 
     private bool shiftPressed;
-    private bool canDash = true;
+    private bool canDash;
     private bool isMoving;
     private bool dPressed;
     private bool aPressed;
@@ -31,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator anim;
     public shooting shootingScript;
+    public GameObject gun;
 
     Vector2 movement;
 
@@ -38,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         isInputEnabled = true;
+        canDash = true;
+        lastDirection = "S";
     }
 
     // Update is called once per frame
@@ -52,6 +54,10 @@ public class PlayerMovement : MonoBehaviour
     //Gets the input from a user and sets a boolean to true or false accordingly.
     private void getInput()
     {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            Damage(1);
+        }
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
             shiftPressed = true;
@@ -234,5 +240,10 @@ public class PlayerMovement : MonoBehaviour
     public void Damage(int damageAmount)
     {
         HeartsHealthVisual2.heartsHealthSystemStatic.Damage(damageAmount);
+    }
+
+    public void Heal(int healingAmount)
+    {
+        HeartsHealthVisual2.heartsHealthSystemStatic.Heal(healingAmount);
     }
 }

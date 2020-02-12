@@ -9,6 +9,11 @@ public class DamageObject : MonoBehaviour
     private bool canTakeDamage = true;
 
     [SerializeField] private int damageAmount;
+
+    private void Start()
+    {
+        damageAmount = 1;
+    }
     private void OnTriggerEnter2D(Collider2D collider)
     {
 
@@ -18,7 +23,6 @@ public class DamageObject : MonoBehaviour
             if (player != null)
             {
                 player.Damage(damageAmount);
-
 
                 StartCoroutine(damageTimer());
             }
