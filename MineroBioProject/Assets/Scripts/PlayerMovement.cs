@@ -235,4 +235,9 @@ public class PlayerMovement : MonoBehaviour
     {
         HeartsHealthVisual2.heartsHealthSystemStatic.Damage(damageAmount);
     }
+
+    public void Heal(int damageAmount)
+    {
+        HeartsHealthVisual2.heartsHealthSystemStatic.Heal(damageAmount);
+    }
 }
