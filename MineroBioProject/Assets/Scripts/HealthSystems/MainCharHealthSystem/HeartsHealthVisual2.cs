@@ -16,11 +16,11 @@ public class HeartsHealthVisual2 : MonoBehaviour
     [SerializeField] private Sprite heart3Sprite;
     [SerializeField] private Sprite heart4Sprite;
     [SerializeField] GameObject DeathUI;
-    [SerializeField] GameObject player;
+    //[SerializeField] GameObject player;
 
     private List<HeartImage> heartImageList;
     private HeartsHealthSystem heartsHealthSystem;
-    private bool isHealing;
+    //private bool isHealing;
 
     private void Awake()
     {
@@ -111,7 +111,7 @@ public class HeartsHealthVisual2 : MonoBehaviour
         GameObject heartGameObject = new GameObject("Heart", typeof(Image), typeof(Animation));
 
         // Set as child of this transform
-        heartGameObject.transform.parent = transform;
+        heartGameObject.transform.SetParent(transform);
         heartGameObject.transform.localPosition = Vector3.zero;
         heartGameObject.transform.localScale = Vector3.one;
 

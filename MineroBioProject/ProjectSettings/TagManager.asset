@@ -8,18 +8,15 @@ TagManager:
   - Collider
   - Teleporter
   - LevelSwitch
-  - Bullet
   - Ground
-  - QuitButton
-  - SettingsButton
   - PickUp
-  - Gun
   - Powerplant
   - Bullet
   - QuitButton
   - SettingsButton
   - ForceField
   - TeleportTrigger
+  - Weapon
   layers:
   - Default
   - TransparentFX

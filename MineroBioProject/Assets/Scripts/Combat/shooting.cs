@@ -6,16 +6,15 @@ public class shooting : MonoBehaviour
 {
     public Transform firePoint; //where the bullet is going to shoot from
     public GameObject bulletPrefab; //The bullet sprite
-    public Transform gun;
+    private Transform gun;
     public GameObject player;
 
     public float bulletForce = 10f;
 
-    private AudioSource audio;
+    private AudioSource audioSource;
 
     private void Start()
     {
-        audio = gun.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -32,6 +31,17 @@ public class shooting : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
-        audio.Play();
+        audioSource = gun.GetComponent<AudioSource>();
+        audioSource.Play();
+    }
+
+    public void setGun(Transform weapon)
+    {
+        gun = weapon;
+    }
+    
+    public Transform getGun()
+    {
+        return gun;
     }
 }

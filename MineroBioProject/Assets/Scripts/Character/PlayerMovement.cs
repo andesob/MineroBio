@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator anim;
     public shooting shootingScript;
     public GameObject gun;
+    private PlayerController playerController;
 
     Vector2 movement;
 
@@ -40,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
         isInputEnabled = true;
         canDash = true;
         lastDirection = "S";
+        playerController = this.gameObject.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -54,10 +56,6 @@ public class PlayerMovement : MonoBehaviour
     //Gets the input from a user and sets a boolean to true or false accordingly.
     private void getInput()
     {
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            Damage(1);
-        }
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
             shiftPressed = true;
@@ -118,7 +116,6 @@ public class PlayerMovement : MonoBehaviour
                 case "D":
                     anim.Play("idle_right");
                     break;
-
             }
         }
 
@@ -155,65 +152,31 @@ public class PlayerMovement : MonoBehaviour
             anim.Play("up_walk");
             lastDirection = "W";
             isMoving = true;
-            Walk(lastDirection);
+            playerController.rotateGun(lastDirection);
         }
 
         if (sPressed && !isMoving)
         {
-
             anim.Play("down_walk");
             lastDirection = "S";
             isMoving = true;
-            Walk(lastDirection);
+            playerController.rotateGun(lastDirection);
         }
 
         if (aPressed && !isMoving)
         {
-
             anim.Play("left_walk");
             lastDirection = "A";
             isMoving = true;
-            Walk(lastDirection);
+            playerController.rotateGun(lastDirection);
         }
 
         if (dPressed && !isMoving)
         {
-
             anim.Play("right_walk");
             lastDirection = "D";
             isMoving = true;
-            Walk(lastDirection);
-        }
-    }
-
-    private void Walk(string direction)
-    {
-        playerX = this.gameObject.transform.position.x;
-        playerY = this.gameObject.transform.position.y;
-
-        switch (direction)
-        {
-            case "W":
-                shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, 0f);
-                shootingScript.firePoint.transform.position = new Vector3(playerX + 0.2f, playerY, 0f);
-                break;
-
-            case "S":
-                shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, 180f);
-                shootingScript.firePoint.transform.position = new Vector3(playerX - 0.25f, playerY, 0f);
-                break;
-
-            case "A":
-                shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, 90f);
-                shootingScript.gun.rotation = Quaternion.Euler(0f, 180f, 0f);
-                shootingScript.firePoint.transform.position = new Vector3(playerX - 0.1f, playerY - 0.16f, 0f);
-                break;
-
-            case "D":
-                shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, -90f);
-                shootingScript.gun.rotation = Quaternion.Euler(0f, 0f, 0f);
-                shootingScript.firePoint.transform.position = new Vector3(playerX + 0.1f, playerY - 0.13f, 0f);
-                break;
+            playerController.rotateGun(lastDirection);
         }
     }
 
@@ -234,16 +197,5 @@ public class PlayerMovement : MonoBehaviour
         {
             canDash = true;
         }
-    }
-
-
-    public void Damage(int damageAmount)
-    {
-        HeartsHealthVisual2.heartsHealthSystemStatic.Damage(damageAmount);
-    }
-
-    public void Heal(int damageAmount)
-    {
-        HeartsHealthVisual2.heartsHealthSystemStatic.Heal(damageAmount);
     }
 }

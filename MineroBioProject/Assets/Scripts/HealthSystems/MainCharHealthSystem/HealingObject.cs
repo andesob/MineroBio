@@ -7,11 +7,10 @@ public class HealingObject : MonoBehaviour
     [SerializeField] private int healingAmount;
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        PlayerMovement player = collider.GetComponent<PlayerMovement>();
+        PlayerController player = collider.GetComponent<PlayerController>();
         if (player != null)
         {
             player.Heal(healingAmount);
-
         }
     }
 }
