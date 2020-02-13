@@ -9,6 +9,8 @@ public class PlayerPickupScript : MonoBehaviour
 
     //public Transform gun;
     private bool gunPickedUp;
+    private bool pistolPickedUp;
+    private bool shotgunPickedUp;
 
     private shooting shootingScript;
 
@@ -23,21 +25,37 @@ public class PlayerPickupScript : MonoBehaviour
         {
             case "PistolPickup":
                 this.gameObject.transform.GetChild(PISTOL_INDEX).gameObject.SetActive(true);
-                gunPickedUp = true;
+                this.gameObject.transform.GetChild(SHOTGUN_INDEX).gameObject.SetActive(false);
+                pistolPickedUp = true;
                 shootingScript.setGun(this.gameObject.transform.GetChild(PISTOL_INDEX));
                 break;
 
             case "ShotgunPickup":
                 this.gameObject.transform.GetChild(SHOTGUN_INDEX).gameObject.SetActive(true);
-                gunPickedUp = true;
+                this.gameObject.transform.GetChild(PISTOL_INDEX).gameObject.SetActive(false);
+                shotgunPickedUp = true;
                 shootingScript.setGun(this.gameObject.transform.GetChild(SHOTGUN_INDEX));
                 break;
         }
     }
 
+    public bool hasPistol()
+    {
+        return pistolPickedUp;
+    }
+
+    public bool hasShotgun()
+    {
+        return shotgunPickedUp;
+    }
+
     public bool hasGun()
     {
-        return gunPickedUp;
+        if(shotgunPickedUp || pistolPickedUp)
+        {
+            return true;
+        }
+        return false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
