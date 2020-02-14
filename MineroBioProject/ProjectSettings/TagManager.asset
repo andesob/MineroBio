@@ -17,6 +17,8 @@ TagManager:
   - ForceField
   - TeleportTrigger
   - Weapon
+  - Gun
+  - PlayerPrefab
   layers:
   - Default
   - TransparentFX
