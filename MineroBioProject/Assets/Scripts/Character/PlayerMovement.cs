@@ -10,13 +10,9 @@ public class PlayerMovement : MonoBehaviour
     public float dashTime;
     public float dashWaitTime;
 
-    public bool isInputEnabled;
-
     private string lastDirection;
 
     private float time;
-    private float playerY;
-    private float playerX;
 
     private bool shiftPressed;
     private bool canDash;
@@ -38,7 +34,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        isInputEnabled = true;
         canDash = true;
         lastDirection = "S";
         playerController = this.gameObject.GetComponent<PlayerController>();
@@ -128,55 +123,53 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleKeyPress()
     {
-        if (isInputEnabled)
+        if (!PlayerController.isGamePaused)
         {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-        }
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
+            playerController.rotateGun(lastDirection);
 
-        if (shiftPressed)
-        {
-            if (canDash)
+
+            if (shiftPressed)
             {
-                canDash = false;
-                time = Time.time;
+                if (canDash)
+                {
+                    canDash = false;
+                    time = Time.time;
+                }
             }
-        }
-        else
-        {
-            rb.MovePosition(rb.position + movement * moveSpeed);
-        }
+            else
+            {
+                rb.MovePosition(rb.position + movement * moveSpeed);
+            }
 
-        if (wPressed && !isMoving)
-        {
-            anim.Play("up_walk");
-            lastDirection = "W";
-            isMoving = true;
-            playerController.rotateGun(lastDirection);
-        }
+            if (wPressed && !isMoving)
+            {
+                anim.Play("up_walk");
+                lastDirection = "W";
+                isMoving = true;
+            }
 
-        if (sPressed && !isMoving)
-        {
-            anim.Play("down_walk");
-            lastDirection = "S";
-            isMoving = true;
-            playerController.rotateGun(lastDirection);
-        }
+            if (sPressed && !isMoving)
+            {
+                anim.Play("down_walk");
+                lastDirection = "S";
+                isMoving = true;
+            }
 
-        if (aPressed && !isMoving)
-        {
-            anim.Play("left_walk");
-            lastDirection = "A";
-            isMoving = true;
-            playerController.rotateGun(lastDirection);
-        }
+            if (aPressed && !isMoving)
+            {
+                anim.Play("left_walk");
+                lastDirection = "A";
+                isMoving = true;
+            }
 
-        if (dPressed && !isMoving)
-        {
-            anim.Play("right_walk");
-            lastDirection = "D";
-            isMoving = true;
-            playerController.rotateGun(lastDirection);
+            if (dPressed && !isMoving)
+            {
+                anim.Play("right_walk");
+                lastDirection = "D";
+                isMoving = true;
+            }
         }
     }
 

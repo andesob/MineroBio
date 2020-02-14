@@ -8,15 +8,20 @@ public class PlayerPickupScript : MonoBehaviour
     private const int SHOTGUN_INDEX = 2;
 
     //public Transform gun;
-    private bool gunPickedUp;
+    //private bool gunPickedUp;
     private bool pistolPickedUp;
     private bool shotgunPickedUp;
+
+    private GameObject pistol;
+    private GameObject shotgun;
 
     private shooting shootingScript;
 
     private void Start()
     {
         shootingScript = this.gameObject.GetComponent<shooting>();
+        pistol = this.gameObject.transform.GetChild(PISTOL_INDEX).gameObject;
+        shotgun = this.gameObject.transform.GetChild(SHOTGUN_INDEX).gameObject;
     }
 
     public void PickUpWeapon(string weaponName)
@@ -24,17 +29,17 @@ public class PlayerPickupScript : MonoBehaviour
         switch (weaponName)
         {
             case "PistolPickup":
-                this.gameObject.transform.GetChild(PISTOL_INDEX).gameObject.SetActive(true);
-                this.gameObject.transform.GetChild(SHOTGUN_INDEX).gameObject.SetActive(false);
+                pistol.SetActive(true);
+                shotgun.SetActive(false);
                 pistolPickedUp = true;
-                shootingScript.setGun(this.gameObject.transform.GetChild(PISTOL_INDEX));
+                shootingScript.setGun(pistol);
                 break;
 
             case "ShotgunPickup":
-                this.gameObject.transform.GetChild(SHOTGUN_INDEX).gameObject.SetActive(true);
-                this.gameObject.transform.GetChild(PISTOL_INDEX).gameObject.SetActive(false);
+                shotgun.SetActive(true);
+                pistol.SetActive(false);
                 shotgunPickedUp = true;
-                shootingScript.setGun(this.gameObject.transform.GetChild(SHOTGUN_INDEX));
+                shootingScript.setGun(shotgun);
                 break;
         }
     }

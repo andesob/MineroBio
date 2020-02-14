@@ -6,7 +6,7 @@ public class shooting : MonoBehaviour
 {
     public Transform firePoint; //where the bullet is going to shoot from
     public GameObject bulletPrefab; //The bullet sprite
-    private Transform gun;
+    private GameObject gun;
     public GameObject player;
 
     public float bulletForce = 10f;
@@ -35,12 +35,12 @@ public class shooting : MonoBehaviour
         audioSource.Play();
     }
 
-    public void setGun(Transform weapon)
+    public void setGun(GameObject weapon)
     {
         gun = weapon;
     }
     
-    public Transform getGun()
+    public GameObject getGun()
     {
         return gun;
     }

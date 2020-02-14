@@ -7,10 +7,14 @@ public class PlayerController : MonoBehaviour
     private const int PISTOL_INDEX = 1;
     private const int SHOTGUN_INDEX = 2;
 
+    public static bool isGamePaused;
+
     private GameObject player;
+    private GameObject pistol;
+    private GameObject shotgun;
+
     private shooting shootingScript;
     private PlayerPickupScript playerPickupScript;
-    
 
     private bool Nr1Pressed;
     private bool Nr2Pressed;
@@ -19,7 +23,10 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isGamePaused = false;
         player = this.gameObject;
+        pistol = player.transform.GetChild(PISTOL_INDEX).gameObject;
+        shotgun = player.transform.GetChild(SHOTGUN_INDEX).gameObject;
         shootingScript = player.GetComponent<shooting>();
         playerPickupScript = player.GetComponent<PlayerPickupScript>();
     }
@@ -52,6 +59,7 @@ public class PlayerController : MonoBehaviour
         chooseWeapon();
     }
 
+
     public void Damage(int damageAmount)
     {
         HeartsHealthVisual2.heartsHealthSystemStatic.Damage(damageAmount);
@@ -67,16 +75,16 @@ public class PlayerController : MonoBehaviour
     {
         if (Nr1Pressed && playerPickupScript.hasPistol())
         {
-            this.gameObject.transform.GetChild(PISTOL_INDEX).gameObject.SetActive(true);
-            this.gameObject.transform.GetChild(SHOTGUN_INDEX).gameObject.SetActive(false);
-            shootingScript.setGun(this.gameObject.transform.GetChild(PISTOL_INDEX));
+            pistol.SetActive(true);
+            shotgun.SetActive(false);
+            shootingScript.setGun(pistol);
         }
         
         if (Nr2Pressed && playerPickupScript.hasShotgun())
         {
-            this.gameObject.transform.GetChild(SHOTGUN_INDEX).gameObject.SetActive(true);
-            this.gameObject.transform.GetChild(PISTOL_INDEX).gameObject.SetActive(false);
-            shootingScript.setGun(this.gameObject.transform.GetChild(SHOTGUN_INDEX));
+            pistol.SetActive(false);
+            shotgun.SetActive(true);
+            shootingScript.setGun(shotgun);
         }
     }
 
@@ -86,29 +94,31 @@ public class PlayerController : MonoBehaviour
         {
             float playerX = player.transform.position.x;
             float playerY = player.transform.position.y;
+            Transform firepoint = shootingScript.firePoint;
+            Transform weapon = shootingScript.getGun().transform;
 
             switch (direction)
             {
                 case "W":
-                    shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, 0f);
-                    shootingScript.firePoint.transform.position = new Vector3(playerX + 0.2f, playerY, 0f);
+                    firepoint.rotation = Quaternion.Euler(0f, 0f, 0f);
+                    firepoint.position = new Vector3(playerX + 0.2f, playerY, 0f);
                     break;
 
                 case "S":
-                    shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, 180f);
-                    shootingScript.firePoint.transform.position = new Vector3(playerX - 0.25f, playerY, 0f);
+                    firepoint.rotation = Quaternion.Euler(0f, 0f, 180f);
+                    firepoint.position = new Vector3(playerX - 0.25f, playerY, 0f);
                     break;
 
                 case "A":
-                    shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, 90f);
-                    shootingScript.getGun().rotation = Quaternion.Euler(0f, 180f, 0f);
-                    shootingScript.firePoint.transform.position = new Vector3(playerX - 0.1f, playerY - 0.16f, 0f);
+                    weapon.rotation = Quaternion.Euler(0f, 180f, 0f);
+                    firepoint.rotation = Quaternion.Euler(0f, 0f, 90f);
+                    firepoint.position = new Vector3(playerX - 0.1f, playerY - 0.16f, 0f);
                     break;
 
                 case "D":
-                    shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, -90f);
-                    shootingScript.getGun().rotation = Quaternion.Euler(0f, 0f, 0f);
-                    shootingScript.firePoint.transform.position = new Vector3(playerX + 0.1f, playerY - 0.13f, 0f);
+                    weapon.rotation = Quaternion.Euler(0f, 0f, 0f);
+                    firepoint.rotation = Quaternion.Euler(0f, 0f, -90f);
+                    firepoint.position = new Vector3(playerX + 0.1f, playerY - 0.13f, 0f);
                     break;
             }
         }

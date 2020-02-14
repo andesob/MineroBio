@@ -37,13 +37,13 @@ public class Teleporter : MonoBehaviour
         dissolveEffect.StartDissolve(2f);
         yield return new WaitForSeconds(1f);
 
-        playerMovement.isInputEnabled = false;
+        PlayerController.isGamePaused = true;
         Player.transform.position = new Vector2(Destination.transform.position.x, Destination.transform.position.y);
         teleport.allowTeleport = false;
         dissolveEffect.StopDissolve(2f);
 
         yield return new WaitForSeconds(0.35f);
-        playerMovement.isInputEnabled = true;
+        PlayerController.isGamePaused = false;
 
         yield return new WaitForSeconds(0.2f);
         teleport.allowTeleport = true;
