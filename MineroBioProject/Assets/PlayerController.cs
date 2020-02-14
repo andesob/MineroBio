@@ -39,6 +39,15 @@ public class PlayerController : MonoBehaviour
             Damage(1);
         }
 
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            AddMoney();
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            GetMoney();
+        }
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Nr1Pressed = true;
@@ -68,6 +77,16 @@ public class PlayerController : MonoBehaviour
     public void Heal(int damageAmount)
     {
         HeartsHealthVisual2.heartsHealthSystemStatic.Heal(damageAmount);
+    }
+
+    public void AddMoney()
+    {
+        MoneySystem.AddMoney(20);
+    }
+
+    public void GetMoney()
+    {
+        Debug.Log(MoneySystem.GetMoney());
     }
 
 

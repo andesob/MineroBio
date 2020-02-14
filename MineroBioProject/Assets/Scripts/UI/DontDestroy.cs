@@ -12,6 +12,12 @@ public class DontDestroy : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        GameObject[] objsMoney = GameObject.FindGameObjectsWithTag("MoneySystem");
+        if (objsMoney.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
         DontDestroyOnLoad(this.gameObject);
     }
 }

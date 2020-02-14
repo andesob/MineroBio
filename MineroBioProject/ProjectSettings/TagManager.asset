@@ -19,6 +19,7 @@ TagManager:
   - Weapon
   - Gun
   - PlayerPrefab
+  - MoneySystem
   layers:
   - Default
   - TransparentFX
