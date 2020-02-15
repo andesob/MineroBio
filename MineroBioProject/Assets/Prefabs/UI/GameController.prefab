@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6345370868858269534}
   m_Layer: 0
   m_Name: GameController
-  m_TagString: GameController
+  m_TagString: SceneChanger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,4 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d697bc4cbd018e34199b716782fb68f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 0}
+  player: {fileID: 0}

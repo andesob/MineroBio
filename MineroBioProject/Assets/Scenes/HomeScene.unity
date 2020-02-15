@@ -417,6 +417,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &488492816 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6345370868858269521, guid: 13501f83297a94243a890001f028aca4,
+    type: 3}
+  m_PrefabInstance: {fileID: 6345370869516763062}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &488492819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488492816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc73f408d96735c4d912d31ce3f46ab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &498736202 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3735566290179077233, guid: c5b79d2a83d8713468dbba2f5f513d69,
@@ -145862,62 +145880,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1700728175}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1919989756
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1919989758}
-  - component: {fileID: 1919989757}
-  - component: {fileID: 1919989759}
-  m_Layer: 0
-  m_Name: MoneySystem
-  m_TagString: MoneySystem
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1919989757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1919989756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 900296fc9c7117446994dba88453bf53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1919989758
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1919989756}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.33897787, y: 1.2062007, z: -104.87471}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1919989759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1919989756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaf728aaa1c2c69419bd8eca454974a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1939716297 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6303779201466758810, guid: a5f8cddbd942f0b48878c31b31099f99,
@@ -148056,7 +148018,12 @@ PrefabInstance:
     - target: {fileID: 6345370868858269521, guid: 13501f83297a94243a890001f028aca4,
         type: 3}
       propertyPath: m_Name
-      value: GameController
+      value: SceneChanger
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345370868858269521, guid: 13501f83297a94243a890001f028aca4,
+        type: 3}
+      propertyPath: m_TagString
+      value: SceneChanger
       objectReference: {fileID: 0}
     - target: {fileID: 6345370868858269535, guid: 13501f83297a94243a890001f028aca4,
         type: 3}

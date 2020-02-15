@@ -11,7 +11,7 @@ public class SceneChanger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        changeLevel = GameObject.FindGameObjectWithTag("GameController").GetComponent<SceneController>();
+        changeLevel = GameObject.FindGameObjectWithTag("SceneChanger").GetComponent<SceneController>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

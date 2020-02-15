@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private const int SHOTGUN_INDEX = 2;
 
     public static bool isGamePaused;
+    private static bool isMoneyMade;
 
     private GameObject player;
     private GameObject pistol;
@@ -23,6 +24,12 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //if (!isMoneyMade)
+        //{
+        //    new MoneySystem();
+        //    isMoneyMade = true;
+        //}
+        //MoneySystem.Instance();
         isGamePaused = false;
         player = this.gameObject;
         pistol = player.transform.GetChild(PISTOL_INDEX).gameObject;
@@ -98,7 +105,7 @@ public class PlayerController : MonoBehaviour
             shotgun.SetActive(false);
             shootingScript.setGun(pistol);
         }
-        
+
         if (Nr2Pressed && playerPickupScript.hasShotgun())
         {
             pistol.SetActive(false);

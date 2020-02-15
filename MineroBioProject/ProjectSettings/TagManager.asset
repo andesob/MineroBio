@@ -20,6 +20,7 @@ TagManager:
   - Gun
   - PlayerPrefab
   - MoneySystem
+  - SceneChanger
   layers:
   - Default
   - TransparentFX
