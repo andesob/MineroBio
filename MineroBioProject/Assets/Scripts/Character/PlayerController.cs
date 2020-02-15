@@ -24,12 +24,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //if (!isMoneyMade)
-        //{
-        //    new MoneySystem();
-        //    isMoneyMade = true;
-        //}
-        //MoneySystem.Instance();
         isGamePaused = false;
         player = this.gameObject;
         pistol = player.transform.GetChild(PISTOL_INDEX).gameObject;
@@ -49,10 +43,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             AddMoney();
-        }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            GetMoney();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -89,11 +79,6 @@ public class PlayerController : MonoBehaviour
     public void AddMoney()
     {
         MoneySystem.AddMoney(20);
-    }
-
-    public void GetMoney()
-    {
-        Debug.Log(MoneySystem.GetMoney());
     }
 
 
