@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6345370868858269535}
   - component: {fileID: 6345370868858269534}
   m_Layer: 0
-  m_Name: GameController
+  m_Name: SceneChanger
   m_TagString: SceneChanger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
