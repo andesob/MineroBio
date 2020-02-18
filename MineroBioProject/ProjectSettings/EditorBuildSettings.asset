@@ -20,13 +20,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 4e56c9d2a5b7e264b88ff2cdcf10a894
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 5c1fe4ddd4f101c4ea949bb97ad02790
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: e8360e1acaa442f43a8160c6a1ec5796
   - enabled: 1
     path: Assets/Scenes/Labratory.unity
     guid: 47fff959a4ce7be479f38d0dde95506e
+  - enabled: 1
+    path: Assets/Scenes/DeathMenu.unity
+    guid: 41eacfd6aab1f0d42876b9dc5a0c8f94
+  - enabled: 1
+    path: Assets/Scenes/TeleporterTestScene.unity
+    guid: 1dcdad5281f885c4ab4a87fc503be013
   m_configObjects: {}

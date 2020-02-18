@@ -7,27 +7,22 @@ public class shooting : MonoBehaviour
     public PlayerMovement playerMovement;
 
     public Transform firePoint; //where the bullet is going to shoot from
-   
-    private GameObject bulletPrefab; //The bullet sprite
-    private GameObject sniperBulletPrefab;
-
-    public Transform gun;
+    public GameObject bulletPrefab; //The bullet sprite
+    private GameObject gun;
     public GameObject player;
-
     public List<GameObject> vfx = new List<GameObject>();
+    private GameObject sniperBulletPrefab;
 
     public float bulletForce = 10f;
     public float speed;
 
-    private float timeToFire = 0;
+    private AudioSource audioSource;
 
-    private AudioSource audio;
+    private float timeToFire = 0;
     private void Start()
     {
         bulletPrefab = vfx[0];
         sniperBulletPrefab = vfx[1];
-        audio = gun.GetComponent<AudioSource>();
-        
     }
 
     // Update is called once per frame
@@ -38,10 +33,10 @@ public class shooting : MonoBehaviour
             Shoot();
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) && Time.time >= timeToFire)
-        {
-            timeToFire = Time.time + 1 / sniperBulletPrefab.GetComponent<ProjectileMove>().fireRate;
-            ShootSniper();
+        if (Input.GetKeyDown(KeyCode.Q) && Time.time >= timeToFire)
+        {
+            timeToFire = Time.time + 1 / sniperBulletPrefab.GetComponent<ProjectileMove>().fireRate;
+            ShootSniper();
         }
     }
 
@@ -49,18 +44,30 @@ public class shooting : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.right * bulletForce, ForceMode2D.Impulse);
-        audio.Play();
+        rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+        audioSource = gun.GetComponent<AudioSource>();
+        audioSource.Play();
     }
-    private void ShootSniper()
+
+    public void setGun(GameObject weapon)
     {
-        if(firePoint != null)
-        {   
-           GameObject vfx = Instantiate(sniperBulletPrefab, firePoint.transform.position,playerMovement.GetRotation());
-           Rigidbody2D rb = vfx.GetComponent<Rigidbody2D>();
-           rb.AddForce(firePoint.right * speed, ForceMode2D.Impulse);
-           audio.Play();
-        }
-        }
+        gun = weapon;
+    }
+    
+    public GameObject getGun()
+    {
+        return gun;
+    }
+}
+    private void ShootSniper()
+    {
+        if(firePoint != null)
+        {   
+           GameObject vfx = Instantiate(sniperBulletPrefab, firePoint.transform.position,playerMovement.GetRotation());
+           Rigidbody2D rb = vfx.GetComponent<Rigidbody2D>();
+           rb.AddForce(firePoint.right * speed, ForceMode2D.Impulse);
+           audio.Play();
+        }
+        }
     }
 
