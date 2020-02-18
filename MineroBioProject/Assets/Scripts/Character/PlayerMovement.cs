@@ -22,9 +22,12 @@ public class PlayerMovement : MonoBehaviour
     private bool wPressed;
     private bool sPressed;
 
+    private Quaternion rotation;
+
 
     public Rigidbody2D rb;
     public Animator anim;
+    public Animator gunAnimation;
     public shooting shootingScript;
     public GameObject gun;
     private PlayerController playerController;
@@ -148,7 +151,8 @@ public class PlayerMovement : MonoBehaviour
                 anim.Play("up_walk");
                 lastDirection = "W";
                 isMoving = true;
-            }
+            gunAnimation.Play("ChangeDirectionX");
+        }
 
             if (sPressed && !isMoving)
             {
@@ -169,7 +173,8 @@ public class PlayerMovement : MonoBehaviour
                 anim.Play("right_walk");
                 lastDirection = "D";
                 isMoving = true;
-            }
+           gunAnimation.Play("ChangeDirectionY");
+        }
         }
     }
 
