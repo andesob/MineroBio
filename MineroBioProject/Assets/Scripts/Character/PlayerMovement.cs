@@ -26,11 +26,15 @@ public class PlayerMovement : MonoBehaviour
     private bool wPressed;
     private bool sPressed;
 
+    private Quaternion rotation;
+
 
     public Rigidbody2D rb;
     public Animator anim;
+    public Animator gunAnimation;
     public shooting shootingScript;
     public GameObject gun;
+    
 
     Vector2 movement;
 
@@ -153,6 +157,7 @@ public class PlayerMovement : MonoBehaviour
         if (wPressed && !isMoving)
         {
             anim.Play("up_walk");
+            gunAnimation.Play("ChangeDirectionX");
             lastDirection = "W";
             isMoving = true;
             Walk(lastDirection);
@@ -162,6 +167,7 @@ public class PlayerMovement : MonoBehaviour
         {
 
             anim.Play("down_walk");
+            gunAnimation.Play("ChangeDirectionX");
             lastDirection = "S";
             isMoving = true;
             Walk(lastDirection);
@@ -171,6 +177,7 @@ public class PlayerMovement : MonoBehaviour
         {
 
             anim.Play("left_walk");
+           gunAnimation.Play("ChangeDirectionY");
             lastDirection = "A";
             isMoving = true;
             Walk(lastDirection);
@@ -180,6 +187,7 @@ public class PlayerMovement : MonoBehaviour
         {
 
             anim.Play("right_walk");
+            gunAnimation.Play("ChangeDirectionY");
             lastDirection = "D";
             isMoving = true;
             Walk(lastDirection);
@@ -190,31 +198,43 @@ public class PlayerMovement : MonoBehaviour
     {
         playerX = this.gameObject.transform.position.x;
         playerY = this.gameObject.transform.position.y;
-
+        
         switch (direction)
         {
             case "W":
-                shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, 0f);
-                shootingScript.firePoint.transform.position = new Vector3(playerX + 0.2f, playerY, 0f);
+                
+                shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, 90f);
+                rotation = Quaternion.Euler(0f, 0f, 90f);
+
+                //shootingScript.firePoint.transform.position = shootingScript.firePointUp.transform.position;
                 break;
 
             case "S":
-                shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, 180f);
-                shootingScript.firePoint.transform.position = new Vector3(playerX - 0.25f, playerY, 0f);
+                
+                shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, 270f);
+                 rotation = Quaternion.Euler(0f, 0f, 270f);
+                // shootingScript.firePoint.transform.position = new Vector3(playerX - 0.25f, playerY, 0f);
                 break;
 
             case "A":
-                shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, 90f);
+                
+                shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, 180f);
                 shootingScript.gun.rotation = Quaternion.Euler(0f, 180f, 0f);
-                shootingScript.firePoint.transform.position = new Vector3(playerX - 0.1f, playerY - 0.16f, 0f);
+                rotation = Quaternion.Euler(0f, 0f, 180f);
+
+                //shootingScript.firePoint.transform.position = new Vector3(playerX - 0.1f, playerY - 0.16f, 0f);
                 break;
 
             case "D":
-                shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, -90f);
+               
+                shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, 0f);
                 shootingScript.gun.rotation = Quaternion.Euler(0f, 0f, 0f);
-                shootingScript.firePoint.transform.position = new Vector3(playerX + 0.1f, playerY - 0.13f, 0f);
+                rotation = Quaternion.Euler(0f, 0f, 0f);
+
+                // shootingScript.firePoint.transform.position = new Vector3(playerX + 0.1f, playerY - 0.13f, 0f);
                 break;
         }
+         
     }
 
     private void HandleDash()
@@ -245,5 +265,10 @@ public class PlayerMovement : MonoBehaviour
     public void Heal(int damageAmount)
     {
         HeartsHealthVisual2.heartsHealthSystemStatic.Heal(damageAmount);
+    }
+
+    public Quaternion GetRotation()
+    {
+        return rotation;
     }
 }
