@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class shooting : MonoBehaviour
 {
+    public float X = 0;
+    public float Y = 0;
+
     public PlayerMovement playerMovement;
+    public PlayerPickupScript playerPickupScript;
 
     public Transform firePoint; //where the bullet is going to shoot from
-    public GameObject bulletPrefab; //The bullet sprite
+    private GameObject bulletPrefab; //The bullet sprite
     private GameObject gun;
     public GameObject player;
     public List<GameObject> vfx = new List<GameObject>();
     private GameObject sniperBulletPrefab;
-
+    private string weaponName;
     public float bulletForce = 10f;
     public float speed;
 
@@ -23,51 +27,103 @@ public class shooting : MonoBehaviour
     {
         bulletPrefab = vfx[0];
         sniperBulletPrefab = vfx[1];
+        if (gun != null)
+        {
+            audioSource = gun.GetComponent<AudioSource>();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && player.GetComponent<PlayerPickupScript>().hasGun())
+        FirePointLocation();
+        if (Input.GetKeyDown(KeyCode.E) /*&& Time.time >= timeToFire && player.GetComponent<PlayerPickupScript>().hasGun()*/)
         {
-            Shoot();
+            timeToFire = Time.time + 1 / sniperBulletPrefab.GetComponent<ProjectileMove>().fireRate;
+            
+            Shoot(weaponName);
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) && Time.time >= timeToFire)
-        {
-            timeToFire = Time.time + 1 / sniperBulletPrefab.GetComponent<ProjectileMove>().fireRate;
-            ShootSniper();
-        }
     }
 
-    private void Shoot()
+    private void Shoot(string weapon)
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
-        audioSource = gun.GetComponent<AudioSource>();
-        audioSource.Play();
+        
+        switch (weapon)
+        {
+            case "Pistol":
+                GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+                rb.AddForce(firePoint.right * bulletForce, ForceMode2D.Impulse);
+                audioSource = gun.GetComponent<AudioSource>();
+                audioSource.Play();
+                break;
+            case "Sniper":
+                
+                bullet = Instantiate(sniperBulletPrefab, firePoint.position, firePoint.rotation);
+                rb = bullet.GetComponent<Rigidbody2D>();
+                rb.AddForce(firePoint.right * speed, ForceMode2D.Impulse);
+                audioSource = gun.GetComponent<AudioSource>();
+                audioSource.Play();
+                print(gun.name);
+                break;
+        }
+
+      
+    }
+
+    public void FirePointLocation()
+    {
+        float playerX = player.transform.position.x;
+        float playerY = player.transform.position.y;
+        switch (playerMovement.GetLastDirection())
+        {
+           
+            case "W":
+                if (playerPickupScript.hasSniper())
+                {
+                    firePoint.position = new Vector3( playerX+0.22f, playerY + 0.63f, 0f);
+                }
+                firePoint.rotation = Quaternion.Euler(0f, 0f, 90f);
+                break;
+            case "D":
+                if (playerPickupScript.hasSniper())
+                {
+                    firePoint.position = new Vector3(playerX + 0.68f, playerY + 0, 0f);
+                }
+                firePoint.rotation = Quaternion.Euler(0f, 0f, 0f);
+                break;
+
+            case "A":
+                if (playerPickupScript.hasSniper())
+                {
+                    firePoint.position = new Vector3(playerX - 0.68f, playerY - 0.05f, 0f);
+                }
+                firePoint.rotation = Quaternion.Euler(0f,0f,180f);
+                break;
+
+            case "S":
+                if (playerPickupScript.hasSniper())
+                {
+                    firePoint.position = new Vector3(playerX + 0.22f, playerY - 0.71f, 0f);
+                }
+                firePoint.rotation = Quaternion.Euler(0f, 0f, 270f);
+                break;
+        }
     }
 
     public void setGun(GameObject weapon)
     {
         gun = weapon;
+        weaponName = weapon.name;
     }
-    
+
     public GameObject getGun()
     {
         return gun;
     }
-}
-    private void ShootSniper()
-    {
-        if(firePoint != null)
-        {   
-           GameObject vfx = Instantiate(sniperBulletPrefab, firePoint.transform.position,playerMovement.GetRotation());
-           Rigidbody2D rb = vfx.GetComponent<Rigidbody2D>();
-           rb.AddForce(firePoint.right * speed, ForceMode2D.Impulse);
-           audio.Play();
-        }
-        }
-    }
 
+
+  
+}
+  

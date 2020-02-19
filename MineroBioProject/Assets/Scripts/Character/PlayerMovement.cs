@@ -22,9 +22,6 @@ public class PlayerMovement : MonoBehaviour
     private bool wPressed;
     private bool sPressed;
 
-    private Quaternion rotation;
-
-
     public Rigidbody2D rb;
     public Animator anim;
     public Animator gunAnimation;
@@ -159,6 +156,7 @@ public class PlayerMovement : MonoBehaviour
                 anim.Play("down_walk");
                 lastDirection = "S";
                 isMoving = true;
+                gunAnimation.Play("ChangeDirectionXDown");
             }
 
             if (aPressed && !isMoving)
@@ -166,6 +164,7 @@ public class PlayerMovement : MonoBehaviour
                 anim.Play("left_walk");
                 lastDirection = "A";
                 isMoving = true;
+                gunAnimation.Play("ChangeDirectionYLeft");
             }
 
             if (dPressed && !isMoving)
@@ -195,5 +194,9 @@ public class PlayerMovement : MonoBehaviour
         {
             canDash = true;
         }
+    }
+    public string GetLastDirection()
+    {
+        return lastDirection;
     }
 }
