@@ -37,9 +37,9 @@ public class shooting : MonoBehaviour
     void Update()
     {
         FirePointLocation();
-        if (Input.GetKeyDown(KeyCode.E) /*&& Time.time >= timeToFire && player.GetComponent<PlayerPickupScript>().hasGun()*/)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            timeToFire = Time.time + 1 / sniperBulletPrefab.GetComponent<ProjectileMove>().fireRate;
+            
             
             Shoot(weaponName);
         }
@@ -59,13 +59,15 @@ public class shooting : MonoBehaviour
                 audioSource.Play();
                 break;
             case "Sniper":
-                
-                bullet = Instantiate(sniperBulletPrefab, firePoint.position, firePoint.rotation);
-                rb = bullet.GetComponent<Rigidbody2D>();
-                rb.AddForce(firePoint.right * speed, ForceMode2D.Impulse);
-                audioSource = gun.GetComponent<AudioSource>();
-                audioSource.Play();
-                print(gun.name);
+                if (Time.time >= timeToFire)
+                {
+                    timeToFire = Time.time + 1 / sniperBulletPrefab.GetComponent<ProjectileMove>().fireRate;
+                    bullet = Instantiate(sniperBulletPrefab, firePoint.position, firePoint.rotation);
+                    rb = bullet.GetComponent<Rigidbody2D>();
+                    rb.AddForce(firePoint.right * speed, ForceMode2D.Impulse);
+                    audioSource = gun.GetComponent<AudioSource>();
+                    audioSource.Play();                  
+                }
                 break;
         }
 
@@ -80,32 +82,48 @@ public class shooting : MonoBehaviour
         {
            
             case "W":
-                if (playerPickupScript.hasSniper())
+                if (weaponName =="Sniper")
                 {
-                    firePoint.position = new Vector3( playerX+0.22f, playerY + 0.63f, 0f);
+                    firePoint.position = new Vector3(playerX+0.22f, playerY + 0.63f, 0f);
+                }
+                if (weaponName == "Pistol")
+                {
+                    firePoint.position = new Vector3(playerX + X, playerY + Y, 0f);
                 }
                 firePoint.rotation = Quaternion.Euler(0f, 0f, 90f);
                 break;
             case "D":
-                if (playerPickupScript.hasSniper())
+                if (weaponName == "Sniper")
                 {
                     firePoint.position = new Vector3(playerX + 0.68f, playerY + 0, 0f);
+                }
+                if (weaponName == "Pistol")
+                {
+                    firePoint.position = new Vector3(playerX + 0.27f, playerY - 0.2f, 0f);
                 }
                 firePoint.rotation = Quaternion.Euler(0f, 0f, 0f);
                 break;
 
             case "A":
-                if (playerPickupScript.hasSniper())
+                if (weaponName == "Sniper")
                 {
                     firePoint.position = new Vector3(playerX - 0.68f, playerY - 0.05f, 0f);
+                }
+                if (weaponName == "Pistol")
+                {
+                    firePoint.position = new Vector3(playerX + X, playerY + Y, 0f);
                 }
                 firePoint.rotation = Quaternion.Euler(0f,0f,180f);
                 break;
 
             case "S":
-                if (playerPickupScript.hasSniper())
+                if (weaponName == "Sniper")
                 {
                     firePoint.position = new Vector3(playerX + 0.22f, playerY - 0.71f, 0f);
+                }
+                if (weaponName == "Pistol")
+                {
+                    firePoint.position = new Vector3(playerX + X, playerY + Y, 0f);
                 }
                 firePoint.rotation = Quaternion.Euler(0f, 0f, 270f);
                 break;
