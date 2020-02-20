@@ -10,13 +10,9 @@ public class PlayerMovement : MonoBehaviour
     public float dashTime;
     public float dashWaitTime;
 
-    public bool isInputEnabled;
-
     private string lastDirection;
 
     private float time;
-    private float playerY;
-    private float playerX;
 
     private bool shiftPressed;
     private bool canDash;
@@ -26,20 +22,21 @@ public class PlayerMovement : MonoBehaviour
     private bool wPressed;
     private bool sPressed;
 
-
     public Rigidbody2D rb;
     public Animator anim;
+    public Animator gunAnimation;
     public shooting shootingScript;
     public GameObject gun;
+    private PlayerController playerController;
 
     Vector2 movement;
 
 
     private void Start()
     {
-        isInputEnabled = true;
         canDash = true;
         lastDirection = "S";
+        playerController = this.gameObject.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -54,10 +51,6 @@ public class PlayerMovement : MonoBehaviour
     //Gets the input from a user and sets a boolean to true or false accordingly.
     private void getInput()
     {
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            Damage(1);
-        }
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
             shiftPressed = true;
@@ -118,7 +111,6 @@ public class PlayerMovement : MonoBehaviour
                 case "D":
                     anim.Play("idle_right");
                     break;
-
             }
         }
 
@@ -131,89 +123,69 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleKeyPress()
     {
-        if (isInputEnabled)
+        if (!PlayerController.isGamePaused)
         {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-        }
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
+            playerController.rotateGun(lastDirection);
 
-        if (shiftPressed)
-        {
-            if (canDash)
+
+            if (shiftPressed)
             {
-                canDash = false;
-                time = Time.time;
+                if (canDash)
+                {
+                    canDash = false;
+                    time = Time.time;
+                }
             }
-        }
-        else
-        {
-            rb.MovePosition(rb.position + movement * moveSpeed);
-        }
+            else
+            {
+                rb.MovePosition(rb.position + movement * moveSpeed);
+            }
 
-        if (wPressed && !isMoving)
-        {
-            anim.Play("up_walk");
-            lastDirection = "W";
-            isMoving = true;
-            Walk(lastDirection);
-        }
+            if (wPressed && !isMoving)
+            {
+                anim.Play("up_walk");
+                lastDirection = "W";
+                isMoving = true;
+                if (shootingScript.getGun() != null && shootingScript.getGun().name == "Sniper")
+                {
+                    gunAnimation.Play("ChangeDirectionX");
+                }
+            }
 
-        if (sPressed && !isMoving)
-        {
+            if (sPressed && !isMoving)
+            {
+                anim.Play("down_walk");
+                lastDirection = "S";
+                isMoving = true;
+                if (shootingScript.getGun() != null && shootingScript.getGun().name == "Sniper")
+                {
+                    gunAnimation.Play("ChangeDirectionXDown");
+                }
+            }
 
-            anim.Play("down_walk");
-            lastDirection = "S";
-            isMoving = true;
-            Walk(lastDirection);
-        }
+            if (aPressed && !isMoving)
+            {
+                anim.Play("left_walk");
+                lastDirection = "A";
+                isMoving = true;
+                if (shootingScript.getGun() != null && shootingScript.getGun().name == "Sniper")
+                {
+                    gunAnimation.Play("ChangeDirectionYLeft");
+                }
+            }
 
-        if (aPressed && !isMoving)
-        {
-
-            anim.Play("left_walk");
-            lastDirection = "A";
-            isMoving = true;
-            Walk(lastDirection);
-        }
-
-        if (dPressed && !isMoving)
-        {
-
-            anim.Play("right_walk");
-            lastDirection = "D";
-            isMoving = true;
-            Walk(lastDirection);
-        }
-    }
-
-    private void Walk(string direction)
-    {
-        playerX = this.gameObject.transform.position.x;
-        playerY = this.gameObject.transform.position.y;
-
-        switch (direction)
-        {
-            case "W":
-                shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, 0f);
-                shootingScript.firePoint.transform.position = new Vector3(playerX + 0.2f, playerY, 0f);
-                break;
-
-            case "S":
-                shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, 180f);
-                shootingScript.firePoint.transform.position = new Vector3(playerX - 0.25f, playerY, 0f);
-                break;
-
-            case "A":
-                shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, 90f);
-                shootingScript.gun.rotation = Quaternion.Euler(0f, 180f, 0f);
-                shootingScript.firePoint.transform.position = new Vector3(playerX - 0.1f, playerY - 0.16f, 0f);
-                break;
-
-            case "D":
-                shootingScript.firePoint.rotation = Quaternion.Euler(0f, 0f, -90f);
-                shootingScript.gun.rotation = Quaternion.Euler(0f, 0f, 0f);
-                shootingScript.firePoint.transform.position = new Vector3(playerX + 0.1f, playerY - 0.13f, 0f);
-                break;
+            if (dPressed && !isMoving)
+            {
+                anim.Play("right_walk");
+                lastDirection = "D";
+                isMoving = true;
+                if (shootingScript.getGun() != null && shootingScript.getGun().name == "Sniper")
+                {
+                    gunAnimation.Play("ChangeDirectionY");
+                }
+            }
         }
     }
 
@@ -235,15 +207,8 @@ public class PlayerMovement : MonoBehaviour
             canDash = true;
         }
     }
-
-
-    public void Damage(int damageAmount)
+    public string GetLastDirection()
     {
-        HeartsHealthVisual2.heartsHealthSystemStatic.Damage(damageAmount);
-    }
-
-    public void Heal(int damageAmount)
-    {
-        HeartsHealthVisual2.heartsHealthSystemStatic.Heal(damageAmount);
+        return lastDirection;
     }
 }

@@ -19,7 +19,7 @@ public class DamageObject : MonoBehaviour
 
         if (canTakeDamage)
         {
-            PlayerMovement player = collider.GetComponent<PlayerMovement>();
+            PlayerController player = collider.GetComponent<PlayerController>();
             if (player != null)
             {
                 player.Damage(damageAmount);
@@ -35,7 +35,5 @@ public class DamageObject : MonoBehaviour
         canTakeDamage = false;
         yield return new WaitForSeconds(damageTimeout);
         canTakeDamage = true;
-
-
     }
 }

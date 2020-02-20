@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156091949789765365}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.595801, y: 1.8405805, z: 11.57632}
+  m_LocalPosition: {x: -5.595801, y: 1.8405805, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 259764656421725223}
@@ -109,7 +109,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156091950510541864}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.593801, y: 2.3155806, z: 11.57632}
+  m_LocalPosition: {x: -5.593801, y: 2.3155806, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 259764656421725223}
@@ -314,6 +314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 7594642891346446743, guid: 9a2ae68d5fefd7642bb75c4cd2adaa82, type: 3}
   Portal: {fileID: 0}
+  Destination: {fileID: 0}
   allowTeleport: 1
 --- !u!70 &8875862377999135715
 CapsuleCollider2D:
@@ -357,7 +358,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156091951312663481}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -5.565801, y: 1.5695806, z: 10.28632}
+  m_LocalPosition: {x: -5.565801, y: 1.5695806, z: 0}
   m_LocalScale: {x: 0.34992033, y: 0.6709567, z: 8.28133}
   m_Children: []
   m_Father: {fileID: 259764656421725223}
@@ -5109,7 +5110,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4586510783711884421}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.09380093, y: -2.9055805, z: -11.57632}
+  m_LocalPosition: {x: 0.09380093, y: -2.9055805, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 156091951312663428}
