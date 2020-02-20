@@ -88,7 +88,7 @@ public class shooting : MonoBehaviour
                 }
                 if (weaponName == "Pistol")
                 {
-                    firePoint.position = new Vector3(playerX + X, playerY + Y, 0f);
+                    firePoint.position = new Vector3(playerX + 0.3f, playerY, 0f);
                 }
                 firePoint.rotation = Quaternion.Euler(0f, 0f, 90f);
                 break;
@@ -111,7 +111,7 @@ public class shooting : MonoBehaviour
                 }
                 if (weaponName == "Pistol")
                 {
-                    firePoint.position = new Vector3(playerX + X, playerY + Y, 0f);
+                    firePoint.position = new Vector3(playerX - 0.3f, playerY - 0.07f, 0f);
                 }
                 firePoint.rotation = Quaternion.Euler(0f,0f,180f);
                 break;
@@ -123,7 +123,7 @@ public class shooting : MonoBehaviour
                 }
                 if (weaponName == "Pistol")
                 {
-                    firePoint.position = new Vector3(playerX + X, playerY + Y, 0f);
+                    firePoint.position = new Vector3(playerX -0.37f, playerY - 0.3f, 0f);
                 }
                 firePoint.rotation = Quaternion.Euler(0f, 0f, 270f);
                 break;

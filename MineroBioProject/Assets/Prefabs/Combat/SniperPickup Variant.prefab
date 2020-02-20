@@ -36,7 +36,7 @@ PrefabInstance:
     - target: {fileID: 268333518791984933, guid: bc73be6a14a2e7f419b8011348c018a4,
         type: 3}
       propertyPath: m_Name
-      value: SniperPickup
+      value: SniperPickup Variant
       objectReference: {fileID: 0}
     - target: {fileID: 268333518791984933, guid: bc73be6a14a2e7f419b8011348c018a4,
         type: 3}
@@ -46,12 +46,12 @@ PrefabInstance:
     - target: {fileID: 3064769323372622205, guid: bc73be6a14a2e7f419b8011348c018a4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.203265
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3064769323372622205, guid: bc73be6a14a2e7f419b8011348c018a4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.6419554
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3064769323372622205, guid: bc73be6a14a2e7f419b8011348c018a4,
         type: 3}
@@ -98,7 +98,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -1656563791965452482, guid: bc73be6a14a2e7f419b8011348c018a4, type: 3}
+    - {fileID: 191314391670373646, guid: bc73be6a14a2e7f419b8011348c018a4, type: 3}
+    - {fileID: -942476558220855050, guid: bc73be6a14a2e7f419b8011348c018a4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bc73be6a14a2e7f419b8011348c018a4, type: 3}
 --- !u!1 &6619404283289298737 stripped
 GameObject:
