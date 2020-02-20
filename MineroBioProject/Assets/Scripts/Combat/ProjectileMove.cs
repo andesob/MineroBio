@@ -19,9 +19,7 @@ public class ProjectileMove : MonoBehaviour
         if (muzzlePrefab != null)
         {
 
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
-            var muzzleVFX = Instantiate(muzzlePrefab, this.gameObject.transform.position,playerMovement.GetRotation());
+            var muzzleVFX = Instantiate(muzzlePrefab, transform.position,transform.rotation);
          
             var psMuzzle = muzzleVFX.GetComponent<ParticleSystem>();
             if (psMuzzle != null)
