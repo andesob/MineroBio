@@ -48,15 +48,21 @@ public class shooting : MonoBehaviour
 
     private void Shoot(string weapon)
     {
-        
+        GameObject bullet;
+        Rigidbody2D rb;
         switch (weapon)
         {
+
             case "Pistol":
-                GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-                rb.AddForce(firePoint.right * bulletForce, ForceMode2D.Impulse);
-                audioSource = gun.GetComponent<AudioSource>();
-                audioSource.Play();
+                if (Time.time >= timeToFire)
+                {
+                   timeToFire = Time.time + 1 / bulletPrefab.GetComponent<Bullet>().fireRate;
+                    bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                    rb = bullet.GetComponent<Rigidbody2D>();
+                    rb.AddForce(firePoint.right * bulletForce, ForceMode2D.Impulse);
+                    audioSource = gun.GetComponent<AudioSource>();
+                    audioSource.Play();
+                }
                 break;
             case "Sniper":
                 if (Time.time >= timeToFire)
@@ -66,13 +72,16 @@ public class shooting : MonoBehaviour
                     rb = bullet.GetComponent<Rigidbody2D>();
                     rb.AddForce(firePoint.right * speed, ForceMode2D.Impulse);
                     audioSource = gun.GetComponent<AudioSource>();
-                    audioSource.Play();                  
+                    audioSource.Play();
                 }
                 break;
         }
+    }
+        
+
 
       
-    }
+    
 
     public void FirePointLocation()
     {
@@ -88,7 +97,7 @@ public class shooting : MonoBehaviour
                 }
                 if (weaponName == "Pistol")
                 {
-                    firePoint.position = new Vector3(playerX + X, playerY + Y, 0f);
+                    firePoint.position = new Vector3(playerX + 0.24f, playerY + 0.18f, 0f);
                 }
                 firePoint.rotation = Quaternion.Euler(0f, 0f, 90f);
                 break;
@@ -111,7 +120,7 @@ public class shooting : MonoBehaviour
                 }
                 if (weaponName == "Pistol")
                 {
-                    firePoint.position = new Vector3(playerX + X, playerY + Y, 0f);
+                    firePoint.position = new Vector3(playerX - 0.27f, playerY - 0.2f, 0f);
                 }
                 firePoint.rotation = Quaternion.Euler(0f,0f,180f);
                 break;
@@ -123,7 +132,7 @@ public class shooting : MonoBehaviour
                 }
                 if (weaponName == "Pistol")
                 {
-                    firePoint.position = new Vector3(playerX + X, playerY + Y, 0f);
+                    firePoint.position = new Vector3(playerX + 0.27f, playerY - 0.98f, 0f);
                 }
                 firePoint.rotation = Quaternion.Euler(0f, 0f, 270f);
                 break;
