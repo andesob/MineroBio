@@ -39,8 +39,6 @@ public class shooting : MonoBehaviour
         FirePointLocation();
         if (Input.GetKeyDown(KeyCode.E))
         {
-            
-            
             Shoot(weaponName);
         }
 
@@ -140,8 +138,5 @@ public class shooting : MonoBehaviour
     {
         return gun;
     }
-
-
-  
 }
   

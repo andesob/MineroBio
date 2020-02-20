@@ -35,7 +35,5 @@ public class DamageObject : MonoBehaviour
         canTakeDamage = false;
         yield return new WaitForSeconds(damageTimeout);
         canTakeDamage = true;
-
-
     }
 }

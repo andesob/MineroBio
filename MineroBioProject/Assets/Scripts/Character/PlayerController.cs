@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviour
             {
                 case "W":
                    
-                  //  firepoint.rotation = Quaternion.Euler(0f, 0f, 90f);
+                  //firepoint.rotation = Quaternion.Euler(0f, 0f, 90f);
                   //firepoint.position = new Vector3(playerX + 0.2f, playerY, 0f);
                     break;
 

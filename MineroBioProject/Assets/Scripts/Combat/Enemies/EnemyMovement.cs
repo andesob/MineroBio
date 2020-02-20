@@ -45,6 +45,7 @@ public class EnemyMovement : MonoBehaviour
     public void MoveEnemyAfterPlayer()
     {
         rotateEnemy(towardsPlayerAngle);
+
         rb.MovePosition((Vector2)transform.position + (playerDirection * movementSpeed * Time.deltaTime));
     }
     public void MoveEnemyTowardSpawn()
@@ -100,5 +101,14 @@ public class EnemyMovement : MonoBehaviour
     private float getRandomAngle()
     {
         return UnityEngine.Random.Range(0, 360);
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        }
     }
 }

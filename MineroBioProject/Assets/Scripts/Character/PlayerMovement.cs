@@ -148,15 +148,21 @@ public class PlayerMovement : MonoBehaviour
                 anim.Play("up_walk");
                 lastDirection = "W";
                 isMoving = true;
-            gunAnimation.Play("ChangeDirectionX");
-        }
+                if (shootingScript.getGun() != null && shootingScript.getGun().name == "Sniper")
+                {
+                    gunAnimation.Play("ChangeDirectionX");
+                }
+            }
 
             if (sPressed && !isMoving)
             {
                 anim.Play("down_walk");
                 lastDirection = "S";
                 isMoving = true;
-                gunAnimation.Play("ChangeDirectionXDown");
+                if (shootingScript.getGun() != null && shootingScript.getGun().name == "Sniper")
+                {
+                    gunAnimation.Play("ChangeDirectionXDown");
+                }
             }
 
             if (aPressed && !isMoving)
@@ -164,7 +170,10 @@ public class PlayerMovement : MonoBehaviour
                 anim.Play("left_walk");
                 lastDirection = "A";
                 isMoving = true;
-                gunAnimation.Play("ChangeDirectionYLeft");
+                if (shootingScript.getGun() != null && shootingScript.getGun().name == "Sniper")
+                {
+                    gunAnimation.Play("ChangeDirectionYLeft");
+                }
             }
 
             if (dPressed && !isMoving)
@@ -172,8 +181,11 @@ public class PlayerMovement : MonoBehaviour
                 anim.Play("right_walk");
                 lastDirection = "D";
                 isMoving = true;
-           gunAnimation.Play("ChangeDirectionY");
-        }
+                if (shootingScript.getGun() != null && shootingScript.getGun().name == "Sniper")
+                {
+                    gunAnimation.Play("ChangeDirectionY");
+                }
+            }
         }
     }
 
