@@ -72,15 +72,12 @@ public class EnemyAi : MonoBehaviour
             Bullet bullet = collider.GetComponent<Bullet>();
             if (bullet != null)
             {
+                healthBar.healthSystem.Damage(damageFromPistol);
             if (healthBar.healthSystem.getHealth() <= 0)
             {
                 Destroy(thisEnemy);
             }
-            else
-            {
-                healthBar.healthSystem.Damage(damageFromPistol);
-            }
-            }
+        }
         }
 
 
