@@ -11,17 +11,23 @@ public class EnemyAi : MonoBehaviour
         GoingBackToStart,
     }
 
+    private GameObject thisEnemy;
     private EnemyMovement enemyMovement;
     private Vector3 startPosition;
     private State state;
 
     public float maximumDistance;
+    public int damageFromPistol;
+    public float damageTimeout;
+    public HealthBar healthBar;
+    
 
     void Awake()
     {
         enemyMovement = GetComponent<EnemyMovement>();
         state = State.chase;
         startPosition = transform.position;
+        thisEnemy = gameObject;
     }
     private void FixedUpdate()
     {
@@ -59,4 +65,25 @@ public class EnemyAi : MonoBehaviour
         }
 
     }
+
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+            Bullet bullet = collider.GetComponent<Bullet>();
+            if (bullet != null)
+            {
+            if (healthBar.healthSystem.getHealth() <= 0)
+            {
+                Destroy(thisEnemy);
+            }
+            else
+            {
+                healthBar.healthSystem.Damage(damageFromPistol);
+            }
+            }
+        }
+
+
+
+
 }

@@ -35,4 +35,5 @@ public class HealthSystem
         if(health > maxHealth){ health = 100; }
         if (OnHealthChanged != null) { OnHealthChanged(this, EventArgs.Empty); }
     }
+
 }
