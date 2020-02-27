@@ -21,6 +21,7 @@ TagManager:
   - PlayerPrefab
   - MoneySystem
   - SceneChanger
+  - Enemy
   layers:
   - Default
   - TransparentFX

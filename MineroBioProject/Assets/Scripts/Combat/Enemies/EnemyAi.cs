@@ -15,7 +15,7 @@ public class EnemyAi : MonoBehaviour
     private Vector3 startPosition;
     private State state;
 
-    private float maximumDistance = 10f;
+    private float maximumDistance = 15f;
     private Vector2 roamPosition;
 
     void Awake() {
