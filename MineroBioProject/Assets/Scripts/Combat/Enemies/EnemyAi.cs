@@ -11,60 +11,49 @@ public class EnemyAi : MonoBehaviour
         GoingBackToStart,
     }
 
+    private GameObject thisEnemy;
     private EnemyMovement enemyMovement;
     private Vector3 startPosition;
     private State state;
 
-    private float maximumDistance = 15f;
-    private Vector2 roamPosition;
+    public float maximumDistance;
+    public int damageFromPistol;
+    public float damageTimeout;
+    public HealthBar healthBar;
+    
 
-    void Awake() {
+    void Awake()
+    {
         enemyMovement = GetComponent<EnemyMovement>();
         state = State.chase;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
         startPosition = transform.position;
-        roamPosition = enemyMovement.getRandomDir();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-         
+        thisEnemy = gameObject;
     }
     private void FixedUpdate()
     {
-        switch(state)
+        switch (state)
         {
+            // The player stays in its starting area
+            // TODO get a movement when it stays static.
             case State.Roaming:
-
-                /*float maxRoamingDir = 5f;
-                enemyMovement.Roam(roamPosition);
-
-                if (Vector3.Distance(transform.position, roamPosition) < maxRoamingDir)
+                if (Vector3.Distance(startPosition, enemyMovement.GetPlayerPosition()) < maximumDistance)
                 {
-                    // Reached Roam Position
-                    roamPosition = enemyMovement.getRandomDir();
-                }
-                */
-                if(Vector3.Distance(startPosition, enemyMovement.getPlayerPosition()) < maximumDistance){
                     state = State.chase;
                 }
                 break;
-
+            // This state is made to chase after the main character. Will change when this object reaches the maximum distance. 
             case State.chase:
                 enemyMovement.MoveEnemyAfterPlayer();
-                if(Vector3.Distance(transform.position, enemyMovement.startPosition) > maximumDistance)
+                if (Vector3.Distance(transform.position, enemyMovement.startPosition) > maximumDistance)
                 {
                     state = State.GoingBackToStart;
                 }
                 break;
 
+            // This state moves this object back towards the spawning point of the object. 
             case State.GoingBackToStart:
                 enemyMovement.MoveEnemyTowardSpawn();
-                if (Vector3.Distance(startPosition, enemyMovement.getPlayerPosition()) < maximumDistance)
+                if (Vector3.Distance(startPosition, enemyMovement.GetPlayerPosition()) < maximumDistance)
                 {
                     state = State.chase;
                 }
@@ -74,6 +63,24 @@ public class EnemyAi : MonoBehaviour
                 }
                 break;
         }
-       
+
     }
+
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+            Bullet bullet = collider.GetComponent<Bullet>();
+            if (bullet != null)
+            {
+                healthBar.healthSystem.Damage(damageFromPistol);
+            if (healthBar.healthSystem.getHealth() <= 0)
+            {
+                Destroy(thisEnemy);
+            }
+        }
+        }
+
+
+
+
 }

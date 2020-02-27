@@ -22,8 +22,8 @@ public class DamageObject : MonoBehaviour
             PlayerController player = collider.GetComponent<PlayerController>();
             if (player != null)
             {
-                player.Damage(damageAmount);
-
+                Vector3 knockbackDir = (player.GetPosition() - transform.position).normalized;
+                player.Damage(knockbackDir, 0.6f, damageAmount);
                 StartCoroutine(damageTimer());
             }
         }
