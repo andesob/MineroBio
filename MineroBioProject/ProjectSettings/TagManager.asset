@@ -20,6 +20,7 @@ TagManager:
   - SettingsButton
   - ForceField
   - TeleportTrigger
+  - Inventory
   layers:
   - Default
   - TransparentFX
