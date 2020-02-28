@@ -16,6 +16,7 @@ TagManager:
   - SettingsButton
   - ForceField
   - TeleportTrigger
+  - Inventory
   - Weapon
   - Gun
   - PlayerPrefab
