@@ -48,7 +48,7 @@ PrefabInstance:
     - target: {fileID: 2445493471599880154, guid: f20530efaf9a0ba4f8145ad1b27cbe6b,
         type: 3}
       propertyPath: m_Name
-      value: PistolPickup
+      value: PistolPickup Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2445493471599880154, guid: f20530efaf9a0ba4f8145ad1b27cbe6b,
         type: 3}
