@@ -16,11 +16,13 @@ TagManager:
   - SettingsButton
   - ForceField
   - TeleportTrigger
+  - Inventory
   - Weapon
   - Gun
   - PlayerPrefab
   - MoneySystem
   - SceneChanger
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -75,6 +77,9 @@ TagManager:
     locked: 0
   - name: PlayerLayer
     uniqueID: 1715886907
+    locked: 0
+  - name: BottomWallLayer
+    uniqueID: 3887362531
     locked: 0
   - name: ForegroundLayer
     uniqueID: 2054700959

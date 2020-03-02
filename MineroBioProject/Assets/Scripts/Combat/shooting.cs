@@ -64,7 +64,9 @@ public class shooting : MonoBehaviour
                     rb = bullet.GetComponent<Rigidbody2D>();
                     rb.AddForce(firePoint.right * speed, ForceMode2D.Impulse);
                     audioSource = gun.GetComponent<AudioSource>();
-                    audioSource.Play();                  
+                    audioSource.Play();
+
+                    
                 }
                 break;
         }
