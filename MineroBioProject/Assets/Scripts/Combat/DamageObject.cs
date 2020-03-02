@@ -19,11 +19,11 @@ public class DamageObject : MonoBehaviour
 
         if (canTakeDamage)
         {
-            PlayerMovement player = collider.GetComponent<PlayerMovement>();
+            PlayerController player = collider.GetComponent<PlayerController>();
             if (player != null)
             {
-                player.Damage(damageAmount);
-
+                Vector3 knockbackDir = (player.GetPosition() - transform.position).normalized;
+                player.Damage(knockbackDir, 0.6f, damageAmount);
                 StartCoroutine(damageTimer());
             }
         }
@@ -35,7 +35,5 @@ public class DamageObject : MonoBehaviour
         canTakeDamage = false;
         yield return new WaitForSeconds(damageTimeout);
         canTakeDamage = true;
-
-
     }
 }
