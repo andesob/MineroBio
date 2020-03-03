@@ -236,6 +236,11 @@ PrefabInstance:
       propertyPath: follewedPlayer
       value: 
       objectReference: {fileID: 6033361894194761666}
+    - target: {fileID: 3524216425003036403, guid: 8a9a50bd7bb76ee4aa2bf392fa6ac6e3,
+        type: 3}
+      propertyPath: mainCharacter
+      value: 
+      objectReference: {fileID: 6033361894194761666}
     - target: {fileID: 3524216425003036407, guid: 8a9a50bd7bb76ee4aa2bf392fa6ac6e3,
         type: 3}
       propertyPath: m_Name
@@ -313,6 +318,11 @@ PrefabInstance:
     - target: {fileID: 3524216425003036403, guid: 8a9a50bd7bb76ee4aa2bf392fa6ac6e3,
         type: 3}
       propertyPath: follewedPlayer
+      value: 
+      objectReference: {fileID: 6033361894194761666}
+    - target: {fileID: 3524216425003036403, guid: 8a9a50bd7bb76ee4aa2bf392fa6ac6e3,
+        type: 3}
+      propertyPath: mainCharacter
       value: 
       objectReference: {fileID: 6033361894194761666}
     - target: {fileID: 3524216425003036407, guid: 8a9a50bd7bb76ee4aa2bf392fa6ac6e3,
@@ -1151,6 +1161,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4357994276538703171, guid: c790e51822c61624d8bdc9d2495eee88,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -18.200195
+      objectReference: {fileID: 0}
     - target: {fileID: 7679377009750660566, guid: c790e51822c61624d8bdc9d2495eee88,
         type: 3}
       propertyPath: m_Name
@@ -22778,6 +22793,11 @@ PrefabInstance:
       propertyPath: follewedPlayer
       value: 
       objectReference: {fileID: 6033361894194761666}
+    - target: {fileID: 3524216425003036403, guid: 8a9a50bd7bb76ee4aa2bf392fa6ac6e3,
+        type: 3}
+      propertyPath: mainCharacter
+      value: 
+      objectReference: {fileID: 6033361894194761666}
     - target: {fileID: 3524216425003036407, guid: 8a9a50bd7bb76ee4aa2bf392fa6ac6e3,
         type: 3}
       propertyPath: m_Name
@@ -23107,6 +23127,11 @@ PrefabInstance:
       propertyPath: follewedPlayer
       value: 
       objectReference: {fileID: 6033361894194761666}
+    - target: {fileID: 3524216425003036403, guid: 8a9a50bd7bb76ee4aa2bf392fa6ac6e3,
+        type: 3}
+      propertyPath: mainCharacter
+      value: 
+      objectReference: {fileID: 6033361894194761666}
     - target: {fileID: 3524216425003036407, guid: 8a9a50bd7bb76ee4aa2bf392fa6ac6e3,
         type: 3}
       propertyPath: m_Name
@@ -23250,6 +23275,11 @@ PrefabInstance:
       propertyPath: follewedPlayer
       value: 
       objectReference: {fileID: 6033361894194761666}
+    - target: {fileID: 3524216425003036403, guid: 8a9a50bd7bb76ee4aa2bf392fa6ac6e3,
+        type: 3}
+      propertyPath: mainCharacter
+      value: 
+      objectReference: {fileID: 6033361894194761666}
     - target: {fileID: 3524216425003036407, guid: 8a9a50bd7bb76ee4aa2bf392fa6ac6e3,
         type: 3}
       propertyPath: m_Name
@@ -23329,6 +23359,11 @@ PrefabInstance:
       propertyPath: follewedPlayer
       value: 
       objectReference: {fileID: 6033361894194761666}
+    - target: {fileID: 3524216425003036403, guid: 8a9a50bd7bb76ee4aa2bf392fa6ac6e3,
+        type: 3}
+      propertyPath: mainCharacter
+      value: 
+      objectReference: {fileID: 6033361894194761666}
     - target: {fileID: 3524216425003036407, guid: 8a9a50bd7bb76ee4aa2bf392fa6ac6e3,
         type: 3}
       propertyPath: m_Name
@@ -23406,6 +23441,11 @@ PrefabInstance:
     - target: {fileID: 3524216425003036403, guid: 8a9a50bd7bb76ee4aa2bf392fa6ac6e3,
         type: 3}
       propertyPath: follewedPlayer
+      value: 
+      objectReference: {fileID: 6033361894194761666}
+    - target: {fileID: 3524216425003036403, guid: 8a9a50bd7bb76ee4aa2bf392fa6ac6e3,
+        type: 3}
+      propertyPath: mainCharacter
       value: 
       objectReference: {fileID: 6033361894194761666}
     - target: {fileID: 3524216425003036407, guid: 8a9a50bd7bb76ee4aa2bf392fa6ac6e3,
@@ -72489,11 +72529,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3524216425003036402, guid: 8a9a50bd7bb76ee4aa2bf392fa6ac6e3,
+        type: 3}
+      propertyPath: knockbackDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3524216425003036403, guid: 8a9a50bd7bb76ee4aa2bf392fa6ac6e3,
         type: 3}
       propertyPath: follewedPlayer
       value: 
       objectReference: {fileID: 6033361894194761666}
+    - target: {fileID: 3524216425003036403, guid: 8a9a50bd7bb76ee4aa2bf392fa6ac6e3,
+        type: 3}
+      propertyPath: mainCharacter
+      value: 
+      objectReference: {fileID: 6033361894194761666}
+    - target: {fileID: 3524216425003036403, guid: 8a9a50bd7bb76ee4aa2bf392fa6ac6e3,
+        type: 3}
+      propertyPath: Knockbacktimout
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 3524216425003036407, guid: 8a9a50bd7bb76ee4aa2bf392fa6ac6e3,
         type: 3}
       propertyPath: m_Name

@@ -20,12 +20,13 @@ public class EnemyAi : MonoBehaviour
     public int damageFromPistol;
     public float damageTimeout;
     public HealthBar healthBar;
+    public float knockbackDistance;
     
 
     void Awake()
     {
         enemyMovement = GetComponent<EnemyMovement>();
-        state = State.chase;
+        state = State.Roaming;
         startPosition = transform.position;
         thisEnemy = gameObject;
     }
@@ -72,15 +73,20 @@ public class EnemyAi : MonoBehaviour
             Bullet bullet = collider.GetComponent<Bullet>();
             if (bullet != null)
             {
-                healthBar.healthSystem.Damage(damageFromPistol);
+
+            Vector3 bulletDir = bullet.transform.forward;
+            float force = 1000;
+
+            //Other.rigidbody.AddForce(bulletDir.normalized * force);
+            enemyMovement.Knockback(bulletDir, knockbackDistance);
+
+            healthBar.healthSystem.Damage(damageFromPistol);
             if (healthBar.healthSystem.getHealth() <= 0)
             {
                 Destroy(thisEnemy);
             }
         }
         }
-
-
 
 
 }

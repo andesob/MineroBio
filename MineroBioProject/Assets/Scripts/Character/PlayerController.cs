@@ -105,6 +105,8 @@ public class PlayerController : MonoBehaviour
     {
         HeartsHealthVisual2.heartsHealthSystemStatic.Heal(damageAmount);
     }
+
+ 
    /*
     private void DamageFlash()
     {

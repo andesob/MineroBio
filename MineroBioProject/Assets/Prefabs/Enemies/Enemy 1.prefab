@@ -160,6 +160,7 @@ MonoBehaviour:
   damageFromPistol: 5
   damageTimeout: 0
   healthBar: {fileID: 6859703654994869473}
+  knockbackDistance: 3
 --- !u!114 &3524216425003036403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,9 +173,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1ef48ab345f4cae923fc7c6fc03dd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  follewedPlayer: {fileID: 0}
+  mainCharacter: {fileID: 0}
   movementSpeed: 3
   startPosition: {x: 0, y: 0, z: 0}
+  Knockbacktimout: 0
 --- !u!114 &3524216425003036409
 MonoBehaviour:
   m_ObjectHideFlags: 0

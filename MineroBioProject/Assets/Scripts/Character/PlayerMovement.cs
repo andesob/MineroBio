@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private bool aPressed;
     private bool wPressed;
     private bool sPressed;
+    private bool leftMousePressed;
 
     public Rigidbody2D rb;
     public Animator anim;
@@ -29,11 +30,22 @@ public class PlayerMovement : MonoBehaviour
     public GameObject gun;
     private PlayerController playerController;
 
+    private enum State
+    {
+        Normal,
+        Attacking
+    }
+    private State state;
+
+
+   
+
     Vector2 movement;
 
 
     private void Start()
     {
+        state = State.Normal;
         canDash = true;
         lastDirection = "S";
         playerController = this.gameObject.GetComponent<PlayerController>();
@@ -42,15 +54,25 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        getInput();
-        HandleKeyPress();
-        HandleDash();
+        switch (state)
+        {
+        case State.Normal:
+            getInput();
+            HandleKeyPress();
+            HandleDash();
+        break;
+
+        case State.Attacking:
+                Debug.Log("Attack state");
+                state = State.Normal;
+        break;
+        }
     }
 
 
     //Gets the input from a user and sets a boolean to true or false accordingly.
     private void getInput()
-    {
+    {   
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
             shiftPressed = true;
@@ -117,6 +139,14 @@ public class PlayerMovement : MonoBehaviour
         if (!Input.inputString.Equals(lastDirection))
         {
             isMoving = false;
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            leftMousePressed = true;
+        }
+        else
+        {
+            leftMousePressed = false;
         }
     }
 
@@ -185,6 +215,17 @@ public class PlayerMovement : MonoBehaviour
                 {
                     gunAnimation.Play("ChangeDirectionY");
                 }
+            }
+
+            if (leftMousePressed)
+            {
+                Vector3 mousePosition = MouseUtils.GetMouseWorldPosition();
+                Vector3 attackDir = (mousePosition - transform.position).normalized;
+                state = State.Attacking;
+                anim.Play("idle_down");
+                state = State.Normal;
+                
+                Debug.Log(attackDir);
             }
         }
     }
