@@ -50,7 +50,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -566,7 +566,7 @@ MonoBehaviour:
   firePoint: {fileID: 6479500462345024258}
   player: {fileID: 8640710748013890594}
   vfx:
-  - {fileID: 6421681254230132581, guid: 71df2128e1ef8ca418cd6b5f6a483e84, type: 3}
+  - {fileID: 3041852875989145257, guid: 9b6d071ce634ec9409007a47c5204d7a, type: 3}
   - {fileID: 8499941249210294502, guid: 35868f46b8498d24da4b7c69caba6130, type: 3}
   bulletForce: 10
   speed: 20.28
