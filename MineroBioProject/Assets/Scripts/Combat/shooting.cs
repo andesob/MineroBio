@@ -54,7 +54,7 @@ public class shooting : MonoBehaviour
             case "Pistol":
                 if (Time.time >= timeToFire)
                 {
-                   timeToFire = Time.time + 1 / bulletPrefab.GetComponent<Bullet>().fireRate;
+                    timeToFire = Time.time + 1 / bulletPrefab.GetComponent<Bullet>().fireRate;
                     bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
                     rb = bullet.GetComponent<Rigidbody2D>();
                     rb.AddForce(firePoint.right * bulletForce, ForceMode2D.Impulse);

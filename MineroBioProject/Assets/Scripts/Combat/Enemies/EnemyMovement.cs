@@ -25,6 +25,14 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
+        if (this.gameObject.transform.position.x > follewedPlayer.transform.position.x + 0.1f)
+        {
+            this.gameObject.transform.rotation = Quaternion.Euler(0.0f, 180f, 0.0f);
+        }
+        else
+        {
+            this.gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        }
     }
 
     // Update is called once per frame
