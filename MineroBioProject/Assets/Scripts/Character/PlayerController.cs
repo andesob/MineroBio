@@ -19,10 +19,20 @@ public class PlayerController : MonoBehaviour
     private shooting shootingScript;
     private PlayerPickupScript playerPickupScript;
 
+    private Material material;
+    private Color materialTintColor;
+
     private bool Nr1Pressed;
     private bool Nr2Pressed;
     private bool Nr3Pressed;
 
+
+
+    private void Awake()
+    {
+        //material = transform.Find("MainCharacter").GetComponent<SpriteRenderer>().material;
+        // materialTintColor = new Color(1, 0, 0, 0);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +51,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.N))
         {
-            Damage(1);
+            //Damage(1);
         }
 
         if (Input.GetKeyDown(KeyCode.P))
@@ -79,15 +89,30 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    public void Damage(int damageAmount)
+    public void Damage(Vector3 knockbackDir,float knockbackDistance, int damageAmount)
     {
+        transform.position += knockbackDir * knockbackDistance;
+        //DamageFlash();
         HeartsHealthVisual2.heartsHealthSystemStatic.Damage(damageAmount);
+    }
+
+    public Vector3 GetPosition()
+    {
+        return transform.position;
     }
 
     public void Heal(int damageAmount)
     {
         HeartsHealthVisual2.heartsHealthSystemStatic.Heal(damageAmount);
     }
+   /*
+    private void DamageFlash()
+    {
+        materialTintColor = new Color(1, 0, 0, 1f);
+        material.SetColor("_Tint", materialTintColor);
+    }
+
+    */
 
     public void AddMoney()
     {
@@ -136,7 +161,7 @@ public class PlayerController : MonoBehaviour
             {
                 case "W":
                    
-                  //  firepoint.rotation = Quaternion.Euler(0f, 0f, 90f);
+                  //firepoint.rotation = Quaternion.Euler(0f, 0f, 90f);
                   //firepoint.position = new Vector3(playerX + 0.2f, playerY, 0f);
                     break;
 
@@ -146,14 +171,14 @@ public class PlayerController : MonoBehaviour
                     break;
 
                 case "A":
-                  //  weapon.rotation = Quaternion.Euler(0f, 180f, 0f);
+                    weapon.rotation = Quaternion.Euler(0f, 180f, 0f);
                  //   firePoint.rotation = Quaternion.Euler(0f, 0f, 180f);
                   //  firepoint.position = new Vector3(playerX - 0.1f, playerY - 0.16f, 0f);
                     break;
 
                 case "D":
                   
-                    //weapon.rotation = Quaternion.Euler(0f, 0f, 0f);
+                    weapon.rotation = Quaternion.Euler(0f, 0f, 0f);
                     //firepoint.rotation = Quaternion.Euler(0f, 0f, 0f);
                  //   firepoint.position = new Vector3(playerX + 0.1f, playerY - 0.13f, 0f);
                     break;
