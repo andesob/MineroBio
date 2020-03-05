@@ -140,5 +140,10 @@ public class shooting : MonoBehaviour
     {
         return gun;
     }
+
+    public string getWeaponName()
+    {
+        return weaponName;
+    }
 }
   

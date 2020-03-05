@@ -21,7 +21,7 @@ public class EnemyAi : MonoBehaviour
     public float damageTimeout;
     public HealthBar healthBar;
     public float knockbackDistance;
-    
+  
 
     void Awake()
     {
@@ -57,7 +57,7 @@ public class EnemyAi : MonoBehaviour
                 if (Vector3.Distance(startPosition, enemyMovement.GetPlayerPosition()) < maximumDistance)
                 {
                     state = State.chase;
-                }
+                }   
                 if (Vector3.Distance(transform.position, startPosition) < 1f)
                 {
                     state = State.Roaming;
@@ -70,23 +70,30 @@ public class EnemyAi : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-            Bullet bullet = collider.GetComponent<Bullet>();
-            if (bullet != null)
+        string colliderTag = collider.gameObject.tag;
+            if (colliderTag == "Melee")
             {
-
-            Vector3 bulletDir = bullet.transform.forward;
-            float force = 1000;
 
             //Other.rigidbody.AddForce(bulletDir.normalized * force);
-            enemyMovement.Knockback(bulletDir, knockbackDistance);
+            // enemyMovement.Knockback(bulletDir, knockbackDistance);
 
-            healthBar.healthSystem.Damage(damageFromPistol);
-            if (healthBar.healthSystem.getHealth() <= 0)
-            {
-                Destroy(thisEnemy);
+            healthBar.healthSystem.Damage(25);
+          
             }
-        }
-        }
+            else if(colliderTag == "Bullet")
+            {
+                healthBar.healthSystem.Damage(damageFromPistol);
+            }
+        checkIfDead();
 
+           
+    }
+    private void checkIfDead()
+    {
+        if (healthBar.healthSystem.getHealth() <= 0)
+        {
+            Destroy(thisEnemy);
+        }
+    }
 
 }

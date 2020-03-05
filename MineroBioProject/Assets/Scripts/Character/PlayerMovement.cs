@@ -30,22 +30,11 @@ public class PlayerMovement : MonoBehaviour
     public GameObject gun;
     private PlayerController playerController;
 
-    private enum State
-    {
-        Normal,
-        Attacking
-    }
-    private State state;
-
-
-   
-
     Vector2 movement;
 
 
     private void Start()
     {
-        state = State.Normal;
         canDash = true;
         lastDirection = "S";
         playerController = this.gameObject.GetComponent<PlayerController>();
@@ -53,20 +42,11 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        switch (state)
-        {
-        case State.Normal:
+    {   
             getInput();
             HandleKeyPress();
             HandleDash();
-        break;
-
-        case State.Attacking:
-                Debug.Log("Attack state");
-                state = State.Normal;
-        break;
-        }
+        
     }
 
 
@@ -140,14 +120,6 @@ public class PlayerMovement : MonoBehaviour
         {
             isMoving = false;
         }
-        if (Input.GetMouseButtonDown(0))
-        {
-            leftMousePressed = true;
-        }
-        else
-        {
-            leftMousePressed = false;
-        }
     }
 
 
@@ -215,17 +187,6 @@ public class PlayerMovement : MonoBehaviour
                 {
                     gunAnimation.Play("ChangeDirectionY");
                 }
-            }
-
-            if (leftMousePressed)
-            {
-                Vector3 mousePosition = MouseUtils.GetMouseWorldPosition();
-                Vector3 attackDir = (mousePosition - transform.position).normalized;
-                state = State.Attacking;
-                anim.Play("idle_down");
-                state = State.Normal;
-                
-                Debug.Log(attackDir);
             }
         }
     }
