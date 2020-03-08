@@ -27,11 +27,11 @@ public class PlayerController : MonoBehaviour
     private bool Nr3Pressed;
 
 
-
     private void Awake()
     {
         //material = transform.Find("MainCharacter").GetComponent<SpriteRenderer>().material;
         // materialTintColor = new Color(1, 0, 0, 0);
+        
     }
 
     // Start is called before the first frame update

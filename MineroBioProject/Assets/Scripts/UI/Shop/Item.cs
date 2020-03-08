@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Item
 {
-
+    public ItemType itemType;
+    public int amout;
     public enum ItemType
     {
         Pistol,
+        Sniper,
+        Shotgun,
     }
 
     public static int GetCost(ItemType itemType)
