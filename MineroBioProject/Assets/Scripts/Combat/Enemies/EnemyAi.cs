@@ -20,7 +20,7 @@ public class EnemyAi : MonoBehaviour
     public int damageFromPistol;
     public float damageTimeout;
     public HealthBar healthBar;
-    
+
 
     void Awake()
     {
@@ -69,18 +69,14 @@ public class EnemyAi : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-            Bullet bullet = collider.GetComponent<Bullet>();
-            if (bullet != null)
-            {
-                healthBar.healthSystem.Damage(damageFromPistol);
+        Bullet bullet = collider.GetComponent<Bullet>();
+        if (bullet != null)
+        {
+            healthBar.healthSystem.Damage(damageFromPistol);
             if (healthBar.healthSystem.getHealth() <= 0)
             {
                 Destroy(thisEnemy);
             }
         }
-        }
-
-
-
-
+    }
 }

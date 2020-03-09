@@ -6,7 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
 
     // The player the enemy follows
-    public Transform follewedPlayer;
+    private Transform follewedPlayer;
     public float movementSpeed;
 
     private Rigidbody2D rb;
@@ -24,6 +24,7 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        follewedPlayer = GameObject.FindGameObjectWithTag("Player").transform;
         rb = this.GetComponent<Rigidbody2D>();
         if (this.gameObject.transform.position.x > follewedPlayer.transform.position.x + 0.1f)
         {
