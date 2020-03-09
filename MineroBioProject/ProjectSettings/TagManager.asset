@@ -81,6 +81,9 @@ TagManager:
   - name: BottomWallLayer
     uniqueID: 3887362531
     locked: 0
+  - name: RoofLayer
+    uniqueID: 2537172051
+    locked: 0
   - name: ForegroundLayer
     uniqueID: 2054700959
     locked: 0

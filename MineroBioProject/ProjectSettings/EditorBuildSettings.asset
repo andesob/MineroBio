@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/levelHubScene.unity
     guid: 47df3267bb2c255449b3a92c428f62d8
   - enabled: 1
-    path: Assets/Scenes/Level1.unity
+    path: Assets/Scenes/Level1FuckedMerge.unity
     guid: cef0c48f3b1ee614eac0354be0405501
   - enabled: 1
     path: Assets/Scenes/HomeScene.unity

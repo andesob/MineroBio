@@ -82,11 +82,11 @@ public class ProjectileMove : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(collision.gameObject);
         }
-    }
+    }*/
 }
