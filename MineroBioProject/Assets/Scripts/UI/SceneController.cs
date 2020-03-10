@@ -22,7 +22,7 @@ public class SceneController : MonoBehaviour
         }
         if (prevScene == "Level1" && currentScene == "levelHubScene")
         {
-            player.transform.position = new Vector2(-7.5f, -0.2f);
+            player.transform.position = new Vector2(-6.5f, -0.2f);
         }
     }
 
