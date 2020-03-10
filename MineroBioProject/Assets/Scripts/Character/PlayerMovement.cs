@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private bool aPressed;
     private bool wPressed;
     private bool sPressed;
+  
 
     public Rigidbody2D rb;
     public Animator anim;
@@ -42,82 +43,87 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        getInput();
-        HandleKeyPress();
-        HandleDash();
+        if (playerController.CanMove())
+        {
+            getInput();
+            HandleKeyPress();
+            HandleDash();
+        }
     }
 
 
     //Gets the input from a user and sets a boolean to true or false accordingly.
     private void getInput()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
-        {
-            shiftPressed = true;
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            dPressed = true;
-        }
-        else
-        {
-            dPressed = false;
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            aPressed = true;
-        }
-        else
-        {
-            aPressed = false;
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            sPressed = true;
-        }
-        else
-        {
-            sPressed = false;
-        }
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            wPressed = true;
-        }
-        else
-        {
-            wPressed = false;
-        }
-
-        if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
-        {
-            switch (lastDirection)
+       
+            if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
             {
-                case "W":
-                    anim.Play("idle_up");
-                    break;
-
-                case "S":
-                    anim.Play("idle_down");
-                    break;
-
-                case "A":
-                    anim.Play("idle_left");
-                    break;
-
-                case "D":
-                    anim.Play("idle_right");
-                    break;
+                shiftPressed = true;
             }
-        }
 
-        if (!Input.inputString.Equals(lastDirection))
-        {
-            isMoving = false;
-        }
+            if (Input.GetKey(KeyCode.D))
+            {
+                dPressed = true;
+            }
+            else
+            {
+                dPressed = false;
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                aPressed = true;
+            }
+            else
+            {
+                aPressed = false;
+            }
+
+            if (Input.GetKey(KeyCode.S))
+            {
+                sPressed = true;
+            }
+            else
+            {
+                sPressed = false;
+            }
+
+            if (Input.GetKey(KeyCode.W))
+            {
+                wPressed = true;
+            }
+            else
+            {
+                wPressed = false;
+            }
+
+            if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
+            {
+                switch (lastDirection)
+                {
+                    case "W":
+                        anim.Play("idle_up");
+                        break;
+
+                    case "S":
+                        anim.Play("idle_down");
+                        break;
+
+                    case "A":
+                        anim.Play("idle_left");
+                        break;
+
+                    case "D":
+                        anim.Play("idle_right");
+                        break;
+                }
+            }
+
+            if (!Input.inputString.Equals(lastDirection))
+            {
+                isMoving = false;
+            }
+       
     }
 
 
@@ -127,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
         {
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
-            playerController.rotateGun(lastDirection);
+            playerController.RotateGun(lastDirection);
 
 
             if (shiftPressed)

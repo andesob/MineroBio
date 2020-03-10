@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     public static bool isGamePaused;
     private static bool isMoneyMade;
 
+    private bool canMove = true;
+    public float knockbackTime;
+
     private GameObject player;
     private GameObject pistol;
     private GameObject shotgun;
@@ -18,21 +21,11 @@ public class PlayerController : MonoBehaviour
 
     private shooting shootingScript;
     private PlayerPickupScript playerPickupScript;
-
-    private Material material;
-    private Color materialTintColor;
+    private Rigidbody2D playerRigidbody2D;
 
     private bool Nr1Pressed;
     private bool Nr2Pressed;
     private bool Nr3Pressed;
-
-
-    private void Awake()
-    {
-        //material = transform.Find("MainCharacter").GetComponent<SpriteRenderer>().material;
-        // materialTintColor = new Color(1, 0, 0, 0);
-        
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +37,7 @@ public class PlayerController : MonoBehaviour
         sniper = player.transform.GetChild(SNIPER_INDEX).gameObject;
         shootingScript = player.GetComponent<shooting>();
         playerPickupScript = player.GetComponent<PlayerPickupScript>();
+        playerRigidbody2D = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -77,42 +71,45 @@ public class PlayerController : MonoBehaviour
             Nr2Pressed = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            Nr3Pressed = true;
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Nr3Pressed = true;
         }
-        else
-        {
-            Nr3Pressed = false;
+        else
+        {
+            Nr3Pressed = false;
         }
-        chooseWeapon();
+        ChooseWeapon();
     }
 
-
-    public void Damage(Vector3 knockbackDir,float knockbackDistance, int damageAmount)
+    // Damages the player and knock it baclward. 
+    public void Damage(Vector2 thrust, int damageAmount)
     {
-        transform.position += knockbackDir * knockbackDistance;
-        //DamageFlash();
+        playerRigidbody2D.AddForce(thrust, ForceMode2D.Impulse);
         HeartsHealthVisual2.heartsHealthSystemStatic.Damage(damageAmount);
+        StartCoroutine(KnockbackTimer(playerRigidbody2D));
+       
     }
-
-    public Vector3 GetPosition()
+    // A timer for how long the player should be knocked back when taking damage.
+    private IEnumerator KnockbackTimer(Rigidbody2D thisRigidbody2D)
     {
-        return transform.position;
+        canMove = false;
+        yield return new WaitForSeconds(knockbackTime);
+        thisRigidbody2D.velocity = Vector2.zero;
+        canMove = true;
+
+    }
+    // Returns the players position
+    public Vector3 GetPosition()
+    {
+        return transform.position;
     }
 
+    // Heals the player
     public void Heal(int damageAmount)
     {
         HeartsHealthVisual2.heartsHealthSystemStatic.Heal(damageAmount);
     }
-   /*
-    private void DamageFlash()
-    {
-        materialTintColor = new Color(1, 0, 0, 1f);
-        material.SetColor("_Tint", materialTintColor);
-    }
-
-    */
 
     public void AddMoney()
     {
@@ -120,7 +117,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void chooseWeapon()
+    private void ChooseWeapon()
     {
         if (Nr1Pressed && playerPickupScript.hasPistol())
         {
@@ -139,17 +136,17 @@ public class PlayerController : MonoBehaviour
             shootingScript.setGun(shotgun);
         }
 
-        if(Nr3Pressed && playerPickupScript.hasSniper())
-        {
+        if(Nr3Pressed && playerPickupScript.hasSniper())
+        {
             pistol.SetActive(false);
             shotgun.SetActive(false);
             sniper.SetActive(true);
-            shootingScript.setGun(sniper);
-            
+            shootingScript.setGun(sniper);
+            
         }
     }
 
-    public void rotateGun(string direction)
+    public void RotateGun(string direction)
     {
         if (playerPickupScript.hasGun())
         {
@@ -186,5 +183,10 @@ public class PlayerController : MonoBehaviour
         }
         
     }
-    
+
+    public bool CanMove()
+    {
+        return canMove;
+    }
+    
 }

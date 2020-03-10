@@ -36,15 +36,16 @@ public class shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        FirePointLocation();
-        if (Input.GetKeyDown(KeyCode.E))
+        /*
+        if (Input.GetKeyDown(KeyCode.L))
         {
             Shoot(weaponName);
         }
+        */
 
     }
 
-    private void Shoot(string weapon)
+    public void Shoot(string weapon)
     {
         GameObject bullet;
         Rigidbody2D rb;
@@ -146,6 +147,11 @@ public class shooting : MonoBehaviour
     public GameObject getGun()
     {
         return gun;
+    }
+
+    public string getWeaponName()
+    {
+        return weaponName;
     }
 }
   

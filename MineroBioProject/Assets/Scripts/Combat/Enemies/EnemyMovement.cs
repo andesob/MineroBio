@@ -13,12 +13,16 @@ public class EnemyMovement : MonoBehaviour
 
     private Vector2 playerDirection;
     private Vector2 spawnDirection;
+    private Rigidbody2D thisRigidbody2D;
+    private bool canMove = true;
 
     public Vector3 startPosition;
+    public float knockbacktime;
 
     private void Awake()
     {
         startPosition = transform.position;
+        thisRigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     // Start is called before the first frame update
@@ -63,8 +67,7 @@ public class EnemyMovement : MonoBehaviour
     // Sets the direction for this object to move towards.
     private void SetPlayerDirection()
     {
-        Vector3 direction = follewedPlayer.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Vector3 direction = mainCharacter.position - transform.position;
         direction.Normalize();
         playerDirection = direction;
     }
@@ -73,7 +76,6 @@ public class EnemyMovement : MonoBehaviour
     private void SetSpawnDirection()
     {
         Vector3 direction = startPosition - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         direction.Normalize();
         spawnDirection = direction;
     }
@@ -81,7 +83,7 @@ public class EnemyMovement : MonoBehaviour
     //Returns the main characters position
     public Vector3 GetPlayerPosition()
     {
-        return follewedPlayer.position;
+        return mainCharacter.position;
     }
   
     // Ignores the collision with the main character. 
@@ -91,6 +93,28 @@ public class EnemyMovement : MonoBehaviour
         {
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
         }
+    }
+
+    //Knoks the enemy back. 
+    public void Knockback(Vector2 difference)
+    {
+         thisRigidbody2D.AddForce(difference, ForceMode2D.Impulse);
+         StartCoroutine(KnockbackTimer(thisRigidbody2D));
+     } 
+
+    //Sets the time for how long the enemy rigidbody should move
+    private IEnumerator KnockbackTimer(Rigidbody2D thisRigidbody2D)
+    {
+        canMove = false;
+        yield return new WaitForSeconds(knockbacktime);
+        thisRigidbody2D.velocity = Vector2.zero;
+        canMove = true;
+        
+    }
+    // Returns canMove
+    public bool CanMove()
+    {
+        return canMove;
     }
 }
 
