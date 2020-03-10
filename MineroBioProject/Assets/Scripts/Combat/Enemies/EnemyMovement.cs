@@ -46,6 +46,14 @@ public class EnemyMovement : MonoBehaviour
     public void MoveEnemyAfterPlayer()
     {
         rb.MovePosition((Vector2)transform.position + (playerDirection * movementSpeed * Time.deltaTime));
+        if (this.gameObject.transform.position.x > follewedPlayer.transform.position.x + 0.1f)
+        {
+            this.gameObject.transform.rotation = Quaternion.Euler(0.0f, 180f, 0.0f);
+        }
+        else
+        {
+            this.gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        }
     }
     public void MoveEnemyTowardSpawn()
     {
