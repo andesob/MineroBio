@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7679377009750660568}
   - component: {fileID: 7679377009750660567}
   - component: {fileID: 3821453220393233267}
-  - component: {fileID: 2059461122407948468}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -123,20 +122,6 @@ MonoBehaviour:
   inventoryButton: {fileID: 3821453219048962214}
   quitButton: {fileID: 3821453218485140844}
   settingsButton: {fileID: 3821453219973786235}
---- !u!114 &2059461122407948468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7679377009750660566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e6e55bce0d36f144a098a97dccbf0df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isFull: 0000000000000000
-  itemSlots: []
 --- !u!1001 &4640740576694713659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -378,6 +363,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -365
+      objectReference: {fileID: 0}
+    - target: {fileID: 2764387923977108285, guid: e728c812c146f9e499fd4912648b2fa8,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2764387923977108285, guid: e728c812c146f9e499fd4912648b2fa8,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2764387923977108285, guid: e728c812c146f9e499fd4912648b2fa8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3920909953790122424, guid: e728c812c146f9e499fd4912648b2fa8,
         type: 3}

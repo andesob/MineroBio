@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerAttackSystem : MonoBehaviour
 {
-    public GameObject RightPunch;
-    public GameObject LeftPunch;
-    public GameObject OverheadPunch;
-    public GameObject Kick;
-    public float MeleeAttackTimout;
-    public float meleeAttackTime;
+    private GameObject RightPunch;
+    private GameObject LeftPunch;
+    private GameObject OverheadPunch;
+    private GameObject Kick;
+    private float MeleeAttackTimout = 1f;
+    private float meleeAttackTime = 0.5f;
     public Animator anim;
 
     private PlayerMovement playerMovement;
@@ -31,6 +31,26 @@ public class PlayerAttackSystem : MonoBehaviour
     {
         playerMovement = this.gameObject.GetComponent<PlayerMovement>();
         shootingScript = this.gameObject.GetComponent<shooting>();
+        foreach(Transform child in transform)
+        {
+            GameObject kid = child.gameObject;
+            if(kid.name == "RightPunch")
+            {
+                RightPunch = kid;
+            }
+            if (kid.name == "LeftPunch")
+            {
+                LeftPunch = kid;
+            }
+            if (kid.name == "UpPunch")
+            {
+                OverheadPunch = kid;
+            }
+            if (kid.name == "DownKick")
+            {
+                Kick = kid;
+            }
+        }
         state = State.WaitingForInput;
         SetWeapon();
         
@@ -59,7 +79,7 @@ public class PlayerAttackSystem : MonoBehaviour
 
     private void SetWeapon()
     {
-        weaponName = shootingScript.getWeaponName();
+        weaponName = shootingScript.GetWeaponName();
     }
     //Sets the attack direction based on mouseclick. 
     private void SetAttackDirection()

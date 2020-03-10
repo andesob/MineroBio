@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     public GameObject tip;
 
     private float time;
+    private int PISTOL_DAMAGE = 50;
 
     void Start()
     {
@@ -38,28 +39,7 @@ public class Bullet : MonoBehaviour
 
         if (!collision.gameObject.CompareTag("Player") && Time.time > time)
         {
-            time = Time.time + 1;
-            //ContactPoint2D contact = collision.contacts[0];
-            //Quaternion rot = Quaternion.FromToRotation(Vector2.up, contact.normal);
-            //Vector2 pos = contact.point;
-            Vector2 pos = tip.transform.position;
-            Quaternion rot = tip.transform.rotation;
-
-            if (hitPrefab != null)
-            {
-                var hitVFX = Instantiate(hitPrefab, pos, rot);
-                var psHit = hitVFX.GetComponent<ParticleSystem>();
-                if (psHit != null)
-                {
-                    Destroy(hitVFX, psHit.main.duration);
-                }
-                else
-                {
-                    var psChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
-                    Destroy(hitVFX, psChild.main.duration);
-                }
-            }
-            Destroy(gameObject);
+            BulletHit(collision.gameObject);
         }
     }
 
@@ -68,25 +48,35 @@ public class Bullet : MonoBehaviour
 
         if (!collision.CompareTag("Player") && Time.time > time)
         {
-
-            time = Time.time + 1;
-            Vector2 pos = tip.transform.position;
-            Quaternion rot = Quaternion.Euler(tip.transform.rotation.x, tip.transform.rotation.y, tip.transform.rotation.z + 90f);
-
-            if (hitPrefab != null)
-            {
-                var hitVFX = Instantiate(hitPrefab, pos, rot);
-                var psHit = hitVFX.GetComponent<ParticleSystem>();
-                if (psHit != null)
-                {
-                    Destroy(hitVFX, psHit.main.duration);
-                }
-                {
-                    var psChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
-                    Destroy(hitVFX, psChild.main.duration);
-                }
-            }
-            Destroy(gameObject);
+            BulletHit(collision.gameObject);
         }
+    }
+
+    private void BulletHit(GameObject collision)
+    {
+        time = Time.time + 1;
+        Vector2 pos = tip.transform.position;
+        Quaternion rot = Quaternion.Euler(tip.transform.rotation.x, tip.transform.rotation.y, tip.transform.rotation.z + 90f);
+
+        if (hitPrefab != null)
+        {
+            var hitVFX = Instantiate(hitPrefab, pos, rot);
+            var psHit = hitVFX.GetComponent<ParticleSystem>();
+            if (psHit != null)
+            {
+                Destroy(hitVFX, psHit.main.duration);
+            }
+            {
+                var psChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
+                Destroy(hitVFX, psChild.main.duration);
+            }
+        }
+
+        if (collision.CompareTag("Enemy"))
+        {
+            collision.GetComponent<EnemyAi>().TakeDamage(PISTOL_DAMAGE);
+        }
+
+        Destroy(gameObject);
     }
 }

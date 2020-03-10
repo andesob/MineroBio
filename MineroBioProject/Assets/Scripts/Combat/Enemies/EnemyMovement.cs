@@ -67,7 +67,7 @@ public class EnemyMovement : MonoBehaviour
     // Sets the direction for this object to move towards.
     private void SetPlayerDirection()
     {
-        Vector3 direction = mainCharacter.position - transform.position;
+        Vector3 direction = follewedPlayer.position - transform.position;
         direction.Normalize();
         playerDirection = direction;
     }
@@ -83,7 +83,7 @@ public class EnemyMovement : MonoBehaviour
     //Returns the main characters position
     public Vector3 GetPlayerPosition()
     {
-        return mainCharacter.position;
+        return follewedPlayer.position;
     }
   
     // Ignores the collision with the main character. 

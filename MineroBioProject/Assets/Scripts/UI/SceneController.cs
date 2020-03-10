@@ -9,7 +9,7 @@ public class SceneController : MonoBehaviour
     public static string prevScene = "";
     public static string currentScene = "";
 
-    [SerializeField] private GameObject player;
+    private GameObject player;
 
     void Start()
     {

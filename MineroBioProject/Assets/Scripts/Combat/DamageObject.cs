@@ -20,7 +20,7 @@ public class DamageObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.CompareTag("Player") && collider.isTrigger)
+        if (collider.gameObject.CompareTag("Player") && collider.isTrigger && canDamage)
         {
             PlayerController player = collider.GetComponent<PlayerController>();
             if (player != null)
@@ -30,7 +30,6 @@ public class DamageObject : MonoBehaviour
 
                 player.Damage(thrust, damageAmount);
                 StartCoroutine(damageTimer(damageTimeout));
-
             }
         }
     }

@@ -16,7 +16,7 @@ public class EnemyAi : MonoBehaviour
     private EnemyMovement enemyMovement;
     private DamageObject damageObject;
     private Vector3 startPosition;
-    public State state;
+    private State state;
     private bool canTakeDamage = true;
 
     public float maximumDistance;
@@ -25,6 +25,8 @@ public class EnemyAi : MonoBehaviour
     public HealthBar healthBar;
     public float knockbackDistance;
     public float knockbackTime;
+
+    private int MELEE_DAMAGE = 25;
 
 
     void Awake()
@@ -84,22 +86,15 @@ public class EnemyAi : MonoBehaviour
         string colliderTag = collider.gameObject.tag;
         if (colliderTag == "Melee" && canTakeDamage)
         {
-
             Vector2 difference = thisRigidbody2D.transform.position - collider.transform.position;
             difference = difference.normalized * knockbackDistance;
 
             enemyMovement.Knockback(difference);
 
-            healthBar.healthSystem.Damage(25);
+            TakeDamage(MELEE_DAMAGE);
             StartCoroutine(DamageTimeout(damageTimeout));
         }
-        else if (colliderTag == "Bullet")
-        {
-            healthBar.healthSystem.Damage(damageFromPistol);
-        }
         CheckIfDead();
-
-
     }
     private void CheckIfDead()
     {
@@ -115,6 +110,11 @@ public class EnemyAi : MonoBehaviour
         yield return new WaitForSeconds(timeout);
         canTakeDamage = true;
         state = State.chase;
+    }
+
+    public void TakeDamage(int dmgAmount)
+    {
+        healthBar.healthSystem.Damage(dmgAmount);
     }
 
 }

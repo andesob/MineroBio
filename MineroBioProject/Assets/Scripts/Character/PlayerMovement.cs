@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed;
-    public float dashSpeed;
-    public float dashTime;
-    public float dashWaitTime;
+    private float moveSpeed = 0.1f;
+    private float dashSpeed = 0.4f;
+    private float dashTime = 0.07f;
+    private float dashWaitTime = 1f;
 
     private string lastDirection;
 
@@ -23,18 +23,23 @@ public class PlayerMovement : MonoBehaviour
     private bool sPressed;
   
 
-    public Rigidbody2D rb;
-    public Animator anim;
-    public Animator gunAnimation;
-    public shooting shootingScript;
-    public GameObject gun;
+    private Rigidbody2D rb;
+    private GameObject player;
+    private Animator anim;
+    private shooting shootingScript;
     private PlayerController playerController;
+
+    public Animator gunAnimation;
 
     Vector2 movement;
 
 
     private void Start()
     {
+        player = this.gameObject;
+        rb = player.GetComponent<Rigidbody2D>();
+        shootingScript = player.GetComponent<shooting>();
+        anim = player.GetComponent<Animator>();
         canDash = true;
         lastDirection = "S";
         playerController = this.gameObject.GetComponent<PlayerController>();
@@ -154,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
                 anim.Play("up_walk");
                 lastDirection = "W";
                 isMoving = true;
-                if (shootingScript.getGun() != null && shootingScript.getGun().name == "Sniper")
+                if (shootingScript.GetGun() != null && shootingScript.GetGun().name == "Sniper")
                 {
                     gunAnimation.Play("ChangeDirectionX");
                 }
@@ -165,7 +170,7 @@ public class PlayerMovement : MonoBehaviour
                 anim.Play("down_walk");
                 lastDirection = "S";
                 isMoving = true;
-                if (shootingScript.getGun() != null && shootingScript.getGun().name == "Sniper")
+                if (shootingScript.GetGun() != null && shootingScript.GetGun().name == "Sniper")
                 {
                     gunAnimation.Play("ChangeDirectionXDown");
                 }
@@ -176,7 +181,7 @@ public class PlayerMovement : MonoBehaviour
                 anim.Play("left_walk");
                 lastDirection = "A";
                 isMoving = true;
-                if (shootingScript.getGun() != null && shootingScript.getGun().name == "Sniper")
+                if (shootingScript.GetGun() != null && shootingScript.GetGun().name == "Sniper")
                 {
                     gunAnimation.Play("ChangeDirectionYLeft");
                 }
@@ -187,7 +192,7 @@ public class PlayerMovement : MonoBehaviour
                 anim.Play("right_walk");
                 lastDirection = "D";
                 isMoving = true;
-                if (shootingScript.getGun() != null && shootingScript.getGun().name == "Sniper")
+                if (shootingScript.GetGun() != null && shootingScript.GetGun().name == "Sniper")
                 {
                     gunAnimation.Play("ChangeDirectionY");
                 }

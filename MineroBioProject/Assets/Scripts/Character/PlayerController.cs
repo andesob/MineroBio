@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private static bool isMoneyMade;
 
     private bool canMove = true;
-    public float knockbackTime;
+    private float knockbackTime;
 
     private GameObject player;
     private GameObject pistol;
@@ -90,6 +90,7 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(KnockbackTimer(playerRigidbody2D));
        
     }
+
     // A timer for how long the player should be knocked back when taking damage.
     private IEnumerator KnockbackTimer(Rigidbody2D thisRigidbody2D)
     {
@@ -124,7 +125,7 @@ public class PlayerController : MonoBehaviour
             pistol.SetActive(true);
             shotgun.SetActive(false);
             sniper.SetActive(false);
-            shootingScript.setGun(pistol);
+            shootingScript.SetGun(pistol);
             
         }
 
@@ -133,7 +134,7 @@ public class PlayerController : MonoBehaviour
             pistol.SetActive(false);
             shotgun.SetActive(true);
             sniper.SetActive(false);
-            shootingScript.setGun(shotgun);
+            shootingScript.SetGun(shotgun);
         }
 
         if(Nr3Pressed && playerPickupScript.hasSniper())
@@ -141,7 +142,7 @@ public class PlayerController : MonoBehaviour
             pistol.SetActive(false);
             shotgun.SetActive(false);
             sniper.SetActive(true);
-            shootingScript.setGun(sniper);
+            shootingScript.SetGun(sniper);
             
         }
     }
@@ -152,7 +153,7 @@ public class PlayerController : MonoBehaviour
         {
             float playerX = player.transform.position.x;
             float playerY = player.transform.position.y;
-            Transform weapon = shootingScript.getGun().transform;
+            Transform weapon = shootingScript.GetGun().transform;
           
             switch (direction)
             {

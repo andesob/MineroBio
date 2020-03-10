@@ -1,16 +1,16 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!61 &1615737010
+--- !u!61 &1415397607
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6619404283289298737}
+  m_GameObject: {fileID: 2404546218336725882}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -26,7 +26,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.99, y: 0.34}
   m_EdgeRadius: 0
---- !u!1001 &6369663231405137940
+--- !u!114 &548448016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2404546218336725882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b88ec0c81f6e104499d9de7b7ec6d0ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemImage: {fileID: 21300000, guid: 94e715890e4b4cb409c64a6cf98fe52b, type: 3}
+--- !u!1001 &2515231677095439455
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -36,7 +49,7 @@ PrefabInstance:
     - target: {fileID: 268333518791984933, guid: bc73be6a14a2e7f419b8011348c018a4,
         type: 3}
       propertyPath: m_Name
-      value: SniperPickup Variant
+      value: SniperPickup
       objectReference: {fileID: 0}
     - target: {fileID: 268333518791984933, guid: bc73be6a14a2e7f419b8011348c018a4,
         type: 3}
@@ -46,12 +59,12 @@ PrefabInstance:
     - target: {fileID: 3064769323372622205, guid: bc73be6a14a2e7f419b8011348c018a4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.818
       objectReference: {fileID: 0}
     - target: {fileID: 3064769323372622205, guid: bc73be6a14a2e7f419b8011348c018a4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.83
       objectReference: {fileID: 0}
     - target: {fileID: 3064769323372622205, guid: bc73be6a14a2e7f419b8011348c018a4,
         type: 3}
@@ -61,17 +74,17 @@ PrefabInstance:
     - target: {fileID: 3064769323372622205, guid: bc73be6a14a2e7f419b8011348c018a4,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3064769323372622205, guid: bc73be6a14a2e7f419b8011348c018a4,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3064769323372622205, guid: bc73be6a14a2e7f419b8011348c018a4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3064769323372622205, guid: bc73be6a14a2e7f419b8011348c018a4,
         type: 3}
@@ -103,9 +116,9 @@ PrefabInstance:
     - {fileID: 191314391670373646, guid: bc73be6a14a2e7f419b8011348c018a4, type: 3}
     - {fileID: -942476558220855050, guid: bc73be6a14a2e7f419b8011348c018a4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bc73be6a14a2e7f419b8011348c018a4, type: 3}
---- !u!1 &6619404283289298737 stripped
+--- !u!1 &2404546218336725882 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 268333518791984933, guid: bc73be6a14a2e7f419b8011348c018a4,
     type: 3}
-  m_PrefabInstance: {fileID: 6369663231405137940}
+  m_PrefabInstance: {fileID: 2515231677095439455}
   m_PrefabAsset: {fileID: 0}

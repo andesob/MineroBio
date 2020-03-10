@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerPickupScript : MonoBehaviour
 {
-    private const int PISTOL_INDEX = 1;
-    private const int SHOTGUN_INDEX = 2;
-    private const int SNIPER_INDEX = 3;
+    private const int PISTOL_INDEX = 0;
+    private const int SHOTGUN_INDEX = 1;
+    private const int SNIPER_INDEX = 2;
 
     //public Transform gun;
     //private bool gunPickedUp;
@@ -23,9 +23,10 @@ public class PlayerPickupScript : MonoBehaviour
     private void Start()
     {
         shootingScript = this.gameObject.GetComponent<shooting>();
-        pistol = this.gameObject.transform.GetChild(PISTOL_INDEX).gameObject;
-        shotgun = this.gameObject.transform.GetChild(SHOTGUN_INDEX).gameObject;
-        sniper = this.gameObject.transform.GetChild(SNIPER_INDEX).gameObject;
+        GameObject weapons = this.gameObject.transform.GetChild(0).gameObject;
+        pistol = weapons.transform.GetChild(PISTOL_INDEX).gameObject;
+        shotgun = weapons.transform.GetChild(SHOTGUN_INDEX).gameObject;
+        sniper = weapons.transform.GetChild(SNIPER_INDEX).gameObject;
     }
 
     public void PickUpWeapon(string weaponName)
@@ -37,7 +38,7 @@ public class PlayerPickupScript : MonoBehaviour
                 shotgun.SetActive(false);
                 sniper.SetActive(false);
                 pistolPickedUp = true;
-                shootingScript.setGun(pistol);
+                shootingScript.SetGun(pistol);
                 
                 
                 break;
@@ -47,7 +48,7 @@ public class PlayerPickupScript : MonoBehaviour
                 pistol.SetActive(false);
                 sniper.SetActive(false);
                 shotgunPickedUp = true;
-                shootingScript.setGun(shotgun);
+                shootingScript.SetGun(shotgun);
                 break;
             
             case "SniperPickup":
@@ -56,11 +57,8 @@ public class PlayerPickupScript : MonoBehaviour
                 pistol.SetActive(false);
                 shotgun.SetActive(false);
                 sniperPickedUp = true;
-                shootingScript.setGun(sniper);
-                
+                shootingScript.SetGun(sniper);
                 break;
-                
-
         }
         
     }
@@ -93,7 +91,6 @@ public class PlayerPickupScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Weapon"))
         {
-            //collision.gameObject.SetActive(false);
             PickUpWeapon(collision.gameObject.name);
         }
     }
