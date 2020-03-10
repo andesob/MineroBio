@@ -17,13 +17,13 @@ public class PlayerAttackSystem : MonoBehaviour
 
     private bool canMeeleAttack = true;
 
-    private enum State {
+    private enum State
+    {
         WaitingForInput,
         MeleeAttacking,
         Shooting,
     }
     private State state;
-    private string weaponName;
 
 
     // Start is called before the first frame update
@@ -31,10 +31,10 @@ public class PlayerAttackSystem : MonoBehaviour
     {
         playerMovement = this.gameObject.GetComponent<PlayerMovement>();
         shootingScript = this.gameObject.GetComponent<shooting>();
-        foreach(Transform child in transform)
+        foreach (Transform child in transform)
         {
             GameObject kid = child.gameObject;
-            if(kid.name == "RightPunch")
+            if (kid.name == "RightPunch")
             {
                 RightPunch = kid;
             }
@@ -52,8 +52,7 @@ public class PlayerAttackSystem : MonoBehaviour
             }
         }
         state = State.WaitingForInput;
-        SetWeapon();
-        
+
     }
 
     // Update is called once per frame
@@ -77,10 +76,6 @@ public class PlayerAttackSystem : MonoBehaviour
         }
     }
 
-    private void SetWeapon()
-    {
-        weaponName = shootingScript.GetWeaponName();
-    }
     //Sets the attack direction based on mouseclick. 
     private void SetAttackDirection()
     {
@@ -89,14 +84,14 @@ public class PlayerAttackSystem : MonoBehaviour
         {
             if (lastDirection == "D")
             {
-                StartCoroutine(SetAttackTimer(RightPunch));  
+                StartCoroutine(SetAttackTimer(RightPunch));
             }
             if (lastDirection == "A")
             {
                 StartCoroutine(SetAttackTimer(LeftPunch));
             }
             if (lastDirection == "W")
-            {      
+            {
                 StartCoroutine(SetAttackTimer(OverheadPunch));
             }
             if (lastDirection == "S")
@@ -109,18 +104,15 @@ public class PlayerAttackSystem : MonoBehaviour
     private void getInput()
     {
         if (Input.GetKeyDown(KeyCode.J))
-            {
-                SetAttackDirection();
-            }
+        {
+            SetAttackDirection();
+        }
         if (Input.GetKeyDown(KeyCode.K))
-            {
-            SetWeapon();
-            Debug.Log("Shooting" + weaponName);
-            shootingScript.Shoot(weaponName);
-            }
-
-
+        {
+            shootingScript.Shoot();
+        }
     }
+
     // sets the melee hitbox active, and puts the character into the attacking state. 
     private IEnumerator SetAttackTimer(GameObject attackSide)
     {
@@ -132,7 +124,7 @@ public class PlayerAttackSystem : MonoBehaviour
         state = State.WaitingForInput;
 
         // TODO not sure if work as itended. Need to change this. 
-       // Timer(canMeeleAttack, MeleeAttackTimout);
+        // Timer(canMeeleAttack, MeleeAttackTimout);
     }
     /*
     private IEnumerator SetShootingStateTimer(float ShootingTimout)

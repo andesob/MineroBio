@@ -19,9 +19,11 @@ public class PlayerPickupScript : MonoBehaviour
     private GameObject sniper;
 
     private shooting shootingScript;
+    private PlayerController playerControllerScript;
 
     private void Start()
     {
+        playerControllerScript = this.gameObject.GetComponent<PlayerController>();
         shootingScript = this.gameObject.GetComponent<shooting>();
         GameObject weapons = this.gameObject.transform.GetChild(0).gameObject;
         pistol = weapons.transform.GetChild(PISTOL_INDEX).gameObject;
@@ -34,30 +36,21 @@ public class PlayerPickupScript : MonoBehaviour
         switch (weaponName)
         {
             case "PistolPickup":
-                pistol.SetActive(true);
-                shotgun.SetActive(false);
-                sniper.SetActive(false);
                 pistolPickedUp = true;
                 shootingScript.SetGun(pistol);
-                
-                
+                playerControllerScript.AddWeapon(pistol);
                 break;
 
             case "ShotgunPickup":
-                shotgun.SetActive(true);
-                pistol.SetActive(false);
-                sniper.SetActive(false);
                 shotgunPickedUp = true;
                 shootingScript.SetGun(shotgun);
+                playerControllerScript.AddWeapon(shotgun);
                 break;
             
             case "SniperPickup":
-                sniper.SetActive(true);
-                Debug.Log(sniper.name);
-                pistol.SetActive(false);
-                shotgun.SetActive(false);
                 sniperPickedUp = true;
                 shootingScript.SetGun(sniper);
+                playerControllerScript.AddWeapon(sniper);
                 break;
         }
         
@@ -78,9 +71,9 @@ public class PlayerPickupScript : MonoBehaviour
         return sniperPickedUp;
     }
 
-    public bool hasGun()
+    public bool hasWeapon()
     {
-        if(shotgunPickedUp || pistolPickedUp)
+        if(shotgunPickedUp || pistolPickedUp || sniperPickedUp)
         {
             return true;
         }
@@ -92,6 +85,10 @@ public class PlayerPickupScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Weapon"))
         {
             PickUpWeapon(collision.gameObject.name);
+        }
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            MoneySystem.AddMoney(1);
         }
     }
 }

@@ -27,7 +27,6 @@ public class SceneController : MonoBehaviour
     }
 
 
-
     public void LoadScene(string sceneName)
     {
         prevScene = currentScene;

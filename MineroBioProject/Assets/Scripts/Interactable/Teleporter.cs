@@ -5,26 +5,24 @@ using UnityEngine;
 public class Teleporter : MonoBehaviour
 {
 
-    public GameObject Player;
-    public GameObject Portal;
-    public GameObject Destination;
-    public bool allowTeleport = true;
+    private GameObject Player;
+    public GameObject otherTeleporter;
+    public GameObject otherDestination;
+    private bool allowTeleport;
 
     private void Awake() 
     {
+        Player = GameObject.FindGameObjectWithTag("Player");
         allowTeleport = true;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("Collission detected");
         if (collision.gameObject.CompareTag("Player"))
         {
             if (allowTeleport)
             {
-                
                 StartCoroutine(Teleport());
             }
-
         }
     }
 
@@ -33,12 +31,12 @@ public class Teleporter : MonoBehaviour
         //Gets components needed
         DissolveEffect dissolveEffect = Player.GetComponent<DissolveEffect>();
         PlayerMovement playerMovement = Player.GetComponent<PlayerMovement>();
-        Teleporter teleport = Portal.GetComponent<Teleporter>();
+        Teleporter teleport = otherTeleporter.GetComponent<Teleporter>();
         dissolveEffect.StartDissolve(2f);
         yield return new WaitForSeconds(1f);
 
         PlayerController.isGamePaused = true;
-        Player.transform.position = new Vector2(Destination.transform.position.x, Destination.transform.position.y);
+        Player.transform.position = new Vector2(otherDestination.transform.position.x, otherDestination.transform.position.y);
         teleport.allowTeleport = false;
         dissolveEffect.StopDissolve(2f);
 

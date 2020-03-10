@@ -550,7 +550,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 613d7691e41b32a4593771b51c1b1c64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunAnimation: {fileID: 6042317712071878198}
 --- !u!114 &3694447144780723439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -604,6 +603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11cc218c4259ef648bb37fa4b95efaf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunAnimation: {fileID: 6042317712071878198}
 --- !u!114 &5057702261771830484
 MonoBehaviour:
   m_ObjectHideFlags: 0

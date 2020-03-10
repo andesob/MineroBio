@@ -5,7 +5,7 @@ using UnityEngine;
 public class shooting : MonoBehaviour
 {
     private PlayerMovement playerMovement;
-    private PlayerPickupScript playerPickupScript;
+    private PlayerController playerController;
 
     private Transform firePoint; //where the bullet is going to shoot from
 
@@ -28,6 +28,7 @@ public class shooting : MonoBehaviour
     {
         player = this.gameObject;
         playerMovement = player.GetComponent<PlayerMovement>();
+        playerController = player.GetComponent<PlayerController>();
         firePoint = player.transform.GetChild(1);
         bulletPrefab = vfx[0];
         sniperBulletPrefab = vfx[1];
@@ -37,13 +38,13 @@ public class shooting : MonoBehaviour
         }
     }
 
-    public void Shoot(string weapon)
+    public void Shoot()
     {
         GameObject bullet;
         Rigidbody2D rb;
         FirePointLocation();
 
-        switch (weapon)
+        switch (weaponName)
         {
 
             case "Pistol":
@@ -75,8 +76,8 @@ public class shooting : MonoBehaviour
 
     private void FirePointLocation()
     {
-        float playerX = player.transform.position.x;
-        float playerY = player.transform.position.y;
+        float playerX = playerController.GetPosition().x;
+        float playerY = playerController.GetPosition().y;
         switch (playerMovement.GetLastDirection())
         {
 
@@ -155,4 +156,3 @@ public class shooting : MonoBehaviour
         return vfx;
     }
 }
-
