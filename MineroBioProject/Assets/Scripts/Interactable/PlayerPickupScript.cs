@@ -93,7 +93,7 @@ public class PlayerPickupScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Weapon"))
         {
-            collision.gameObject.SetActive(false);
+            //collision.gameObject.SetActive(false);
             PickUpWeapon(collision.gameObject.name);
         }
     }
