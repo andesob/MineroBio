@@ -10,12 +10,12 @@ public class HeartsHealthVisual2 : MonoBehaviour
 
     public static HeartsHealthSystem heartsHealthSystemStatic;
 
-    [SerializeField] private Sprite heart0Sprite;
-    [SerializeField] private Sprite heart1Sprite;
-    [SerializeField] private Sprite heart2Sprite;
-    [SerializeField] private Sprite heart3Sprite;
-    [SerializeField] private Sprite heart4Sprite;
-    [SerializeField] GameObject DeathUI;
+    public Sprite heart0Sprite;
+    public Sprite heart1Sprite;
+    public Sprite heart2Sprite;
+    public Sprite heart3Sprite;
+    public Sprite heart4Sprite;
+    public GameObject DeathUI;
     //[SerializeField] GameObject player;
 
     private List<HeartImage> heartImageList;

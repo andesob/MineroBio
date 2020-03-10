@@ -36,17 +36,18 @@ public class shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        FirePointLocation();
-        if (Input.GetKeyDown(KeyCode.E))
+        /*
+        if (Input.GetKeyDown(KeyCode.L))
         {
             Shoot(weaponName);
         }
+        */
 
     }
 
-    private void Shoot(string weapon)
+    public void Shoot(string weapon)
     {
-        
+        FirePointLocation();
         switch (weapon)
         {
             case "Pistol":

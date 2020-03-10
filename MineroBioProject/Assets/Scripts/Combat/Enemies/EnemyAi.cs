@@ -12,20 +12,26 @@ public class EnemyAi : MonoBehaviour
     }
 
     private GameObject thisEnemy;
+    private Rigidbody2D thisRigidbody2D;
     private EnemyMovement enemyMovement;
+    private DamageObject damageObject;
     private Vector3 startPosition;
-    private State state;
+    public State state;
+    private bool canTakeDamage = true;
 
     public float maximumDistance;
     public int damageFromPistol;
     public float damageTimeout;
     public HealthBar healthBar;
     public float knockbackDistance;
-  
+    public float knockbackTime;
+
 
     void Awake()
     {
         enemyMovement = GetComponent<EnemyMovement>();
+        thisRigidbody2D = GetComponent<Rigidbody2D>();
+        damageObject = GetComponent<DamageObject>();
         state = State.Roaming;
         startPosition = transform.position;
         thisEnemy = gameObject;
@@ -37,63 +43,78 @@ public class EnemyAi : MonoBehaviour
             // The player stays in its starting area
             // TODO get a movement when it stays static.
             case State.Roaming:
-                if (Vector3.Distance(startPosition, enemyMovement.GetPlayerPosition()) < maximumDistance)
+                if (Vector3.Distance(startPosition, enemyMovement.GetPlayerPosition()) < maximumDistance && enemyMovement.CanMove())
                 {
                     state = State.chase;
                 }
                 break;
             // This state is made to chase after the main character. Will change when this object reaches the maximum distance. 
             case State.chase:
-                enemyMovement.MoveEnemyAfterPlayer();
+                if (enemyMovement.CanMove() && damageObject.CanDamage())
+                {
+                    enemyMovement.MoveEnemyAfterPlayer();
+                }
                 if (Vector3.Distance(transform.position, enemyMovement.startPosition) > maximumDistance)
                 {
                     state = State.GoingBackToStart;
                 }
                 break;
 
-            // This state moves this object back towards the spawning point of the object. 
+            // This state moves the enemy back towards the spawning point of the object. 
             case State.GoingBackToStart:
-                enemyMovement.MoveEnemyTowardSpawn();
+                if (enemyMovement.CanMove())
+                {
+                    enemyMovement.MoveEnemyTowardSpawn();
+                }
                 if (Vector3.Distance(startPosition, enemyMovement.GetPlayerPosition()) < maximumDistance)
                 {
                     state = State.chase;
-                }   
+                }
                 if (Vector3.Distance(transform.position, startPosition) < 1f)
                 {
                     state = State.Roaming;
                 }
                 break;
         }
-
     }
 
-
+    //TODO add the tags for the other weapons, and implement different knockback and damageTimout for each weapon. 
     private void OnTriggerEnter2D(Collider2D collider)
     {
         string colliderTag = collider.gameObject.tag;
-            if (colliderTag == "Melee")
-            {
+        if (colliderTag == "Melee" && canTakeDamage)
+        {
 
-            //Other.rigidbody.AddForce(bulletDir.normalized * force);
-            // enemyMovement.Knockback(bulletDir, knockbackDistance);
+            Vector2 difference = thisRigidbody2D.transform.position - collider.transform.position;
+            difference = difference.normalized * knockbackDistance;
+
+            enemyMovement.Knockback(difference);
 
             healthBar.healthSystem.Damage(25);
-          
-            }
-            else if(colliderTag == "Bullet")
-            {
-                healthBar.healthSystem.Damage(damageFromPistol);
-            }
-        checkIfDead();
+            StartCoroutine(DamageTimeout(damageTimeout));
+        }
+        else if (colliderTag == "Bullet")
+        {
+            healthBar.healthSystem.Damage(damageFromPistol);
+        }
+        CheckIfDead();
 
-           
+
     }
-    private void checkIfDead()
+    private void CheckIfDead()
     {
         if (healthBar.healthSystem.getHealth() <= 0)
         {
             Destroy(thisEnemy);
         }
+    }
+
+    private IEnumerator DamageTimeout(float timeout)
+    {
+        canTakeDamage = false;
+        yield return new WaitForSeconds(timeout);
+        canTakeDamage = true;
+        state = State.chase;
     }
 
 }

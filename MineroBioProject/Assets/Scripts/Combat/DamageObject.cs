@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class DamageObject : MonoBehaviour
 {
-    public float damageTimeout = 1f;
-    private bool canTakeDamage = true;
+    public float damageTimeout;
+    public float knockbackDistance;
+
+    private bool canDamage = true;
 
     [SerializeField] private int damageAmount;
 
@@ -14,26 +16,35 @@ public class DamageObject : MonoBehaviour
     {
         damageAmount = 1;
     }
+
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
-
-        if (canTakeDamage)
+        if (collider.gameObject.CompareTag("Player") && collider.isTrigger)
         {
             PlayerController player = collider.GetComponent<PlayerController>();
             if (player != null)
             {
-                Vector3 knockbackDir = (player.GetPosition() - transform.position).normalized;
-                player.Damage(knockbackDir, 0.6f, damageAmount);
-                StartCoroutine(damageTimer());
+                Vector2 direction = collider.transform.position - transform.position;
+                Vector2 thrust = direction.normalized * knockbackDistance;
+
+                player.Damage(thrust, damageAmount);
+                StartCoroutine(damageTimer(damageTimeout));
+
             }
         }
     }
 
     // A method that returns false until the time has run out. Then returns true.
-    private IEnumerator damageTimer()
+    private IEnumerator damageTimer(float timeout)
+    {    
+        canDamage = false;
+        yield return new WaitForSeconds(timeout);
+        canDamage = true;
+    }
+
+    public bool CanDamage()
     {
-        canTakeDamage = false;
-        yield return new WaitForSeconds(damageTimeout);
-        canTakeDamage = true;
+        return canDamage;
     }
 }

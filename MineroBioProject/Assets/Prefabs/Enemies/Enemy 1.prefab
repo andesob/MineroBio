@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 3524216425003036403}
   - component: {fileID: 3524216425003036409}
   - component: {fileID: 3524216425003036412}
-  - component: {fileID: 3524216425003036415}
   - component: {fileID: 3524216425003036414}
   m_Layer: 0
   m_Name: Enemy 1
@@ -156,11 +155,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886791933aa4f472bbf3a7a3f41abc4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
   maximumDistance: 10
   damageFromPistol: 5
-  damageTimeout: 0
+  damageTimeout: 0.6
   healthBar: {fileID: 6859703654994869473}
   knockbackDistance: 3
+  knockbackTime: 0.2
 --- !u!114 &3524216425003036403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,7 +177,7 @@ MonoBehaviour:
   mainCharacter: {fileID: 0}
   movementSpeed: 3
   startPosition: {x: 0, y: 0, z: 0}
-  Knockbacktimout: 0
+  knockbacktime: 0.3
 --- !u!114 &3524216425003036409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +190,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89113ab64c58e734aad5e9d1a601dae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageTimeout: 1
+  damageTimeout: 0.2
+  knockbackDistance: 5
   damageAmount: 2
 --- !u!70 &3524216425003036412
 CapsuleCollider2D:
@@ -207,20 +209,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.057093505, y: -0.7396241}
   m_Size: {x: 0.75976664, y: 0.17325975}
   m_Direction: 1
---- !u!114 &3524216425003036415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3524216425003036407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89113ab64c58e734aad5e9d1a601dae6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageTimeout: 1
-  damageAmount: 1
 --- !u!70 &3524216425003036414
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

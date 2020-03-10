@@ -13,14 +13,16 @@ public class EnemyMovement : MonoBehaviour
 
     private Vector2 playerDirection;
     private Vector2 spawnDirection;
-    private bool canBeKnockedBack = true;
+    private Rigidbody2D thisRigidbody2D;
+    private bool canMove = true;
 
     public Vector3 startPosition;
-    public float Knockbacktimout;
+    public float knockbacktime;
 
     private void Awake()
     {
         startPosition = transform.position;
+        thisRigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     // Start is called before the first frame update
@@ -36,6 +38,7 @@ public class EnemyMovement : MonoBehaviour
         SetSpawnDirection();
     }
 
+    //Move the enemy after the player.
     public void MoveEnemyAfterPlayer()
     {
         rb.MovePosition((Vector2)transform.position + (playerDirection * movementSpeed * Time.deltaTime));
@@ -49,7 +52,6 @@ public class EnemyMovement : MonoBehaviour
     private void SetPlayerDirection()
     {
         Vector3 direction = mainCharacter.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         direction.Normalize();
         playerDirection = direction;
     }
@@ -58,7 +60,6 @@ public class EnemyMovement : MonoBehaviour
     private void SetSpawnDirection()
     {
         Vector3 direction = startPosition - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         direction.Normalize();
         spawnDirection = direction;
     }
@@ -78,18 +79,26 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    public void Knockback(Vector3 knockbackDir, float knockbackDistance)
+    //Knoks the enemy back. 
+    public void Knockback(Vector2 difference)
     {
-        Debug.Log("knockback called" + knockbackDir + knockbackDistance);
-        this.transform.position += knockbackDir * knockbackDistance;
-    }
+         thisRigidbody2D.AddForce(difference, ForceMode2D.Impulse);
+         StartCoroutine(KnockbackTimer(thisRigidbody2D));
+     } 
 
-    // A method that returns false until the time has run out. Then returns true.
-    private IEnumerator damageTimer()
+    //Sets the time for how long the enemy rigidbody should move
+    private IEnumerator KnockbackTimer(Rigidbody2D thisRigidbody2D)
     {
-        canBeKnockedBack = false;
-        yield return new WaitForSeconds(Knockbacktimout);
-        canBeKnockedBack = true;
+        canMove = false;
+        yield return new WaitForSeconds(knockbacktime);
+        thisRigidbody2D.velocity = Vector2.zero;
+        canMove = true;
+        
+    }
+    // Returns canMove
+    public bool CanMove()
+    {
+        return canMove;
     }
 }
 
