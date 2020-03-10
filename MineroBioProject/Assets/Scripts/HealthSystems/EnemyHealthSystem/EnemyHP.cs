@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class EnemyHP : MonoBehaviour
 {
-    public Transform pfHealthBar;
+    public HealthBar healthBar;
 
     void Start()
     {
         HealthSystem healthSystem = new HealthSystem(100);
-
-        Transform healthBarTransform = Instantiate(pfHealthBar, new Vector3(0.5f, 1), Quaternion.identity);
-        HealthBar healthBar = healthBarTransform.GetComponent<HealthBar>();
         healthBar.Setup(healthSystem);
     }
 

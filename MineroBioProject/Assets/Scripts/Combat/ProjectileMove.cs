@@ -53,14 +53,14 @@ public class ProjectileMove : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         speed = 0;
-
+        
         ContactPoint2D contact = collision.contacts[0];
         Quaternion rot = Quaternion.FromToRotation(Vector2.up, contact.normal);
         Vector2 pos = contact.point;
 
         if(hitPrefab != null)
         {
-            var hitVFX = Instantiate(hitPrefab,pos,rot);
+            var hitVFX = Instantiate(hitPrefab, pos, rot);
             var psHit = hitVFX.GetComponent<ParticleSystem>();
             if (psHit != null)
             {
@@ -73,6 +73,20 @@ public class ProjectileMove : MonoBehaviour
 
             }
         }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(collision.gameObject);
+        }
+
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }
