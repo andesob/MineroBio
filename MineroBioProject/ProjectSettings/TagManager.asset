@@ -23,6 +23,8 @@ TagManager:
   - MoneySystem
   - SceneChanger
   - Enemy
+  - Melee
+  - Coin
   layers:
   - Default
   - TransparentFX

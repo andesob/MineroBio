@@ -30,14 +30,14 @@ public class Bullet : MonoBehaviour
             {
                 var psChild = muzzleVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
                 Destroy(muzzleVFX, psChild.main.duration);
-
             }
         }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        if (!collision.gameObject.CompareTag("Player") && Time.time > time)
+        if (!(collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Melee")) && Time.time > time)
         {
             BulletHit(collision.gameObject);
         }
@@ -46,7 +46,7 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (!collision.CompareTag("Player") && Time.time > time)
+        if (!(collision.CompareTag("Player") || collision.CompareTag("Melee")) && Time.time > time)
         {
             BulletHit(collision.gameObject);
         }
