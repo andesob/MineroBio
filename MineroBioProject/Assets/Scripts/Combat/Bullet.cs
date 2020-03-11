@@ -36,7 +36,7 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        if (!collision.gameObject.CompareTag("Player") && Time.time > time)
+        if (!collision.gameObject.CompareTag("Player") && !collision.gameObject.CompareTag("Bullet") && Time.time > time)
         {
             time = Time.time + 1;
             //ContactPoint2D contact = collision.contacts[0];
@@ -66,7 +66,7 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (!collision.CompareTag("Player") && Time.time > time)
+        if (!collision.CompareTag("Player") && !collision.CompareTag("Bullet") && Time.time > time)
         {
 
             time = Time.time + 1;

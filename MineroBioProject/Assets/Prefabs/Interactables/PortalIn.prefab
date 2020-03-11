@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 156091949789765367}
   - component: {fileID: 156091949789765366}
+  - component: {fileID: 710081668}
+  - component: {fileID: 710081667}
   m_Layer: 0
   m_Name: Portal_0001_Layer-2
   m_TagString: Untagged
@@ -81,6 +83,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &710081668
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156091949789765365}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 3.9118228}
+  serializedVersion: 2
+  m_Radius: 0.7438493
+--- !u!114 &710081667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156091949789765365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d492a08ceba2cd24f8539b17caa41c7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  Portal: {fileID: 0}
+  Destination: {fileID: 0}
+  allowTeleport: 1
 --- !u!1 &156091950510541864
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,8 +126,6 @@ GameObject:
   - component: {fileID: 156091950510541866}
   - component: {fileID: 156091950510541865}
   - component: {fileID: 3088091898011745346}
-  - component: {fileID: 6940305759253281827}
-  - component: {fileID: 8875862377999135715}
   m_Layer: 0
   m_Name: PortalFix2_0000_Layer-5
   m_TagString: Untagged
@@ -300,38 +332,6 @@ PolygonCollider2D:
       - {x: -1.9101562, y: 0.15028095}
       - {x: -2.1166248, y: -0.19283772}
       - {x: -1.8800983, y: -0.09475517}
---- !u!114 &6940305759253281827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 156091950510541864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d492a08ceba2cd24f8539b17caa41c7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 7594642891346446743, guid: 9a2ae68d5fefd7642bb75c4cd2adaa82, type: 3}
-  Portal: {fileID: 0}
-  Destination: {fileID: 0}
-  allowTeleport: 1
---- !u!70 &8875862377999135715
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 156091950510541864}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.06617403, y: 1.2088666}
-  m_Size: {x: 5.0809164, y: 5.0809183}
-  m_Direction: 0
 --- !u!1 &156091951312663481
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,6 +23,7 @@ TagManager:
   - MoneySystem
   - SceneChanger
   - Enemy
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
@@ -42,7 +43,7 @@ TagManager:
   - PostProccesing
   - ForceField
   - Bullet
-  - 
+  - EnemyBullet
   - 
   - 
   - 
@@ -86,4 +87,7 @@ TagManager:
     locked: 0
   - name: ForegroundLayer
     uniqueID: 2054700959
+    locked: 0
+  - name: BulletLayer
+    uniqueID: 2020521137
     locked: 0
