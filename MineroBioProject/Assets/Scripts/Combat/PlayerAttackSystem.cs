@@ -8,8 +8,9 @@ public class PlayerAttackSystem : MonoBehaviour
     private GameObject LeftPunch;
     private GameObject OverheadPunch;
     private GameObject Kick;
-    private float MeleeAttackTimout = 1f;
+    private float meleeAttackTimeout = 1f;
     private float meleeAttackTime = 0.5f;
+    private float shootingtimeout = 1.5f;
     public Animator anim;
 
     private PlayerMovement playerMovement;
@@ -70,34 +71,7 @@ public class PlayerAttackSystem : MonoBehaviour
                 break;
 
             case State.Shooting:
-                Debug.Log("Shooting state reached");
-                //SetWeapon();
                 break;
-        }
-    }
-
-    //Sets the attack direction based on mouseclick. 
-    private void SetAttackDirection()
-    {
-        string lastDirection = playerMovement.GetLastDirection();
-        if (canMeeleAttack)
-        {
-            if (lastDirection == "D")
-            {
-                StartCoroutine(SetAttackTimer(RightPunch));
-            }
-            if (lastDirection == "A")
-            {
-                StartCoroutine(SetAttackTimer(LeftPunch));
-            }
-            if (lastDirection == "W")
-            {
-                StartCoroutine(SetAttackTimer(OverheadPunch));
-            }
-            if (lastDirection == "S")
-            {
-                StartCoroutine(SetAttackTimer(Kick));
-            }
         }
     }
 
@@ -110,28 +84,54 @@ public class PlayerAttackSystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             shootingScript.Shoot();
+            StartCoroutine(SetShootingTimer());
+        }
+    }
+
+    //Sets the attack direction based on mouseclick. 
+    private void SetAttackDirection()
+    {
+        string lastDirection = playerMovement.GetLastDirection();
+        if (canMeeleAttack)
+        {
+            if (lastDirection == "D")
+            {
+                StartCoroutine(SetMeleeAttackTimer(RightPunch));
+            }
+            if (lastDirection == "A")
+            {
+                StartCoroutine(SetMeleeAttackTimer(LeftPunch));
+            }
+            if (lastDirection == "W")
+            {
+                StartCoroutine(SetMeleeAttackTimer(OverheadPunch));
+            }
+            if (lastDirection == "S")
+            {
+                StartCoroutine(SetMeleeAttackTimer(Kick));
+            }
         }
     }
 
     // sets the melee hitbox active, and puts the character into the attacking state. 
-    private IEnumerator SetAttackTimer(GameObject attackSide)
+    private IEnumerator SetMeleeAttackTimer(GameObject attackSide)
     {
+        state = State.MeleeAttacking;
         attackSide.SetActive(true);
         canMeeleAttack = false;
         yield return new WaitForSeconds(meleeAttackTime);
         attackSide.SetActive(false);
         canMeeleAttack = true;
         state = State.WaitingForInput;
+    }
 
-        // TODO not sure if work as itended. Need to change this. 
-        // Timer(canMeeleAttack, MeleeAttackTimout);
-    }
-    /*
-    private IEnumerator SetShootingStateTimer(float ShootingTimout)
+    // put the player into the shooting state, whichs blocks other inputs while the character is shooting. 
+    private IEnumerator SetShootingTimer()
     {
+        canMeeleAttack = false;
         state = State.Shooting;
-        yield return new WaitForSeconds(ShootingTimout);
+        yield return new WaitForSeconds(meleeAttackTime);
         state = State.WaitingForInput;
+        canMeeleAttack = true;
     }
-    */
 }
