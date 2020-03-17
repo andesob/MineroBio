@@ -6,7 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
 
     // The player the enemy follows
-    private Transform follewedPlayer;
+    private Transform mainCharacter;
     public float movementSpeed;
 
     private Rigidbody2D rb;
@@ -29,9 +29,9 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        follewedPlayer = GameObject.FindGameObjectWithTag("Player").transform;
+        mainCharacter = GameObject.FindGameObjectWithTag("Player").transform;
         rb = this.GetComponent<Rigidbody2D>();
-        if (this.gameObject.transform.position.x > follewedPlayer.transform.position.x + 0.1f)
+        if (this.gameObject.transform.position.x > mainCharacter.transform.position.x + 0.1f)
         {
             this.gameObject.transform.rotation = Quaternion.Euler(0.0f, 180f, 0.0f);
         }
@@ -51,7 +51,7 @@ public class EnemyMovement : MonoBehaviour
     public void MoveEnemyAfterPlayer()
     {
         rb.MovePosition((Vector2)transform.position + (playerDirection * movementSpeed * Time.deltaTime));
-        if (this.gameObject.transform.position.x > follewedPlayer.transform.position.x + 0.1f)
+        if (this.gameObject.transform.position.x > mainCharacter.transform.position.x + 0.1f)
         {
             this.gameObject.transform.rotation = Quaternion.Euler(0.0f, 180f, 0.0f);
         }
@@ -68,7 +68,7 @@ public class EnemyMovement : MonoBehaviour
     // Sets the direction for this object to move towards.
     private void SetPlayerDirection()
     {
-        Vector3 direction = follewedPlayer.position - transform.position;
+        Vector3 direction = mainCharacter.position - transform.position;
         direction.Normalize();
         playerDirection = direction;
     }
@@ -84,7 +84,7 @@ public class EnemyMovement : MonoBehaviour
     //Returns the main characters position
     public Vector3 GetPlayerPosition()
     {
-        return follewedPlayer.position;
+        return mainCharacter.position;
     }
   
     // Ignores the collision with the main character. 
