@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class DeathMenu : MonoBehaviour
+public class DeathButtonClick : MonoBehaviour
 {
     public void RetryButton(string scene)
     {
