@@ -20,12 +20,9 @@ public class EnemyAi : MonoBehaviour
     private bool canTakeDamage = true;
 
     public float maximumDistance;
-    public int damageFromPistol;
-    public float damageTimeout;
+    private int damageFromPistol = 50;
+    private float damageTimeout = 1f;
     public HealthBar healthBar;
-    public float knockbackDistance;
-    public float knockbackTime;
-
     private int MELEE_DAMAGE = 25;
 
 
@@ -87,7 +84,7 @@ public class EnemyAi : MonoBehaviour
         if (colliderTag == "Melee" && canTakeDamage)
         {
             Vector2 difference = thisRigidbody2D.transform.position - collider.transform.position;
-            difference = difference.normalized * knockbackDistance;
+            difference = difference.normalized;
 
             enemyMovement.Knockback(difference);
 

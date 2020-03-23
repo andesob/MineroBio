@@ -41,7 +41,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.N))
         {
-            //Damage(1);
+            Vector3 v = new Vector3();
+            Damage(v,1);
         }
 
         if (Input.GetKeyDown(KeyCode.P))

@@ -1,7 +1,82 @@
-fileFormatVersion: 2
-guid: b8d44e4625aad2a4b9568f1b36b62bdd
-PrefabImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+
+public class DeathMenu : MonoBehaviour
+{ 
+
+    public GameObject
+    //public Button tryAgainButton;
+    //public Button QuitButton;
+
+   // private int state;
+
+
+    private void Start()
+    {
+        //state = 1;
+    }
+
+
+    public void menuOptions()
+    {
+        switch (1)
+        {
+            case 1:
+               // tryAgainButton.Select();
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    
+                }
+                else if (Input.GetKeyDown(KeyCode.S))
+                {
+                    changeState(2);
+                }
+                else if (Input.GetKeyDown(KeyCode.W))
+                {
+                    changeState(2);
+                }
+                break;
+
+            case 2:
+               // QuitButton.Select();
+                if (Input.GetKeyDown(KeyCode.W))
+                {
+                    changeState(1);
+                }
+                else if (Input.GetKeyDown(KeyCode.S))
+                {
+                    changeState(1);
+                }
+              
+
+                break;
+
+            default:
+                break;
+        }
+    }
+    public void RetryButton(string scene)
+    {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(scene);
+        Time.timeScale = 1; 
+    }
+
+    public void QuitButton(string scene)
+    {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(scene);
+        Time.timeScale = 1; 
+    }
+
+
+    private void changeState(int newState)
+    {
+       // EventSystem.current.GetComponent<EventSystem>().SetSelectedGameObject(null);
+       // state = newState;
+    }
+
+}
