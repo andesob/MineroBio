@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 1494403268912998881}
   - component: {fileID: 1494403268621887225}
   - component: {fileID: 1494403268801786634}
+  - component: {fileID: 5876456590602288691}
   m_Layer: 0
   m_Name: blob 1
   m_TagString: Untagged
@@ -209,10 +210,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886791933aa4f472bbf3a7a3f41abc4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
   maximumDistance: 12
   damageFromPistol: 50
   damageTimeout: 1
   healthBar: {fileID: 7627175141129747722}
+  knockbackDistance: 3
+  knockbackTime: 0.2
 --- !u!114 &1494403268912998881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 1
   startPosition: {x: 0, y: 0, z: 0}
+  knockbacktime: 0.3
 --- !u!114 &1494403268621887225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +261,21 @@ CapsuleCollider2D:
   m_Offset: {x: -0.17617658, y: 0.07661119}
   m_Size: {x: 0.48775533, y: 0.123157695}
   m_Direction: 1
+--- !u!114 &5876456590602288691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4656721011831553413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89113ab64c58e734aad5e9d1a601dae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageTimeout: 0
+  knockbackDistance: 0
+  damageAmount: 0
 --- !u!1 &6434568704893961060
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,7 +407,7 @@ MonoBehaviour:
   m_Color: {r: 0.0073930025, g: 1, b: 0, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 0000000017001770ad55668f2ddba1ecb17b43a9d31bdcb93b5b4666e371b4e7532c3a979f3f787a
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -459,7 +479,7 @@ MonoBehaviour:
   m_Color: {r: 0.6019249, g: 0, b: 1, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 0000000017001770ad55668f2ddba1ecb17b43a9d31bdcb93b5b4666e371b4e7532c3a979f3f787a
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0

@@ -4,27 +4,32 @@ using UnityEngine;
 
 public class shooting : MonoBehaviour
 {
-    public float X = 0;
-    public float Y = 0;
+    private PlayerMovement playerMovement;
+    private PlayerController playerController;
 
-    public PlayerMovement playerMovement;
-    public PlayerPickupScript playerPickupScript;
+    private Transform firePoint; //where the bullet is going to shoot from
 
-    public Transform firePoint; //where the bullet is going to shoot from
-    private GameObject bulletPrefab; //The bullet sprite
+    public GameObject bulletPrefab; //The bullet sprite
+    public GameObject sniperBulletPrefab;
+
     private GameObject gun;
-    public GameObject player;
-    public List<GameObject> vfx = new List<GameObject>();
-    private GameObject sniperBulletPrefab;
-    private string weaponName;
-    public float bulletForce = 10f;
-    public float speed;
+    private GameObject player;
+
+    private List<GameObject> vfx = new List<GameObject>();
 
     private AudioSource audioSource;
 
+    private string weaponName;
+    private float bulletForce = 10f;
+    private float speed = 20.28f;
     private float timeToFire = 0;
+
     private void Start()
     {
+        player = this.gameObject;
+        playerMovement = player.GetComponent<PlayerMovement>();
+        playerController = player.GetComponent<PlayerController>();
+        firePoint = player.transform.GetChild(1);
         bulletPrefab = vfx[0];
         sniperBulletPrefab = vfx[1];
         if (gun != null)
@@ -33,22 +38,13 @@ public class shooting : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        FirePointLocation();
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Shoot(weaponName);
-        }
-
-    }
-
-    private void Shoot(string weapon)
+    public void Shoot()
     {
         GameObject bullet;
         Rigidbody2D rb;
-        switch (weapon)
+        FirePointLocation();
+
+        switch (weaponName)
         {
 
             case "Pistol":
@@ -62,6 +58,7 @@ public class shooting : MonoBehaviour
                     audioSource.Play();
                 }
                 break;
+
             case "Sniper":
                 if (Time.time >= timeToFire)
                 {
@@ -75,23 +72,19 @@ public class shooting : MonoBehaviour
                 break;
         }
     }
-        
 
 
-      
-    
-
-    public void FirePointLocation()
+    private void FirePointLocation()
     {
-        float playerX = player.transform.position.x;
-        float playerY = player.transform.position.y;
+        float playerX = playerController.GetPosition().x;
+        float playerY = playerController.GetPosition().y;
         switch (playerMovement.GetLastDirection())
         {
-           
+
             case "W":
-                if (weaponName =="Sniper")
+                if (weaponName == "Sniper")
                 {
-                    firePoint.position = new Vector3(playerX+0.22f, playerY + 0.63f, 0f);
+                    firePoint.position = new Vector3(playerX + 0.22f, playerY + 0.63f, 0f);
                 }
                 if (weaponName == "Pistol")
                 {
@@ -120,7 +113,7 @@ public class shooting : MonoBehaviour
                 {
                     firePoint.position = new Vector3(playerX - 0.27f, playerY - 0.2f, 0f);
                 }
-                firePoint.rotation = Quaternion.Euler(0f,0f,180f);
+                firePoint.rotation = Quaternion.Euler(0f, 0f, 180f);
                 break;
 
             case "S":
@@ -137,15 +130,29 @@ public class shooting : MonoBehaviour
         }
     }
 
-    public void setGun(GameObject weapon)
+    public void SetGun(GameObject weapon)
     {
         gun = weapon;
         weaponName = weapon.name;
     }
 
-    public GameObject getGun()
+    public GameObject GetGun()
     {
         return gun;
     }
+
+    public string GetWeaponName()
+    {
+        return weaponName;
+    }
+
+    public Transform GetFirepoint()
+    {
+        return firePoint;
+    }
+
+    public List<GameObject> GetVFX()
+    {
+        return vfx;
+    }
 }
-  
