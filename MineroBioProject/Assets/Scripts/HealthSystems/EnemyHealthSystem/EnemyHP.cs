@@ -11,10 +11,4 @@ public class EnemyHP : MonoBehaviour
         HealthSystem healthSystem = new HealthSystem(100);
         healthBar.Setup(healthSystem);
     }
-
-    // Update is called once per frame
-    void LateUpdate()
-    {
-        
-    }
 }
