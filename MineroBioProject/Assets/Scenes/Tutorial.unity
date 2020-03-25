@@ -29436,10 +29436,10 @@ MonoBehaviour:
   dialogue:
     name: Sneehaaa
     sentences:
-    - 'You can dash with the player if you press shift while moving!
+    - 'You can dash with the player if you press the Shift-button while moving!
 
-      Try to
-      get through this hallway as fast as possible'
+      Try
+      to get through this hallway as fast as possible'
 --- !u!70 &391912696
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
