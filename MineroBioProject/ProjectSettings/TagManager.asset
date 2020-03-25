@@ -23,6 +23,8 @@ TagManager:
   - MoneySystem
   - SceneChanger
   - Enemy
+  - Melee
+  - Coin
   - EnemyBullet
   - Boss
   - BossTeleportOut
@@ -50,9 +52,9 @@ TagManager:
   - ForceField
   - Bullet
   - EnemyBullet
-  - 
-  - 
-  - 
+  - TriggerLayer
+  - NoPhysics
+  - EnemyLayer
   - 
   - 
   - 

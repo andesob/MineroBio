@@ -53,5 +53,4 @@ MonoBehaviour:
   heart2Sprite: {fileID: 21300000, guid: 0d55b75e51af02c4797c699a3d44a625, type: 3}
   heart3Sprite: {fileID: 21300000, guid: adaff10ad4717e14e902cc500b0183c8, type: 3}
   heart4Sprite: {fileID: 21300000, guid: 34fc748e80ca3954db0b606c087c1696, type: 3}
-  DeathUI: {fileID: 0}
-  player: {fileID: 0}
+  DeathUI: {fileID: 3608449204044299576, guid: 2196cd04a6e0edd42b8ae1c11c8f9c62, type: 3}

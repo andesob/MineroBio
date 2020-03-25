@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8518081886900495971}
   - component: {fileID: 7996994520242421797}
   - component: {fileID: 3876267540750904238}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4786,8 +4786,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1715886907
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -4812,6 +4812,66 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1 &6439472467057684393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 828777165773389167}
+  - component: {fileID: 3765556840747875493}
+  - component: {fileID: 5273386496569578269}
+  m_Layer: 20
+  m_Name: Tip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &828777165773389167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6439472467057684393}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.371, y: 0.306, z: 0}
+  m_LocalScale: {x: 3.0769231, y: 1.8604652, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8203917114912884614}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &3765556840747875493
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6439472467057684393}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.8441751, y: -0.032127816}
+  m_Size: {x: 2.0204093, y: 0.34550545}
+  m_Direction: 1
+--- !u!114 &5273386496569578269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6439472467057684393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e22de9f9fde47d046a780830f5c77e8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7456377666248085301
 GameObject:
   m_ObjectHideFlags: 0
@@ -4823,7 +4883,7 @@ GameObject:
   - component: {fileID: 6928765038125295798}
   - component: {fileID: 4083282143209012606}
   - component: {fileID: 4614785331664571744}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Particle System (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9598,8 +9658,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1715886907
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -9635,7 +9695,7 @@ GameObject:
   - component: {fileID: 8203917113764493038}
   - component: {fileID: 8203917113764493036}
   - component: {fileID: 8203917113764493037}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14419,8 +14479,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1715886907
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -14454,7 +14514,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8203917114912884614}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: MeleeAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14469,12 +14529,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8203917114912884615}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.65162, y: 0.40628, z: -46.101562}
+  m_LocalPosition: {x: -0.65162, y: 0.40628, z: 0}
   m_LocalScale: {x: 0.325, y: 0.5375, z: 1}
   m_Children:
   - {fileID: 8203917113764493038}
   - {fileID: 8518081886900495971}
   - {fileID: 6928765038125295798}
+  - {fileID: 828777165773389167}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

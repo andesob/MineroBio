@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 156091949789765367}
   - component: {fileID: 156091949789765366}
-  - component: {fileID: 710081668}
-  - component: {fileID: 710081667}
+  - component: {fileID: 2748586423452680748}
+  - component: {fileID: 3471686344631203330}
   m_Layer: 0
-  m_Name: Portal_0001_Layer-2
+  m_Name: Teleporter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1176757293
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: df9fb63555ed4764da25aa37f51823e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &710081668
+--- !u!58 &2748586423452680748
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,10 +96,10 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 3.9118228}
+  m_Offset: {x: 0, y: 4.188279}
   serializedVersion: 2
-  m_Radius: 0.7438493
---- !u!114 &710081667
+  m_Radius: 0.7621994
+--- !u!114 &3471686344631203330
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,9 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d492a08ceba2cd24f8539b17caa41c7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  Portal: {fileID: 0}
-  Destination: {fileID: 0}
+  otherTeleporter: {fileID: 0}
+  otherDestination: {fileID: 0}
   allowTeleport: 1
 --- !u!1 &156091950510541864
 GameObject:
@@ -127,7 +126,7 @@ GameObject:
   - component: {fileID: 156091950510541865}
   - component: {fileID: 3088091898011745346}
   m_Layer: 0
-  m_Name: PortalFix2_0000_Layer-5
+  m_Name: Destination
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -183,8 +182,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1176757293
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: cdc9e8f783151e14e959d57032fa85e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5060,8 +5059,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1176757293
+  m_SortingLayer: 5
   m_SortingOrder: 77
   m_RenderMode: 0
   m_SortMode: 0

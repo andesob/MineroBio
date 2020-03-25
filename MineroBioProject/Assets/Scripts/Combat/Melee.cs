@@ -5,54 +5,26 @@ using UnityEngine;
 public class Melee : MonoBehaviour
 
 {
-    public GameObject attack;
-    private PlayerMovement playerMovement;
-    private Quaternion rotation;
-    // Start is called before the first frame update
-    void Start()
-    {
-        playerMovement = this.gameObject.GetComponent<PlayerMovement>();
-    }
+    private const int MELEE_DAMAGE = 25;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        if (Input.GetKeyDown(KeyCode.K))
+
+        if (collision.CompareTag("Enemy"))
         {
-            getRoation();
-           var meleeVFX = Instantiate(attack, transform.position, rotation);
-
-            var psMelee = meleeVFX.GetComponent<ParticleSystem>();
-            if (psMelee != null)
-            {
-                Destroy(meleeVFX, psMelee.main.duration);
-            }
-            else
-            {
-                var psChild = meleeVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
-                Destroy(meleeVFX, psChild.main.duration);
-            }
+            Debug.Log("TRIGG");
+            //collision.GetComponent<BlobAi>().TakeDamage(MELEE_DAMAGE, collision.transform.position - this.transform.position, false);
+            collision.GetComponent<EnemyAi>().TakeDamage(MELEE_DAMAGE, collision.transform.position - this.transform.position, false);
         }
     }
 
-    private void getRoation()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(playerMovement.GetLastDirection() == "W")
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            rotation = Quaternion.Euler(0f, 0f, 90f);
-        }
-        if (playerMovement.GetLastDirection() == "A")
-        {
-            rotation = Quaternion.Euler(0f, 0f, 180f);
-        }
-        if (playerMovement.GetLastDirection() == "S")
-        {
-            rotation = Quaternion.Euler(0f, 0f, 270f);
-        }
-        if (playerMovement.GetLastDirection() == "D")
-        {
-            rotation = Quaternion.Euler(0f, 0f, 0f);
+            Debug.Log("COLL");
+            //collision.gameObject.GetComponent<BlobAi>().TakeDamage(MELEE_DAMAGE, collision.transform.position - this.transform.position, false);
+            collision.gameObject.GetComponent<EnemyAi>().TakeDamage(MELEE_DAMAGE, collision.transform.position - this.transform.position, false);
         }
     }
 }

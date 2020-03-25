@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed;
-    public float dashSpeed;
-    public float dashTime;
-    public float dashWaitTime;
+    private readonly float moveSpeed = 0.1f;
+    private readonly float dashSpeed = 0.4f;
+    private readonly float dashTime = 0.07f;
+    private readonly float dashWaitTime = 1f;
 
     private string lastDirection;
 
@@ -22,18 +22,18 @@ public class PlayerMovement : MonoBehaviour
     private bool wPressed;
     private bool sPressed;
 
-    public Rigidbody2D rb;
-    public Animator anim;
-    public Animator gunAnimation;
-    public shooting shootingScript;
-    public GameObject gun;
+    private Rigidbody2D rb;
+    private GameObject player;
+    private Animator anim;
     private PlayerController playerController;
 
     Vector2 movement;
 
-
     private void Start()
     {
+        player = this.gameObject;
+        rb = player.GetComponent<Rigidbody2D>();
+        anim = player.GetComponent<Animator>();
         canDash = true;
         lastDirection = "S";
         playerController = this.gameObject.GetComponent<PlayerController>();
@@ -42,15 +42,19 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        getInput();
-        HandleKeyPress();
-        HandleDash();
+        if (playerController.CanMove())
+        {
+            getInput();
+            HandleKeyPress();
+            HandleDash();
+        }
     }
 
 
     //Gets the input from a user and sets a boolean to true or false accordingly.
     private void getInput()
     {
+
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
             shiftPressed = true;
@@ -127,8 +131,7 @@ public class PlayerMovement : MonoBehaviour
         {
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
-            playerController.rotateGun(lastDirection);
-
+            playerController.RotateGun(lastDirection);
 
             if (shiftPressed)
             {
@@ -148,10 +151,6 @@ public class PlayerMovement : MonoBehaviour
                 anim.Play("up_walk");
                 lastDirection = "W";
                 isMoving = true;
-                if (shootingScript.getGun() != null && shootingScript.getGun().name == "Sniper")
-                {
-                    gunAnimation.Play("ChangeDirectionX");
-                }
             }
 
             if (sPressed && !isMoving)
@@ -159,10 +158,6 @@ public class PlayerMovement : MonoBehaviour
                 anim.Play("down_walk");
                 lastDirection = "S";
                 isMoving = true;
-                if (shootingScript.getGun() != null && shootingScript.getGun().name == "Sniper")
-                {
-                    gunAnimation.Play("ChangeDirectionXDown");
-                }
             }
 
             if (aPressed && !isMoving)
@@ -170,10 +165,6 @@ public class PlayerMovement : MonoBehaviour
                 anim.Play("left_walk");
                 lastDirection = "A";
                 isMoving = true;
-                if (shootingScript.getGun() != null && shootingScript.getGun().name == "Sniper")
-                {
-                    gunAnimation.Play("ChangeDirectionYLeft");
-                }
             }
 
             if (dPressed && !isMoving)
@@ -181,10 +172,6 @@ public class PlayerMovement : MonoBehaviour
                 anim.Play("right_walk");
                 lastDirection = "D";
                 isMoving = true;
-                if (shootingScript.getGun() != null && shootingScript.getGun().name == "Sniper")
-                {
-                    gunAnimation.Play("ChangeDirectionY");
-                }
             }
         }
     }
@@ -207,6 +194,7 @@ public class PlayerMovement : MonoBehaviour
             canDash = true;
         }
     }
+
     public string GetLastDirection()
     {
         return lastDirection;

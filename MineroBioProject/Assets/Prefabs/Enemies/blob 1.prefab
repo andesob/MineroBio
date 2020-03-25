@@ -242,6 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 1
   startPosition: {x: 0, y: 0, z: 0}
+  knockbacktime: 0.3
 --- !u!114 &1494403268621887225
 MonoBehaviour:
   m_ObjectHideFlags: 0

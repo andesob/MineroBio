@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlobAi : MonoBehaviour
+public class BlobAi : EnemyAi
 {
-    public enum State
+    new public enum State
     {
         roaming,
         chase,
@@ -14,35 +14,29 @@ public class BlobAi : MonoBehaviour
     }
     private int bulletCounter;
 
-    private EnemyMovement enemyMovement;
     public GameObject player;
     public GameObject bulletPrefab;
     public Transform firePoint;
 
-    private Vector3 startPos;
-    private State state;
-
     public float detectionDistance;
-    public float maxDistance;
     public float shootingDistance;
 
     private float timeToFire = 0;
-    private Quaternion rotation;
 
-    public HealthBar healthBar;
-
-    public int damageFromPistol;
-    public float damageTimeout;
+    private State blobState;
 
     Vector2 shootDirection;
     
 
     private void Awake()
     {
-        enemyMovement = this.gameObject.GetComponent<EnemyMovement>();
-        state = State.chase;
-        startPos = transform.position;
-        shootingDistance = maxDistance + 1f;
+        enemyMovement = GetComponent<EnemyMovement>();
+        thisRigidbody2D = GetComponent<Rigidbody2D>();
+        damageObject = GetComponent<DamageObject>();
+        thisEnemy = gameObject;
+        blobState = State.chase;
+        startPosition = transform.position;
+        shootingDistance = maximumDistance + 1f;
         bulletCounter = 0;
     }
     // Start is called before the first frame update
@@ -51,34 +45,31 @@ public class BlobAi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Rotation();
         shootDirection = -(firePoint.position - player.transform.position).normalized;
         
     }
     private void FixedUpdate()
     {
         
-        switch (state)
+        switch (blobState)
         {
             case State.roaming:
-                print(state);
               
-                if (Vector3.Distance(startPos, player.transform.position) < detectionDistance)
+                if (Vector3.Distance(startPosition, player.transform.position) < detectionDistance)
                 {
-                    state = State.chase;
+                    blobState = State.chase;
                 }
 
                 break;
 
             case State.chase:
-                print(state);
                 if(bulletCounter == 4)
                 {
                     bulletCounter = 20;
                     SetTimeToFire(2f);
-                    state = State.superAttack;
+                    blobState = State.superAttack;
                 }
-                if (Vector3.Distance(player.transform.position, this.gameObject.transform.position) > maxDistance)
+                if (Vector3.Distance(player.transform.position, this.gameObject.transform.position) > maximumDistance)
                 {
                     enemyMovement.MoveEnemyAfterPlayer();
                     if(Vector3.Distance(player.transform.position, this.gameObject.transform.position) < shootingDistance)
@@ -97,20 +88,13 @@ public class BlobAi : MonoBehaviour
                 break;
            
             case State.superAttack:
-                print(state);
                 shoot(100f,-1);
                 if(bulletCounter == 0)
                 {                   
-                    state = State.chase;
+                    blobState = State.chase;
                 }
                 break;
         }
-    }
-
-    public void Rotation()
-    {
-        Vector3 relativePos = player.transform.position - this.gameObject.transform.position;
-        rotation = Quaternion.LookRotation(relativePos, Vector3.up);
     }
 
     public void SetTimeToFire(float fireRate)
@@ -126,18 +110,6 @@ public class BlobAi : MonoBehaviour
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.AddForce(shootDirection * 5f, ForceMode2D.Impulse);
             bulletCounter += bulletUpDown;
-        }
-    }
-    private void OnTriggerEnter2D(Collider2D collider)
-    {
-        Bullet bullet = collider.GetComponent<Bullet>();
-        if (bullet != null)
-        {
-            healthBar.healthSystem.Damage(damageFromPistol);
-            if (healthBar.healthSystem.getHealth() <= 0)
-            {
-                Destroy(this.gameObject);
-            }
         }
     }
 }

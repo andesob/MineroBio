@@ -9,7 +9,7 @@ public class SceneController : MonoBehaviour
     public static string prevScene = "";
     public static string currentScene = "";
 
-    [SerializeField] private GameObject player;
+    private GameObject player;
 
     void Start()
     {
@@ -25,7 +25,6 @@ public class SceneController : MonoBehaviour
             player.transform.position = new Vector2(-6.5f, -0.2f);
         }
     }
-
 
 
     public void LoadScene(string sceneName)
