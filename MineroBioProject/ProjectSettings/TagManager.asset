@@ -53,8 +53,8 @@ TagManager:
   - Bullet
   - EnemyBullet
   - TriggerLayer
-  - 
-  - 
+  - NoPhysics
+  - EnemyLayer
   - 
   - 
   - 
