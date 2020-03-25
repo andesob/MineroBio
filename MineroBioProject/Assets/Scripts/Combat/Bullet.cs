@@ -66,7 +66,7 @@ public class Bullet : MonoBehaviour
         }
         if (collision.CompareTag("Enemy"))
         {
-            collision.GetComponent<EnemyAi>().TakeDamage(PISTOL_DAMAGE);
+            collision.GetComponent<EnemyAi>().TakeDamage(PISTOL_DAMAGE, collision.transform.position - this.transform.position, false);
         }
         Destroy(gameObject);
     }

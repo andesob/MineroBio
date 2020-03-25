@@ -8,9 +8,13 @@ public class PlayerAttackSystem : MonoBehaviour
     private GameObject LeftPunch;
     private GameObject OverheadPunch;
     private GameObject Kick;
+    public GameObject attack;
     private float meleeAttackTimeout = 1f;
     private float meleeAttackTime = 0.5f;
     private float shootingtimeout = 1.5f;
+
+    private Quaternion rotation;
+
     public Animator anim;
 
     private PlayerMovement playerMovement;
@@ -67,7 +71,6 @@ public class PlayerAttackSystem : MonoBehaviour
 
             case State.MeleeAttacking:
 
-                SetAttackDirection();
                 break;
 
             case State.Shooting:
@@ -79,7 +82,8 @@ public class PlayerAttackSystem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
-            SetAttackDirection();
+            getRoation();
+            Attack();
         }
         if (Input.GetKeyDown(KeyCode.K))
         {
@@ -88,39 +92,49 @@ public class PlayerAttackSystem : MonoBehaviour
         }
     }
 
-    //Sets the attack direction based on mouseclick. 
-    private void SetAttackDirection()
+    private void Attack()
     {
-        string lastDirection = playerMovement.GetLastDirection();
-        if (canMeeleAttack)
+        var meleeVFX = Instantiate(attack, transform.position, rotation);
+
+        var psMelee = meleeVFX.GetComponent<ParticleSystem>();
+        if (psMelee != null)
         {
-            if (lastDirection == "D")
-            {
-                StartCoroutine(SetMeleeAttackTimer(RightPunch));
-            }
-            if (lastDirection == "A")
-            {
-                StartCoroutine(SetMeleeAttackTimer(LeftPunch));
-            }
-            if (lastDirection == "W")
-            {
-                StartCoroutine(SetMeleeAttackTimer(OverheadPunch));
-            }
-            if (lastDirection == "S")
-            {
-                StartCoroutine(SetMeleeAttackTimer(Kick));
-            }
+            Destroy(meleeVFX, psMelee.main.duration);
+        }
+        else
+        {
+            var psChild = meleeVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
+            Destroy(meleeVFX, psChild.main.duration);
         }
     }
 
+    private void getRoation()
+    {
+        if (playerMovement.GetLastDirection() == "W")
+        {
+            rotation = Quaternion.Euler(0f, 0f, 90f);
+        }
+        if (playerMovement.GetLastDirection() == "A")
+        {
+            rotation = Quaternion.Euler(0f, 0f, 180f);
+        }
+        if (playerMovement.GetLastDirection() == "S")
+        {
+            rotation = Quaternion.Euler(0f, 0f, 270f);
+        }
+        if (playerMovement.GetLastDirection() == "D")
+        {
+            rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+        StartCoroutine(SetMeleeAttackTimer());
+    }
+
     // sets the melee hitbox active, and puts the character into the attacking state. 
-    private IEnumerator SetMeleeAttackTimer(GameObject attackSide)
+    private IEnumerator SetMeleeAttackTimer()
     {
         state = State.MeleeAttacking;
-        attackSide.SetActive(true);
         canMeeleAttack = false;
         yield return new WaitForSeconds(meleeAttackTime);
-        attackSide.SetActive(false);
         canMeeleAttack = true;
         state = State.WaitingForInput;
     }
