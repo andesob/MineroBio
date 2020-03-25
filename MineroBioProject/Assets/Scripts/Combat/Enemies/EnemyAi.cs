@@ -20,12 +20,10 @@ public class EnemyAi : MonoBehaviour
     private bool canTakeDamage = true;
 
     public float maximumDistance;
-    public int damageFromPistol;
-    public float damageTimeout;
+    private int damageFromPistol = 50;
+    private float damageTimeout = 1f;
     public HealthBar healthBar;
-    public float knockbackDistance;
-    public float knockbackTime;
-
+    [SerializeField]
     private int MELEE_DAMAGE = 25;
 
 
@@ -83,11 +81,12 @@ public class EnemyAi : MonoBehaviour
     //TODO add the tags for the other weapons, and implement different knockback and damageTimout for each weapon. 
     private void OnTriggerEnter2D(Collider2D collider)
     {
+        Debug.Log("TRIGGERED");
         string colliderTag = collider.gameObject.tag;
         if (colliderTag == "Melee" && canTakeDamage)
         {
             Vector2 difference = thisRigidbody2D.transform.position - collider.transform.position;
-            difference = difference.normalized * knockbackDistance;
+            difference = difference.normalized;
 
             enemyMovement.Knockback(difference);
 
@@ -115,6 +114,7 @@ public class EnemyAi : MonoBehaviour
     public void TakeDamage(int dmgAmount)
     {
         healthBar.healthSystem.Damage(dmgAmount);
+        CheckIfDead();
     }
 
 }
