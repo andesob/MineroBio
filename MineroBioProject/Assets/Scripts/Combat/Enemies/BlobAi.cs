@@ -26,7 +26,7 @@ public class BlobAi : MonoBehaviour
     public float maxDistance;
     public float shootingDistance;
 
-    private float timeToFire = 2;
+    private float timeToFire = 0;
     private Quaternion rotation;
 
     public HealthBar healthBar;
@@ -46,10 +46,7 @@ public class BlobAi : MonoBehaviour
         bulletCounter = 0;
     }
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+  
 
     // Update is called once per frame
     void Update()
@@ -77,7 +74,7 @@ public class BlobAi : MonoBehaviour
                 print(state);
                 if(bulletCounter == 4)
                 {
-                    bulletCounter = 10;
+                    bulletCounter = 20;
                     SetTimeToFire(2f);
                     state = State.superAttack;
                 }
@@ -101,7 +98,7 @@ public class BlobAi : MonoBehaviour
            
             case State.superAttack:
                 print(state);
-                shoot(10f,-1);
+                shoot(100f,-1);
                 if(bulletCounter == 0)
                 {                   
                     state = State.chase;

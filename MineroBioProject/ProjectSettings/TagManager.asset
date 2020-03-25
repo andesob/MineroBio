@@ -24,6 +24,12 @@ TagManager:
   - SceneChanger
   - Enemy
   - EnemyBullet
+  - Boss
+  - BossTeleportOut
+  - BossTeleportIn
+  - BossTeleport
+  - Enviorment
+  - GooProjectile
   layers:
   - Default
   - TransparentFX
