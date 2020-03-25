@@ -26,6 +26,12 @@ TagManager:
   - Melee
   - Coin
   - EnemyBullet
+  - Boss
+  - BossTeleportOut
+  - BossTeleportIn
+  - BossTeleport
+  - Enviorment
+  - GooProjectile
   layers:
   - Default
   - TransparentFX
