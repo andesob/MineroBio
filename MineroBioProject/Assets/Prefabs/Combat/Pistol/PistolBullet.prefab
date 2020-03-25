@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 7627093275083289178}
   - component: {fileID: 8946250830386261485}
   - component: {fileID: 1064598384588573687}
-  m_Layer: 10
+  m_Layer: 17
   m_Name: ParticleNarrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7627093275083289178
 Transform:
   m_ObjectHideFlags: 0
@@ -4784,7 +4784,7 @@ GameObject:
   - component: {fileID: 8468771214214465052}
   - component: {fileID: -2894609387801969053}
   - component: {fileID: 6697041568328854398}
-  m_Layer: 10
+  m_Layer: 17
   m_Name: PistolBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -4882,7 +4882,7 @@ GameObject:
   - component: {fileID: 7965892252084423661}
   - component: {fileID: 7226131307924814789}
   - component: {fileID: 535867076839551847}
-  m_Layer: 10
+  m_Layer: 17
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9640,13 +9640,13 @@ GameObject:
   - component: {fileID: 4999267156718958397}
   - component: {fileID: 1421962916314537873}
   - component: {fileID: 5485691817425533506}
-  m_Layer: 10
+  m_Layer: 17
   m_Name: ParticleWide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4999267156718958397
 Transform:
   m_ObjectHideFlags: 0
@@ -14411,7 +14411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 276534456054077329}
   - component: {fileID: 5831065808279572347}
-  m_Layer: 10
+  m_Layer: 17
   m_Name: Tip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14514,6 +14514,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Point Light 2D
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050921198606415207, guid: 98077d354e660cf42a9d067b0232856a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522814245148833812, guid: 98077d354e660cf42a9d067b0232856a,
+        type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7522814245148833812, guid: 98077d354e660cf42a9d067b0232856a,
         type: 3}

@@ -21,27 +21,35 @@ public class Switch : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //when the player enters the triggerbox of the switch it either turns the switch on or off and changes the sprite.
-        if (isOn)
+        if (collision.tag == "Player")
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = switchOff.GetComponent<SpriteRenderer>().sprite;
-            //changes state for every door in the array
-            for (int i = 0; i < doors.Length; i++)
+            if (isOn)
             {
-                doors[i].GetComponent<doorScript>().changeState();
+                gameObject.GetComponent<SpriteRenderer>().sprite = switchOff.GetComponent<SpriteRenderer>().sprite;
+                //changes state for every door in the array
+                for (int i = 0; i < doors.Length; i++)
+                {
+                    doors[i].GetComponent<doorScript>().changeState();
+                }
+                isOn = false;
+                print(isOn);
             }
-            isOn = false;
-            print(isOn);
-        }
-        else
-        {
-            gameObject.GetComponent<SpriteRenderer>().sprite = switchOn.GetComponent<SpriteRenderer>().sprite;
-            //changes state for every door in the array
-            for (int i = 0; i < doors.Length; i++)
+            else
             {
-                doors[i].GetComponent<doorScript>().changeState();
+                gameObject.GetComponent<SpriteRenderer>().sprite = switchOn.GetComponent<SpriteRenderer>().sprite;
+                //changes state for every door in the array
+                for (int i = 0; i < doors.Length; i++)
+                {
+                    doors[i].GetComponent<doorScript>().changeState();
+                }
+                isOn = true;
+                print(isOn);
             }
-            isOn = true;
-            print(isOn);
         }
+    }
+
+    public bool getIsOn()
+    {
+        return isOn;
     }
 }

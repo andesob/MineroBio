@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4061666749943614}
   - component: {fileID: 198332391216490042}
   - component: {fileID: 199447108450125174}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4588,8 +4588,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2020521137
+  m_SortingLayer: 10
   m_SortingOrder: 2
   m_RenderMode: 0
   m_SortMode: 0
@@ -4625,7 +4625,7 @@ GameObject:
   - component: {fileID: 4143797898365340}
   - component: {fileID: 198866734527658160}
   - component: {fileID: 199020287860475682}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ParticlesAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9364,8 +9364,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2020521137
+  m_SortingLayer: 10
   m_SortingOrder: -2
   m_RenderMode: 1
   m_SortMode: 0
@@ -9401,7 +9401,7 @@ GameObject:
   - component: {fileID: 4514829681042006}
   - component: {fileID: 198887197663514352}
   - component: {fileID: 199304605535347618}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: BeamAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13978,8 +13978,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2020521137
+  m_SortingLayer: 10
   m_SortingOrder: -2
   m_RenderMode: 0
   m_SortMode: 0
@@ -14013,9 +14013,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4767839390891648}
-  m_Layer: 0
-  m_Name: vfx_Muzzle_Fireball03_Green
-  m_TagString: Untagged
+  m_Layer: 18
+  m_Name: SpitMuzzle
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14050,7 +14050,7 @@ GameObject:
   - component: {fileID: 4000550558526654}
   - component: {fileID: 198591367691963692}
   - component: {fileID: 199206923749541196}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18789,8 +18789,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2020521137
+  m_SortingLayer: 10
   m_SortingOrder: 2
   m_RenderMode: 0
   m_SortMode: 0
@@ -18826,7 +18826,7 @@ GameObject:
   - component: {fileID: 4070515985673644}
   - component: {fileID: 198475220733331022}
   - component: {fileID: 199273603372359784}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23565,8 +23565,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2020521137
+  m_SortingLayer: 10
   m_SortingOrder: 2
   m_RenderMode: 0
   m_SortMode: 0
