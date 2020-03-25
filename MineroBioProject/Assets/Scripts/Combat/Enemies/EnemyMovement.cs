@@ -15,7 +15,6 @@ public class EnemyMovement : MonoBehaviour
     private Vector2 spawnDirection;
     private Rigidbody2D thisRigidbody2D;
     private bool canMove = true;
-    private float knockbackDistance = 0.3f;
 
     public Vector3 startPosition;
     private float knockbacktime = 0.3f;
@@ -109,9 +108,9 @@ public class EnemyMovement : MonoBehaviour
     }
 
     //Knoks the enemy back. 
-    public void Knockback(Vector2 difference)
+    public void Knockback(Vector2 difference, float distance)
     {
-         thisRigidbody2D.AddForce(difference*knockbackDistance, ForceMode2D.Impulse);
+         thisRigidbody2D.AddForce(difference*distance, ForceMode2D.Impulse);
          StartCoroutine(KnockbackTimer(thisRigidbody2D));
      } 
 
