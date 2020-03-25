@@ -5,16 +5,21 @@ using UnityEngine;
 public class Melee : MonoBehaviour
 
 {
+
+
     private const int MELEE_DAMAGE = 25;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy") && collision.isTrigger)
         {
+            Vector3 characterPosition = GameObject.Find("Main Char prefab 1/MainCharacter").GetComponent<Transform>().position;
+            Debug.Log(characterPosition);
+
             Debug.Log("TRIGG");
             //collision.GetComponent<BlobAi>().TakeDamage(MELEE_DAMAGE, collision.transform.position - this.transform.position, false);
-            collision.GetComponent<EnemyAi>().TakeDamage(MELEE_DAMAGE, collision.transform.position - this.transform.position, false);
+            collision.GetComponent<EnemyAi>().TakeDamage(MELEE_DAMAGE, collision.transform.position - characterPosition, true);
         }
     }
 
