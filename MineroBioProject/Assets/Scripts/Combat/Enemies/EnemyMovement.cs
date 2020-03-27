@@ -110,6 +110,7 @@ public class EnemyMovement : MonoBehaviour
     //Knoks the enemy back. 
     public void Knockback(Vector2 difference, float distance)
     {
+        Debug.Log("knockback: " + difference + "and " + distance);
          thisRigidbody2D.AddForce(difference*distance, ForceMode2D.Impulse);
          StartCoroutine(KnockbackTimer(thisRigidbody2D));
      } 

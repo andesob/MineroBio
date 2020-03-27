@@ -20,8 +20,8 @@ public class EnemyAi : MonoBehaviour
     protected EnemyMovement enemyMovement;
     protected Vector3 startPosition;
 
-    private float meleeKnockback = 3f;
-    private float rangedKnockback = 50f;
+    private float meleeKnockback = 1f;
+    private float rangedKnockback = 1f;
 
     public float maximumDistance;
     private float damageTimeout = 1f;
@@ -112,6 +112,7 @@ public class EnemyAi : MonoBehaviour
 
     public void TakeDamage(int dmgAmount, Vector2 difference, bool isMelee)
     {
+        
         healthBar.healthSystem.Damage(dmgAmount);
         difference = difference.normalized;
 
