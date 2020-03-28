@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 1494403268621887225}
   - component: {fileID: 1494403268801786634}
   - component: {fileID: 415217480}
+  - component: {fileID: 5434711400456985173}
   m_Layer: 15
   m_Name: blob 1
   m_TagString: Enemy
@@ -242,7 +243,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 1
   startPosition: {x: 0, y: 0, z: 0}
-  knockbacktime: 0.3
 --- !u!114 &1494403268621887225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,16 +284,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae19becece2f03c45b4734785510f5fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maximumDistance: 10
+  healthBar: {fileID: 7627175141129747722}
   player: {fileID: 0}
   bulletPrefab: {fileID: 1134690676384144, guid: b916058e8e9e5074d86677f9400a0291,
     type: 3}
   firePoint: {fileID: 815901277}
-  detectionDistance: 0.3
-  maxDistance: 3.5
-  shootingDistance: 10.34
-  healthBar: {fileID: 7627175141129747722}
-  damageFromPistol: 50
-  damageTimeout: 0
+  detectionDistance: 10
+--- !u!114 &5434711400456985173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4656721011831553413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89113ab64c58e734aad5e9d1a601dae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageTimeout: 0.2
+  knockbackDistance: 5
+  damageAmount: 2
 --- !u!1 &6434568704893961060
 GameObject:
   m_ObjectHideFlags: 0

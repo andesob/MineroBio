@@ -11,6 +11,10 @@ public class DialogueTrigger : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        if(this.name == "InitDialogueTrigger")
+        {
+            TriggerDialogue(this.name);
+        }
     }
 
     public void TriggerDialogue(string triggerName)
@@ -18,9 +22,9 @@ public class DialogueTrigger : MonoBehaviour
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue, triggerName);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Melee"))
+        if (!collision.CompareTag("Melee") && collision.CompareTag("Player"))
         {
             TriggerDialogue(this.gameObject.name);
         }
@@ -28,7 +32,6 @@ public class DialogueTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        
         if (!collision.CompareTag("Melee"))
         {
             FindObjectOfType<DialogueManager>().EndDialogue();

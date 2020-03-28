@@ -19,7 +19,7 @@ public class BlobAi : EnemyAi
     public Transform firePoint;
 
     public float detectionDistance;
-    public float shootingDistance;
+    private float shootingDistance;
 
     private float timeToFire = 0;
 
@@ -34,7 +34,7 @@ public class BlobAi : EnemyAi
         thisRigidbody2D = GetComponent<Rigidbody2D>();
         damageObject = GetComponent<DamageObject>();
         thisEnemy = gameObject;
-        blobState = State.chase;
+        blobState = State.roaming;
         startPosition = transform.position;
         shootingDistance = maximumDistance + 1f;
         bulletCounter = 0;
