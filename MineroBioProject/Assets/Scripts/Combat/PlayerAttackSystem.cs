@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class PlayerAttackSystem : MonoBehaviour
 {
-    private GameObject RightPunch;
-    private GameObject LeftPunch;
-    private GameObject OverheadPunch;
-    private GameObject Kick;
     public GameObject attack;
-    private float meleeAttackTimeout = 1f;
     private float meleeAttackTime = 0.5f;
-    private float shootingtimeout = 1.5f;
+    private float shootingtimeout = 0.5f;
 
     private Quaternion rotation;
 
-    public Animator anim;
+    //public Animator anim;
 
     private PlayerMovement playerMovement;
+    private PlayerController playerController;
     private shooting shootingScript;
 
     private bool canMeeleAttack = true;
@@ -36,26 +32,7 @@ public class PlayerAttackSystem : MonoBehaviour
     {
         playerMovement = this.gameObject.GetComponent<PlayerMovement>();
         shootingScript = this.gameObject.GetComponent<shooting>();
-        foreach (Transform child in transform)
-        {
-            GameObject kid = child.gameObject;
-            if (kid.name == "RightPunch")
-            {
-                RightPunch = kid;
-            }
-            if (kid.name == "LeftPunch")
-            {
-                LeftPunch = kid;
-            }
-            if (kid.name == "UpPunch")
-            {
-                OverheadPunch = kid;
-            }
-            if (kid.name == "DownKick")
-            {
-                Kick = kid;
-            }
-        }
+        playerController = this.gameObject.GetComponent<PlayerController>();
         state = State.WaitingForInput;
 
     }
@@ -84,6 +61,7 @@ public class PlayerAttackSystem : MonoBehaviour
         {
             getRoation();
             Attack();
+            StartCoroutine(SetMeleeAttackTimer());
         }
         if (Input.GetKeyDown(KeyCode.K))
         {
@@ -134,8 +112,10 @@ public class PlayerAttackSystem : MonoBehaviour
     {
         state = State.MeleeAttacking;
         canMeeleAttack = false;
+        //playerController.setCanMove(false);  // NEED TO FIX THE WALKING ANIMATION WHILE PAUSING THE MOVEMENT 
         yield return new WaitForSeconds(meleeAttackTime);
         canMeeleAttack = true;
+        //playerController.setCanMove(true);
         state = State.WaitingForInput;
     }
 
@@ -144,8 +124,9 @@ public class PlayerAttackSystem : MonoBehaviour
     {
         canMeeleAttack = false;
         state = State.Shooting;
-        yield return new WaitForSeconds(meleeAttackTime);
+        yield return new WaitForSeconds(shootingtimeout);
         state = State.WaitingForInput;
         canMeeleAttack = true;
+
     }
 }

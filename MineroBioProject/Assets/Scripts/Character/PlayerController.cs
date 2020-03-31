@@ -99,9 +99,9 @@ public class PlayerController : MonoBehaviour
 
 
     // Heals the player
-    public void Heal(int damageAmount)
+    public void Heal(int healingAmount)
     {
-        HeartsHealthVisual2.heartsHealthSystemStatic.Heal(damageAmount);
+        HeartsHealthVisual2.heartsHealthSystemStatic.Heal(healingAmount);
     }
 
     public void AddMoney()
@@ -189,6 +189,11 @@ public class PlayerController : MonoBehaviour
     public bool CanMove()
     {
         return canMove;
+    }
+
+    public void setCanMove(bool boolean)
+    {
+        canMove = boolean;
     }
 
     public void AddWeapon(GameObject weapon)

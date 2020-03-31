@@ -13,11 +13,8 @@ public class Melee : MonoBehaviour
     {
 
         if (collision.CompareTag("Enemy") && collision.isTrigger)
-        {
+        { 
             Vector3 characterPosition = GameObject.Find("Main Char prefab 1/MainCharacter").GetComponent<Transform>().position;
-            Debug.Log(characterPosition);
-
-            Debug.Log("TRIGG");
             //collision.GetComponent<BlobAi>().TakeDamage(MELEE_DAMAGE, collision.transform.position - this.transform.position, false);
             collision.GetComponent<EnemyAi>().TakeDamage(MELEE_DAMAGE, collision.transform.position - characterPosition, true);
         }
