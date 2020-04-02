@@ -6,9 +6,13 @@ public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
     private GameObject player;
+    public AudioSource source;
+    public AudioClip[] clips;
+    private bool playClip;
 
     public void Start()
     {
+        playClip = true;
         player = GameObject.FindGameObjectWithTag("Player");
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
@@ -23,6 +27,8 @@ public class DialogueTrigger : MonoBehaviour
         if (!collision.CompareTag("Melee"))
         {
             TriggerDialogue(this.gameObject.name);
+            print("i enterededed");
+            PlayAudio();
         }
     }
 
@@ -33,5 +39,28 @@ public class DialogueTrigger : MonoBehaviour
         {
             FindObjectOfType<DialogueManager>().EndDialogue();
         }
+    }
+
+    private void PlayAudio()
+    {
+        foreach (AudioClip clip in clips)
+        {
+            Time.timeScale = 0f;
+            
+            if (playClip) {
+                playClip = false;
+                print(playClip);
+                StartCoroutine(Waiter(clip));
+            }
+        }
+        Time.timeScale = 1f;
+        print("HEROOO");
+    }
+
+    private IEnumerator Waiter(AudioClip clip)
+    {
+        source.PlayOneShot(clip);
+        yield return new WaitForSeconds(clip.length);
+        playClip = true;
     }
 }

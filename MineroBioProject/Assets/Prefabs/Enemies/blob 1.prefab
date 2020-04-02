@@ -242,7 +242,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 1
   startPosition: {x: 0, y: 0, z: 0}
-  knockbacktime: 0.3
 --- !u!114 &1494403268621887225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,16 +283,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae19becece2f03c45b4734785510f5fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maximumDistance: 9
+  healthBar: {fileID: 7627175141129747722}
   player: {fileID: 0}
   bulletPrefab: {fileID: 1134690676384144, guid: b916058e8e9e5074d86677f9400a0291,
     type: 3}
   firePoint: {fileID: 815901277}
   detectionDistance: 0.3
-  maxDistance: 3.5
   shootingDistance: 10.34
-  healthBar: {fileID: 7627175141129747722}
-  damageFromPistol: 50
-  damageTimeout: 0
 --- !u!1 &6434568704893961060
 GameObject:
   m_ObjectHideFlags: 0
