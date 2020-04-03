@@ -22646,6 +22646,18 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2137045875}
+    - target: {fileID: 415217480, guid: 2a539c57ca2ed80459ccf3383dc5c465, type: 3}
+      propertyPath: maximumDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 415217480, guid: 2a539c57ca2ed80459ccf3383dc5c465, type: 3}
+      propertyPath: shootingDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 415217480, guid: 2a539c57ca2ed80459ccf3383dc5c465, type: 3}
+      propertyPath: detectionDistance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 815901276, guid: 2a539c57ca2ed80459ccf3383dc5c465, type: 3}
       propertyPath: m_Layer
       value: 21
@@ -37447,7 +37459,7 @@ MonoBehaviour:
   m_Follow: {fileID: 6033361894194761666}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 3
+    OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -37468,7 +37480,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215266579}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.1991577, y: 7.0887566, z: 255.18988}
+  m_LocalPosition: {x: -63.419155, y: 53.388756, z: 255.18988}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1783652426}
@@ -89760,7 +89772,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -89784,7 +89796,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1769810921}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.1991577, y: 7.0887566, z: 255.18988}
+  m_LocalPosition: {x: -63.419155, y: 53.388756, z: 255.18988}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1959928048}
@@ -139987,12 +139999,12 @@ PrefabInstance:
     - target: {fileID: 5976417913236194022, guid: b8d44e4625aad2a4b9568f1b36b62bdd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 117.2
+      value: 55.98
       objectReference: {fileID: 0}
     - target: {fileID: 5976417913236194022, guid: b8d44e4625aad2a4b9568f1b36b62bdd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -68
+      value: -21.7
       objectReference: {fileID: 0}
     - target: {fileID: 5976417913236194022, guid: b8d44e4625aad2a4b9568f1b36b62bdd,
         type: 3}
@@ -140159,6 +140171,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EndLadder
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997147705913001077, guid: cebd42a121e75fe409d95b46384fe8c5,
+        type: 3}
+      propertyPath: toScene
+      value: levelHubScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cebd42a121e75fe409d95b46384fe8c5, type: 3}

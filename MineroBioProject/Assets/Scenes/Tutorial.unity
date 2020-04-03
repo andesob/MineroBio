@@ -29259,7 +29259,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 169362223}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.77, y: 1.14, z: -10}
+  m_LocalPosition: {x: -0.53, y: 0.47, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1009163240}
@@ -29366,12 +29366,12 @@ PrefabInstance:
     - target: {fileID: 8066226519529510506, guid: 61af244d21b44684e9246720d4ed62eb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.77
+      value: 47.73
       objectReference: {fileID: 0}
     - target: {fileID: 8066226519529510506, guid: 61af244d21b44684e9246720d4ed62eb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.48
+      value: -6.19
       objectReference: {fileID: 0}
     - target: {fileID: 8066226519529510506, guid: 61af244d21b44684e9246720d4ed62eb,
         type: 3}
@@ -32971,7 +32971,7 @@ PrefabInstance:
     - target: {fileID: 1301481432299777188, guid: 19369ece767001e4484ae3004370fb5b,
         type: 3}
       propertyPath: toScene
-      value: HomeScene
+      value: levelHubScene
       objectReference: {fileID: 0}
     - target: {fileID: 1301481432299777189, guid: 19369ece767001e4484ae3004370fb5b,
         type: 3}
@@ -37671,7 +37671,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434541795}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.77, y: 1.14, z: -10}
+  m_LocalPosition: {x: -0.53, y: 0.47, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -60003,12 +60003,12 @@ PrefabInstance:
     - target: {fileID: 5976417913236194022, guid: b8d44e4625aad2a4b9568f1b36b62bdd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.77
+      value: -0.53
       objectReference: {fileID: 0}
     - target: {fileID: 5976417913236194022, guid: b8d44e4625aad2a4b9568f1b36b62bdd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.14
+      value: 0.47
       objectReference: {fileID: 0}
     - target: {fileID: 5976417913236194022, guid: b8d44e4625aad2a4b9568f1b36b62bdd,
         type: 3}
@@ -60139,6 +60139,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EndBed
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997147705913001077, guid: cebd42a121e75fe409d95b46384fe8c5,
+        type: 3}
+      propertyPath: toScene
+      value: levelHubScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cebd42a121e75fe409d95b46384fe8c5, type: 3}

@@ -4766,7 +4766,7 @@ GameObject:
   - component: {fileID: -3964355166384217600}
   - component: {fileID: 1003585622612266561}
   - component: {fileID: 9144341766970120661}
-  - component: {fileID: 2425120602112439913}
+  - component: {fileID: 5345255896929304979}
   m_Layer: 18
   m_Name: SpitProjectile
   m_TagString: Bullet
@@ -4855,7 +4855,7 @@ MonoBehaviour:
   tip: {fileID: 6980660853379966372}
   player: {fileID: 5976417913236194023, guid: b8d44e4625aad2a4b9568f1b36b62bdd, type: 3}
   rb: {fileID: -3964355166384217600}
---- !u!114 &2425120602112439913
+--- !u!114 &5345255896929304979
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4868,8 +4868,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageTimeout: 0
-  knockbackDistance: 5
-  damageAmount: 5
+  knockbackDistance: 3
+  damageAmount: 2
 --- !u!1 &1212730728541334
 GameObject:
   m_ObjectHideFlags: 0

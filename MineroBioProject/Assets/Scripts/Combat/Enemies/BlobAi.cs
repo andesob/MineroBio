@@ -19,7 +19,7 @@ public class BlobAi : EnemyAi
     public Transform firePoint;
 
     public float detectionDistance;
-    public float shootingDistance;
+    private float shootingDistance;
 
     private float timeToFire = 0;
 
@@ -34,7 +34,7 @@ public class BlobAi : EnemyAi
         thisRigidbody2D = GetComponent<Rigidbody2D>();
         damageObject = GetComponent<DamageObject>();
         thisEnemy = gameObject;
-        blobState = State.chase;
+        blobState = State.roaming;
         startPosition = transform.position;
         shootingDistance = maximumDistance + 1f;
         bulletCounter = 0;
@@ -55,7 +55,7 @@ public class BlobAi : EnemyAi
         {
             case State.roaming:
               
-                if (Vector3.Distance(startPosition, player.transform.position) < detectionDistance)
+                if (Vector3.Distance(startPosition, player.transform.position) < detectionDistance && enemyMovement.CanMove())
                 {
                     blobState = State.chase;
                 }
@@ -63,35 +63,41 @@ public class BlobAi : EnemyAi
                 break;
 
             case State.chase:
-                if(bulletCounter == 4)
+                if (enemyMovement.CanMove())
                 {
-                    bulletCounter = 20;
-                    SetTimeToFire(2f);
-                    blobState = State.superAttack;
-                }
-                if (Vector3.Distance(player.transform.position, this.gameObject.transform.position) > maximumDistance)
-                {
-                    enemyMovement.MoveEnemyAfterPlayer();
-                    if(Vector3.Distance(player.transform.position, this.gameObject.transform.position) < shootingDistance)
+                    if (bulletCounter == 4)
                     {
+                        bulletCounter = 20;
+                        SetTimeToFire(2f);
+                        blobState = State.superAttack;
+                    }
+                    if (Vector3.Distance(player.transform.position, this.gameObject.transform.position) > maximumDistance)
+                    {
+                        enemyMovement.MoveEnemyAfterPlayer();
+                        if (Vector3.Distance(player.transform.position, this.gameObject.transform.position) < shootingDistance)
+                        {
 
-                        shoot(1f,1);
-                        
-                    }                
-                }             
-                else
-                {
-                    enemyMovement.MoveEnemyAwayPlayer();
-                    shoot(1f,1);
-                    
+                            shoot(1f, 1);
+
+                        }
+                    }
+                    else
+                    {
+                        enemyMovement.MoveEnemyAwayPlayer();
+                        shoot(1f, 1);
+
+                    }
                 }
                 break;
            
             case State.superAttack:
-                shoot(100f,-1);
-                if(bulletCounter == 0)
-                {                   
-                    blobState = State.chase;
+                if (enemyMovement.CanMove())
+                {
+                    shoot(100f, -1);
+                    if (bulletCounter == 0)
+                    {
+                        blobState = State.chase;
+                    }
                 }
                 break;
         }
