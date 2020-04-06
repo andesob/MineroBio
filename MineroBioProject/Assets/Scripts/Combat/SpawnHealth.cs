@@ -18,8 +18,10 @@ public class SpawnHealth : MonoBehaviour
 
     public void DropItem()
     {
-        Instantiate(hearthPrefab, Epos.position, Quaternion.identity);
-
+        if (RandomSpawn())
+        {
+            Instantiate(hearthPrefab, Epos.position, Quaternion.identity);
+        }
     }
     private bool RandomSpawn()
     {
