@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -139952,75 +139952,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19369ece767001e4484ae3004370fb5b, type: 3}
---- !u!1001 &2435690240926721180
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2435690242474855244, guid: ff55d83f285b3374c9920c6507145b12,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.705
-      objectReference: {fileID: 0}
-    - target: {fileID: 2435690242474855244, guid: ff55d83f285b3374c9920c6507145b12,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.277
-      objectReference: {fileID: 0}
-    - target: {fileID: 2435690242474855244, guid: ff55d83f285b3374c9920c6507145b12,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2435690242474855244, guid: ff55d83f285b3374c9920c6507145b12,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2435690242474855244, guid: ff55d83f285b3374c9920c6507145b12,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2435690242474855244, guid: ff55d83f285b3374c9920c6507145b12,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2435690242474855244, guid: ff55d83f285b3374c9920c6507145b12,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2435690242474855244, guid: ff55d83f285b3374c9920c6507145b12,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 2435690242474855244, guid: ff55d83f285b3374c9920c6507145b12,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2435690242474855244, guid: ff55d83f285b3374c9920c6507145b12,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2435690242474855244, guid: ff55d83f285b3374c9920c6507145b12,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2435690242474855248, guid: ff55d83f285b3374c9920c6507145b12,
-        type: 3}
-      propertyPath: m_Name
-      value: HearthSpawn
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ff55d83f285b3374c9920c6507145b12, type: 3}
 --- !u!1001 &6997147706019490134
 PrefabInstance:
   m_ObjectHideFlags: 0

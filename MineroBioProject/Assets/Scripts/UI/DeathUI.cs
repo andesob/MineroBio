@@ -38,11 +38,11 @@ public class DeathUI : MonoBehaviour
                 {
                     Retry();
                 }
-                else if (Input.GetKeyDown(KeyCode.S))
+                else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     ChangeState(State.Quit);
                 }
-                else if (Input.GetKeyDown(KeyCode.W))
+                else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     ChangeState(State.Quit);
                 }
@@ -54,11 +54,11 @@ public class DeathUI : MonoBehaviour
                 {
                     QuitToMainMenu();
                 }
-                else if (Input.GetKeyDown(KeyCode.W))
+                else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     ChangeState(State.Retry);
                 }
-                else if (Input.GetKeyDown(KeyCode.S))
+                else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     ChangeState(State.Retry);
                 }
