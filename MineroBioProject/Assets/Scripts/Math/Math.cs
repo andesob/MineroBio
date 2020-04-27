@@ -30,14 +30,8 @@ public class Math : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        questionText = GameObject.Find("TextObjects/Question").GetComponent<Text>();
-        answerStatus = GameObject.Find("TextObjects/AnswerStatus").GetComponent<Text>();
-        inputField = GameObject.Find("InputField").GetComponent<InputField>();
-        character = GameObject.Find("Character").GetComponent<Image>();
-        SelectInputField();
-        status = Status.Disabled;
         
-        character.enabled = false;
+
     }
 
     // Update is called once per frame
@@ -46,12 +40,12 @@ public class Math : MonoBehaviour
         switch (status)
         {
             case Status.Disabled:
-             
                 break;
 
             case Status.Active:
-                SelectInputField();
                 status = Status.GenereteNewEquation;
+                SelectInputField();
+
                 break;
 
             case Status.HandleInput:
@@ -59,7 +53,6 @@ public class Math : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
                     bool success = CheckAnswer();
-                    Debug.Log("answer:" + currentAnswer);
 
                     if (success)
                     {
@@ -75,7 +68,6 @@ public class Math : MonoBehaviour
                 break;
 
             case Status.GenereteNewEquation:
-                Debug.Log("Generating");
                 if (CorrectCounter >= maxQuestions)
                 {
                     SetMathUIStatusToDisabled();
@@ -86,8 +78,24 @@ public class Math : MonoBehaviour
                     SelectInputField();
                     status = Status.HandleInput;
                 }
+                Debug.Log(currentAnswer);
                 break;
         }
+    }
+
+    private void OnEnable()
+    {
+        questionText = GameObject.Find("TextObjects/Question").GetComponent<Text>();
+        answerStatus = GameObject.Find("TextObjects/AnswerStatus").GetComponent<Text>();
+        inputField = GameObject.Find("InputField").GetComponent<InputField>();
+
+        character = GameObject.Find("Character").GetComponent<Image>();
+        character.enabled = false;
+        SetMathUIStatusToActive();
+
+       
+    
+
     }
 
     // Generates an equation. can be addition, subtraction, multiplication or division. 
@@ -241,6 +249,7 @@ public class Math : MonoBehaviour
     // Sets the pointer to the input field. 
     private void SelectInputField()
     {
+        Debug.Log("select input called");
         inputField.Select();
         inputField.ActivateInputField();
     }
@@ -268,8 +277,9 @@ public class Math : MonoBehaviour
     {
         Time.timeScale = 0f; 
         PlayerController.isGamePaused = true;
-        this.gameObject.SetActive(true);
+        //this.gameObject.SetActive(true);
         status = Status.Active;
+        
     }
 
     // Sets the MathUI object to disabled and starts the game again.
@@ -277,7 +287,7 @@ public class Math : MonoBehaviour
     public void SetMathUIStatusToDisabled()
     {
        Time.timeScale = 1f;
-        PlayerController.isGamePaused = true;
+        PlayerController.isGamePaused = false;
         this.gameObject.SetActive(false);
         status = Status.Disabled;
     }
@@ -285,7 +295,6 @@ public class Math : MonoBehaviour
     //Sets the time for how long the UI elements says the correct.
     private IEnumerator SuccessTimer(float timout)
     {
-        Debug.Log("successtimer");
         inputField.enabled = false;
         character.enabled = true;
         yield return new WaitForSecondsRealtime(timout);
