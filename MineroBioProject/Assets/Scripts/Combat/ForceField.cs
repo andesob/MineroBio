@@ -27,8 +27,7 @@ public class ForceField : MonoBehaviour
     void Update()
     {  
         FollowPlayer();
-        DamageTaken();
-        ForceFieldDestroy();
+
     }
     void FollowPlayer()
     {
@@ -38,34 +37,49 @@ public class ForceField : MonoBehaviour
         transform.position = new Vector2(x, y);
 
     }
-
-    void DamageTaken()
+    /*
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-       
-            if (Input.GetKeyDown(KeyCode.K)  && shieldHealth == 2)
-            {
+        if (collider.CompareTag("Enemy") && collider.isTrigger && shieldHealth == 2)
+
+        {
             shieldHealth -= 1;
             print("YOU ARE HERE");
             anim.Play("ff_dmg");
-                
-            }
         }
-    void ForceFieldDestroy()
-    {
-        if(Input.GetKeyDown(KeyCode.L) && shieldHealth == 1)
+        else if (collider.CompareTag("enemy") && collider.isTrigger && shieldHealth == 1)
         {
             anim.Play("ff_destroy");
             StartCoroutine(WaitToDestroy());
-           
-            
         }
-    }
+    }*/
+       
    IEnumerator WaitToDestroy()
     {
         yield return new WaitForSeconds (0.4f);
         Destroy(gameObject);
     }
+
+    public void damageShield()
+    {
+        if (shieldHealth == 2)
+
+        {
+            shieldHealth -= 1;
+            print("YOU ARE HERE");
+            anim.Play("ff_dmg");
+        }
+        else if (shieldHealth == 1)
+        {
+            anim.Play("ff_destroy");
+            StartCoroutine(WaitToDestroy());
+        }
     }
+    public int getShieldHealth()
+    {
+        return shieldHealth;
+    }
+}
 
 
 

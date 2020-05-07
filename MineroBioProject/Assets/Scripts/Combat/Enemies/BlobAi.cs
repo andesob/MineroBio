@@ -35,6 +35,7 @@ public class BlobAi : EnemyAi
         damageObject = GetComponent<DamageObject>();
         thisEnemy = gameObject;
         spawnHealth = GetComponent<SpawnHealth>();
+        spawnForceField = GetComponent<SpawnForceField>();
         blobState = State.chase;
         startPosition = transform.position;
         shootingDistance = maximumDistance + 1f;

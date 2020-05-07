@@ -527,6 +527,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 234643891}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &239919743 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4656721011831553413, guid: 2a539c57ca2ed80459ccf3383dc5c465,
+    type: 3}
+  m_PrefabInstance: {fileID: 965781429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &239919754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239919743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69e8e24862513564f9e720c0c40eb9d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  probability: 100
+  forceFieldSprite: {fileID: 4861471145043565094, guid: 86720d6ea0f0c11419a0b69842e05b04,
+    type: 3}
 --- !u!1001 &256801080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22738,6 +22759,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 1282320125760411089, guid: 2a539c57ca2ed80459ccf3383dc5c465,
+        type: 3}
+      propertyPath: hearthPrefab
+      value: 
+      objectReference: {fileID: 5716120578270763749, guid: 5cc260c75b3660d409084fe42727e032,
+        type: 3}
+    - target: {fileID: 1282320125760411089, guid: 2a539c57ca2ed80459ccf3383dc5c465,
+        type: 3}
+      propertyPath: probability
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2670589460097646997, guid: 2a539c57ca2ed80459ccf3383dc5c465,
         type: 3}

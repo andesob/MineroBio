@@ -16,6 +16,7 @@ public class EnemyAi : MonoBehaviour
     protected DamageObject damageObject;
     protected GameObject healthPrefab;
     protected SpawnHealth spawnHealth;
+    protected SpawnForceField spawnForceField;
     private State blobState;
     private bool canTakeDamage = true;
 
@@ -37,6 +38,8 @@ public class EnemyAi : MonoBehaviour
         thisRigidbody2D = GetComponent<Rigidbody2D>();
         damageObject = GetComponent<DamageObject>();
         spawnHealth = GetComponent<SpawnHealth>();
+        spawnForceField = GetComponent<SpawnForceField>();
+        Debug.Log(spawnForceField);
 
         blobState = State.Roaming;
         startPosition = transform.position;
@@ -104,8 +107,12 @@ public class EnemyAi : MonoBehaviour
     {
         if (healthBar.healthSystem.getHealth() <= 0)
         {
-            Debug.Log("spawning object");
+           if(spawnForceField != null)
+            {
+                spawnForceField.DropItem();
+            }
             spawnHealth.DropItem();
+    
             Destroy(thisEnemy);
           
         }
