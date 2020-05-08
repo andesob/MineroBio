@@ -16,12 +16,15 @@ public class Pausemenu : MonoBehaviour
         
     private int state;
     private bool inMenu = false;
-    private bool isPaused = false;
+    public bool isPaused = false;
+
+    private float currentTime;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         state = 1;
+        currentTime = Time.time;
     }
 
     void Update()
@@ -80,8 +83,9 @@ public class Pausemenu : MonoBehaviour
                 {
                     changeState(3);
                 }
-                else if (Input.GetKeyDown(KeyCode.Return))
+                else if (Input.GetKeyDown(KeyCode.Return) && Time.time > currentTime)
                 {
+                    print("hello");
                     pauseMenu.SetActive(false);
                     inMenu = false;
                     this.gameObject.GetComponent<SettingsMenu>().startSettings();
@@ -111,5 +115,10 @@ public class Pausemenu : MonoBehaviour
     {
         EventSystem.current.GetComponent<EventSystem>().SetSelectedGameObject(null);
         state = newState;
+    }
+
+    public void wait(float time) 
+    {
+        currentTime = time + 0.1f;
     }
 }

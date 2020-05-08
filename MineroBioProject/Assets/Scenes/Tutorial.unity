@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -29478,8 +29478,7 @@ MonoBehaviour:
       to get through this hallway as fast as possible'
   source: {fileID: 893738199}
   clips:
-  - {fileID: 8300000, guid: 71ff84f6433db8540896d2348823e505, type: 3}
-  - {fileID: 8300000, guid: fc5b40bb52c1fa9469ddfbe29566eb71, type: 3}
+  - {fileID: 8300000, guid: 9fd4e3572fa4fd74a938cf204c50042e, type: 3}
 --- !u!70 &391912696
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -29693,8 +29692,7 @@ MonoBehaviour:
       to move into the next room.'
   source: {fileID: 893738199}
   clips:
-  - {fileID: 8300000, guid: 4f0e2debdb6185a49981e5f4fd72e78e, type: 3}
-  - {fileID: 8300000, guid: 909b3b7949160424691ad07bc38259d4, type: 3}
+  - {fileID: 8300000, guid: 583c7e11d03551543a2f10e4706a6933, type: 3}
 --- !u!4 &587086023
 Transform:
   m_ObjectHideFlags: 0
@@ -33216,9 +33214,9 @@ MonoBehaviour:
   anim: {fileID: 0}
   pauseMenu: {fileID: 0}
   resumeButton: {fileID: 0}
-  inventoryButton: {fileID: 0}
   quitButton: {fileID: 0}
   settingsButton: {fileID: 0}
+  isPaused: 0
 --- !u!1 &893738198
 GameObject:
   m_ObjectHideFlags: 0
@@ -33704,9 +33702,7 @@ MonoBehaviour:
       try to use it on the blob to your right"
   source: {fileID: 893738199}
   clips:
-  - {fileID: 8300000, guid: 2624cdf788068de4e82dc43f40cdc2d0, type: 3}
-  - {fileID: 8300000, guid: 9cc800f851061b24e9b2f680f8533833, type: 3}
-  - {fileID: 8300000, guid: d594a3e3331be964c8d5986864207487, type: 3}
+  - {fileID: 8300000, guid: 0d88459370725c74fb6952700a011d3d, type: 3}
 --- !u!1 &1107604873
 GameObject:
   m_ObjectHideFlags: 0
@@ -33754,10 +33750,10 @@ MonoBehaviour:
   dialogue:
     name: Sneehaaa
     sentences:
-    - Use the pistol to remove the enemy in the next room
+    - Use the pistol to kill the enemy in the next room
   source: {fileID: 893738199}
   clips:
-  - {fileID: 8300000, guid: c63be9833db59cb4ba6f87c8cf366965, type: 3}
+  - {fileID: 8300000, guid: ded1940a88fb3bc44ba1761e54ea2a88, type: 3}
 --- !u!61 &1107604876
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -37559,7 +37555,7 @@ MonoBehaviour:
       pistol use K"
   source: {fileID: 893738199}
   clips:
-  - {fileID: 8300000, guid: 3490779f906271f468fd82a692a29694, type: 3}
+  - {fileID: 8300000, guid: cb4eee7be398bf349a075c49e9972472, type: 3}
 --- !u!61 &1332550778
 BoxCollider2D:
   m_ObjectHideFlags: 0

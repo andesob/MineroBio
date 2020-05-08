@@ -42,9 +42,10 @@ public class SettingsMenu : MonoBehaviour
                 backButton.Select();
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
-                    settingsMenu.SetActive(false);
-                    inSettings = false;
+                    this.gameObject.GetComponent<Pausemenu>().wait(Time.time);
                     this.gameObject.GetComponent<Pausemenu>().Pause();
+                    inSettings = false;
+                    settingsMenu.SetActive(false);
                 }
                 else if (Input.GetKeyDown(KeyCode.W))
                 {
@@ -60,14 +61,14 @@ public class SettingsMenu : MonoBehaviour
                 }
                 else if (Input.GetKeyDown(KeyCode.A))
                 {
-                    if(slider.value > -80)
+                    if(slider.value >= -70)
                     {
                         slider.value = slider.value - 10;
                     }
                 }
                 else if (Input.GetKeyDown(KeyCode.D))
                 {
-                    if (slider.value < 0)
+                    if (slider.value <= -10)
                     {
                         slider.value = slider.value + 10;
                     }
