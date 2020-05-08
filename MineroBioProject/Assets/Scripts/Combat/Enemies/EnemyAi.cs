@@ -28,7 +28,7 @@ public class EnemyAi : MonoBehaviour
     private float rangedKnockback = 1f;
 
     public float maximumDistance;
-    private float damageTimeout = 1f;
+    protected float damageTimeout;
     public HealthBar healthBar;
 
 
@@ -39,8 +39,8 @@ public class EnemyAi : MonoBehaviour
         damageObject = GetComponent<DamageObject>();
         spawnHealth = GetComponent<SpawnHealth>();
         spawnForceField = GetComponent<SpawnForceField>();
-        Debug.Log(spawnForceField);
-
+   
+        damageTimeout = 0.4f;
         blobState = State.Roaming;
         startPosition = transform.position;
         thisEnemy = gameObject;
@@ -120,6 +120,7 @@ public class EnemyAi : MonoBehaviour
 
     private IEnumerator DamageTimeout(float timeout)
     {
+        Debug.Log("Damagetimout" + timeout);
         canTakeDamage = false;
         yield return new WaitForSeconds(timeout);
         canTakeDamage = true;
@@ -131,7 +132,7 @@ public class EnemyAi : MonoBehaviour
         if (canTakeDamage)
         {
             healthBar.healthSystem.Damage(dmgAmount);
-            DamageTimeout(damageTimeout);
+            StartCoroutine(DamageTimeout(damageTimeout));
 
             difference = difference.normalized;
 

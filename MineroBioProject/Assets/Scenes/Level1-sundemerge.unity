@@ -659,6 +659,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 21
       objectReference: {fileID: 0}
+    - target: {fileID: 3572446084660623984, guid: 2a539c57ca2ed80459ccf3383dc5c465,
+        type: 3}
+      propertyPath: damageTimeout
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3916658990278167282, guid: 2a539c57ca2ed80459ccf3383dc5c465,
         type: 3}
       propertyPath: m_Layer
@@ -22781,6 +22786,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 21
       objectReference: {fileID: 0}
+    - target: {fileID: 3572446084660623984, guid: 2a539c57ca2ed80459ccf3383dc5c465,
+        type: 3}
+      propertyPath: damageTimeout
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3916658990278167282, guid: 2a539c57ca2ed80459ccf3383dc5c465,
         type: 3}
       propertyPath: m_Layer
@@ -22916,7 +22926,8 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: -0.1823471
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 770547260178388217, guid: 2a539c57ca2ed80459ccf3383dc5c465, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2a539c57ca2ed80459ccf3383dc5c465, type: 3}
 --- !u!1001 &1027110789
 PrefabInstance:
@@ -32706,7 +32717,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 21
-      m_TileSpriteIndex: 21
+      m_TileSpriteIndex: 14
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -35667,7 +35678,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 21
-      m_TileSpriteIndex: 21
+      m_TileSpriteIndex: 14
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -36742,7 +36753,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: -1001670435574070052, guid: 1116c2ed69ce64397a0ebb8b7f237709,
       type: 3}
-  - m_RefCount: 1
+  - m_RefCount: 3
     m_Data: {fileID: 2692801256266622806, guid: 1116c2ed69ce64397a0ebb8b7f237709,
       type: 3}
   - m_RefCount: 1
@@ -36892,6 +36903,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572446084660623984, guid: 2a539c57ca2ed80459ccf3383dc5c465,
+        type: 3}
+      propertyPath: damageTimeout
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3916658990278167282, guid: 2a539c57ca2ed80459ccf3383dc5c465,
         type: 3}

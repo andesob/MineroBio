@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 1494403268801786634}
   - component: {fileID: 415217480}
   - component: {fileID: 3572446084660623984}
+  - component: {fileID: 770547260178388217}
   m_Layer: 15
   m_Name: blob 1
   m_TagString: Enemy
@@ -243,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   probability: 50
-  hearthPrefab: {fileID: 1642618985684765801, guid: a1bc3a2259b9a2843809418fc66842c2,
+  hearthPrefab: {fileID: 5716120578270763749, guid: 5cc260c75b3660d409084fe42727e032,
     type: 3}
 --- !u!114 &1494403268912998881
 MonoBehaviour:
@@ -320,9 +321,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89113ab64c58e734aad5e9d1a601dae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageTimeout: 0
-  knockbackDistance: 0
-  damageAmount: 0
+  damageTimeout: 0.2
+  knockbackDistance: 5
+  damageAmount: 1
+--- !u!114 &770547260178388217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4656721011831553413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69e8e24862513564f9e720c0c40eb9d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  probability: 0
+  forceFieldSprite: {fileID: 4861471145043565094, guid: 86720d6ea0f0c11419a0b69842e05b04,
+    type: 3}
 --- !u!1 &6434568704893961060
 GameObject:
   m_ObjectHideFlags: 0
