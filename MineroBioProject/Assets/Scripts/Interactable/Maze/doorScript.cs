@@ -42,4 +42,10 @@ public class doorScript : MonoBehaviour
             isOpen = true;
         }
     }
+
+    public void OpenDoor()
+    {
+        gameObject.GetComponent<SpriteRenderer>().sprite = doorOpen.GetComponent<SpriteRenderer>().sprite;
+        Destroy(boxCollider);
+    }
 }

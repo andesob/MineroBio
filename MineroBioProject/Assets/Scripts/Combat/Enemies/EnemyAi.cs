@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,8 +14,12 @@ public class EnemyAi : MonoBehaviour
     protected GameObject thisEnemy;
     protected Rigidbody2D thisRigidbody2D;
     protected DamageObject damageObject;
+    protected GameObject healthPrefab;
+    protected SpawnHealth spawnHealth;
+    protected SpawnForceField spawnForceField;
     private State blobState;
     private bool canTakeDamage = true;
+
 
     protected EnemyMovement enemyMovement;
     protected Vector3 startPosition;
@@ -24,7 +28,7 @@ public class EnemyAi : MonoBehaviour
     private float rangedKnockback = 1f;
 
     public float maximumDistance;
-    private float damageTimeout = 1f;
+    protected float damageTimeout;
     public HealthBar healthBar;
 
 
@@ -33,6 +37,10 @@ public class EnemyAi : MonoBehaviour
         enemyMovement = GetComponent<EnemyMovement>();
         thisRigidbody2D = GetComponent<Rigidbody2D>();
         damageObject = GetComponent<DamageObject>();
+        spawnHealth = GetComponent<SpawnHealth>();
+        spawnForceField = GetComponent<SpawnForceField>();
+   
+        damageTimeout = 0.4f;
         blobState = State.Roaming;
         startPosition = transform.position;
         thisEnemy = gameObject;
@@ -79,6 +87,7 @@ public class EnemyAi : MonoBehaviour
         }
     }
 
+    /*
     //TODO add the tags for the other weapons, and implement different knockback and damageTimout for each weapon. 
     private void OnTriggerEnter2D(Collider2D collider)
     {
@@ -92,18 +101,26 @@ public class EnemyAi : MonoBehaviour
         }
         CheckIfDead();
     }
-
+    */
 
     private void CheckIfDead()
     {
         if (healthBar.healthSystem.getHealth() <= 0)
         {
+           if(spawnForceField != null)
+            {
+                spawnForceField.DropItem();
+            }
+            spawnHealth.DropItem();
+    
             Destroy(thisEnemy);
+          
         }
     }
 
     private IEnumerator DamageTimeout(float timeout)
     {
+        Debug.Log("Damagetimout" + timeout);
         canTakeDamage = false;
         yield return new WaitForSeconds(timeout);
         canTakeDamage = true;
@@ -112,20 +129,23 @@ public class EnemyAi : MonoBehaviour
 
     public void TakeDamage(int dmgAmount, Vector2 difference, bool isMelee)
     {
-        
-        healthBar.healthSystem.Damage(dmgAmount);
-        difference = difference.normalized;
+        if (canTakeDamage)
+        {
+            healthBar.healthSystem.Damage(dmgAmount);
+            StartCoroutine(DamageTimeout(damageTimeout));
 
-        if (isMelee)
-        {
-        Debug.Log(difference);
-            enemyMovement.Knockback(difference, meleeKnockback);
+            difference = difference.normalized;
+
+            if (isMelee)
+            {
+                enemyMovement.Knockback(difference, meleeKnockback);
+            }
+            else
+            {
+                enemyMovement.Knockback(difference, rangedKnockback);
+            }
+            CheckIfDead();
         }
-        else
-        {
-            enemyMovement.Knockback(difference, rangedKnockback);
-        }
-        CheckIfDead();
     }
 
 }

@@ -48,9 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab17677f243b07341b112a207b108144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heart0Sprite: {fileID: 21300000, guid: d9166f9843db80d4a91d34782586e57b, type: 3}
-  heart1Sprite: {fileID: 21300000, guid: 9fffc025b17f9fd4e8923a9ed2040ae3, type: 3}
-  heart2Sprite: {fileID: 21300000, guid: 0d55b75e51af02c4797c699a3d44a625, type: 3}
-  heart3Sprite: {fileID: 21300000, guid: adaff10ad4717e14e902cc500b0183c8, type: 3}
-  heart4Sprite: {fileID: 21300000, guid: 34fc748e80ca3954db0b606c087c1696, type: 3}
+  heart0Sprite: {fileID: 21300000, guid: 3b35de5c1c58a1c468676cbabca95834, type: 3}
+  heart1Sprite: {fileID: 21300000, guid: f82504237a430854dae7e37b0f58e636, type: 3}
+  heart2Sprite: {fileID: 21300000, guid: 0b51062ab7cbc0a49b78432808ede102, type: 3}
+  heart3Sprite: {fileID: 21300000, guid: 99d631f09a5d39244bed4fa12c10d645, type: 3}
+  heart4Sprite: {fileID: 21300000, guid: f8e8d4b8f946c0340961a7d8fb96254f, type: 3}
   DeathUI: {fileID: 3608449204044299576, guid: 2196cd04a6e0edd42b8ae1c11c8f9c62, type: 3}

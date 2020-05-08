@@ -72,7 +72,7 @@ public class MenuController : MonoBehaviour
                         StartCoroutine("Wait");
                     }
                 }
-                if (Input.GetKeyDown(KeyCode.S))
+                if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     if (this.gameObject.tag == "SettingsButton")
                     {
@@ -84,7 +84,7 @@ public class MenuController : MonoBehaviour
                     }
                     state = 2;
                 }
-                if (Input.GetKeyDown(KeyCode.W))
+                if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     if (this.gameObject.tag == "QuitButton")
                     {
@@ -105,7 +105,7 @@ public class MenuController : MonoBehaviour
                         StartCoroutine("Wait");
                     }
                 }
-                if (Input.GetKeyDown(KeyCode.S))
+                if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     if (this.gameObject.tag == "QuitButton")
                     {
@@ -117,7 +117,7 @@ public class MenuController : MonoBehaviour
                     }
                     state = 3;
                 }
-                if (Input.GetKeyDown(KeyCode.W))
+                if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     if (this.gameObject.tag == "SettingsButton")
                     {
@@ -138,7 +138,7 @@ public class MenuController : MonoBehaviour
                             StartCoroutine("Wait2");
                     }
                 }
-                if (Input.GetKeyDown(KeyCode.S))
+                if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     if (this.gameObject.tag == "PlayButton")
                     {
@@ -150,7 +150,7 @@ public class MenuController : MonoBehaviour
                     }
                     state = 1;
                 }
-                if (Input.GetKeyDown(KeyCode.W))
+                if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     if (this.gameObject.tag == "SettingsButton")
                     {

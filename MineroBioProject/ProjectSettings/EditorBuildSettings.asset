@@ -18,7 +18,10 @@ EditorBuildSettings:
     path: Assets/Scenes/HomeScene.unity
     guid: 46c86a1bcdae2d64497ecd8c307ee8b0
   - enabled: 1
-    path: Assets/Scenes/Level1.unity
+    path: Assets/Scenes/MainMenu.unity
+    guid: 4e56c9d2a5b7e264b88ff2cdcf10a894
+  - enabled: 1
+    path: Assets/Scenes/Level1-sundemerge.unity
     guid: 0608de191e79f8b4fa530fd9ce265d16
   - enabled: 1
     path: Assets/Scenes/Trymtest.unity

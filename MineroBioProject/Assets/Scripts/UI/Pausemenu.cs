@@ -67,7 +67,7 @@ public class Pausemenu : MonoBehaviour
                 {
                     Resume();
                 }
-                else if (Input.GetKeyDown(KeyCode.S))
+                else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     changeState(2);
                 }
@@ -79,7 +79,7 @@ public class Pausemenu : MonoBehaviour
                 {
                     changeState(1);
                 }
-                else if (Input.GetKeyDown(KeyCode.S))
+                else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     changeState(3);
                 }
@@ -94,7 +94,7 @@ public class Pausemenu : MonoBehaviour
 
             case 3:
                 quitButton.Select();
-                if (Input.GetKeyDown(KeyCode.W))
+                if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     changeState(2);
                 }

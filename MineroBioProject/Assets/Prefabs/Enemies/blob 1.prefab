@@ -126,11 +126,13 @@ GameObject:
   - component: {fileID: 1494403268912998880}
   - component: {fileID: 1494403268912998895}
   - component: {fileID: 9124293302382075152}
+  - component: {fileID: 1282320125760411089}
   - component: {fileID: 1494403268912998881}
   - component: {fileID: 1494403268621887225}
   - component: {fileID: 1494403268801786634}
   - component: {fileID: 415217480}
-  - component: {fileID: 5434711400456985173}
+  - component: {fileID: 3572446084660623984}
+  - component: {fileID: 770547260178388217}
   m_Layer: 15
   m_Name: blob 1
   m_TagString: Enemy
@@ -229,6 +231,21 @@ CapsuleCollider2D:
   m_Offset: {x: -0.18289375, y: 0.26172212}
   m_Size: {x: 0.21455058, y: 0.3805816}
   m_Direction: 0
+--- !u!114 &1282320125760411089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4656721011831553413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68cec234f3dfb3c4295a57ec658d990d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  probability: 50
+  hearthPrefab: {fileID: 5716120578270763749, guid: 5cc260c75b3660d409084fe42727e032,
+    type: 3}
 --- !u!114 &1494403268912998881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,14 +301,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae19becece2f03c45b4734785510f5fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumDistance: 10
+  maximumDistance: 0
   healthBar: {fileID: 7627175141129747722}
-  player: {fileID: 0}
+  player: {fileID: 5976417913236194023, guid: 5351be2a1f409a14b84d5f54d81f2f17, type: 3}
   bulletPrefab: {fileID: 1134690676384144, guid: b916058e8e9e5074d86677f9400a0291,
     type: 3}
   firePoint: {fileID: 815901277}
-  detectionDistance: 10
---- !u!114 &5434711400456985173
+  detectionDistance: 0.3
+  shootingDistance: 10.34
+--- !u!114 &3572446084660623984
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -305,7 +323,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageTimeout: 0.2
   knockbackDistance: 5
-  damageAmount: 2
+  damageAmount: 1
+--- !u!114 &770547260178388217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4656721011831553413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69e8e24862513564f9e720c0c40eb9d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  probability: 0
+  forceFieldSprite: {fileID: 4861471145043565094, guid: 86720d6ea0f0c11419a0b69842e05b04,
+    type: 3}
 --- !u!1 &6434568704893961060
 GameObject:
   m_ObjectHideFlags: 0

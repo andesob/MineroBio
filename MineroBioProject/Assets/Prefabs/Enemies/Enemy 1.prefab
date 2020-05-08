@@ -12,12 +12,15 @@ GameObject:
   - component: {fileID: 3524216425003036401}
   - component: {fileID: 3524216425003036413}
   - component: {fileID: 3524216425003036406}
+  - component: {fileID: 7160724014989924339}
   - component: {fileID: 3524216425003036408}
   - component: {fileID: 3524216425003036402}
   - component: {fileID: 3524216425003036403}
   - component: {fileID: 3524216425003036409}
   - component: {fileID: 3524216425003036412}
   - component: {fileID: 3524216425003036414}
+  - component: {fileID: -1717111935802359548}
+  - component: {fileID: 867304153927075608}
   m_Layer: 0
   m_Name: Enemy 1
   m_TagString: Enemy
@@ -130,6 +133,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7160724014989924339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3524216425003036407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68cec234f3dfb3c4295a57ec658d990d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  probability: 50
+  hearthPrefab: {fileID: 1642618985684765801, guid: a1bc3a2259b9a2843809418fc66842c2,
+    type: 3}
 --- !u!114 &3524216425003036408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,13 +173,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886791933aa4f472bbf3a7a3f41abc4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
   maximumDistance: 10
-  damageFromPistol: 5
-  damageTimeout: 0.6
   healthBar: {fileID: 6859703654994869473}
-  knockbackDistance: 3
-  knockbackTime: 0.2
 --- !u!114 &3524216425003036403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,10 +187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1ef48ab345f4cae923fc7c6fc03dd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCharacter: {fileID: 0}
   movementSpeed: 3
   startPosition: {x: 0, y: 0, z: 0}
-  knockbacktime: 0.3
 --- !u!114 &3524216425003036409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,6 +236,36 @@ CapsuleCollider2D:
   m_Offset: {x: 0.04680655, y: -0.24329409}
   m_Size: {x: 1.020681, y: 1.020681}
   m_Direction: 0
+--- !u!114 &-1717111935802359548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3524216425003036407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68cec234f3dfb3c4295a57ec658d990d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  probability: 0
+  hearthPrefab: {fileID: 5716120578270763749, guid: 5cc260c75b3660d409084fe42727e032,
+    type: 3}
+--- !u!114 &867304153927075608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3524216425003036407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69e8e24862513564f9e720c0c40eb9d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  probability: 0
+  forceFieldSprite: {fileID: 4861471145043565094, guid: 86720d6ea0f0c11419a0b69842e05b04,
+    type: 3}
 --- !u!1001 &3524216425648735890
 PrefabInstance:
   m_ObjectHideFlags: 0

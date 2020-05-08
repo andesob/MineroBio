@@ -9,6 +9,9 @@ public class DamageObject : MonoBehaviour
     public float knockbackDistance;
 
     private bool canDamage = true;
+    private ForceField forceField;
+
+
 
     [SerializeField] private int damageAmount;
 
@@ -23,7 +26,17 @@ public class DamageObject : MonoBehaviour
         if (collider.gameObject.CompareTag("Player") && collider.isTrigger && canDamage)
         {
             PlayerController player = collider.GetComponent<PlayerController>();
-            if (player != null)
+            GameObject ForceFieldObject = GameObject.FindGameObjectWithTag("ForceField");
+            if (ForceFieldObject != null)
+            {
+                forceField = GameObject.FindGameObjectWithTag("ForceField").GetComponent<ForceField>(); ;
+            }
+            if (player != null && forceField != null && forceField.getShieldHealth() > 0 && canDamage)
+            {
+                forceField.damageShield();
+                StartCoroutine(damageTimer(damageTimeout));
+            }
+            else
             {
                 Vector2 direction = collider.transform.position - transform.position;
                 Vector2 thrust = direction.normalized * knockbackDistance;
