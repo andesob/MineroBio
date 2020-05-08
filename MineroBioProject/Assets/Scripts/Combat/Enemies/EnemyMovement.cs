@@ -52,11 +52,15 @@ public class EnemyMovement : MonoBehaviour
         rb.MovePosition((Vector2)transform.position + (playerDirection * movementSpeed * Time.deltaTime));
         if (this.gameObject.transform.position.x > mainCharacter.transform.position.x + 0.1f)
         {
-            this.gameObject.transform.rotation = Quaternion.Euler(0.0f, 180f, 0.0f);
+            this.gameObject.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 180f, 0.0f);
+            this.gameObject.transform.GetChild(1).rotation = Quaternion.Euler(0.0f, 180f, 0.0f);
+            this.gameObject.transform.GetChild(4).rotation = Quaternion.Euler(0.0f, 180f, 0.0f);
         }
         else
         {
-            this.gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            this.gameObject.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            this.gameObject.transform.GetChild(1).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            this.gameObject.transform.GetChild(4).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         }
     }
     public void MoveEnemyAwayPlayer()
@@ -64,13 +68,18 @@ public class EnemyMovement : MonoBehaviour
         rb.MovePosition((Vector2)transform.position - (playerDirection * movementSpeed * Time.deltaTime));
         if (this.gameObject.transform.position.x > mainCharacter.transform.position.x + 0.1f)
         {
-            this.gameObject.transform.rotation = Quaternion.Euler(0.0f, 180f, 0.0f);
+            this.gameObject.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 180f, 0.0f);
+            this.gameObject.transform.GetChild(1).rotation = Quaternion.Euler(0.0f, 180f, 0.0f);
+            this.gameObject.transform.GetChild(4).rotation = Quaternion.Euler(0.0f, 180f, 0.0f);
         }
         else
         {
-            this.gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            this.gameObject.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            this.gameObject.transform.GetChild(1).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            this.gameObject.transform.GetChild(4).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         }
     }
+
     public void MoveEnemyTowardSpawn()
     {
         rb.MovePosition((Vector2)transform.position + (spawnDirection * movementSpeed * Time.deltaTime));
@@ -110,6 +119,7 @@ public class EnemyMovement : MonoBehaviour
     //Knoks the enemy back. 
     public void Knockback(Vector2 difference, float distance)
     {
+        Debug.Log("knockback: " + difference + "and " + distance);
          thisRigidbody2D.AddForce(difference*distance, ForceMode2D.Impulse);
          StartCoroutine(KnockbackTimer(thisRigidbody2D));
      } 
