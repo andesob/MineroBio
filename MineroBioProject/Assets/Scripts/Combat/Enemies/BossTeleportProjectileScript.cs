@@ -7,6 +7,7 @@ public class BossTeleportProjectileScript : MonoBehaviour
     private float randX;
     private float randY;
     public GameObject hitPrefab;
+    private float timeOut;
 
     protected internal bool hasHit = false;
 
@@ -14,9 +15,11 @@ public class BossTeleportProjectileScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
          randX = Random.Range(-1f, 1f);
          randY = Random.Range(-1f, 1f);
- 
+
+        timeOut = Time.time + 0.7f;
   
         bossAi = GameObject.FindGameObjectWithTag("Boss").GetComponent<BossAI>();
      
@@ -29,7 +32,7 @@ public class BossTeleportProjectileScript : MonoBehaviour
          {
 
          }
-         else*/ if(Time.time <= 0.7f)
+         else*/ if(Time.time <= timeOut && !this.gameObject.CompareTag("BossTeleportIn"))
          {
              transform.position += new Vector3(randX,randY).normalized * Time.deltaTime * 6f;
          }
@@ -68,11 +71,12 @@ public class BossTeleportProjectileScript : MonoBehaviour
         if(hitPrefab != null)
         {
             var hitVFX = Instantiate(hitPrefab, transform.position, Quaternion.Euler(0, 0, 0));
+            hitVFX.transform.GetChild(4).GetComponent<Transform>().transform.rotation = Quaternion.Euler(0, 0, bossAi.GetRandomRotation());
             bossAi.hasHit = true;
             var psHit = hitVFX.GetComponent<ParticleSystem>();
             
             if (psHit != null)
-            {
+            {           
                 Destroy(hitVFX, psHit.main.duration);
             }
             {
@@ -81,7 +85,7 @@ public class BossTeleportProjectileScript : MonoBehaviour
             }
         }
        
-        Vector3 lastKnownPosition = new Vector3(transform.position.x,transform.position.y,transform.position.z);
+        Vector3 lastKnownPosition = new Vector3(this.transform.position.x,this.transform.position.y,this.transform.position.z);
         bossAi.gooProjectiles.Add(lastKnownPosition);
        // bossAi.hasHit = true;
         Destroy(gameObject);

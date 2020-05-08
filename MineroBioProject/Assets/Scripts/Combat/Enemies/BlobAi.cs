@@ -112,4 +112,5 @@ public class BlobAi : EnemyAi
             bulletCounter += bulletUpDown;
         }
     }
+ 
 }
