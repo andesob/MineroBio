@@ -62,6 +62,7 @@ public class EnemyMovement : MonoBehaviour
             this.gameObject.transform.GetChild(1).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
             this.gameObject.transform.GetChild(4).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         }
+
     }
     public void MoveEnemyAwayPlayer()
     {
@@ -79,11 +80,12 @@ public class EnemyMovement : MonoBehaviour
             this.gameObject.transform.GetChild(4).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         }
     }
-
     public void MoveEnemyTowardSpawn()
     {
         rb.MovePosition((Vector2)transform.position + (spawnDirection * movementSpeed * Time.deltaTime));
+
     }
+
 
     // Sets the direction for this object to move towards.
     private void SetPlayerDirection()

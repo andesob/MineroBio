@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS0665: Assignment in conditional expression is always constant
+dotnet_diagnostic.CS0665.severity = none

@@ -34,4 +34,5 @@ public class DissolveEffect : MonoBehaviour
             this.dissolveSpeed = dissolveSpeed;
         }
     
+
 }

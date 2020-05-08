@@ -10,6 +10,8 @@ public class EnemyProjectile : MonoBehaviour
     public GameObject muzzlePrefab;
     public GameObject tip;
     public GameObject player;
+ 
+
     private float time;
 
     public Rigidbody2D rb;
@@ -79,6 +81,8 @@ public class EnemyProjectile : MonoBehaviour
             if (hitPrefab != null)
             {
                 var hitVFX = Instantiate(hitPrefab, pos, rot);
+                
+               
                 var psHit = hitVFX.GetComponent<ParticleSystem>();
                 if (psHit != null)
                 {
