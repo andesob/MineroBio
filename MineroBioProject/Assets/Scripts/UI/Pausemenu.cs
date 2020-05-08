@@ -11,24 +11,28 @@ public class Pausemenu : MonoBehaviour
     public GameObject pauseMenu;
 
     public Button resumeButton;
-    public Button inventoryButton;
     public Button quitButton;
     public Button settingsButton;
-
+        
     private int state;
     private bool inMenu = false;
+    public bool isPaused = false;
+
+    private float currentTime;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         state = 1;
+        currentTime = Time.time;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
         {
             Pause();
+            isPaused = true;
         }
         if (inMenu)
         {
@@ -36,7 +40,7 @@ public class Pausemenu : MonoBehaviour
         }
     }
 
-    private void Pause()
+    public void Pause()
     {
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
@@ -50,6 +54,7 @@ public class Pausemenu : MonoBehaviour
         Time.timeScale = 1f;
         PlayerController.isGamePaused = false;
         inMenu = false;
+        isPaused = false;
     }
 
     public void menuOptions()
@@ -69,7 +74,7 @@ public class Pausemenu : MonoBehaviour
                 break;
 
             case 2:
-                inventoryButton.Select();
+                settingsButton.Select();
                 if (Input.GetKeyDown(KeyCode.W))
                 {
                     changeState(1);
@@ -78,25 +83,20 @@ public class Pausemenu : MonoBehaviour
                 {
                     changeState(3);
                 }
+                else if (Input.GetKeyDown(KeyCode.Return) && Time.time > currentTime)
+                {
+                    print("hello");
+                    pauseMenu.SetActive(false);
+                    inMenu = false;
+                    this.gameObject.GetComponent<SettingsMenu>().startSettings();
+                }
                 break;
 
             case 3:
-                settingsButton.Select();
-                if (Input.GetKeyDown(KeyCode.W))
-                {
-                    changeState(2);
-                }
-                else if (Input.GetKeyDown(KeyCode.S))
-                {
-                    changeState(4);
-                }
-                break;
-
-            case 4:
                 quitButton.Select();
                 if (Input.GetKeyDown(KeyCode.W))
                 {
-                    changeState(3);
+                    changeState(2);
                 }
                 else if (Input.GetKeyDown(KeyCode.Return))
                 {
@@ -115,5 +115,10 @@ public class Pausemenu : MonoBehaviour
     {
         EventSystem.current.GetComponent<EventSystem>().SetSelectedGameObject(null);
         state = newState;
+    }
+
+    public void wait(float time) 
+    {
+        currentTime = time + 0.1f;
     }
 }

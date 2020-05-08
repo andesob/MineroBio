@@ -9,6 +9,7 @@ public class DialogueTrigger : MonoBehaviour
     public AudioSource source;
     public AudioClip[] clips;
     private bool playClip;
+    private bool audioPlayed = false;
 
     public void Start()
     {
@@ -28,11 +29,12 @@ public class DialogueTrigger : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Melee") && collision.CompareTag("Player"))
+        if (!collision.CompareTag("Melee") && collision.CompareTag("Player") && !audioPlayed)
         {
             TriggerDialogue(this.gameObject.name);
             print("i enterededed");
             PlayAudio();
+            audioPlayed = true;
         }
     }
 
