@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 3524216425003036414}
   - component: {fileID: -1717111935802359548}
   - component: {fileID: 867304153927075608}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Enemy 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   probability: 50
-  hearthPrefab: {fileID: 1642618985684765801, guid: a1bc3a2259b9a2843809418fc66842c2,
+  hearthPrefab: {fileID: 5716120578270763749, guid: 5cc260c75b3660d409084fe42727e032,
     type: 3}
 --- !u!114 &3524216425003036408
 MonoBehaviour:
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cec234f3dfb3c4295a57ec658d990d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  probability: 0
+  probability: 20
   hearthPrefab: {fileID: 5716120578270763749, guid: 5cc260c75b3660d409084fe42727e032,
     type: 3}
 --- !u!114 &867304153927075608
@@ -273,6 +273,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3524216425003036400}
     m_Modifications:
+    - target: {fileID: 48985754651178955, guid: 151d61061ca7d1a43860e0b74e0cf8c8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 3081608609879955185, guid: 151d61061ca7d1a43860e0b74e0cf8c8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484088410809250605, guid: 151d61061ca7d1a43860e0b74e0cf8c8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 21
+      objectReference: {fileID: 0}
     - target: {fileID: 3484088411767016842, guid: 151d61061ca7d1a43860e0b74e0cf8c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -332,6 +347,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484088411767016843, guid: 151d61061ca7d1a43860e0b74e0cf8c8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540856798923740845, guid: 151d61061ca7d1a43860e0b74e0cf8c8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151d61061ca7d1a43860e0b74e0cf8c8, type: 3}

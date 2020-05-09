@@ -88,6 +88,7 @@ public class EnemyProjectile : MonoBehaviour
                 {
                     Destroy(hitVFX, psHit.main.duration);
                 }
+                else
                 {
                     var psChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
                     Destroy(hitVFX, psChild.main.duration);

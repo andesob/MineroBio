@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1983883687974570520}
   - component: {fileID: 5099729179574435516}
   - component: {fileID: 2106146974599179411}
+  - component: {fileID: -6785321306660785163}
   m_Layer: 0
   m_Name: GreenDoor
   m_TagString: Untagged
@@ -108,3 +109,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.500236, y: 1.3937528}
   m_EdgeRadius: 0
+--- !u!114 &-6785321306660785163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6575685121143934431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b3b8ffacb0ebaa42b0a6f9941339567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorOpen: {fileID: 2886154760389214254, guid: 1cf663a340a09a14295683675342a622,
+    type: 3}
+  doorClosed: {fileID: 6575685121143934431}
+  isOpen: 0

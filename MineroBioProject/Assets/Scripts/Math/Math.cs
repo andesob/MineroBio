@@ -23,6 +23,7 @@ public class Math : MonoBehaviour
     private int questionNumber = 1;
     private int maxQuestions = 3;
     private int wrongAnswerCount = 0;
+    public Pausemenu pausemenu;
 
     private enum Status{Disabled, Active, GenereteNewEquation, HandleInput}
     private Status status;
@@ -91,10 +92,8 @@ public class Math : MonoBehaviour
 
         character = GameObject.Find("Character").GetComponent<Image>();
         character.enabled = false;
+        pausemenu.canPause = false;
         SetMathUIStatusToActive();
-
-       
-    
 
     }
 
@@ -286,10 +285,11 @@ public class Math : MonoBehaviour
     // TODO Might want to move this method. Depends on the object that calls it.
     public void SetMathUIStatusToDisabled()
     {
-       Time.timeScale = 1f;
+        Time.timeScale = 1f;
         PlayerController.isGamePaused = false;
         this.gameObject.SetActive(false);
         status = Status.Disabled;
+        pausemenu.canPause = true;
     }
 
     //Sets the time for how long the UI elements says the correct.

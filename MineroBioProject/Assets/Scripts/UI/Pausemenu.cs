@@ -17,6 +17,7 @@ public class Pausemenu : MonoBehaviour
     private int state;
     private bool inMenu = false;
     public bool isPaused = false;
+    public bool canPause = true;
 
     private float currentTime;
 
@@ -29,7 +30,7 @@ public class Pausemenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
+        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused && canPause)
         {
             Pause();
             isPaused = true;

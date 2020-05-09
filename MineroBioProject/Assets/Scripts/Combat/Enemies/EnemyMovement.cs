@@ -29,6 +29,7 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         mainCharacter = GameObject.FindGameObjectWithTag("Player").transform;
+       
         rb = this.GetComponent<Rigidbody2D>();
         if (this.gameObject.transform.position.x > mainCharacter.transform.position.x + 0.1f)
         {
@@ -50,17 +51,20 @@ public class EnemyMovement : MonoBehaviour
     public void MoveEnemyAfterPlayer()
     {
         rb.MovePosition((Vector2)transform.position + (playerDirection * movementSpeed * Time.deltaTime));
-        if (this.gameObject.transform.position.x > mainCharacter.transform.position.x + 0.1f)
+        if (this.gameObject.transform.position.x > mainCharacter.transform.position.x + 0.1f && this.gameObject.transform.childCount > 3)
         {
             this.gameObject.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 180f, 0.0f);
             this.gameObject.transform.GetChild(1).rotation = Quaternion.Euler(0.0f, 180f, 0.0f);
-            this.gameObject.transform.GetChild(4).rotation = Quaternion.Euler(0.0f, 180f, 0.0f);
+            this.gameObject.transform.GetChild(4).localPosition = new Vector3(-0.4f, 0.226f, 0f);
         }
         else
         {
+            if(this.gameObject.transform.childCount > 3)
+            {
             this.gameObject.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
             this.gameObject.transform.GetChild(1).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-            this.gameObject.transform.GetChild(4).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                this.gameObject.transform.GetChild(4).localPosition = new Vector3(0.12f, 0.226f, 0f);
+            }
         }
 
     }
@@ -71,13 +75,14 @@ public class EnemyMovement : MonoBehaviour
         {
             this.gameObject.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 180f, 0.0f);
             this.gameObject.transform.GetChild(1).rotation = Quaternion.Euler(0.0f, 180f, 0.0f);
-            this.gameObject.transform.GetChild(4).rotation = Quaternion.Euler(0.0f, 180f, 0.0f);
+            this.gameObject.transform.GetChild(4).localPosition = new Vector3(-0.4f, 0.226f, 0f);
         }
         else
         {
             this.gameObject.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
             this.gameObject.transform.GetChild(1).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-            this.gameObject.transform.GetChild(4).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            this.gameObject.transform.GetChild(4).localPosition = new Vector3(0.12f, 0.226f, 0f);
+            
         }
     }
     public void MoveEnemyTowardSpawn()

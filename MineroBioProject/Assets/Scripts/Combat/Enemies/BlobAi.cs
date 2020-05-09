@@ -14,7 +14,7 @@ public class BlobAi : EnemyAi
     }
     private int bulletCounter;
 
-    public GameObject player;
+    private GameObject player;
     public GameObject bulletPrefab;
     public Transform firePoint;
 
@@ -30,6 +30,7 @@ public class BlobAi : EnemyAi
 
     private void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         enemyMovement = GetComponent<EnemyMovement>();
         thisRigidbody2D = GetComponent<Rigidbody2D>();
         damageObject = GetComponent<DamageObject>();
@@ -70,7 +71,7 @@ public class BlobAi : EnemyAi
                 {
                     if (bulletCounter == 4)
                     {
-                        bulletCounter = 20;
+                        bulletCounter = 5;
                         SetTimeToFire(2f);
                         blobState = State.superAttack;
                     }
@@ -79,9 +80,7 @@ public class BlobAi : EnemyAi
                         enemyMovement.MoveEnemyAfterPlayer();
                         if (Vector3.Distance(player.transform.position, this.gameObject.transform.position) < shootingDistance)
                         {
-
                             shoot(1f, 1);
-
                         }
                     }
                     else

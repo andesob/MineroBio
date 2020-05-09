@@ -4825,7 +4825,7 @@ GameObject:
   - component: {fileID: 5273386496569578269}
   m_Layer: 20
   m_Name: Tip
-  m_TagString: Untagged
+  m_TagString: Melee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14516,7 +14516,7 @@ GameObject:
   - component: {fileID: 8203917114912884614}
   m_Layer: 20
   m_Name: MeleeAttack
-  m_TagString: Untagged
+  m_TagString: Melee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

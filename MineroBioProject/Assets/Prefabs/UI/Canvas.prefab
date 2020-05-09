@@ -125,6 +125,7 @@ MonoBehaviour:
   quitButton: {fileID: 3821453218485140844}
   settingsButton: {fileID: 3821453219973786235}
   isPaused: 0
+  canPause: 1
 --- !u!114 &565456591660094412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,6 +266,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1473812608488741815, guid: 188b8712a706e4a4f87ef2a558a7cd38,
+        type: 3}
+      propertyPath: pausemenu
+      value: 
+      objectReference: {fileID: 3821453220393233267}
     - target: {fileID: 6352860947280261001, guid: 188b8712a706e4a4f87ef2a558a7cd38,
         type: 3}
       propertyPath: m_IsActive

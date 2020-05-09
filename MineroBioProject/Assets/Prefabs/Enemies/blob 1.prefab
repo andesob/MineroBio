@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 815901277}
-  m_Layer: 15
+  m_Layer: 21
   m_Name: firePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2680947855343795442}
   - component: {fileID: 2330789348786627767}
-  m_Layer: 15
+  m_Layer: 21
   m_Name: UpperBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 415217480}
   - component: {fileID: 3572446084660623984}
   - component: {fileID: 770547260178388217}
-  m_Layer: 15
+  m_Layer: 21
   m_Name: blob 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ CapsuleCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.18289375, y: 0.26172212}
   m_Size: {x: 0.21455058, y: 0.3805816}
@@ -301,14 +301,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae19becece2f03c45b4734785510f5fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumDistance: 0
+  maximumDistance: 10
   healthBar: {fileID: 7627175141129747722}
-  player: {fileID: 5976417913236194023, guid: 5351be2a1f409a14b84d5f54d81f2f17, type: 3}
   bulletPrefab: {fileID: 1134690676384144, guid: b916058e8e9e5074d86677f9400a0291,
     type: 3}
   firePoint: {fileID: 815901277}
-  detectionDistance: 0.3
-  shootingDistance: 10.34
+  detectionDistance: 6
 --- !u!114 &3572446084660623984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,7 +347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3399787024145743969}
   - component: {fileID: 7378385726543295677}
-  m_Layer: 15
+  m_Layer: 21
   m_Name: LowerBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,7 +429,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9065765244366009862}
   - component: {fileID: 9065765244366009863}
-  m_Layer: 15
+  m_Layer: 21
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9065765245454835310}
   - component: {fileID: 9065765245454835311}
-  m_Layer: 15
+  m_Layer: 21
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,17 +573,17 @@ PrefabInstance:
     - target: {fileID: 48985754651178955, guid: 151d61061ca7d1a43860e0b74e0cf8c8,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 3081608609879955185, guid: 151d61061ca7d1a43860e0b74e0cf8c8,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 3484088410809250605, guid: 151d61061ca7d1a43860e0b74e0cf8c8,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 3484088411767016842, guid: 151d61061ca7d1a43860e0b74e0cf8c8,
         type: 3}
@@ -650,12 +648,12 @@ PrefabInstance:
     - target: {fileID: 3484088411767016843, guid: 151d61061ca7d1a43860e0b74e0cf8c8,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 6540856798923740845, guid: 151d61061ca7d1a43860e0b74e0cf8c8,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151d61061ca7d1a43860e0b74e0cf8c8, type: 3}

@@ -27,14 +27,19 @@ public class DialogueTrigger : MonoBehaviour
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue, triggerName);
     }
 
+
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Melee") && collision.CompareTag("Player") && !audioPlayed)
+        if (!collision.CompareTag("Melee") && collision.CompareTag("Player"))
         {
             TriggerDialogue(this.gameObject.name);
             print("i enterededed");
+            if (!audioPlayed)
+            {
             PlayAudio();
             audioPlayed = true;
+            }
+
         }
     }
 

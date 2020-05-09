@@ -4853,7 +4853,7 @@ MonoBehaviour:
   muzzlePrefab: {fileID: 1580551768239302, guid: 919840a079614b943b6f4bbd9b2bf7a7,
     type: 3}
   tip: {fileID: 6980660853379966372}
-  player: {fileID: 5976417913236194023, guid: b8d44e4625aad2a4b9568f1b36b62bdd, type: 3}
+  player: {fileID: 621329297151751952, guid: 21d504502145c994695bb8c6622bc5e5, type: 3}
   rb: {fileID: -3964355166384217600}
 --- !u!114 &5345255896929304979
 MonoBehaviour:
