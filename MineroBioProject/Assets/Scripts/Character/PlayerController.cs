@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public static bool isGamePaused;
-    private static bool isMoneyMade;
 
     private bool canMove = true;
     private float knockbackTime = 0.08f;
@@ -16,7 +15,6 @@ public class PlayerController : MonoBehaviour
 
     private GameManager gameManager;
     private shooting shootingScript;
-    //private PlayerPickupScript playerPickupScript;
     private Rigidbody2D playerRigidbody2D;
 
     private List<GameObject> weaponList = new List<GameObject>();
@@ -32,7 +30,6 @@ public class PlayerController : MonoBehaviour
         isGamePaused = false;
         player = this.gameObject;
         shootingScript = player.GetComponent<shooting>();
-        //playerPickupScript = player.GetComponent<PlayerPickupScript>();
         playerRigidbody2D = gameObject.GetComponent<Rigidbody2D>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
@@ -40,17 +37,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            Vector3 v = new Vector3();
-            Damage(v,1);
-        }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            //AddMoney();
-        }
-
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Nr1Pressed = true;

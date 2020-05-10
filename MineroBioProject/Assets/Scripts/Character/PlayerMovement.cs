@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float time;
 
-    private bool shiftPressed;
+    private bool spacePressed;
     private bool canDash;
     private bool isMoving;
     private bool dPressed;
@@ -55,9 +55,9 @@ public class PlayerMovement : MonoBehaviour
     private void getInput()
     {
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
-            shiftPressed = true;
+            spacePressed = true;
         }
 
         if (Input.GetKey(KeyCode.D))
@@ -133,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
             movement.y = Input.GetAxisRaw("Vertical");
             playerController.RotateGun(lastDirection);
 
-            if (shiftPressed)
+            if (spacePressed)
             {
                 if (canDash)
                 {
@@ -178,7 +178,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleDash()
     {
-        if (shiftPressed)
+        if (spacePressed)
         {
             if (time + dashTime >= Time.time)
             {
@@ -186,7 +186,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                shiftPressed = false;
+                spacePressed = false;
             }
         }
         if (time + dashWaitTime <= Time.time && !canDash)

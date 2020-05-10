@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyAi : MonoBehaviour
 {
@@ -112,6 +113,9 @@ public class EnemyAi : MonoBehaviour
             {
 
                 spawnHealth.DropItem();
+            } else if (gameObject.name == "Boss")
+            {
+                SceneManager.LoadScene("EndCredits");
             }
 
             Destroy(thisEnemy);
