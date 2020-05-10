@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private GameManager gameManager;
     private shooting shootingScript;
-    private PlayerPickupScript playerPickupScript;
+    //private PlayerPickupScript playerPickupScript;
     private Rigidbody2D playerRigidbody2D;
 
     private List<GameObject> weaponList = new List<GameObject>();
@@ -27,12 +27,12 @@ public class PlayerController : MonoBehaviour
     private string activeWeapon = "";
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         isGamePaused = false;
         player = this.gameObject;
         shootingScript = player.GetComponent<shooting>();
-        playerPickupScript = player.GetComponent<PlayerPickupScript>();
+        //playerPickupScript = player.GetComponent<PlayerPickupScript>();
         playerRigidbody2D = gameObject.GetComponent<Rigidbody2D>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
@@ -163,7 +163,6 @@ public class PlayerController : MonoBehaviour
                     break;
 
                 case "D":
-
                     weaponTransform.rotation = Quaternion.Euler(0f, 0f, 0f);
                     if (weapon != null && weapon.name == "Sniper")
                     {
@@ -191,7 +190,7 @@ public class PlayerController : MonoBehaviour
         if (activeWeapon == "Pistol")
         {
             gameManager.PickUpPistol();
-        } 
+        }
         else if(activeWeapon == "Sniper")
         {
             gameManager.PickUpSniper();

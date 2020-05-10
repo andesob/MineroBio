@@ -12,21 +12,32 @@ public class Melee : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.CompareTag("Enemy") && collision.isTrigger)
+        if (collision.isTrigger)
         { 
             Vector3 characterPosition = GameObject.Find("Main Char prefab 1/MainCharacter").GetComponent<Transform>().position;
-            //collision.GetComponent<BlobAi>().TakeDamage(MELEE_DAMAGE, collision.transform.position - this.transform.position, false);
-            collision.GetComponent<EnemyAi>().TakeDamage(MELEE_DAMAGE, collision.transform.position - characterPosition, true);
+
+            if (collision.CompareTag("Enemy"))
+            {
+                collision.GetComponent<EnemyAi>().TakeDamage(MELEE_DAMAGE, collision.transform.position - characterPosition, true);
+            }
+
+            if (collision.CompareTag("Boss"))
+            {
+                collision.GetComponent<BossAI>().TakeDamage(MELEE_DAMAGE, collision.transform.position - characterPosition, true);
+            }
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            Debug.Log("COLL");
-            //collision.gameObject.GetComponent<BlobAi>().TakeDamage(MELEE_DAMAGE, collision.transform.position - this.transform.position, false);
-            collision.gameObject.GetComponent<EnemyAi>().TakeDamage(MELEE_DAMAGE, collision.transform.position - this.transform.position, false);
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                collision.gameObject.GetComponent<EnemyAi>().TakeDamage(MELEE_DAMAGE, collision.transform.position - this.transform.position, true);
+            }
+
+            if (collision.gameObject.CompareTag("Boss"))
+            {
+                collision.gameObject.GetComponent<BossAI>().TakeDamage(MELEE_DAMAGE, collision.transform.position - this.transform.position, true);
+            }
         }
     }
-}

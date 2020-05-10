@@ -29,7 +29,7 @@ public class Pickup : MonoBehaviour
                 if(inventory.isFull[slot] == false)
                 {
                     inventory.isFull[slot] = true;
-                    inventory.AddPicture(this.gameObject.name);
+                    inventory.AddWeapon(this.gameObject.name);
             }
         }
     }

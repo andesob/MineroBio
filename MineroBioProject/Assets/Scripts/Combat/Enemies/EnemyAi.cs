@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class EnemyAi : MonoBehaviour
 {
-    public enum State
+    private enum State
     {
         Roaming,
         chase,
         GoingBackToStart,
     }
+
+    public HealthBar healthBar;
+    public float maximumDistance;
 
     protected GameObject thisEnemy;
     protected Rigidbody2D thisRigidbody2D;
@@ -17,20 +20,14 @@ public class EnemyAi : MonoBehaviour
     protected GameObject healthPrefab;
     protected SpawnHealth spawnHealth;
     protected SpawnForceField spawnForceField;
-    private State blobState;
-    private bool canTakeDamage = true;
-
-
     protected EnemyMovement enemyMovement;
     protected Vector3 startPosition;
+    protected float damageTimeout;
 
+    private State blobState;
     private float meleeKnockback = 1f;
     private float rangedKnockback = 1f;
-
-    public float maximumDistance;
-    protected float damageTimeout;
-    public HealthBar healthBar;
-
+    private bool canTakeDamage = true;
 
     void Awake()
     {
@@ -39,7 +36,7 @@ public class EnemyAi : MonoBehaviour
         damageObject = GetComponent<DamageObject>();
         spawnHealth = GetComponent<SpawnHealth>();
         spawnForceField = GetComponent<SpawnForceField>();
-   
+
         damageTimeout = 0.4f;
         blobState = State.Roaming;
         startPosition = transform.position;
@@ -63,7 +60,7 @@ public class EnemyAi : MonoBehaviour
                 {
                     enemyMovement.MoveEnemyAfterPlayer();
                 }
-                if (Vector3.Distance(transform.position, enemyMovement.startPosition) > maximumDistance)
+                if (Vector3.Distance(transform.position, enemyMovement.getStartPosition()) > maximumDistance)
                 {
                     blobState = State.GoingBackToStart;
                 }
@@ -107,20 +104,23 @@ public class EnemyAi : MonoBehaviour
     {
         if (healthBar.healthSystem.getHealth() <= 0)
         {
-           if(spawnForceField != null)
+            if (spawnForceField != null)
             {
                 spawnForceField.DropItem();
             }
-            spawnHealth.DropItem();
-    
+            if (this.gameObject.name != "Boss")
+            {
+
+                spawnHealth.DropItem();
+            }
+
             Destroy(thisEnemy);
-          
+
         }
     }
 
     private IEnumerator DamageTimeout(float timeout)
     {
-        Debug.Log("Damagetimout" + timeout);
         canTakeDamage = false;
         yield return new WaitForSeconds(timeout);
         canTakeDamage = true;

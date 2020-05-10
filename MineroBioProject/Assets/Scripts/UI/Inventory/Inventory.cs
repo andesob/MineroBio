@@ -15,16 +15,15 @@ public class Inventory : MonoBehaviour
     {
     }
 
-    public void AddPicture(string weapon)
+    public void AddWeapon(string weapon)
     {
         if (weapon == "PistolPickup")
         {
-            this.itemSlots[0].GetComponent<Image>().sprite = pistolImage;
-            Debug.Log("REEEE");
+            GameObject.Find("Canvas/InventoryUI/InventoryGrid/Inventoryslot1").SetActive(true);
         }
         else if (weapon == "SniperPickup")
         {
-            this.itemSlots[1].GetComponent<Image>().sprite = sniperImage;
+            GameObject.Find("Canvas/InventoryUI/InventoryGrid/Inventoryslot2").SetActive(true);
         }
     }
 }

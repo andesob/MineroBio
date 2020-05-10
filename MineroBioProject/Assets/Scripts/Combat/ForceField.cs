@@ -18,7 +18,6 @@ public class ForceField : MonoBehaviour
 
         if (anim)
         {
-            Debug.Log("Animator object found:" + anim.name);
         }
         shieldHealth = 2;
     }

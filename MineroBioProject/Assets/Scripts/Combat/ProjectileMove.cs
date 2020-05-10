@@ -78,6 +78,10 @@ public class ProjectileMove : MonoBehaviour
             {
                 Destroy(collision.gameObject);
             }
+            else if (collision.gameObject.CompareTag("Boss"))
+            {
+                collision.GetComponent<EnemyAi>().TakeDamage(100, collision.transform.position - this.transform.position, false);
+            }
 
             Destroy(gameObject);
         }

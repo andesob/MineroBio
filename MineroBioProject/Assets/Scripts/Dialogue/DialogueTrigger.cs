@@ -7,19 +7,13 @@ public class DialogueTrigger : MonoBehaviour
     public Dialogue dialogue;
     private GameObject player;
     public AudioSource source;
-    public AudioClip[] clips;
-    private bool playClip;
+    public AudioClip clip;
     private bool audioPlayed = false;
 
     public void Start()
     {
-        playClip = true;
         player = GameObject.FindGameObjectWithTag("Player");
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-        if(this.name == "InitDialogueTrigger")
-        {
-            TriggerDialogue(this.name);
-        }
     }
 
     public void TriggerDialogue(string triggerName)
@@ -33,13 +27,11 @@ public class DialogueTrigger : MonoBehaviour
         if (!collision.CompareTag("Melee") && collision.CompareTag("Player"))
         {
             TriggerDialogue(this.gameObject.name);
-            print("i enterededed");
             if (!audioPlayed)
             {
-            PlayAudio();
-            audioPlayed = true;
+                StartCoroutine(Waiter(clip));
+                audioPlayed = true;
             }
-
         }
     }
 
@@ -51,26 +43,26 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
-    private void PlayAudio()
-    {
-        foreach (AudioClip clip in clips)
-        {
-            Time.timeScale = 0f;
-            
-            if (playClip) {
-                playClip = false;
-                print(playClip);
-                StartCoroutine(Waiter(clip));
-            }
-        }
-        Time.timeScale = 1f;
-        print("HEROOO");
-    }
-
     private IEnumerator Waiter(AudioClip clip)
     {
         source.PlayOneShot(clip);
         yield return new WaitForSeconds(clip.length);
-        playClip = true;
+
+        if (gameObject.name == "InitDialogueTrigger")
+        {
+            GameObject.Find("Blockades/Block1").SetActive(false);
+        }
+        else if (gameObject.name == "DashDialogueTrigger")
+        {
+            GameObject.Find("Blockades/blockadeWide").SetActive(false);
+        }
+        else if (gameObject.name == "MeleeDialogueTrigger")
+        {
+            GameObject.Find("Blockades/GreenDoor").SetActive(false);
+        }
+        else if (gameObject.name == "PistolDialogueTrigger")
+        {
+            GameObject.Find("Blockades/blockadeUltraWide").SetActive(false);
+        }
     }
 }

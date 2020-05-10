@@ -56,7 +56,6 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     {
         dialogueBox.SetActive(false);
-        Debug.Log("Dialogue ended");
     }
 
     private void SetDialoguePos(string triggerName)

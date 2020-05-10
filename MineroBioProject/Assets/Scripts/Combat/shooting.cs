@@ -30,8 +30,6 @@ public class shooting : MonoBehaviour
         playerMovement = player.GetComponent<PlayerMovement>();
         playerController = player.GetComponent<PlayerController>();
         firePoint = player.transform.GetChild(1);
-        bulletPrefab = vfx[0];
-        sniperBulletPrefab = vfx[1];
         if (gun != null)
         {
             audioSource = gun.GetComponent<AudioSource>();

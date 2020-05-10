@@ -32,13 +32,20 @@ public class SceneController : MonoBehaviour
         {
             player.transform.position = new Vector2(-4.9f, -12.2f);
         }
-
-
+        if (prevScene == "Tutorial" && currentScene == "HomeScene")
+        {
+            player.transform.position = new Vector2(11f, 3.2f);
+        }
     }
 
 
     public void LoadScene(string sceneName)
     {
+        if(SceneManager.GetActiveScene().name != "MainMenu")
+        {
+
+        GameObject.Find("GameManager").GetComponent<GameManager>().SetHealth(HeartsHealthVisual2.heartsHealthSystemStatic.getTotalFragments());
+        }
         prevScene = currentScene;
         SceneManager.LoadScene(sceneName);
     }

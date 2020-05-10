@@ -32,7 +32,6 @@ public class Switch : MonoBehaviour
                     doors[i].GetComponent<doorScript>().changeState();
                 }
                 isOn = false;
-                print(isOn);
             }
             else
             {
@@ -43,7 +42,6 @@ public class Switch : MonoBehaviour
                     doors[i].GetComponent<doorScript>().changeState();
                 }
                 isOn = true;
-                print(isOn);
             }
         }
     }

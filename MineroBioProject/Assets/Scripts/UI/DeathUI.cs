@@ -71,12 +71,14 @@ public class DeathUI : MonoBehaviour
 
     private void Retry()
     {
+        GameObject.Find("GameManager").GetComponent<GameManager>().SetHealth(12);
         SceneManager.LoadScene("Scenes/HomeScene");
         Time.timeScale = 1;
     }
 
     private void QuitToMainMenu()
     {
+        GameObject.Find("GameManager").GetComponent<GameManager>().SetHealth(12);
         SceneManager.LoadScene("Scenes/MainMenu");
         Time.timeScale = 1;
     }

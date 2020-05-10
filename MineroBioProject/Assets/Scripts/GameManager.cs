@@ -12,13 +12,14 @@ public class GameManager : MonoBehaviour
     private bool tutorialFinished;
     private bool level1Finished;
     private bool level2Finished;
+    private bool level3Finished;
 
 
     // Start is called before the first frame update
     void Start()
     {
         totalMoney = 0;
-        HPamount = 0;
+        HPamount = 12;
 
         hasPistol = false;
         hasSniper = false;
@@ -27,11 +28,6 @@ public class GameManager : MonoBehaviour
         level2Finished = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void PickUpPistol() => hasPistol = true;
 
@@ -43,6 +39,8 @@ public class GameManager : MonoBehaviour
 
     public void FinishedLevel2() => level2Finished = true;
 
+    public void FinishedLevel3() => level3Finished = true;
+
     public void SetHealth(int currHealth) => HPamount = currHealth;
 
     public int GetHealth() => HPamount;
@@ -50,6 +48,8 @@ public class GameManager : MonoBehaviour
     public bool IsLevel1Finished() => level1Finished;
 
     public bool IsLevel2Finished() => level2Finished;
+
+    public bool IsLevel3Finished() => level3Finished;
 
     public bool IsTutorialFinished() => tutorialFinished;
 

@@ -86,7 +86,6 @@ public class Pausemenu : MonoBehaviour
                 }
                 else if (Input.GetKeyDown(KeyCode.Return) && Time.time > currentTime)
                 {
-                    print("hello");
                     pauseMenu.SetActive(false);
                     inMenu = false;
                     this.gameObject.GetComponent<SettingsMenu>().startSettings();

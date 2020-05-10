@@ -252,7 +252,7 @@ MonoBehaviour:
   itemSlots:
   - {fileID: 7447239920704526574, guid: c775b490534d5d44da9f30f2b2297acb, type: 3}
   - {fileID: 2381544679006768733, guid: e21ff06b65b0c1f4fb1009d55ce1799e, type: 3}
-  pistolImage: {fileID: 21300000, guid: 94e715890e4b4cb409c64a6cf98fe52b, type: 3}
+  pistolImage: {fileID: 21300000, guid: 1371036f31edb79459b592138e051aa4, type: 3}
   sniperImage: {fileID: 21300000, guid: 94e715890e4b4cb409c64a6cf98fe52b, type: 3}
 --- !u!114 &4857521231188525759
 MonoBehaviour:

@@ -17,7 +17,6 @@ public class EnemyProjectile : MonoBehaviour
     public Rigidbody2D rb;
     void Start()
     {
-       // rb = GetComponent<Rigidbody2D>();
         if (muzzlePrefab != null)
         {
            
@@ -44,9 +43,6 @@ public class EnemyProjectile : MonoBehaviour
         if (!collision.gameObject.CompareTag("Enemy") && !collision.gameObject.CompareTag("Bullet") && Time.time > time)
         {
             time = Time.time + 1;
-            //ContactPoint2D contact = collision.contacts[0];
-            //Quaternion rot = Quaternion.FromToRotation(Vector2.up, contact.normal);
-            //Vector2 pos = contact.point;
             Vector2 pos = tip.transform.position;
             Quaternion rot = tip.transform.rotation;
 
