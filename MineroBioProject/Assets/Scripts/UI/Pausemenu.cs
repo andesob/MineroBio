@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class Pausemenu : MonoBehaviour
 {
-    public Animator anim;
+    //public Animator anim;
     public GameObject pauseMenu;
 
     public Button resumeButton;
@@ -23,7 +23,7 @@ public class Pausemenu : MonoBehaviour
 
     private void Start()
     {
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
         state = 1;
         currentTime = Time.time;
     }

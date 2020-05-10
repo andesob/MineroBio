@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour
 {
-    public Animator anim;
+    //public Animator anim;
     public GameObject settingsMenu;
 
     public Button backButton;
@@ -21,7 +21,7 @@ public class SettingsMenu : MonoBehaviour
 
     private void Start()
     {
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
         inSettings = false;
         state = 1;
     }
