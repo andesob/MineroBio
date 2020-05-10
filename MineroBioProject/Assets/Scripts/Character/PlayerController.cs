@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     private GameObject player;
 
+    private GameManager gameManager;
     private shooting shootingScript;
     private PlayerPickupScript playerPickupScript;
     private Rigidbody2D playerRigidbody2D;
@@ -22,7 +23,6 @@ public class PlayerController : MonoBehaviour
 
     private bool Nr1Pressed;
     private bool Nr2Pressed;
-    private bool Nr3Pressed;
 
     private string activeWeapon = "";
 
@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
         shootingScript = player.GetComponent<shooting>();
         playerPickupScript = player.GetComponent<PlayerPickupScript>();
         playerRigidbody2D = gameObject.GetComponent<Rigidbody2D>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -68,14 +69,6 @@ public class PlayerController : MonoBehaviour
             Nr2Pressed = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            Nr3Pressed = true;
-        }
-        else
-        {
-            Nr3Pressed = false;
-        }
         ChooseWeapon();
     }
 
@@ -112,17 +105,12 @@ public class PlayerController : MonoBehaviour
 
     private void ChooseWeapon()
     {
-        if (Nr1Pressed && playerPickupScript.hasPistol())
+        if (Nr1Pressed && gameManager.HasPistol())
         {
             activeWeapon = "Pistol";
         }
 
-        if (Nr2Pressed && playerPickupScript.hasShotgun())
-        {
-            activeWeapon = "Shotgun";
-        }
-
-        if (Nr3Pressed && playerPickupScript.hasSniper())
+        if (Nr2Pressed && gameManager.HasSniper())
         {
             activeWeapon = "Sniper";
         }
@@ -143,7 +131,7 @@ public class PlayerController : MonoBehaviour
 
     public void RotateGun(string direction)
     {
-        if (playerPickupScript.hasWeapon())
+        if (gameManager.HasWeapon())
         {
             float playerX = GetPosition().x;
             float playerY = GetPosition().y;
@@ -200,6 +188,14 @@ public class PlayerController : MonoBehaviour
     {
         weaponList.Add(weapon);
         activeWeapon = weapon.name;
+        if (activeWeapon == "Pistol")
+        {
+            gameManager.PickUpPistol();
+        } 
+        else if(activeWeapon == "Sniper")
+        {
+            gameManager.PickUpSniper();
+        }
     }
 
     // Returns the players position

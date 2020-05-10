@@ -7,10 +7,18 @@ public class Pickup : MonoBehaviour
 {
     public Sprite itemImage;
     private Inventory inventory;
+    private int slot;
     // Start is called before the first frame update
     void Start()
     {
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+        if(this.gameObject.name == "PistolPickup")
+        {
+            slot = 0;
+        } else if(this.gameObject.name == "SniperPickup")
+        {
+            slot = 1;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -18,15 +26,10 @@ public class Pickup : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             this.gameObject.SetActive(false);
-            for (int i = 0; i < inventory.itemSlots.Length; i++)
-            {
-                if(inventory.isFull[i] == false)
+                if(inventory.isFull[slot] == false)
                 {
-                    inventory.isFull[i] = true;
-                    Debug.Log("item picked up");
-                    inventory.itemSlots[i].GetComponent<Image>().sprite = itemImage;
-                    break;
-                }
+                    inventory.isFull[slot] = true;
+                    inventory.AddPicture(this.gameObject.name);
             }
         }
     }

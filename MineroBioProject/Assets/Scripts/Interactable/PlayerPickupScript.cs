@@ -5,29 +5,24 @@ using UnityEngine;
 public class PlayerPickupScript : MonoBehaviour
 {
     private const int PISTOL_INDEX = 0;
-    private const int SHOTGUN_INDEX = 1;
-    private const int SNIPER_INDEX = 2;
+    private const int SNIPER_INDEX = 1;
 
-    //public Transform gun;
-    //private bool gunPickedUp;
     private bool pistolPickedUp;
-    private bool shotgunPickedUp;
     private bool sniperPickedUp;
 
     private GameObject pistol;
-    private GameObject shotgun;
     private GameObject sniper;
 
     private shooting shootingScript;
     private PlayerController playerControllerScript;
 
-    private void Start()
+    private void Awake()
     {
         playerControllerScript = this.gameObject.GetComponent<PlayerController>();
         shootingScript = this.gameObject.GetComponent<shooting>();
+
         GameObject weapons = this.gameObject.transform.GetChild(0).gameObject;
         pistol = weapons.transform.GetChild(PISTOL_INDEX).gameObject;
-        shotgun = weapons.transform.GetChild(SHOTGUN_INDEX).gameObject;
         sniper = weapons.transform.GetChild(SNIPER_INDEX).gameObject;
     }
 
@@ -40,30 +35,18 @@ public class PlayerPickupScript : MonoBehaviour
                 shootingScript.SetGun(pistol);
                 playerControllerScript.AddWeapon(pistol);
                 break;
-
-            case "ShotgunPickup":
-                shotgunPickedUp = true;
-                shootingScript.SetGun(shotgun);
-                playerControllerScript.AddWeapon(shotgun);
-                break;
             
             case "SniperPickup":
                 sniperPickedUp = true;
                 shootingScript.SetGun(sniper);
                 playerControllerScript.AddWeapon(sniper);
                 break;
-        }
-        
+        }    
     }
 
     public bool hasPistol()
     {
         return pistolPickedUp;
-    }
-
-    public bool hasShotgun()
-    {
-        return shotgunPickedUp;
     }
 
     public bool hasSniper()
@@ -73,7 +56,7 @@ public class PlayerPickupScript : MonoBehaviour
 
     public bool hasWeapon()
     {
-        if(shotgunPickedUp || pistolPickedUp || sniperPickedUp)
+        if(pistolPickedUp || sniperPickedUp)
         {
             return true;
         }
