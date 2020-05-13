@@ -16,22 +16,15 @@ public class HeartsHealthVisual2 : MonoBehaviour
     public Sprite heart3Sprite;
     public Sprite heart4Sprite;
     public GameObject DeathUI;
-    //[SerializeField] GameObject player;
 
     private List<HeartImage> heartImageList;
     private HeartsHealthSystem heartsHealthSystem;
-    //private bool isHealing;
 
     private void Awake()
     {
         heartImageList = new List<HeartImage>();
-    }
-
-    private void Start()
-    {
-        HeartsHealthSystem heartsHealthSystem = new HeartsHealthSystem(3);
+        heartsHealthSystem = new HeartsHealthSystem(3);
         SetHeartsHealthSystem(heartsHealthSystem);
-
     }
 
     public void SetHeartsHealthSystem(HeartsHealthSystem heartsHealthSystem)
@@ -73,7 +66,6 @@ public class HeartsHealthVisual2 : MonoBehaviour
     {
         // Hearts health system was healed. Refreshes the hearts UI. 
         RefreshAllHearts();
-       // isHealing = true;
     }
 
     private void HeartsHealthSystem_OnDamaged(object sender, System.EventArgs e)

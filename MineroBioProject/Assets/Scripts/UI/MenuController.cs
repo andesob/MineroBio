@@ -31,24 +31,11 @@ public class MenuController : MonoBehaviour
         StateMachine();
     }
 
-    public static class SceneChanger
-    {
-        public enum Scene
-        {
-            HomeScene
-        }
-
-        public static void Load(Scene scene)
-        {
-            SceneManager.LoadScene(scene.ToString());
-        }
-    }
-
     private IEnumerator Wait()
     {
         anim.Play("Enter");
         yield return new WaitForSeconds(0.2f);
-        SceneChanger.Load(SceneChanger.Scene.HomeScene);
+        this.gameObject.GetComponent<SceneChanger>().ChangeScene("HomeScene");
     }
 
     private IEnumerator Wait2()

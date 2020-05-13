@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public static bool isGamePaused;
-    private static bool isMoneyMade;
 
     private bool canMove = true;
     private float knockbackTime = 0.08f;
@@ -14,42 +13,30 @@ public class PlayerController : MonoBehaviour
 
     private GameObject player;
 
+    private GameManager gameManager;
     private shooting shootingScript;
-    private PlayerPickupScript playerPickupScript;
     private Rigidbody2D playerRigidbody2D;
 
     private List<GameObject> weaponList = new List<GameObject>();
 
     private bool Nr1Pressed;
     private bool Nr2Pressed;
-    private bool Nr3Pressed;
 
     private string activeWeapon = "";
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         isGamePaused = false;
         player = this.gameObject;
         shootingScript = player.GetComponent<shooting>();
-        playerPickupScript = player.GetComponent<PlayerPickupScript>();
         playerRigidbody2D = gameObject.GetComponent<Rigidbody2D>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            Vector3 v = new Vector3();
-            Damage(v,1);
-        }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            //AddMoney();
-        }
-
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Nr1Pressed = true;
@@ -68,14 +55,6 @@ public class PlayerController : MonoBehaviour
             Nr2Pressed = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            Nr3Pressed = true;
-        }
-        else
-        {
-            Nr3Pressed = false;
-        }
         ChooseWeapon();
     }
 
@@ -112,17 +91,12 @@ public class PlayerController : MonoBehaviour
 
     private void ChooseWeapon()
     {
-        if (Nr1Pressed && playerPickupScript.hasPistol())
+        if (Nr1Pressed && gameManager.HasPistol())
         {
             activeWeapon = "Pistol";
         }
 
-        if (Nr2Pressed && playerPickupScript.hasShotgun())
-        {
-            activeWeapon = "Shotgun";
-        }
-
-        if (Nr3Pressed && playerPickupScript.hasSniper())
+        if (Nr2Pressed && gameManager.HasSniper())
         {
             activeWeapon = "Sniper";
         }
@@ -143,7 +117,7 @@ public class PlayerController : MonoBehaviour
 
     public void RotateGun(string direction)
     {
-        if (playerPickupScript.hasWeapon())
+        if (gameManager.HasWeapon())
         {
             float playerX = GetPosition().x;
             float playerY = GetPosition().y;
@@ -175,7 +149,6 @@ public class PlayerController : MonoBehaviour
                     break;
 
                 case "D":
-
                     weaponTransform.rotation = Quaternion.Euler(0f, 0f, 0f);
                     if (weapon != null && weapon.name == "Sniper")
                     {
@@ -200,6 +173,14 @@ public class PlayerController : MonoBehaviour
     {
         weaponList.Add(weapon);
         activeWeapon = weapon.name;
+        if (activeWeapon == "Pistol")
+        {
+            gameManager.PickUpPistol();
+        }
+        else if(activeWeapon == "Sniper")
+        {
+            gameManager.PickUpSniper();
+        }
     }
 
     // Returns the players position

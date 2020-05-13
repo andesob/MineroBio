@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cec234f3dfb3c4295a57ec658d990d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  probability: 50
+  probability: 20
   hearthPrefab: {fileID: 5716120578270763749, guid: 5cc260c75b3660d409084fe42727e032,
     type: 3}
 --- !u!114 &1494403268912998881
@@ -259,7 +259,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1
-  startPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1494403268621887225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,8 +300,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae19becece2f03c45b4734785510f5fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumDistance: 10
   healthBar: {fileID: 7627175141129747722}
+  maximumDistance: 10
   bulletPrefab: {fileID: 1134690676384144, guid: b916058e8e9e5074d86677f9400a0291,
     type: 3}
   firePoint: {fileID: 815901277}

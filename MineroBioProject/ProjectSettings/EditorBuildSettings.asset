@@ -6,54 +6,36 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Setup.unity
+    guid: 71b443db0a2c2864787b4e123d8a336c
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 4e56c9d2a5b7e264b88ff2cdcf10a894
-  - enabled: 1
-    path: Assets/Scenes/levelHubScene.unity
-    guid: 47df3267bb2c255449b3a92c428f62d8
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/HomeScene.unity
     guid: 46c86a1bcdae2d64497ecd8c307ee8b0
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 4e56c9d2a5b7e264b88ff2cdcf10a894
-  - enabled: 1
-    path: Assets/Scenes/Level1.unity
-    guid: 0608de191e79f8b4fa530fd9ce265d16
-  - enabled: 1
-    path: Assets/Scenes/Trymtest.unity
-    guid: 59d1e3f0915484249b42b4f9e7461062
+    path: Assets/Scenes/levelHubScene.unity
+    guid: 47df3267bb2c255449b3a92c428f62d8
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 98d1b7afabc33594e9a2b04538993648
   - enabled: 1
-    path: Assets/Scenes/BossScene.unity
-    guid: 5e0e6d314066f6b4483a42aa861ab82b
+    path: Assets/Scenes/Level1.unity
+    guid: 0608de191e79f8b4fa530fd9ce265d16
   - enabled: 1
-    path: Assets/Scenes/Level 3.unity
+    path: Assets/Scenes/Level2.unity
+    guid: 59d1e3f0915484249b42b4f9e7461062
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
     guid: 0337d045fc5ff9f4182932375dc8017a
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/dunde test.unity
-    guid: 87865a8fa8c28488ab532699eda0bdb9
+    path: Assets/Scenes/SecretScene.unity
+    guid: 233440bdc9127e345b071c4bf22b1c2b
   - enabled: 1
-    path: Assets/Scenes/GunTestScene.unity
-    guid: fc540c32acb3f624cb4e444b8ad09919
+    path: Assets/Scenes/BossLevel.unity
+    guid: f008653e47e8bfe48bb07786ad4c0f43
   - enabled: 1
-    path: Assets/Scenes/Game.unity
-    guid: e8360e1acaa442f43a8160c6a1ec5796
-  - enabled: 1
-    path: Assets/Scenes/Labratory.unity
-    guid: 47fff959a4ce7be479f38d0dde95506e
-  - enabled: 1
-    path: Assets/Scenes/DeathMenu.unity
-    guid: 41eacfd6aab1f0d42876b9dc5a0c8f94
-  - enabled: 1
-    path: Assets/Scenes/TeleporterTestScene.unity
-    guid: 1dcdad5281f885c4ab4a87fc503be013
+    path: Assets/Scenes/EndCredits.unity
+    guid: 2f760b12c8626514b829fa3aa505e025
   m_configObjects: {}

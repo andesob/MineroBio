@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8081764841892724453}
   - component: {fileID: 4174026335371629962}
-  m_Layer: 10
+  m_Layer: 17
   m_Name: Tip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 8499941249210294505}
   - component: {fileID: 8499941249210294504}
   - component: {fileID: 8499941249210294506}
-  m_Layer: 10
+  m_Layer: 17
   m_Name: SniperProjectile
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.52
-  fireRate: 1.5
+  fireRate: 1.7
   muzzlePrefab: {fileID: 6777548562374252782, guid: 36f411649ab2cea4bbd7dd16a94d5677,
     type: 3}
   hitPrefab: {fileID: 6781770389335304655, guid: 78a67da3e1b4681408bb2d6ded54f6f0,
@@ -159,7 +159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8499941250467693029}
   - component: {fileID: 8499941250467693030}
-  m_Layer: 10
+  m_Layer: 17
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 8499941250589116488}
   - component: {fileID: 8499941250589116490}
   - component: {fileID: 8499941250589116489}
-  m_Layer: 10
+  m_Layer: 17
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5051,7 +5051,7 @@ GameObject:
   - component: {fileID: 8499941250660006601}
   - component: {fileID: 8499941250660006603}
   - component: {fileID: 8499941250660006602}
-  m_Layer: 10
+  m_Layer: 17
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9807,6 +9807,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SniperBulletLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008889581781966235, guid: 04532a157087f7c438622a6937da46c3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 5428882298673239133, guid: 04532a157087f7c438622a6937da46c3,
         type: 3}

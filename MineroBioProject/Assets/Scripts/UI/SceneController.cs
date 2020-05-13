@@ -22,13 +22,30 @@ public class SceneController : MonoBehaviour
         }
         if (prevScene == "Level1" && currentScene == "levelHubScene")
         {
-            player.transform.position = new Vector2(-5f, -0.2f);
+            player.transform.position = new Vector2(-4.9f, -4.2f);
+        }
+        if (prevScene == "Level2" && currentScene == "levelHubScene")
+        {
+            player.transform.position = new Vector2(-4.9f, -8.2f);
+        }
+        if (prevScene == "Level3" && currentScene == "levelHubScene")
+        {
+            player.transform.position = new Vector2(-4.9f, -12.2f);
+        }
+        if (prevScene == "Tutorial" && currentScene == "HomeScene")
+        {
+            player.transform.position = new Vector2(11f, 3.2f);
         }
     }
 
 
     public void LoadScene(string sceneName)
     {
+        if(SceneManager.GetActiveScene().name != "MainMenu")
+        {
+
+        GameObject.Find("GameManager").GetComponent<GameManager>().SetHealth(HeartsHealthVisual2.heartsHealthSystemStatic.getTotalFragments());
+        }
         prevScene = currentScene;
         SceneManager.LoadScene(sceneName);
     }

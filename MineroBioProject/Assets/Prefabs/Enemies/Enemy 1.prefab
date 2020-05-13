@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3524216425003036401}
   - component: {fileID: 3524216425003036413}
   - component: {fileID: 3524216425003036406}
-  - component: {fileID: 7160724014989924339}
   - component: {fileID: 3524216425003036408}
   - component: {fileID: 3524216425003036402}
   - component: {fileID: 3524216425003036403}
@@ -133,21 +132,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7160724014989924339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3524216425003036407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68cec234f3dfb3c4295a57ec658d990d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  probability: 50
-  hearthPrefab: {fileID: 5716120578270763749, guid: 5cc260c75b3660d409084fe42727e032,
-    type: 3}
 --- !u!114 &3524216425003036408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,8 +157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886791933aa4f472bbf3a7a3f41abc4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumDistance: 10
   healthBar: {fileID: 6859703654994869473}
+  maximumDistance: 10
 --- !u!114 &3524216425003036403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 3
-  startPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &3524216425003036409
 MonoBehaviour:
   m_ObjectHideFlags: 0

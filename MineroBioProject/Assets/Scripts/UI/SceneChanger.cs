@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
@@ -12,6 +13,11 @@ public class SceneChanger : MonoBehaviour
     void Start()
     {
         changeLevel = GameObject.FindGameObjectWithTag("SceneChanger").GetComponent<SceneController>();
+    }
+
+    public void ChangeScene(string scene)
+    {
+        changeLevel.LoadScene(scene);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

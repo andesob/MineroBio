@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6679297612676514302}
   - component: {fileID: 8522477647552894336}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Tip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 7732857528391160604}
   - component: {fileID: 80323610291441938}
   - component: {fileID: 884643513862139185}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4812,7 +4812,7 @@ GameObject:
   - component: {fileID: 8079456794172761642}
   - component: {fileID: 4329436514200539986}
   - component: {fileID: 5615543365653265553}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Particle System (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9577,7 +9577,7 @@ GameObject:
   m_Component:
   - component: {fileID: 902270870680326277}
   - component: {fileID: 6932171275978634166}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9635,8 +9635,8 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2020521137
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_Time: 0.45
   m_Parameters:
@@ -9715,7 +9715,7 @@ GameObject:
   - component: {fileID: 4346429691936892855}
   - component: {fileID: 936377290301579037}
   - component: {fileID: 341166295263242639}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14496,7 +14496,8 @@ GameObject:
   - component: {fileID: 1315642277261717816}
   - component: {fileID: -4946144600649308435}
   - component: {fileID: -4636128012909652262}
-  m_Layer: 0
+  - component: {fileID: 9152886049554937818}
+  m_Layer: 18
   m_Name: BossProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14555,3 +14556,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &9152886049554937818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9202958396447427535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89113ab64c58e734aad5e9d1a601dae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageTimeout: 0
+  knockbackDistance: 2
+  damageAmount: 3

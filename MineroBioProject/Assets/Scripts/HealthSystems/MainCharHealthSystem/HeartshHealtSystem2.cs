@@ -84,6 +84,16 @@ public class HeartsHealthSystem
         return heartList[0].GetFragmentAmount() == 0;
     }
 
+    public int getTotalFragments()
+    {
+        int totalFragments = 0;
+        for (int i = 0; i < heartList.Count; i++)
+        {
+            totalFragments += heartList[i].GetFragmentAmount();
+        }
+        return totalFragments;
+    }
+
     // Represents a Single Heart
     public class Heart
     {

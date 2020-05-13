@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class BossAI : MonoBehaviour
+public class BossAI : EnemyAi
 {
-    [SerializeField] private Material material;
-    public enum State
+    private enum State
     {
         idle,
         teleportAttack,
@@ -12,77 +12,57 @@ public class BossAI : MonoBehaviour
         superAttack
     }
 
-    protected internal State state;
-    private Vector3 startPos;
-
     public Transform firePoint;
     public GameObject bulletPrefab;
-    public GameObject player;
-
-    protected internal bool hasHit = false;
-
-    private int gooProjectileCounter = 3;
-
-    private Vector3 originalPos;
-
-    protected internal int teleportCounter = 4;
-    protected internal List<Vector3> gooProjectiles = new List<Vector3>();
-
     public GameObject teleporter;
     public GameObject gooProjectile;
-
     public Animator anim;
+
+    public float maxDistance;
 
     protected internal GameObject sideProjectilePlus;
     protected internal GameObject sideProjectileMinus;
     protected internal GameObject mainProjectile;
-
     protected internal GameObject teleportIn;
     protected internal GameObject teleportOut;
 
-    private float timeToFire;
+    protected internal bool hasHit = false;
+    protected internal int teleportCounter = 4;
+    protected internal List<Vector3> gooProjectiles = new List<Vector3>();
 
-    private bool hasTeleported;
-
+    private State state;
+    private GameObject player;
+    private Vector3 originalPos;
     private Vector3 spawnPoint;
-    private int randIndex;
-
+    private Quaternion rotation;
+    private float timeToFire;
     private float timeOut;
-
-    public float maxDistance;
-
-    public Vector2 shootDirection;
-
-    private int shootCount = 2;
-    private int superAttackCount = 3;
-
-    private int timeToNextTeleport;
-
-
     private float teleportChance;
     private float superAttackChance;
-    Quaternion rotation;
+    private int gooProjectileCounter = 3;
+    private int randIndex;
+    private int shootCount = 2;
+    private int superAttackCount = 3;
+    private int timeToNextTeleport;
+    private bool hasTeleported;
 
-    private BossTeleportProjectileScript bossTeleportProjectileScript = new BossTeleportProjectileScript();
-    private EnemyMovement enemyMovement;
     // Start is called before the first frame update
     private void Awake()
     {
-        enemyMovement = this.gameObject.GetComponent<EnemyMovement>();
+        enemyMovement = GetComponent<EnemyMovement>();
         state = State.idle;
-        startPos = transform.position;
         hasTeleported = false;
         maxDistance = 7f;
         timeToNextTeleport = 3;
         superAttackChance = 1f;
-        
+        player = GameObject.FindGameObjectWithTag("Player");
+        thisEnemy = gameObject;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        print(state);
         if (this.gameObject.transform.position.x > player.transform.position.x + 0.1f)
         {
             this.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
@@ -94,9 +74,9 @@ public class BossAI : MonoBehaviour
 
     }
 
+
     private void FixedUpdate()
     {
-
         switch (state)
         {
             case State.idle:
@@ -120,20 +100,16 @@ public class BossAI : MonoBehaviour
                     {
                         shoot(4f);
                         enemyMovement.MoveEnemyAwayPlayer();
-                       anim.Play("BossRun");
+                        anim.Play("BossRun");
                     }
-                    if(superAttackChance < 0.1f)
+
+                    if (superAttackChance < 0.1f)
                     {
-                        print(superAttackChance);
                         timeOut = Time.time + 0.7f;
                         superAttackCount = 3;
-                        
-                         
                         state = State.superAttack;
-                        
-                        
-                        
                     }
+
                     if (timeToNextTeleport <= 0 && teleportChance < 0.3f)
                     {
                         originalPos = transform.position;
@@ -144,30 +120,21 @@ public class BossAI : MonoBehaviour
                         state = State.teleportAttack;
                     }
                 }
-
-
                 break;
 
-
-
             case State.teleportAttack:
-
                 if (gooProjectileCounter > 0)
                 {
                     spawnGooProjectile();
                 }
-                print(hasHit);
                 if (hasHit)
                 {
-                    print("OK");
-
-
                     if (gooProjectileCounter == 0 && Time.time >= timeOut)
                     {
                         randIndex = Random.Range(0, gooProjectiles.Count);
                         spawnPoint = gooProjectiles[randIndex];
                         transform.position = spawnPoint;
-                        hasTeleported = true;                       
+                        hasTeleported = true;
                         trippleAttack();
                         float teleportAgain = Random.Range(0f, 1f);
                         if (teleportAgain < 1f)
@@ -184,38 +151,34 @@ public class BossAI : MonoBehaviour
                             timeOut = Time.time + 0.7f;
                             state = State.idle;
                         }
-
-
-
                     }
                 }
                 break;
-            case State.secondTeleportAttack:
 
+            case State.secondTeleportAttack:
                 if (Time.time >= timeOut)
                 {
                     transform.position = spawnPoint;
                     //   setFirePoint();
-                  
                     trippleAttack();
                     timeOut = Time.time + 0.7f;
                     state = State.idle;
                 }
                 break;
+
             case State.superAttack:
-                if(Time.time > timeOut && superAttackCount > 0)
+                if (Time.time > timeOut && superAttackCount > 0)
                 {
-                ShootSuperAttack();
-                timeOut = Time.time + 0.5f;
-                superAttackCount -= 1;
+                    ShootSuperAttack();
+                    timeOut = Time.time + 0.5f;
+                    superAttackCount -= 1;
                 }
-                
-                if(superAttackCount == 0) 
+
+                if (superAttackCount == 0)
                 {
                     superAttackChance = 1f;
-                state = State.idle;
+                    state = State.idle;
                 }
-                
                 break;
         }
     }
@@ -226,20 +189,17 @@ public class BossAI : MonoBehaviour
         setFirePoint();
         if (Time.time >= timeOut)
         {
-
             mainProjectile = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.rotation);
             sideProjectilePlus = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.rotation * Quaternion.Euler(0f, 0f, 25f));
             sideProjectileMinus = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.rotation * Quaternion.Euler(0f, 0f, -25f));
-
         }
     }
+
     public void shoot(float fireRate)
     {
-        print("FAWEB");
         setFirePoint();
         if (Time.time >= timeToFire && shootCount > 0)
         {
-            print("FITTE");
             SetTimeToFire(fireRate);
             mainProjectile = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.rotation);
             anim.StopPlayback();
@@ -259,6 +219,7 @@ public class BossAI : MonoBehaviour
             timeToNextTeleport -= 1;
         }
     }
+
     public void setFirePoint()
     {
         Vector3 direction = player.transform.position - firePoint.transform.position;
@@ -266,6 +227,7 @@ public class BossAI : MonoBehaviour
         rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         firePoint.rotation = rotation;
     }
+
     public void spawnGooProjectile()
     {
         if (gooProjectileCounter > 3)
@@ -281,7 +243,8 @@ public class BossAI : MonoBehaviour
         }
 
     }
-    protected internal float GetRandomRotation()
+
+    public float GetRandomRotation()
     {
         float randomRotation = Random.Range(0, 360);
         float numSteps = Mathf.Floor(randomRotation / 30f);
@@ -289,15 +252,16 @@ public class BossAI : MonoBehaviour
 
         return adjustedRotation;
     }
+
     public void SetTimeToFire(float fireRate)
     {
         timeToFire = Time.time + 1 / fireRate;
     }
+
     public void ShootSuperAttack()
-    {      
+    {
         for (int i = 0; i < 20; i++)
         {
-
             SetTimeToFire(0.3f);
             float angle = i * Mathf.PI * 2 / 20 + superAttackCount;
             Vector3 pos = new Vector3(Mathf.Cos(angle) + transform.position.x, Mathf.Sin(angle) + transform.position.y * 1, 0);
@@ -305,8 +269,6 @@ public class BossAI : MonoBehaviour
             float rotAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             Quaternion rot = Quaternion.AngleAxis(rotAngle, Vector3.forward);
             mainProjectile = Instantiate(bulletPrefab, pos, rot);
-
         }
-    }   
-
+    }
 }

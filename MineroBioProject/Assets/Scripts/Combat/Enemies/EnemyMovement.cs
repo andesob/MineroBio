@@ -16,7 +16,7 @@ public class EnemyMovement : MonoBehaviour
     private Rigidbody2D thisRigidbody2D;
     private bool canMove = true;
 
-    public Vector3 startPosition;
+    private Vector3 startPosition;
     private float knockbacktime = 0.3f;
 
     private void Awake()
@@ -73,16 +73,22 @@ public class EnemyMovement : MonoBehaviour
         rb.MovePosition((Vector2)transform.position - (playerDirection * movementSpeed * Time.deltaTime));
         if (this.gameObject.transform.position.x > mainCharacter.transform.position.x + 0.1f)
         {
-            this.gameObject.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 180f, 0.0f);
-            this.gameObject.transform.GetChild(1).rotation = Quaternion.Euler(0.0f, 180f, 0.0f);
-            this.gameObject.transform.GetChild(4).localPosition = new Vector3(-0.4f, 0.226f, 0f);
+            if (this.gameObject.transform.childCount > 3)
+            {
+                this.gameObject.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 180f, 0.0f);
+                this.gameObject.transform.GetChild(1).rotation = Quaternion.Euler(0.0f, 180f, 0.0f);
+                this.gameObject.transform.GetChild(4).localPosition = new Vector3(-0.4f, 0.226f, 0f);
+
+            }
         }
         else
         {
-            this.gameObject.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-            this.gameObject.transform.GetChild(1).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-            this.gameObject.transform.GetChild(4).localPosition = new Vector3(0.12f, 0.226f, 0f);
-            
+                if (this.gameObject.transform.childCount > 3)
+                {
+                    this.gameObject.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                    this.gameObject.transform.GetChild(1).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                    this.gameObject.transform.GetChild(4).localPosition = new Vector3(0.12f, 0.226f, 0f);
+                }
         }
     }
     public void MoveEnemyTowardSpawn()
@@ -143,6 +149,11 @@ public class EnemyMovement : MonoBehaviour
     public bool CanMove()
     {
         return canMove;
+    }
+
+    public Vector3 getStartPosition()
+    {
+        return startPosition;
     }
 }
 

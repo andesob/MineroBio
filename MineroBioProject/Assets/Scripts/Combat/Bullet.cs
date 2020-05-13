@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,7 +28,7 @@ public class Bullet : MonoBehaviour
                 var psChild = muzzleVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
                 Destroy(muzzleVFX, psChild.main.duration);
             }
-        }
+        }        PISTOL_DAMAGE = UnityEngine.Random.Range(50, 70);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -64,10 +65,10 @@ public class Bullet : MonoBehaviour
             var psChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
             Destroy(hitVFX, psChild.main.duration);
         }
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy") || collision.CompareTag("Boss"))
         {
             collision.GetComponent<EnemyAi>().TakeDamage(PISTOL_DAMAGE, collision.transform.position - this.transform.position, false);
         }
-        Destroy(gameObject);
+        Destroy(gameObject);
     }
 }
