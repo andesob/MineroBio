@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Script that triggers the dialogue when it collides with the player
+ */
 public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;

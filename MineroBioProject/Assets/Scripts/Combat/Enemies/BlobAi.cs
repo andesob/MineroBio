@@ -12,20 +12,17 @@ public class BlobAi : EnemyAi
         goingBackToStart
 
     }
-    private int bulletCounter;
 
-    private GameObject player;
     public GameObject bulletPrefab;
     public Transform firePoint;
-
     public float detectionDistance;
-    private float shootingDistance;
-
-    private float timeToFire = 0;
 
     private State blobState;
-
-    Vector2 shootDirection;
+    private GameObject player;
+    private Vector2 shootDirection;
+    private float timeToFire = 0;
+    private float shootingDistance;
+    private int bulletCounter;
     
 
     private void Awake()
@@ -43,7 +40,6 @@ public class BlobAi : EnemyAi
         shootingDistance = maximumDistance + 1f;
         bulletCounter = 0;
     }
-    // Start is called before the first frame update
   
 
     // Update is called once per frame
@@ -52,6 +48,7 @@ public class BlobAi : EnemyAi
         shootDirection = -(firePoint.position - player.transform.position).normalized;
         
     }
+
     private void FixedUpdate()
     {
         
@@ -66,6 +63,10 @@ public class BlobAi : EnemyAi
 
                 break;
 
+                /*
+                 * Chase after the player position and shoot when in range
+                 * If the blob has shot 4 bullets then use super attack
+                 */
             case State.chase:
                 if (enemyMovement.CanMove())
                 {
@@ -75,9 +76,11 @@ public class BlobAi : EnemyAi
                         SetTimeToFire(2f);
                         blobState = State.superAttack;
                     }
+
                     if (Vector3.Distance(player.transform.position, this.gameObject.transform.position) > maximumDistance)
                     {
                         enemyMovement.MoveEnemyAfterPlayer();
+
                         if (Vector3.Distance(player.transform.position, this.gameObject.transform.position) < shootingDistance)
                         {
                             shoot(1f, 1);
@@ -87,7 +90,6 @@ public class BlobAi : EnemyAi
                     {
                         enemyMovement.MoveEnemyAwayPlayer();
                         shoot(1f, 1);
-
                     }
                 }
                 break;
@@ -109,6 +111,7 @@ public class BlobAi : EnemyAi
     {
         timeToFire = Time.time + 1 / fireRate;
     }
+
     public void shoot(float fireRate,int bulletUpDown)
     {
         if (Time.time >= timeToFire)

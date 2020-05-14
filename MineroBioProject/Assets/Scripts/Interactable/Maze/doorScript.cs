@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Script used on the doors to open and close them
+ */
 public class doorScript : MonoBehaviour
 {
     [SerializeField] GameObject doorOpen;

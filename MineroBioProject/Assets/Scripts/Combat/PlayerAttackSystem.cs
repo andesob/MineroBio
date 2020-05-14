@@ -2,21 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Script for controlling the player's attacks
+ */
 public class PlayerAttackSystem : MonoBehaviour
 {
     public GameObject attack;
+    
+    private Quaternion rotation;
+    private PlayerMovement playerMovement;
+    private shooting shootingScript;
     private float meleeAttackTime = 0.5f;
     private float shootingtimeout = 0.5f;
 
-    private Quaternion rotation;
-
-    //public Animator anim;
-
-    private PlayerMovement playerMovement;
-    private PlayerController playerController;
-    private shooting shootingScript;
-
-    private bool canMeeleAttack = true;
 
     private enum State
     {
@@ -32,9 +30,7 @@ public class PlayerAttackSystem : MonoBehaviour
     {
         playerMovement = this.gameObject.GetComponent<PlayerMovement>();
         shootingScript = this.gameObject.GetComponent<shooting>();
-        playerController = this.gameObject.GetComponent<PlayerController>();
         state = State.WaitingForInput;
-
     }
 
     // Update is called once per frame
@@ -47,7 +43,6 @@ public class PlayerAttackSystem : MonoBehaviour
                 break;
 
             case State.MeleeAttacking:
-
                 break;
 
             case State.Shooting:
@@ -59,7 +54,7 @@ public class PlayerAttackSystem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
-            getRoation();
+            GetPlayerRotation();
             Attack();
             StartCoroutine(SetMeleeAttackTimer());
         }
@@ -86,7 +81,7 @@ public class PlayerAttackSystem : MonoBehaviour
         }
     }
 
-    private void getRoation()
+    private void GetPlayerRotation()
     {
         if (playerMovement.GetLastDirection() == "W")
         {
@@ -107,26 +102,20 @@ public class PlayerAttackSystem : MonoBehaviour
         StartCoroutine(SetMeleeAttackTimer());
     }
 
-    // sets the melee hitbox active, and puts the character into the attacking state. 
+    //Puts the character into the attacking state. 
     private IEnumerator SetMeleeAttackTimer()
     {
         state = State.MeleeAttacking;
-        canMeeleAttack = false;
-        //playerController.setCanMove(false);  // NEED TO FIX THE WALKING ANIMATION WHILE PAUSING THE MOVEMENT 
         yield return new WaitForSeconds(meleeAttackTime);
-        canMeeleAttack = true;
-        //playerController.setCanMove(true);
         state = State.WaitingForInput;
     }
 
-    // put the player into the shooting state, whichs blocks other inputs while the character is shooting. 
+    //Put the player into the shooting state, whichs blocks other inputs while the character is shooting. 
     private IEnumerator SetShootingTimer()
     {
-        canMeeleAttack = false;
         state = State.Shooting;
         yield return new WaitForSeconds(shootingtimeout);
         state = State.WaitingForInput;
-        canMeeleAttack = true;
 
     }
 }

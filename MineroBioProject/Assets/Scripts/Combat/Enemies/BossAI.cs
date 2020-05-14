@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Script for the boss enemy that extends the enemyAI script. 
+ * This script decides when the boss will attack and which attack to use.
+ */
 public class BossAI : EnemyAi
 {
     private enum State
@@ -17,7 +21,6 @@ public class BossAI : EnemyAi
     public GameObject teleporter;
     public GameObject gooProjectile;
     public Animator anim;
-
     public float maxDistance;
 
     protected internal GameObject sideProjectilePlus;
@@ -25,7 +28,6 @@ public class BossAI : EnemyAi
     protected internal GameObject mainProjectile;
     protected internal GameObject teleportIn;
     protected internal GameObject teleportOut;
-
     protected internal bool hasHit = false;
     protected internal int teleportCounter = 4;
     protected internal List<Vector3> gooProjectiles = new List<Vector3>();
@@ -40,7 +42,6 @@ public class BossAI : EnemyAi
     private float teleportChance;
     private float superAttackChance;
     private int gooProjectileCounter = 3;
-    private int randIndex;
     private int shootCount = 2;
     private int superAttackCount = 3;
     private int timeToNextTeleport;
@@ -71,7 +72,6 @@ public class BossAI : EnemyAi
         {
             this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-
     }
 
 
@@ -87,7 +87,6 @@ public class BossAI : EnemyAi
                     {
                         transform.position = originalPos;
                         hasTeleported = false;
-
                     }
 
                     if (Vector3.Distance(player.transform.position, this.gameObject.transform.position) > maxDistance)
@@ -122,6 +121,7 @@ public class BossAI : EnemyAi
                 }
                 break;
 
+                //Teleports the boss to another location and then teleports back again
             case State.teleportAttack:
                 if (gooProjectileCounter > 0)
                 {
@@ -131,12 +131,13 @@ public class BossAI : EnemyAi
                 {
                     if (gooProjectileCounter == 0 && Time.time >= timeOut)
                     {
-                        randIndex = Random.Range(0, gooProjectiles.Count);
+                        int randIndex = Random.Range(0, gooProjectiles.Count);
                         spawnPoint = gooProjectiles[randIndex];
                         transform.position = spawnPoint;
                         hasTeleported = true;
-                        trippleAttack();
+                        TripleAttack();
                         float teleportAgain = Random.Range(0f, 1f);
+
                         if (teleportAgain < 1f)
                         {
                             gooProjectiles.RemoveAt(randIndex);
@@ -159,8 +160,7 @@ public class BossAI : EnemyAi
                 if (Time.time >= timeOut)
                 {
                     transform.position = spawnPoint;
-                    //   setFirePoint();
-                    trippleAttack();
+                    TripleAttack();
                     timeOut = Time.time + 0.7f;
                     state = State.idle;
                 }
@@ -184,7 +184,7 @@ public class BossAI : EnemyAi
     }
 
 
-    public void trippleAttack()
+    public void TripleAttack()
     {
         setFirePoint();
         if (Time.time >= timeOut)

@@ -5,9 +5,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/*
+ * Script that keeps controll of all the visuals in the health system of the player
+ */
 public class HeartsHealthVisual2 : MonoBehaviour
 {
-
     public static HeartsHealthSystem heartsHealthSystemStatic;
 
     public Sprite heart0Sprite;
@@ -27,6 +29,9 @@ public class HeartsHealthVisual2 : MonoBehaviour
         SetHeartsHealthSystem(heartsHealthSystem);
     }
 
+    /*
+     * Sets up the visual for the health system with the amount of health given in the health system
+     */
     public void SetHeartsHealthSystem(HeartsHealthSystem heartsHealthSystem)
     {
         this.heartsHealthSystem = heartsHealthSystem;
@@ -73,6 +78,7 @@ public class HeartsHealthVisual2 : MonoBehaviour
         // Hearts health system was damaged. Refreshes the hearts UI. 
         RefreshAllHearts();
     }
+
     private void die()
     {
         PlayerController.isGamePaused = true;
@@ -80,9 +86,13 @@ public class HeartsHealthVisual2 : MonoBehaviour
         Time.timeScale = 0;
     }
 
+    /*
+     * Changes the visual health depending on how much health the player has left
+     */
     private void RefreshAllHearts()
     {
         List<HeartsHealthSystem.Heart> heartList = heartsHealthSystem.GetHeartList();
+
         for (int i = 0; i < heartImageList.Count; i++)
         {
             HeartImage heartImage = heartImageList[i];
@@ -91,7 +101,7 @@ public class HeartsHealthVisual2 : MonoBehaviour
         }
     }
 
-
+ 
     private HeartImage CreateHeartImage(Vector2 anchoredPosition)
     {
         // Creates a game Object
@@ -117,20 +127,17 @@ public class HeartsHealthVisual2 : MonoBehaviour
     }
 
 
-    // Represents a single Heart
+    // Class that represents a single Heart
     public class HeartImage
     {
-
         private int fragments;
         private Image heartImage;
         private HeartsHealthVisual2 heartsHealthVisual;
-     
 
         public HeartImage(HeartsHealthVisual2 heartsHealthVisual, Image heartImage)
         {
             this.heartsHealthVisual = heartsHealthVisual;
             this.heartImage = heartImage;
-
         }
 
         public void SetHeartFraments(int fragments)
@@ -155,9 +162,5 @@ public class HeartsHealthVisual2 : MonoBehaviour
         {
             SetHeartFraments(fragments + 1);
         }
-
-     
     }
-
-
 }

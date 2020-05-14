@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Sets the healtpoints of the boss. Extends EnemyHP
+ */
 public class BossHP : EnemyHP
 {
     void Start()

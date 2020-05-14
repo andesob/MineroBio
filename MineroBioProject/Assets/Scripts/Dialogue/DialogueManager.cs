@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Script that starts, stops and show the dialogue UI
+ */
 public class DialogueManager : MonoBehaviour
 {
+    public GameObject dialogueBox;
     public Text nameText;
     public Text dialogueText;
-
-    public GameObject dialogueBox;
 
     private Queue<string> sentences;
     private Vector3 dialogueRightPos;
@@ -22,15 +24,11 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
     }
 
-
     public void StartDialogue(Dialogue dialogue, string triggerName)
     {
         SetDialoguePos(triggerName);
-
         dialogueBox.SetActive(true);
-
         nameText.text = dialogue.name;
-
         sentences.Clear();
 
         foreach(string sentence in dialogue.sentences)
@@ -58,6 +56,9 @@ public class DialogueManager : MonoBehaviour
         dialogueBox.SetActive(false);
     }
 
+    /*
+     * Sets the visual position of the dialogue box
+     */
     private void SetDialoguePos(string triggerName)
     {
         switch (triggerName)

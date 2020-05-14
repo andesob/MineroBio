@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * A script for damaging enemies with melee.
+ * If the melee prefab collides with an enemy it does damage.
+ */
 public class Melee : MonoBehaviour
-
 {
-
-
     private const int MELEE_DAMAGE = 25;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         if (collision.isTrigger)
         { 
             Vector3 characterPosition = GameObject.Find("Main Char prefab 1/MainCharacter").GetComponent<Transform>().position;

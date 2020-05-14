@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Script used on the switch to open and close the doors when a switch is triggered
+ */
 public class Switch : MonoBehaviour
 {
     [SerializeField] GameObject switchOn;
@@ -26,6 +29,7 @@ public class Switch : MonoBehaviour
             if (isOn)
             {
                 gameObject.GetComponent<SpriteRenderer>().sprite = switchOff.GetComponent<SpriteRenderer>().sprite;
+
                 //changes state for every door in the array
                 for (int i = 0; i < doors.Length; i++)
                 {
@@ -36,6 +40,7 @@ public class Switch : MonoBehaviour
             else
             {
                 gameObject.GetComponent<SpriteRenderer>().sprite = switchOn.GetComponent<SpriteRenderer>().sprite;
+
                 //changes state for every door in the array
                 for (int i = 0; i < doors.Length; i++)
                 {

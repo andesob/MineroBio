@@ -6,23 +6,20 @@ public class PlayerController : MonoBehaviour
 {
     public static bool isGamePaused;
 
-    private bool canMove = true;
-    private float knockbackTime = 0.08f;
-
     public Animator gunAnimation;
-
     private GameObject player;
-
     private GameManager gameManager;
     private shooting shootingScript;
     private Rigidbody2D playerRigidbody2D;
-
     private List<GameObject> weaponList = new List<GameObject>();
 
+
+    private float knockbackTime = 0.08f;
+    private bool canMove = true;
     private bool Nr1Pressed;
     private bool Nr2Pressed;
-
     private string activeWeapon = "";
+
 
     // Start is called before the first frame update
     void Awake()
@@ -83,12 +80,7 @@ public class PlayerController : MonoBehaviour
         HeartsHealthVisual2.heartsHealthSystemStatic.Heal(healingAmount);
     }
 
-    public void AddMoney()
-    {
-        MoneySystem.AddMoney(5);
-    }
-
-
+    //Lets the player choose which weapon to use
     private void ChooseWeapon()
     {
         if (Nr1Pressed && gameManager.HasPistol())
@@ -115,12 +107,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
     public void RotateGun(string direction)
     {
         if (gameManager.HasWeapon())
         {
-            float playerX = GetPosition().x;
-            float playerY = GetPosition().y;
             GameObject weapon = shootingScript.GetGun();
             Transform weaponTransform = weapon.transform;
 
@@ -169,6 +160,12 @@ public class PlayerController : MonoBehaviour
         canMove = boolean;
     }
 
+
+    //Adds a new weapon to the weaponlist
+    /*
+     * Adds we new weapon to the weaponlist
+     * @param   weapon  the gameobject of the weapon that is added
+     */
     public void AddWeapon(GameObject weapon)
     {
         weaponList.Add(weapon);
@@ -183,7 +180,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Returns the players position
+
+
     public Vector3 GetPosition()
     {
         return transform.position;

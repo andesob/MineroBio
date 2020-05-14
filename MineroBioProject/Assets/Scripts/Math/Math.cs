@@ -4,36 +4,29 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Text;
 
-// TODO Make the code prettier. Maybe split the code into two scripts. 
+/*
+ * Script used to give the player math equations they have to answer to pass.
+ */
 public class Math : MonoBehaviour
 {
-
-    private Text questionText;
-    private InputField inputField;
-    private Text answerStatus;
-    private Image character;
-
+    public Pausemenu pausemenu;
     public Sprite mainCharacterKawaii;
     public Sprite mainCharacterHmm;
     public Sprite mainCharacterCry;
     public Sprite mainCharacterAngry;
 
+    private Text questionText;
+    private InputField inputField;
+    private Text answerStatus;
+    private Image character;
     private string currentAnswer;
     private int CorrectCounter = 0;
     private int questionNumber = 1;
     private int maxQuestions = 3;
     private int wrongAnswerCount = 0;
-    public Pausemenu pausemenu;
 
-    private enum Status{Disabled, Active, GenereteNewEquation, HandleInput}
+    private enum Status { Disabled, Active, GenereteNewEquation, HandleInput }
     private Status status;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -46,11 +39,10 @@ public class Math : MonoBehaviour
             case Status.Active:
                 status = Status.GenereteNewEquation;
                 SelectInputField();
-
                 break;
 
             case Status.HandleInput:
-              
+
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
                     bool success = CheckAnswer();
@@ -74,7 +66,7 @@ public class Math : MonoBehaviour
                     SetMathUIStatusToDisabled();
                 }
                 else
-                { 
+                {
                     GenereteEquation();
                     SelectInputField();
                     status = Status.HandleInput;
@@ -97,7 +89,7 @@ public class Math : MonoBehaviour
 
     }
 
-    // Generates an equation. can be addition, subtraction, multiplication or division. 
+    // Generates an equation. Can be addition, subtraction, multiplication or division. 
     private void GenereteEquation()
     {
         int decider = RandomNumber(1, 100);
@@ -118,20 +110,20 @@ public class Math : MonoBehaviour
         {
             CreateDivision();
         }
-
     }
+
+    // Sets the math question to an addition equation.
     private void CreateAddition()
     {
         int randomNumber1 = RandomNumber(1, 100);
         int randomNumber2 = RandomNumber(1, 100);
         int sum = randomNumber1 + randomNumber2;
-
         string nr1 = randomNumber1.ToString();
         string nr2 = randomNumber2.ToString();
+
         currentAnswer = sum.ToString();
 
-        questionText.text = "Question " + questionNumber + ": " + nr1 + " + " + nr2 + " = ?" ;
-
+        questionText.text = "Question " + questionNumber + ": " + nr1 + " + " + nr2 + " = ?";
     }
 
     // Sets the math question to a subtraction equation.
@@ -159,11 +151,11 @@ public class Math : MonoBehaviour
 
             questionText.text = "Question " + questionNumber + ": " + nr2 + " - " + nr1 + " = ?";
         }
-    
+
 
     }
 
-    /// Sets the math question to a multiplication equation.
+    // Sets the math question to a multiplication equation.
     private void CreateMultiplication()
     {
         int randomNumber1 = RandomNumber(1, 10);
@@ -195,7 +187,7 @@ public class Math : MonoBehaviour
 
             questionText.text = "Question " + questionNumber + ": " + nr1 + " / " + nr2 + " = ?";
         }
-        else if(decider <= 75 && decider > 50)
+        else if (decider <= 75 && decider > 50)
         {
             int number = RandomNumber(1, 10);
             int randomNumber1 = number * RandomNumber(2, 10);
@@ -208,7 +200,7 @@ public class Math : MonoBehaviour
 
             questionText.text = "Question " + questionNumber + ": " + nr1 + " / " + nr2 + " = ?";
         }
-        else if(decider <= 50 && decider > 25)
+        else if (decider <= 50 && decider > 25)
         {
             int randomNumber1 = 10 * RandomNumber(1, 10);
             int randomNumber2 = 5 * RandomNumber(1, 2);
@@ -221,9 +213,9 @@ public class Math : MonoBehaviour
             questionText.text = "Question " + questionNumber + ": " + nr1 + " / " + nr2 + " = ?";
         }
 
-        else if(decider <= 25 && decider > 0)
+        else if (decider <= 25 && decider > 0)
         {
-            int number =  RandomNumber(3, 10);
+            int number = RandomNumber(3, 10);
             int randomNumber1 = number * number;
             int randomNumber2 = number;
             int sum = randomNumber1 / randomNumber2;
@@ -236,13 +228,13 @@ public class Math : MonoBehaviour
         }
     }
 
-    // Generetas a random Integer from a start range to an end range.
+    // Generates a random Integer from a start range to an end range.
     private int RandomNumber(int startRange, int endRange)
     {
-            int returnNumber;
-            returnNumber = Random.Range(startRange, endRange);
-            return returnNumber;
-        
+        int returnNumber;
+        returnNumber = Random.Range(startRange, endRange);
+        return returnNumber;
+
     }
 
     // Sets the pointer to the input field. 
@@ -258,7 +250,8 @@ public class Math : MonoBehaviour
     {
         bool correctAnswer = false;
         string answer = GetAnswer();
-        if (answer.Equals(currentAnswer)){
+        if (answer.Equals(currentAnswer))
+        {
             correctAnswer = true;
         }
         return correctAnswer;
@@ -274,15 +267,14 @@ public class Math : MonoBehaviour
     // TODO Might want to move this method. Depends on the object that calls it.
     public void SetMathUIStatusToActive()
     {
-        Time.timeScale = 0f; 
+        Time.timeScale = 0f;
         PlayerController.isGamePaused = true;
         //this.gameObject.SetActive(true);
         status = Status.Active;
-        
+
     }
 
     // Sets the MathUI object to disabled and starts the game again.
-    // TODO Might want to move this method. Depends on the object that calls it.
     public void SetMathUIStatusToDisabled()
     {
         Time.timeScale = 1f;
@@ -316,7 +308,7 @@ public class Math : MonoBehaviour
         ClearStatusField();
         SelectInputField();
         character.enabled = false;
-        
+
     }
 
     private void HandleSuccess()
@@ -333,11 +325,11 @@ public class Math : MonoBehaviour
         character.enabled = true;
         answerStatus.text = "Wrong answer";
         wrongAnswerCount++;
-        if(wrongAnswerCount == 1)
+        if (wrongAnswerCount == 1)
         {
             character.sprite = mainCharacterHmm;
         }
-        else if(wrongAnswerCount == 2)
+        else if (wrongAnswerCount == 2)
         {
             character.sprite = mainCharacterAngry;
         }

@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * A class that keeps track of pickups, which levels are finished etc. between levels.
+ */
 public class GameManager : MonoBehaviour
 {
-    private int totalMoney;
     private int HPamount;
 
     private bool hasPistol;
@@ -18,9 +21,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        totalMoney = 0;
         HPamount = 12;
-
         hasPistol = false;
         hasSniper = false;
         tutorialFinished = false;

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Script for when the player picks up a weapon from the ground
+ */
 public class PlayerPickupScript : MonoBehaviour
 {
     private const int PISTOL_INDEX = 0;

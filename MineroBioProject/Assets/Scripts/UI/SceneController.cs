@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/*
+ * Script used to controll current and previous scenes and set the location of player accordingly.
+ */
 public class SceneController : MonoBehaviour
 {
-
     public static string prevScene = "";
     public static string currentScene = "";
 
@@ -16,6 +18,7 @@ public class SceneController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         currentScene = SceneManager.GetActiveScene().name;
 
+        //Sets the location of the player depending on what the previous and current scenes are
         if (prevScene == "levelHubScene" && currentScene == "HomeScene")
         {
             player.transform.position = new Vector2(0.5f, 22.3f);
@@ -38,13 +41,12 @@ public class SceneController : MonoBehaviour
         }
     }
 
-
+    //Loads a new scene and sets the previous scene
     public void LoadScene(string sceneName)
     {
-        if(SceneManager.GetActiveScene().name != "MainMenu")
+        if (SceneManager.GetActiveScene().name != "MainMenu")
         {
-
-        GameObject.Find("GameManager").GetComponent<GameManager>().SetHealth(HeartsHealthVisual2.heartsHealthSystemStatic.getTotalFragments());
+            GameObject.Find("GameManager").GetComponent<GameManager>().SetHealth(HeartsHealthVisual2.heartsHealthSystemStatic.getTotalFragments());
         }
         prevScene = currentScene;
         SceneManager.LoadScene(sceneName);

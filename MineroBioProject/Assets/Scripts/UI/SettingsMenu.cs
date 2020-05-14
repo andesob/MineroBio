@@ -5,15 +5,16 @@ using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/*
+ * Script used to control the settings menu ingame. Used to change the volume
+ */
 public class SettingsMenu : MonoBehaviour
 {
     public Animator anim;
     public GameObject settingsMenu;
-
     public Button backButton;
     public Button volumeButton;
     public Slider slider;
-
     public AudioMixer audioMixer;
 
     private int state;
@@ -40,6 +41,7 @@ public class SettingsMenu : MonoBehaviour
         {
             case 1:
                 backButton.Select();
+
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
                     this.gameObject.GetComponent<Pausemenu>().wait(Time.time);
@@ -53,27 +55,30 @@ public class SettingsMenu : MonoBehaviour
                 }
                 break;
 
+                //Changes the slider position
             case 2:
                 volumeButton.Select();
+
                 if (Input.GetKeyDown(KeyCode.S))
                 {
                     changeState(1);
                 }
                 else if (Input.GetKeyDown(KeyCode.A))
                 {
-                    if(slider.value >= -70)
+                    if (slider.value >= -70)
                     {
-                        slider.value = slider.value - 10;
+                        slider.value -= 10;
                     }
                 }
                 else if (Input.GetKeyDown(KeyCode.D))
                 {
                     if (slider.value <= -10)
                     {
-                        slider.value = slider.value + 10;
+                        slider.value += 10;
                     }
                 }
                 break;
+
             default:
                 break;
         }
@@ -95,5 +100,4 @@ public class SettingsMenu : MonoBehaviour
         EventSystem.current.GetComponent<EventSystem>().SetSelectedGameObject(null);
         state = newState;
     }
-
 }

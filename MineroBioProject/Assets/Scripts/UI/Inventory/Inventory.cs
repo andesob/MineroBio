@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Script used to manage and keep control of the playerinventory
+ */
 public class Inventory : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -10,10 +13,6 @@ public class Inventory : MonoBehaviour
     public GameObject[] itemSlots;
     public Sprite pistolImage;
     public Sprite sniperImage;
-
-    private Inventory()
-    {
-    }
 
     public void AddWeapon(string weapon)
     {

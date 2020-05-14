@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Script used on objects that can be picked up and adds them to the player inventory
+ */
 public class Pickup : MonoBehaviour
 {
     public Sprite itemImage;
+
     private Inventory inventory;
     private int slot;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +26,7 @@ public class Pickup : MonoBehaviour
         }
     }
 
+    //Adds this object to the inventory on collision with player
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))

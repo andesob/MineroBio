@@ -48,7 +48,6 @@ public class EnemyAi : MonoBehaviour
         switch (blobState)
         {
             // The player stays in its starting area
-            // TODO get a movement when it stays static.
             case State.Roaming:
                 if (Vector3.Distance(startPosition, enemyMovement.GetPlayerPosition()) < maximumDistance && enemyMovement.CanMove())
                 {
@@ -57,7 +56,7 @@ public class EnemyAi : MonoBehaviour
                 break;
             // This state is made to chase after the main character. Will change when this object reaches the maximum distance. 
             case State.chase:
-                if (enemyMovement.CanMove() && damageObject.CanDamage())
+                if (enemyMovement.CanMove() && damageObject.GetCanDamage())
                 {
                     enemyMovement.MoveEnemyAfterPlayer();
                 }
@@ -84,22 +83,6 @@ public class EnemyAi : MonoBehaviour
                 break;
         }
     }
-
-    /*
-    //TODO add the tags for the other weapons, and implement different knockback and damageTimout for each weapon. 
-    private void OnTriggerEnter2D(Collider2D collider)
-    {
-        string colliderTag = collider.gameObject.tag;
-        if (colliderTag == "Melee" && canTakeDamage)
-        {
-            Vector2 difference = thisRigidbody2D.transform.position - collider.transform.position;
-            difference = difference.normalized;
-
-            StartCoroutine(DamageTimeout(damageTimeout));
-        }
-        CheckIfDead();
-    }
-    */
 
     private void CheckIfDead()
     {

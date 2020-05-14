@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ *  Script used to initialize the math quiz on collision with the player.
+ */
 public class StartMathQuiz : MonoBehaviour
 {
     public GameObject MathUIObject;
+
+    private doorScript doorScript;
     private bool haveAnsweredQuiz = false;
-    private doorScript doorScript; 
 
     private void Start()
     {
-        
         doorScript = this.gameObject.GetComponent<doorScript>();
     }
 
@@ -28,11 +31,8 @@ public class StartMathQuiz : MonoBehaviour
     }
 
     // Sets the MathUI object to active, and pauses the game.
-    // TODO Might want to move this method. Depends on the object that calls it.
     public void SetMathUIStatusToActive()
     {
-
         MathUIObject.SetActive(true);
-        
     }
 }

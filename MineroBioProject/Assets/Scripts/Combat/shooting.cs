@@ -2,27 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * A script that handles when the player shoots
+ */
 public class shooting : MonoBehaviour
 {
-    private PlayerMovement playerMovement;
-    private PlayerController playerController;
-
-    private Transform firePoint; //where the bullet is going to shoot from
-
     public GameObject bulletPrefab; //The bullet sprite
     public GameObject sniperBulletPrefab;
 
+    private PlayerMovement playerMovement;
+    private PlayerController playerController;
+    private Transform firePoint; //where the bullet is going to shoot from
     private GameObject gun;
     private GameObject player;
-
-    private List<GameObject> vfx = new List<GameObject>();
-
     private AudioSource audioSource;
-
+    private List<GameObject> vfx = new List<GameObject>();
     private string weaponName;
     private float bulletForce = 10f;
     private float speed = 20.28f;
     private float timeToFire = 0;
+
 
     private void Start()
     {
@@ -36,6 +35,9 @@ public class shooting : MonoBehaviour
         }
     }
 
+    /*
+     * Instantiates the correct bullet and plays the animation and sound
+     */
     public void Shoot()
     {
         GameObject bullet;
@@ -44,7 +46,6 @@ public class shooting : MonoBehaviour
 
         switch (weaponName)
         {
-
             case "Pistol":
                 if (Time.time >= timeToFire)
                 {
@@ -60,7 +61,7 @@ public class shooting : MonoBehaviour
             case "Sniper":
                 if (Time.time >= timeToFire)
                 {
-                    timeToFire = Time.time + 1 / sniperBulletPrefab.GetComponent<ProjectileMove>().fireRate;
+                    timeToFire = Time.time + 1 / sniperBulletPrefab.GetComponent<SniperProjectileMove>().fireRate;
                     bullet = Instantiate(sniperBulletPrefab, firePoint.position, firePoint.rotation);
                     rb = bullet.GetComponent<Rigidbody2D>();
                     rb.AddForce(firePoint.right * speed, ForceMode2D.Impulse);
@@ -71,7 +72,9 @@ public class shooting : MonoBehaviour
         }
     }
 
-
+    /*
+     * Sets the location where the bullets will shoot from
+     */
     private void FirePointLocation()
     {
         float playerX = playerController.GetPosition().x;

@@ -5,6 +5,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/*
+ * Script used to handle the deathUI.
+ */
 public class DeathUI : MonoBehaviour
 {
     public Button retryButton;
@@ -30,6 +33,7 @@ public class DeathUI : MonoBehaviour
 
     public void MenuOptions()
     {
+        //Changes state between the buttons
         switch (state)
         {
             case State.Retry:
@@ -88,5 +92,4 @@ public class DeathUI : MonoBehaviour
          EventSystem.current.GetComponent<EventSystem>().SetSelectedGameObject(null);
          state = newState;
     }
-
 }

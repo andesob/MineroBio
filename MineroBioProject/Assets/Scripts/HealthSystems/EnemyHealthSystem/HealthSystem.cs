@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+
+/*
+ * Healthsystem that keeps track of the health of enemies
+ */
 public class HealthSystem
 {
     public event EventHandler OnHealthChanged;

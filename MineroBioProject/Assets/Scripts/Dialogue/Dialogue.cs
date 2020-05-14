@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Class that keeps control of one dialogue
+ */
 [System.Serializable]
 public class Dialogue
 {

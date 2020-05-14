@@ -5,21 +5,23 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/*
+ * Script used to control the pausemenu
+ */
 public class Pausemenu : MonoBehaviour
 {
     public Animator anim;
     public GameObject pauseMenu;
-
     public Button resumeButton;
     public Button quitButton;
     public Button settingsButton;
+    public bool isPaused = false;
+    public bool canPause = true;
         
     private int state;
     private bool inMenu = false;
-    public bool isPaused = false;
-    public bool canPause = true;
-
     private float currentTime;
+
 
     private void Start()
     {
@@ -35,12 +37,14 @@ public class Pausemenu : MonoBehaviour
             Pause();
             isPaused = true;
         }
+
         if (inMenu)
         {
             menuOptions();
         }
     }
 
+    //Disable game and activate pausemenu
     public void Pause()
     {
         pauseMenu.SetActive(true);
@@ -49,6 +53,7 @@ public class Pausemenu : MonoBehaviour
         inMenu = true;
     }
 
+    //Disable pausemenu and activate game
     private void Resume()
     {
         pauseMenu.SetActive(false);
@@ -60,6 +65,7 @@ public class Pausemenu : MonoBehaviour
 
     public void menuOptions()
     {
+        //Statemachine to alternate between the buttons
         switch (state)
         {
             case 1:

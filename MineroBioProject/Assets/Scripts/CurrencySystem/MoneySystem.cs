@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Static class that keeps count of how many coins are picked up
+ */
 public static class MoneySystem
 {
     private static int money;

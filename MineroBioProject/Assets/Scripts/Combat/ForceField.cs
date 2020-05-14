@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * A script for the forcefield object that can be picked up
+ * Makes the shield follow the player and play animations when damaged
+ */
 public class ForceField : MonoBehaviour
 {
     private GameObject Player;
@@ -12,13 +16,9 @@ public class ForceField : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         Player = GameObject.FindGameObjectWithTag("Player");
         anim = GameObject.FindGameObjectWithTag("ForceField").GetComponent<Animation>();
 
-        if (anim)
-        {
-        }
         shieldHealth = 2;
     }
 
@@ -26,32 +26,15 @@ public class ForceField : MonoBehaviour
     void Update()
     {  
         FollowPlayer();
-
     }
+
     void FollowPlayer()
     {
         float x = Player.transform.position.x;
         float y = Player.transform.position.y;
 
         transform.position = new Vector2(x, y);
-
     }
-    /*
-    private void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.CompareTag("Enemy") && collider.isTrigger && shieldHealth == 2)
-
-        {
-            shieldHealth -= 1;
-            print("YOU ARE HERE");
-            anim.Play("ff_dmg");
-        }
-        else if (collider.CompareTag("enemy") && collider.isTrigger && shieldHealth == 1)
-        {
-            anim.Play("ff_destroy");
-            StartCoroutine(WaitToDestroy());
-        }
-    }*/
        
    IEnumerator WaitToDestroy()
     {
@@ -65,7 +48,6 @@ public class ForceField : MonoBehaviour
 
         {
             shieldHealth -= 1;
-            print("YOU ARE HERE");
             anim.Play("ff_dmg");
         }
         else if (shieldHealth == 1)

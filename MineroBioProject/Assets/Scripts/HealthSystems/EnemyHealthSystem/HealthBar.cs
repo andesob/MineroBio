@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Script that visually change the healthbar when an enemy takes damage
+ */
 public class HealthBar : MonoBehaviour
 {
     public HealthSystem healthSystem;
@@ -12,8 +15,7 @@ public class HealthBar : MonoBehaviour
         healthSystem.OnHealthChanged += HealthSystem_OnHealthChanged;
     }
 
-
-    // istendefor å update hele tiden så updater den bare når man tar damage eller healer, virkelig ikke spør meg hvordan dette fungerer men med godvilja skal jeg klare å forklare :)
+    //Istendefor å oppdatere hele tiden så updater den bare når man tar damage eller healer
     private void HealthSystem_OnHealthChanged(object sender, System.EventArgs e)
     {
         transform.Find("Bar").localScale = new Vector3(healthSystem.getHealthPercent(), 1);

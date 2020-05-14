@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * If object exists, do not destroy it
+ */
 public class DontDestroy : MonoBehaviour
 {
     // Start is called before the first frame update

@@ -2,25 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/*
+ * A script that can be added to an object that is supposed to do damage on the player
+ */
 public class DamageObject : MonoBehaviour
 {
     public float damageTimeout;
     public float knockbackDistance;
 
-    private bool canDamage = true;
     private ForceField forceField;
-
-
-
+    private bool canDamage = true;
     [SerializeField] private int damageAmount;
+
 
     private void Start()
     {
         damageAmount = 1;
     }
 
-
+    /*
+     * When the gameobject collides with the player do damage on the player
+     */
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.CompareTag("Player") && collider.isTrigger && canDamage)
@@ -55,7 +57,7 @@ public class DamageObject : MonoBehaviour
         canDamage = true;
     }
 
-    public bool CanDamage()
+    public bool GetCanDamage()
     {
         return canDamage;
     }

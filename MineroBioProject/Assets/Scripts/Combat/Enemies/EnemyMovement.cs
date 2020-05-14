@@ -2,21 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * A script that moves the enemies
+ */
 public class EnemyMovement : MonoBehaviour
 {
-
-    // The player the enemy follows
-    private Transform mainCharacter;
     public float movementSpeed;
 
+    private Transform mainCharacter;
     private Rigidbody2D rb;
-
+    private Rigidbody2D thisRigidbody2D;
     private Vector2 playerDirection;
     private Vector2 spawnDirection;
-    private Rigidbody2D thisRigidbody2D;
-    private bool canMove = true;
-
     private Vector3 startPosition;
+    private bool canMove = true;
     private float knockbacktime = 0.3f;
 
     private void Awake()
@@ -29,8 +28,9 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         mainCharacter = GameObject.FindGameObjectWithTag("Player").transform;
-       
+
         rb = this.GetComponent<Rigidbody2D>();
+
         if (this.gameObject.transform.position.x > mainCharacter.transform.position.x + 0.1f)
         {
             this.gameObject.transform.rotation = Quaternion.Euler(0.0f, 180f, 0.0f);
@@ -59,15 +59,17 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            if(this.gameObject.transform.childCount > 3)
+            if (this.gameObject.transform.childCount > 3)
             {
-            this.gameObject.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-            this.gameObject.transform.GetChild(1).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                this.gameObject.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                this.gameObject.transform.GetChild(1).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
                 this.gameObject.transform.GetChild(4).localPosition = new Vector3(0.12f, 0.226f, 0f);
             }
         }
 
     }
+
+
     public void MoveEnemyAwayPlayer()
     {
         rb.MovePosition((Vector2)transform.position - (playerDirection * movementSpeed * Time.deltaTime));
@@ -83,12 +85,12 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-                if (this.gameObject.transform.childCount > 3)
-                {
-                    this.gameObject.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-                    this.gameObject.transform.GetChild(1).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-                    this.gameObject.transform.GetChild(4).localPosition = new Vector3(0.12f, 0.226f, 0f);
-                }
+            if (this.gameObject.transform.childCount > 3)
+            {
+                this.gameObject.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                this.gameObject.transform.GetChild(1).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                this.gameObject.transform.GetChild(4).localPosition = new Vector3(0.12f, 0.226f, 0f);
+            }
         }
     }
     public void MoveEnemyTowardSpawn()
@@ -119,7 +121,7 @@ public class EnemyMovement : MonoBehaviour
     {
         return mainCharacter.position;
     }
-  
+
     // Ignores the collision with the main character. 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -129,12 +131,12 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    //Knoks the enemy back. 
+    //Knocks the enemy back. 
     public void Knockback(Vector2 difference, float distance)
     {
-         thisRigidbody2D.AddForce(difference*distance, ForceMode2D.Impulse);
-         StartCoroutine(KnockbackTimer(thisRigidbody2D));
-     } 
+        thisRigidbody2D.AddForce(difference * distance, ForceMode2D.Impulse);
+        StartCoroutine(KnockbackTimer(thisRigidbody2D));
+    }
 
     //Sets the time for how long the enemy rigidbody should move
     private IEnumerator KnockbackTimer(Rigidbody2D thisRigidbody2D)
@@ -143,7 +145,7 @@ public class EnemyMovement : MonoBehaviour
         yield return new WaitForSeconds(knockbacktime);
         thisRigidbody2D.velocity = Vector2.zero;
         canMove = true;
-        
+
     }
     // Returns canMove
     public bool CanMove()

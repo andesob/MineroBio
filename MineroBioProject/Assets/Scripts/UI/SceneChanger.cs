@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/*
+ * Script used to change scenes
+ */
 public class SceneChanger : MonoBehaviour
 {
-
     [SerializeField] private string toScene;
     private SceneController changeLevel;
 
@@ -20,6 +22,7 @@ public class SceneChanger : MonoBehaviour
         changeLevel.LoadScene(scene);
     }
 
+    //Switch scene on collision
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))

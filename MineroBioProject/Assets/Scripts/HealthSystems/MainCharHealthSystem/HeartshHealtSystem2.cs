@@ -4,9 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Script that keeps controll of the player health in hearts
+ * Each heart is divided into 4 fragments 
+ */
+
 public class HeartsHealthSystem
 {
-
     public const int MAX_FRAGMENT_AMOUNT = 4;
 
     public event EventHandler OnDamaged;
@@ -15,6 +19,9 @@ public class HeartsHealthSystem
 
     private List<Heart> heartList;
 
+    /*
+     * Instantiates a new healthsystem with the specified amount of hearts
+     */
     public HeartsHealthSystem(int heartAmount)
     {
         heartList = new List<Heart>();
@@ -59,6 +66,9 @@ public class HeartsHealthSystem
         }
     }
 
+    /*
+     * Heals the player for the specified amount
+     */
     public void Heal(int healAmount)
     {
         for (int i = 0; i < heartList.Count; i++)
@@ -138,8 +148,5 @@ public class HeartsHealthSystem
                 fragments += healAmount;
             }
         }
-
     }
-
-
 }
