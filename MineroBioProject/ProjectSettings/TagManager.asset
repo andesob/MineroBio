@@ -5,12 +5,34 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayButton
-  - Powerplant
   - Collider
   - Teleporter
   - LevelSwitch
+  - Ground
+  - PickUp
   - Powerplant
   - Bullet
+  - QuitButton
+  - SettingsButton
+  - ForceField
+  - TeleportTrigger
+  - Inventory
+  - Weapon
+  - Gun
+  - PlayerPrefab
+  - MoneySystem
+  - SceneChanger
+  - Enemy
+  - Melee
+  - Coin
+  - EnemyBullet
+  - Boss
+  - BossTeleportOut
+  - BossTeleportIn
+  - BossTeleport
+  - Enviorment
+  - GooProjectile
+  - GameManager
   layers:
   - Default
   - TransparentFX
@@ -30,10 +52,10 @@ TagManager:
   - PostProccesing
   - ForceField
   - Bullet
-  - 
-  - 
-  - 
-  - 
+  - EnemyBullet
+  - TriggerLayer
+  - NoPhysics
+  - EnemyLayer
   - 
   - 
   - 
@@ -66,6 +88,15 @@ TagManager:
   - name: PlayerLayer
     uniqueID: 1715886907
     locked: 0
+  - name: BottomWallLayer
+    uniqueID: 3887362531
+    locked: 0
+  - name: RoofLayer
+    uniqueID: 2537172051
+    locked: 0
   - name: ForegroundLayer
     uniqueID: 2054700959
+    locked: 0
+  - name: BulletLayer
+    uniqueID: 2020521137
     locked: 0
